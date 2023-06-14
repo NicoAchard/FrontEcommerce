@@ -1,6 +1,6 @@
 .text-hover-transition:hover {
   color: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.3s linear;
   cursor: pointer;
 }
 .bg-hover-sidebar-admin:hover {
