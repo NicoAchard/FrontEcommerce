@@ -13,7 +13,7 @@ function Footer() {
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-google"></i>
+            <i class="bi bi-pinterest"></i>
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
