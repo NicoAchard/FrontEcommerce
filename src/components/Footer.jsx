@@ -71,22 +71,22 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Skates
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Carver
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Longboard
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Penny
                   </Link>
                 </li>
@@ -98,22 +98,22 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Who we are
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Product manufacturing
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Terms and Conditions
                   </Link>
                 </li>
@@ -125,17 +125,17 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Manage Account
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Returns and Exchanges
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Gift Cards
                   </Link>
                 </li>
@@ -145,24 +145,24 @@ function Footer() {
             <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5>Connect</h5>
 
-              <ul className="list-unstyled mb-0">
+              <ul className="list-unstyled mb-0 ">
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Twitter
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Instagram
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white">
+                  <Link to="/" className="text-white text-decoration-none">
                     Facebook
                   </Link>
                 </li>
