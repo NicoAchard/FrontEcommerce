@@ -1,5 +1,10 @@
+import Footer from "../components/Footer";
 function Home() {
-  return <h1>Holaa</h1>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 }
 
 export default Home;
