@@ -57,9 +57,14 @@ export default () => (
           </div>
         </div>
       </div>
-      <div className="col d-flex flex-column">
-        <div className="d-flex justify-content-between py-3 px-2">
-          <span>Administration Panel</span> <span>Icon User</span>
+      <div className="col d-flex flex-column p-0">
+        <div className="d-flex justify-content-between py-3 px-2 border-bottom shadow-sm -0">
+          <span>Administration Panel</span>{" "}
+          <img
+            src="src\img\perfil-pedorro.png"
+            alt="Profile"
+            className="rounded-circle profile-image"
+          />
         </div>
         <div></div>
       </div>
