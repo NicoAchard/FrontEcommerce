@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import React from "react";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -11,11 +10,10 @@ function App() {
       <Routes>
         <Route path="/login" />
         <Route path="/signup" />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/about-this-project" element={<Project />} />
-
+        <Route path="/admin" element={Admin} />
+        <Route path="/" element={Home} />
+        <Route path="/products" element={Products} />
+        <Route path="/about-this-project" element={Project} />
         <Route path="*" />
       </Routes>
     </>
