@@ -5,11 +5,11 @@ function Footer() {
       <div className="container p-4">
         <section className="mb-4">
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-facebook-f"></i>
+            <i class="bi bi-instagram"></i>
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-twitter"></i>
+            <i class="bi bi-twitter"></i>
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
@@ -173,7 +173,7 @@ function Footer() {
       </div>
 
       <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-        © 2020 Copyright:
+        © 2023 Copyright:
         <Link className="text-white text-decoration-none" to="https://ha.dev/">
           Hack Academy 2023
         </Link>
