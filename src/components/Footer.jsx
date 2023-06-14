@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="bg-dark text-center text-white">
-      <div className="container p-4">
+      <div className="container p-4" style={{ fontSize: "0.8rem" }}>
         <section className="mb-4">
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
             <i class="bi bi-instagram"></i>
@@ -13,19 +13,7 @@ function Footer() {
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i class="bi bi-pinterest"></i>
-          </Link>
-
-          <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-instagram"></i>
-          </Link>
-
-          <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-linkedin-in"></i>
-          </Link>
-
-          <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i className="fab fa-github"></i>
+            <i class="bi bi-github"></i>
           </Link>
         </section>
 
@@ -34,15 +22,20 @@ function Footer() {
             <div className="row d-flex justify-content-center">
               <div className="col-auto">
                 <p className="pt-2">
-                  <strong>Sign up for our newsletter</strong>
+                  <strong>Sign up for our newsletter :</strong>
                 </p>
               </div>
 
               <div className="col-md-5 col-12">
                 <div className="form-outline form-white mb-4">
-                  <input type="email" id="form5Example2" className="form-control" />
-                  <label className="form-label" for="form5Example2">
-                    Email address
+                  <input
+                    type="email"
+                    id="form5Example2"
+                    className="form-control"
+                    placeholder="Email address..."
+                  />
+                  <label className="form-label mt-2" for="form5Example2">
+                    The latest deals and savings, sent to your inbox weekly
                   </label>
                 </div>
               </div>
@@ -56,16 +49,8 @@ function Footer() {
           </form>
         </section>
 
-        <section className="mb-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat
-            quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum
-            corrupti dicta, aliquam sequi voluptate quas.
-          </p>
-        </section>
-
-        <section className="">
-          <div className="row">
+        <section>
+          <div className="row g-4">
             <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5>Shop</h5>
 
@@ -98,22 +83,22 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/about-this-project" className="text-white text-decoration-none">
                     Who we are
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/about-this-project" className="text-white text-decoration-none">
                     Product manufacturing
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/about-this-project" className="text-white text-decoration-none">
                     Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/about-this-project" className="text-white text-decoration-none">
                     Terms and Conditions
                   </Link>
                 </li>
@@ -125,17 +110,17 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/admin" className="text-white text-decoration-none">
                     Manage Account
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/admin" className="text-white text-decoration-none">
                     Returns and Exchanges
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/admin" className="text-white text-decoration-none">
                     Gift Cards
                   </Link>
                 </li>
@@ -173,7 +158,7 @@ function Footer() {
       </div>
 
       <div className="text-center p-3" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
-        © 2023 Copyright:
+        © 2023 Copyright:{" "}
         <Link className="text-white text-decoration-none" to="https://ha.dev/">
           Hack Academy 2023
         </Link>
