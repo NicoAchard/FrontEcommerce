@@ -3,6 +3,7 @@ import { BsHandbag } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { MdSkateboarding } from "react-icons/md";
+import "./Admin.css";
 
 export default () => (
   <div className="container-fluid">
@@ -22,34 +23,34 @@ export default () => (
           >
             <div className="border-bottom border-0 p-3">
               <h2
-                className=" d-flex align-items-center gap-2 rounded p-1"
-                style={{ fontSize: "0.9rem", color: "#BAC2D1" }}
+                className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
+                style={{ fontSize: "0.9rem" }}
               >
                 <AiOutlineHome className="fs-4" />
                 Dashboard
               </h2>
               <h2
-                className=" d-flex align-items-center gap-2 rounded p-1"
+                className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
                 style={{ fontSize: "0.9rem", color: "#BAC2D1" }}
               >
                 <BsHandbag className="fs-4" /> Products
               </h2>
               <h2
-                className=" d-flex align-items-center gap-2 rounded p-1"
+                className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
                 style={{ fontSize: "0.9rem", color: "#BAC2D1" }}
               >
                 <HiOutlineUsers className="fs-4" />
                 Users
               </h2>
               <h2
-                className=" d-flex align-items-center gap-2 rounded p-1"
+                className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
                 style={{ fontSize: "0.9rem", color: "#BAC2D1" }}
               >
                 <AiOutlineShoppingCart className="fs-4" /> Orders
               </h2>
             </div>
             <h2
-              className=" d-flex align-items-center gap-2 rounded p-3"
+              className=" d-flex align-items-center gap-2 rounded p-2 m-3 text-hover-transition bg-hover-sidebar-admin"
               style={{ fontSize: "1.1rem", color: "#BAC2D1" }}
             >
               <HiArrowUturnLeft className="fs-4" /> Return to Website

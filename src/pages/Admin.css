@@ -1,0 +1,11 @@
+.text-hover-transition:hover {
+  color: #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.bg-hover-sidebar-admin:hover {
+  background-color: #444444;
+}
+.text-hover-transition {
+  color: #bac2d1;
+}
