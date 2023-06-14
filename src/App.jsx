@@ -3,6 +3,7 @@ import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -10,11 +11,11 @@ function App() {
       <Routes>
         <Route path="/login" />
         <Route path="/signup" />
-        <Route path="/admin" element={Admin} />
-        <Route path="/" element={Home} />
-        <Route path="/products" element={Products} />
-        <Route path="/about-this-project" element={Project} />
-        <Route path="*" />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about-this-project" element={<Project />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );
