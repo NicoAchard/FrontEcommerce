@@ -22,9 +22,11 @@ function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
           <Nav className="my-auto">
-            <Nav.Link href="/products">Products</Nav.Link>
-            <Nav.Link eventKey={2} href="/about-this-proyect">
-              About This Project
+            <Nav.Link className="text-decoration-underline" href="/products">
+              Products
+            </Nav.Link>
+            <Nav.Link eventKey={2} className="text-decoration-underline" href="/about-this-project">
+              About this project
             </Nav.Link>
           </Nav>
           <Nav>
