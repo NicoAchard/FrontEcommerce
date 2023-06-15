@@ -7,7 +7,7 @@ function Project() {
   return (
     <div>
       <NavBar />
-      <div className="container-fluid d-flex flex-column align-items-center">
+      <div className="container-fluid d-flex flex-column align-items-center project">
         <div className="row header-container">
           <div className="header col-md-7 ms-4 ps-4">
             <h1>About this project</h1>
