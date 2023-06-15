@@ -1,4 +1,4 @@
-import Img from "../img/perfil-pedorro.png";
+import Img from "../img/perfil.png";
 export default () => (
   <div className="d-flex justify-content-between align-items-center py-3 px-4 border-bottom shadow-sm">
     <span>Administration Panel</span>

@@ -31,7 +31,7 @@ function NavBar() {
             <NavDropdown
               title={
                 <img
-                  src="src\img\perfil-pedorro.png"
+                  src="src\img\perfil.png"
                   alt="Profile"
                   className="rounded-circle profile-image"
                 />
