@@ -6,7 +6,7 @@ function CallToAction1() {
   return (
     <div className="image-container my-5">
       <img
-        style={{ width: "900px", height: "500px" }}
+        style={{ width: "1000px", height: "500px" }}
         className="rounded"
         src="/src/img/CallToAction1.jpg"
         alt="Skate image"
