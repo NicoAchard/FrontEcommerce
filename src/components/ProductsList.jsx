@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Product from "./Product";
 import axios from "axios";
 
-function ProductsList() {
+function ProductsList({ slice }) {
   const [products, setProducts] = useState(null);
   useEffect(() => {
     async function getProducts() {
@@ -11,7 +11,11 @@ function ProductsList() {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-        setProducts(response.data.slice(0, 3));
+        if (slice) {
+          setProducts(response.data.slice(0, 3));
+        } else {
+          setProducts(response.data);
+        }
       } catch (error) {
         console.log(error);
       }
