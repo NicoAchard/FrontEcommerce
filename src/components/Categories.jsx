@@ -21,7 +21,7 @@ function Categories() {
             onClick={handleCategoryClick}
           />
         </div>
-        <div className=" category">
+        <div className="category">
           <div className="text-center">
             <h4>Longboards</h4>
           </div>
@@ -32,7 +32,7 @@ function Categories() {
             onClick={handleCategoryClick}
           />
         </div>
-        <div className=" category">
+        <div className="category">
           <div className="text-center">
             <h4>Cruisers</h4>
           </div>
