@@ -1,0 +1,20 @@
+.image-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.image-container img {
+  filter: brightness(50%); /* Adjust the percentage to control the darkness */
+}
