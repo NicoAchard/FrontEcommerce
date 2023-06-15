@@ -9,11 +9,11 @@ function Home() {
   return (
     <div>
       <Navbar />
+      <ProductsList slice={true} />
       <CallToAction1 />
       <Categories />
-      <ProductsList slice={true} />
+
       <CallToAction2 />
-      <ProductsList />
       <Footer />
     </div>
   );
