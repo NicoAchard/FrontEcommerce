@@ -7,10 +7,12 @@ import Dashboard from "./pages/Dashboard";
 import ProductsAdmin from "./pages/ProductsAdmin";
 import Users from "./pages/Users";
 import Orders from "./pages/Orders";
+import StickyButton from "./components/StickyButton";
 
 function App() {
   return (
     <>
+      <StickyButton />
       <Routes>
         <Route path="/login" />
         <Route path="/signup" />
