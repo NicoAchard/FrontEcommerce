@@ -1,5 +1,5 @@
 import "./Project.css";
-import TeamCard from "./TeamCard";
+import TeamCard from "../components/TeamCard";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 

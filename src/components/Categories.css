@@ -1,0 +1,15 @@
+function Categories() {
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <img className="d-block w-100" src="path/to/main-image.jpg" alt="Main Image" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img className="d-block w-100" src="path/to/other-image-1.jpg" alt="Other Image 1" />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img className="d-block w-100" src="path/to/other-image-2.jpg" alt="Other Image 2" />
+      </Carousel.Item>
+    </Carousel>
+  );
+}
