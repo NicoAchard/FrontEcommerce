@@ -5,13 +5,16 @@ import ProductsList from "../components/ProductsList";
 import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div>
       <Navbar />
       <Header />
-      <ProductsList slice={true} />
+      <Link to="/products" className="text-decoration-none">
+        <ProductsList slice={true} />
+      </Link>
       <CallToAction1 />
       <Categories />
       <CallToAction2 />

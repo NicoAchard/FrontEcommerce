@@ -1,0 +1,12 @@
+.cart {
+  width: 200px;
+  height: 109vh;
+  background-color: red;
+  position: fixed;
+  z-index: 2;
+  right: -200px;
+  transition: all 0.5s linear;
+}
+.show-cart {
+  right: 0px;
+}
