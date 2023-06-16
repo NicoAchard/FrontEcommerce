@@ -10,7 +10,7 @@ function TeamCard({ img, name, academicInfo, description }) {
           variant="top"
           src={img}
           className="rounded"
-          style={{ height: "300px", objectFit: "cov" }}
+          style={{ height: "300px", objectFit: "cover" }}
         />
         <Card.Body>
           <Card.Title className="pb-1">{name}</Card.Title>
