@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { MdSkateboarding } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -16,18 +17,20 @@ function NavBar() {
       className="d-flex align-items-center"
     >
       <Container>
-        <Navbar.Brand href="/" className="d-flex align-items-center">
-          <MdSkateboarding className="mr-2" /> Hey Bro!
-        </Navbar.Brand>
+        <Link to="/" className="text-decoration-none text-white">
+          <Navbar.Brand className="d-flex align-items-center">
+            <MdSkateboarding className="mr-2 " /> Hey Bro!
+          </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-          <Nav className="my-auto">
-            <Nav.Link className="text-decoration-underline" href="/products">
+          <Nav className="d-flex align-items-center gap-2">
+            <Link to="/products" className="text-decoration-underline text-white">
               Products
-            </Nav.Link>
-            <Nav.Link eventKey={2} className="text-decoration-underline" href="/about-this-project">
+            </Link>
+            <Link to="/about-this-project" className="text-decoration-underline text-white">
               About this project
-            </Nav.Link>
+            </Link>
           </Nav>
           <Nav>
             <NavDropdown

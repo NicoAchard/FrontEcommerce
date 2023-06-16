@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .profile-image {
   height: 3rem;
 }
