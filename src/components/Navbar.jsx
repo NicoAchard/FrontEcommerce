@@ -26,7 +26,7 @@ function NavBar() {
       <Container>
         <Link to="/" className="text-decoration-none text-white">
           <Navbar.Brand className="d-flex align-items-center">
-            <MdSkateboarding className="mr-2 " /> Hey Bro!
+            <img src="src\img\heybroInvert.png" alt="" className="hey-bro-nav" />
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

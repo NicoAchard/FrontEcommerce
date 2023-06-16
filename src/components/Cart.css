@@ -1,37 +1,12 @@
-.cart-container {
-  width: 35vw;
-  height: 100%;
-  cursor: pointer;
-}
-
-.content {
-  width: 80%;
-  margin: 25px 18px 0px 18px;
-  border: 1px solid gray;
-  border-style: dashed;
-}
-
-.bag {
-  font-size: 2.2rem;
-}
-
-.shopping-cart {
-  margin-bottom: 90px;
-}
-
 .cart {
-  width: 30vw;
+  width: 200px;
   height: 109vh;
+  background-color: red;
   position: fixed;
-  background-color: white;
   z-index: 2;
-  right: -30vw;
+  right: -200px;
   transition: all 0.5s linear;
 }
 .show-cart {
   right: 0px;
-}
-
-.continue-shopping:hover {
-  color: rgb(65, 65, 65);
 }
