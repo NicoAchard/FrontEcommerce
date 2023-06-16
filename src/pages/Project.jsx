@@ -10,9 +10,9 @@ function Project() {
       <div className="container-fluid d-flex flex-column align-items-center">
         <div className="row header-container-project">
           <img src="src/img/about-this-project.jpg" alt="Header img" />
-          <div className="header col-md-6 text-black bg-white">
+          <div className="header col-md-6 text-black ps-4 ms-4">
             <h1>About this project</h1>
-            <p className="fs-5">
+            <p className="fs-5 ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam aperiam
               sit ratione itaque reiciendis perferendis deserunt fugiat ad! Fuga iure odio
               voluptatum fugit sed aliquid sequi voluptas adipisci omnis.

@@ -18,7 +18,7 @@ function CallToAction1() {
         <h2>Skate our products...</h2>
         <p>A board customized to your needs, light and resistant for every-day use</p>
         <Link to="/products" role="button">
-          <button className="btn btn-light">View products</button>
+          <button className="btn btn-dark text-white">View products</button>
         </Link>
       </div>
     </div>

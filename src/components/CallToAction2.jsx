@@ -15,7 +15,7 @@ function CallToAction2() {
         <h2>Enjoy the ride with Hey bro! </h2>
         <p>Let it flow, surf the streets and feel the good vibes come along</p>
         <Link to="/products" role="button">
-          <button className="btn btn-light">View products</button>
+          <button className="btn btn-dark text-white">View products</button>
         </Link>
       </div>
     </div>
