@@ -6,6 +6,9 @@ function Header() {
     <div className="header-container container-fluid p-0">
       <div className="header-image-container">
         <img className="rounded header-image" src="src\img\header3.jpg" alt="Skate image" />
+        <div className="logo">
+          <img src="src\img\heybro.png" alt="" />
+        </div>
         <div className="fade-overlay" />
       </div>
     </div>

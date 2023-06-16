@@ -25,9 +25,9 @@
   filter: contrast(120%);
 }
 
-/* .category:hover ~ .category div {
+.category:hover ~ .category div {
   display: none;
-} */
+}
 
 .categories {
   height: 90vh;
