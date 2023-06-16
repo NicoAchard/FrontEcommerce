@@ -3,9 +3,15 @@
   padding-top: 30vh;
 }
 
-.header-container {
-  background-color: black;
+.header-container-project {
   color: white;
+  width: 99vw;
+}
+.header-container-project img {
+  transform: scaleX(-1);
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
 }
 
 .square {

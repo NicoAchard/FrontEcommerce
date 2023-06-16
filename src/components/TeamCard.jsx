@@ -4,7 +4,7 @@ import { BsLinkedin } from "react-icons/bs";
 
 function TeamCard({ img, name, academicInfo, description }) {
   return (
-    <div className="col-lg-3 border rounded card ps-0 m-4">
+    <div className="border rounded card ps-0 m-2">
       <Card style={{ width: "24rem" }}>
         <Card.Img
           variant="top"
