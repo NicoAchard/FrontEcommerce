@@ -34,16 +34,13 @@ function NavBar() {
           id="responsive-navbar-nav"
           className=" justify-content-end align-items-center text-end "
         >
-          <Nav className=" gap-1 ">
-            <Nav.Link to="/products" className="text-decoration-underline text-white w-100 ">
+          <Nav className=" gap-3">
+            <Link to="/products" className="text-decoration-underline text-white w-100 ">
               Products
-            </Nav.Link>
-            <Nav.Link
-              to="/about-this-project"
-              className="text-decoration-underline text-white w-100"
-            >
-              About this project
-            </Nav.Link>
+            </Link>
+            <Link to="/about-this-project" className="text-decoration-underline text-white w-100">
+              About us
+            </Link>
           </Nav>
           <Nav>
             <NavDropdown
