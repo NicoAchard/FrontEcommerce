@@ -7,14 +7,16 @@ import Dashboard from "./pages/Dashboard";
 import ProductsAdmin from "./pages/ProductsAdmin";
 import Users from "./pages/Users";
 import Orders from "./pages/Orders";
+import Cart from "./components/Cart";
 import StickyButton from "./components/StickyButton";
 
 function App() {
   return (
     <>
       <StickyButton />
+
       <Routes>
-        <Route path="/login" />
+        <Route path="/login" element={<Cart />} />
         <Route path="/signup" />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
