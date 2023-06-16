@@ -34,11 +34,11 @@ function NavBar() {
           id="responsive-navbar-nav"
           className=" justify-content-end align-items-center text-end "
         >
-          <Nav className=" gap-3">
-            <Link to="/products" className="text-decoration-underline text-white w-100 ">
+          <Nav className=" gap-3 mt-3 mt-lg-0 ">
+            <Link to="/products" className="text-decoration-underline text-white  ">
               Products
             </Link>
-            <Link to="/about-this-project" className="text-decoration-underline text-white w-100">
+            <Link to="/about-this-project" className=" text-decoration-underline text-white">
               About us
             </Link>
           </Nav>
@@ -54,7 +54,9 @@ function NavBar() {
               id="basic-nav-dropdown"
               align="end"
             >
-              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="/profile" className="">
+                Profile
+              </NavDropdown.Item>
               <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
