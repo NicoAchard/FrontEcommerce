@@ -16,61 +16,67 @@ function NavBar() {
     console.log(value);
   };
   return (
-    <Navbar
-      collapseOnSelect
-      expand="lg"
-      bg="black"
-      variant="dark"
-      className="d-flex align-items-center"
-    >
-      <Container>
-        <Link to="/" className="text-decoration-none text-white">
-          <Navbar.Brand className="d-flex align-items-center">
-            <img src="src\img\heybroInvert.png" alt="" className="hey-bro-nav" />
-          </Navbar.Brand>
-        </Link>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          className=" justify-content-end align-items-center text-end "
-        >
-          <Nav className=" gap-3 mt-3 mt-lg-0 ">
-            <Link to="/products" className="text-decoration-underline text-white  ">
-              Products
-            </Link>
-            <Link to="/about-this-project" className=" text-decoration-underline text-white">
-              About us
-            </Link>
-          </Nav>
-          <Nav>
-            <NavDropdown
-              title={
-                <img
-                  src="src\img\perfil.png"
-                  alt="Profile"
-                  className="rounded-circle profile-image  "
-                />
-              }
-              id="basic-nav-dropdown"
-              align="end"
-            >
-              <NavDropdown.Item href="/profile" className="">
-                Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="/products" className="my-auto w-100 align-self-end ">
-              <div className="d-flex gap-2 align-items-center justify-content-end">
-                <AiOutlineShoppingCart size={28} />
-                <h6 className="m-0 ">0</h6>
-              </div>
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className="position-relative">
+      <Cart show={showCart} handlerCart={handlerCart} />
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="black"
+        variant="dark"
+        className="d-flex align-items-center"
+      >
+        <Container>
+          <Link to="/" className="text-decoration-none text-white">
+            <Navbar.Brand className="d-flex align-items-center">
+              <img src="src\img\heybroInvert.png" alt="" className="hey-bro-nav" />
+            </Navbar.Brand>
+          </Link>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className=" justify-content-end align-items-center text-end "
+          >
+            <Nav className=" gap-3 mt-3 mt-lg-0 ">
+              <Link to="/products" className="text-decoration-underline text-white  ">
+                Products
+              </Link>
+              <Link to="/about-this-project" className=" text-decoration-underline text-white">
+                About us
+              </Link>
+            </Nav>
+            <Nav>
+              <NavDropdown
+                title={
+                  <img
+                    src="src\img\perfil.png"
+                    alt="Profile"
+                    className="rounded-circle profile-image  "
+                  />
+                }
+                id="basic-nav-dropdown"
+                align="end"
+              >
+                <NavDropdown.Item href="/profile" className="">
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link
+                onClick={() => handlerCart(showCart)}
+                className="my-auto w-100 align-self-end "
+              >
+                <div className="d-flex gap-2 align-items-center justify-content-end">
+                  <AiOutlineShoppingCart size={28} />
+                  <h6 className="m-0 ">0</h6>
+                </div>
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </div>
   );
 }
 
