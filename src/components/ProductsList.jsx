@@ -24,8 +24,15 @@ function ProductsList({ slice }) {
   }, []);
 
   return (
-    <div className="d-flex  justify-content-around my-3">
-      {products && products.map((product) => <Product product={product} />)}
+    <div className="container ">
+      <div className="row d-flex justify-content-between">
+        {products &&
+          products.map((product) => (
+            <div className="col-md-3">
+              <Product product={product} />
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
