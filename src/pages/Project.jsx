@@ -54,39 +54,43 @@ function Project() {
                 reiciendis facere amet eveniet perspiciatis quo labore! Sapiente, beatae.
               </p>
             </div>
-            <div className=" d-flex flex-wrap">
-              <TeamCard
-                img={
-                  "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                }
-                name={"Iván Pintos"}
-                academicInfo={"Junior Full Stack Developer"}
-                description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
-              />
-              <TeamCard
-                img={
-                  "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                }
-                name={"Nicolás Achard"}
-                academicInfo={"Junior Full Stack Developer"}
-                description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
-              />
-              <TeamCard
-                img={
-                  "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                }
-                name={"Ramiro Vidal"}
-                academicInfo={"Junior Full Stack Developer"}
-                description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
-              />
-              <TeamCard
-                img={
-                  "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                }
-                name={"Diego Valiente"}
-                academicInfo={"Junior Full Stack Developer"}
-                description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
-              />
+            <div className=" d-flex flex-wrap gap-5 justify-content-center">
+              <div>
+                <TeamCard
+                  img={
+                    "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  }
+                  name={"Iván Pintos"}
+                  academicInfo={"Junior Full Stack Developer"}
+                  description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
+                />
+                <TeamCard
+                  img={
+                    "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  }
+                  name={"Nicolás Achard"}
+                  academicInfo={"Junior Full Stack Developer"}
+                  description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
+                />
+              </div>
+              <div>
+                <TeamCard
+                  img={
+                    "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  }
+                  name={"Ramiro Vidal"}
+                  academicInfo={"Junior Full Stack Developer"}
+                  description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
+                />
+                <TeamCard
+                  img={
+                    "https://images.unsplash.com/photo-1505840717430-882ce147ef2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                  }
+                  name={"Diego Valiente"}
+                  academicInfo={"Junior Full Stack Developer"}
+                  description={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda minima, quod aspernatur amet cupiditate mollitia? Deleniti non incidunt, tempora necessitatibus reprehenderit, eum, rerum odit maiores ratione est libero accusantium esse?`}
+                />
+              </div>
             </div>
           </div>
         </div>
