@@ -17,4 +17,5 @@
 
 .image-container img {
   filter: brightness(50%); /* Adjust the percentage to control the darkness */
+  object-fit: cover;
 }

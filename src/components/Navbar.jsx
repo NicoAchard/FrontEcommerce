@@ -11,7 +11,7 @@ function NavBar() {
     <Navbar
       collapseOnSelect
       expand="lg"
-      bg="dark"
+      bg="black"
       variant="dark"
       className="d-flex align-items-center"
     >

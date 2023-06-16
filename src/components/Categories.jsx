@@ -11,46 +11,46 @@ function Categories() {
     <div className="d-flex justify-content-center categories container mb-4">
       <div className="d-flex" style={{ width: "800px", height: "500px" }}>
         <div className=" category">
-          <div className="text-center">
+          <div className="text-center text-white fw-bold bg-dark py-2 m-0 ">
             <h4>Skateboards</h4>
           </div>
           <img
             src="src\img\category-skate.jpg"
             alt="Skates"
-            className="category-img rounded"
+            className="category-img "
             onClick={handleCategoryClick}
           />
         </div>
         <div className="category">
-          <div className="text-center">
+          <div className="text-center text-white fw-bold bg-dark py-2 m-0 ">
             <h4>Longboards</h4>
           </div>
           <img
             src="src\img\category-longboard.jpg"
             alt="Longboards"
-            className="category-img rounded"
+            className="category-img "
             onClick={handleCategoryClick}
           />
         </div>
         <div className="category">
-          <div className="text-center">
+          <div className="text-center text-white fw-bold bg-dark py-2 m-0 ">
             <h4>Cruisers</h4>
           </div>
           <img
             src="src\img\category-cruiser.jpg"
             alt="Cruisers"
-            className="category-img rounded"
+            className="category-img "
             onClick={handleCategoryClick}
           />
         </div>
         <div className="category">
-          <div className="text-center">
+          <div className="text-center text-white fw-bold bg-dark py-2 m-0 ">
             <h4>Surfboards</h4>
           </div>
           <img
             src="src\img\category-surf.jpg"
             alt="Surfboards"
-            className="category-img rounded"
+            className="category-img "
             onClick={handleCategoryClick}
           />
         </div>
@@ -79,7 +79,7 @@ export default Categories;
 //             <img
 //               src="src\img\category-skate.jpg"
 //               alt="Skates"
-//               className="category-img rounded"
+//               className="category-img "
 //               onClick={handleCategoryClick}
 //             />
 //           </div>

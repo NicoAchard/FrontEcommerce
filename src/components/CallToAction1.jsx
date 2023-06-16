@@ -6,7 +6,13 @@ function CallToAction1() {
   return (
     <div className="image-container my-5">
       <img
-        style={{ width: "1000px", height: "500px" }}
+        style={{
+          width: "1000px",
+          height: "550px",
+          boxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
+          WebkitBoxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
+          MozBoxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
+        }}
         className="rounded"
         src="/src/img/CallToAction1.jpg"
         alt="Skate image"
