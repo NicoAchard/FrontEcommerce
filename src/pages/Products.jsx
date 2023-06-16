@@ -5,8 +5,10 @@ import Footer from "../components/Footer";
 function Products() {
   return (
     <>
-      <NavBar />
-      <ProductsList />
+      <div style={{ minHeight: "100vh" }}>
+        <NavBar />
+        <ProductsList />
+      </div>
       <Footer />
     </>
   );

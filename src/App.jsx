@@ -8,6 +8,8 @@ import ProductsAdmin from "./pages/ProductsAdmin";
 import Users from "./pages/Users";
 import Orders from "./pages/Orders";
 import StickyButton from "./components/StickyButton";
+import Login from "./pages/Login";
+import SignUp from "./pages/Signup";
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
       <StickyButton />
 
       <Routes>
-        <Route path="/login" />
-        <Route path="/signup" />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/products" element={<ProductsAdmin />} />
