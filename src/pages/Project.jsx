@@ -7,7 +7,7 @@ function Project() {
   return (
     <div>
       <NavBar />
-      <div className="container-fluid d-flex flex-column align-items-center">
+      <div className=" d-flex flex-column align-items-center">
         <div className="row header-container-project">
           <img src="src/img/about-this-project.jpg" alt="Header img" />
           <div className="header col-md-6 text-black ps-4 ms-4">
