@@ -29,3 +29,7 @@
   position: relative;
   top: -70px;
 }
+.project-container {
+  width: 100%;
+  overflow-x: hidden;
+}

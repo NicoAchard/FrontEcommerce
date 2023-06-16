@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import {} from "module";
 function Project() {
   return (
-    <div>
+    <div className="project-container">
       <NavBar />
       <div className=" d-flex flex-column align-items-center">
         <div className="row header-container-project">
@@ -45,7 +45,7 @@ function Project() {
               dolorem placeat obcaecati ut doloribus rerum expedita facere!
             </p>
           </div>
-          <div className=" team d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2">
+          <div className=" team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2 ">
             <div className="p-4">
               <h2>Equipo</h2>
               <p>
@@ -54,7 +54,7 @@ function Project() {
                 reiciendis facere amet eveniet perspiciatis quo labore! Sapiente, beatae.
               </p>
             </div>
-            <div className=" d-flex flex-wrap gap-5 justify-content-center">
+            <div className=" d-flex flex-wrap  justify-content-center">
               <div>
                 <TeamCard
                   img={
