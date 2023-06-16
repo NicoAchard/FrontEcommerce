@@ -6,7 +6,7 @@ function Header() {
     <div className="header-container container-fluid p-0">
       <div className="header-image-container ">
         <img
-          className="rounded header-image position-absolute"
+          className=" header-image position-absolute"
           src="src\img\header3.jpg"
           alt="Skate image"
         />

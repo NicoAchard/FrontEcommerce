@@ -12,6 +12,7 @@
   object-fit: cover;
   /* opacity: 0.8; */
   transition: 0.5s ease;
+  margin-bottom: 80px;
 }
 
 .category-img:hover {
