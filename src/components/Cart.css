@@ -1,12 +1,14 @@
 .cart-container {
   width: 35vw;
   height: 100%;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .content {
   width: 80%;
   margin: 25px 18px 0px 18px;
+  border: 1px solid gray;
+  border-style: dashed;
 }
 
 .bag {
@@ -31,5 +33,5 @@
 }
 
 .continue-shopping:hover {
-  color: rgb(39, 39, 39);
+  color: rgb(65, 65, 65);
 }
