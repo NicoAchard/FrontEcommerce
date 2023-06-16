@@ -22,8 +22,34 @@ function SignUp() {
                     id="form2Example18"
                     className="form-control form-control-lg"
                   />
-                  <label className="form-label" for="form2Example18">
+                  <label className="form-label" htmlFor="form2Example18">
                     Email address
+                  </label>
+                </div>
+
+                <div className="form-outline mb-4">
+                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1m">
+                    First name
+                  </label>
+                </div>
+
+                <div className="form-outline mb-4">
+                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1m">
+                    Last name
+                  </label>
+                </div>
+                <div>
+                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                  <label className="form-label" htmlFor="form2Example28">
+                    Phone Number
+                  </label>
+                </div>
+                <div>
+                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
+                  <label className="form-label" htmlFor="form2Example28">
+                    Address
                   </label>
                 </div>
 
@@ -33,9 +59,19 @@ function SignUp() {
                     id="form2Example28"
                     className="form-control form-control-lg"
                   />
-                  <label className="form-label" for="form2Example28">
+                  <label className="form-label" htmlFor="form2Example28">
                     Password
                   </label>
+                  <div>
+                    <input
+                      type="password"
+                      id="form2Example28"
+                      className="form-control form-control-lg"
+                    />
+                    <label className="form-label" htmlFor="form2Example28">
+                      Repeat Password
+                    </label>
+                  </div>
                 </div>
 
                 <div className="pt-1 mb-4">
@@ -44,16 +80,11 @@ function SignUp() {
                   </button>
                 </div>
 
-                <p className="small mb-5 pb-lg-2">
-                  <a className="text-muted" href="">
-                    Forgot password?
-                  </a>
-                </p>
                 <p>
-                  Don't have an account?{" "}
-                  <a href="" className="link-info">
-                    Register here
-                  </a>
+                  Already have an account?{" "}
+                  <Link to="/login" className="link-info">
+                    Log in
+                  </Link>
                 </p>
               </form>
             </div>
@@ -71,4 +102,5 @@ function SignUp() {
     </section>
   );
 }
+
 export default SignUp;

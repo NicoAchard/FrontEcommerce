@@ -22,7 +22,7 @@ function Login() {
                     id="form2Example18"
                     className="form-control form-control-lg"
                   />
-                  <label className="form-label" for="form2Example18">
+                  <label className="form-label" htmlFor="form2Example18">
                     Email address
                   </label>
                 </div>
@@ -33,27 +33,29 @@ function Login() {
                     id="form2Example28"
                     className="form-control form-control-lg"
                   />
-                  <label className="form-label" for="form2Example28">
+                  <label className="form-label" htmlFor="form2Example28">
                     Password
                   </label>
                 </div>
 
                 <div className="pt-1 mb-4">
-                  <button className="btn btn-dark btn-lg btn-block" type="button">
-                    Login
-                  </button>
+                  <Link to="/" className="link-info">
+                    <button className="btn btn-dark btn-lg btn-block" type="button">
+                      Log in
+                    </button>
+                  </Link>
                 </div>
 
                 <p className="small mb-5 pb-lg-2">
-                  <a className="text-muted" href="">
+                  <Link to="/signup" className="text-muted">
                     Forgot password?
-                  </a>
+                  </Link>
                 </p>
                 <p>
                   Don't have an account?{" "}
-                  <a href="" className="link-info">
+                  <Link to="/signup" className="link-info">
                     Register here
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
@@ -71,4 +73,5 @@ function Login() {
     </section>
   );
 }
+
 export default Login;
