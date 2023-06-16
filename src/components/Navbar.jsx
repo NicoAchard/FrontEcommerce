@@ -23,14 +23,20 @@ function NavBar() {
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-          <Nav className="d-flex align-items-center gap-2">
-            <Link to="/products" className="text-decoration-underline text-white">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className=" justify-content-end align-items-center text-end "
+        >
+          <Nav className=" gap-1 ">
+            <Nav.Link to="/products" className="text-decoration-underline text-white w-100 ">
               Products
-            </Link>
-            <Link to="/about-this-project" className="text-decoration-underline text-white">
+            </Nav.Link>
+            <Nav.Link
+              to="/about-this-project"
+              className="text-decoration-underline text-white w-100"
+            >
               About this project
-            </Link>
+            </Nav.Link>
           </Nav>
           <Nav>
             <NavDropdown
@@ -38,7 +44,7 @@ function NavBar() {
                 <img
                   src="src\img\perfil.png"
                   alt="Profile"
-                  className="rounded-circle profile-image"
+                  className="rounded-circle profile-image  "
                 />
               }
               id="basic-nav-dropdown"
@@ -49,9 +55,11 @@ function NavBar() {
               <NavDropdown.Divider />
               <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/products" className="my-auto d-flex ">
-              <AiOutlineShoppingCart size={28} />
-              <h6 className="mx-1 ">0</h6>
+            <Nav.Link href="/products" className="my-auto w-100 align-self-end ">
+              <div className="d-flex gap-2 align-items-center justify-content-end">
+                <AiOutlineShoppingCart size={28} />
+                <h6 className="m-0 ">0</h6>
+              </div>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
