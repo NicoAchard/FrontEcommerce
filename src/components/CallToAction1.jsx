@@ -9,9 +9,6 @@ function CallToAction1() {
         style={{
           width: "1000px",
           height: "550px",
-          boxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
-          WebkitBoxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
-          MozBoxShadow: "2px 3px 72px 28px rgba(0, 0, 0, 0.58)",
         }}
         className="rounded"
         src="/src/img/CallToAction1.jpg"

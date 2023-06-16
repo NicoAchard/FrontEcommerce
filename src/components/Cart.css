@@ -1,12 +1,35 @@
+.cart-container {
+  width: 35vw;
+  height: 100%;
+  cursor: pointer
+}
+
+.content {
+  width: 80%;
+  margin: 25px 18px 0px 18px;
+}
+
+.bag {
+  font-size: 2.2rem;
+}
+
+.shopping-cart {
+  margin-bottom: 90px;
+}
+
 .cart {
-  width: 200px;
+  width: 30vw;
   height: 109vh;
-  background-color: red;
   position: fixed;
+  background-color: white;
   z-index: 2;
-  right: -200px;
+  right: -30vw;
   transition: all 0.5s linear;
 }
 .show-cart {
   right: 0px;
+}
+
+.continue-shopping:hover {
+  color: rgb(39, 39, 39);
 }
