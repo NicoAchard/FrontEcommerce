@@ -27,30 +27,58 @@ function SignUp() {
                   </label>
                 </div>
 
-                <div className="form-outline mb-4">
-                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1m">
-                    First name
-                  </label>
+                <div className="row mb-4">
+                  <div className="col">
+                    <div className="form-outline">
+                      <input
+                        type="text"
+                        id="form3Example1m"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form3Example1m">
+                        First name
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="form-outline">
+                      <input
+                        type="text"
+                        id="form3Example1m"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form3Example1m">
+                        Last name
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="form-outline mb-4">
-                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1m">
-                    Last name
-                  </label>
-                </div>
-                <div>
-                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                  <label className="form-label" htmlFor="form2Example28">
-                    Phone Number
-                  </label>
-                </div>
-                <div>
-                  <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                  <label className="form-label" htmlFor="form2Example28">
-                    Address
-                  </label>
+                <div className="row mb-4">
+                  <div className="col">
+                    <div className="form-outline">
+                      <input
+                        type="text"
+                        id="form3Example1m"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form3Example1m">
+                        Phone Number
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="form-outline">
+                      <input
+                        type="text"
+                        id="form3Example1m"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form3Example1m">
+                        Address
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="form-outline mb-4">
@@ -62,19 +90,9 @@ function SignUp() {
                   <label className="form-label" htmlFor="form2Example28">
                     Password
                   </label>
-                  <div>
-                    <input
-                      type="password"
-                      id="form2Example28"
-                      className="form-control form-control-lg"
-                    />
-                    <label className="form-label" htmlFor="form2Example28">
-                      Repeat Password
-                    </label>
-                  </div>
                 </div>
 
-                <div className="pt-1 mb-4">
+                <div className="pt-1 mb-2">
                   <button className="btn btn-dark btn-lg btn-block" type="button">
                     Sign Up
                   </button>
