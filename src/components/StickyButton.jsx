@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const StickyButton = () => {
   return (
     <div>
-      <Link to="/project">
+      <Link to="/about-this-project">
         <button
           className="btn btn-light border border-black"
           style={{ position: "fixed", bottom: "12px", right: "10px", zIndex: 9999 }}
