@@ -6,8 +6,15 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { MdSkateboarding } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Cart from "./Cart";
+import { useState } from "react";
 
 function NavBar() {
+  const [showCart, setShowCart] = useState(false);
+  const handlerCart = (value) => {
+    setShowCart(!value);
+    console.log(value);
+  };
   return (
     <Navbar
       collapseOnSelect

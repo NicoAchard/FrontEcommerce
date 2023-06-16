@@ -4,7 +4,7 @@ import "./Product.css";
 
 function Product({ product }) {
   return (
-    <Card style={{ width: "18rem", margin: "10px", border: "none" }}>
+    <Card style={{ width: "18rem", border: "none" }}>
       <Card.Img src={`${import.meta.env.VITE_API_IMG}/${product.photo.url}`} />
       <Card.Body style={{ height: "250px" }}>
         <Card.Title>{product.name}</Card.Title>

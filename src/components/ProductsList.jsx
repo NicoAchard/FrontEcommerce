@@ -24,11 +24,11 @@ function ProductsList({ slice }) {
   }, []);
 
   return (
-    <div className="container ">
-      <div className="row d-flex justify-content-between">
+    <div className="container mt-5 ">
+      <div className="row d-flex justify-content-center mx-auto">
         {products &&
           products.map((product) => (
-            <div className="col-md-3">
+            <div className="col-md-3 m-0">
               <Product product={product} />
             </div>
           ))}
