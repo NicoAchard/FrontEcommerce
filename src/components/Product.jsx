@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
-import "./Product.css";
+import "./Product.css"; // Import your custom CSS file
 
 function Product({ product }) {
   const [activeIndex, setActiveIndex] = useState(0);
