@@ -11,14 +11,16 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <Header />
-      <Link to="/products" className="text-decoration-none">
-        <ProductsList slice={true} />
-      </Link>
-      <CallToAction1 />
-      <Categories />
-      <CallToAction2 />
-      <Footer />
+      <div style={{ marginTop: "4.5rem" }}>
+        <Header />
+        <Link to="/products" className="text-decoration-none">
+          <ProductsList slice={true} />
+        </Link>
+        <CallToAction1 />
+        <Categories />
+        <CallToAction2 />
+        <Footer />
+      </div>
     </div>
   );
 }

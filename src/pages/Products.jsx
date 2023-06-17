@@ -6,8 +6,10 @@ function Products() {
   return (
     <>
       <NavBar />
-      <ProductsList />
-      <Footer />
+      <div style={{ marginTop: "7rem" }}>
+        <ProductsList />
+        <Footer />
+      </div>
     </>
   );
 }

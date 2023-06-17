@@ -3,27 +3,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { MdSkateboarding } from "react-icons/md";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
-import { useState } from "react";
 
+import "./Navbar.css";
 function NavBar() {
-  const [showCart, setShowCart] = useState(false);
-  const handlerCart = (value) => {
-    setShowCart(!value);
-    console.log(value);
-  };
   return (
     <div className="position-relative">
-      <Cart show={showCart} handlerCart={handlerCart} />
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg="black"
         variant="dark"
-        className="d-flex align-items-center"
+        className="d-flex align-items-center bg-nav"
       >
         <Container>
           <Link to="/" className="text-decoration-none text-white">
@@ -63,15 +53,6 @@ function NavBar() {
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link
-                onClick={() => handlerCart(showCart)}
-                className="my-auto w-100 align-self-end "
-              >
-                <div className="d-flex gap-2 align-items-center justify-content-end">
-                  <AiOutlineShoppingCart size={28} />
-                  <h6 className="m-0 ">0</h6>
-                </div>
-              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
