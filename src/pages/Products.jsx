@@ -6,7 +6,7 @@ function Products() {
   return (
     <>
       <NavBar />
-      <div style={{ marginTop: "7rem" }}>
+      <div style={{ marginTop: "7rem", minHeight: "100vh" }}>
         <ProductsList />
         <Footer />
       </div>

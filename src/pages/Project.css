@@ -5,13 +5,14 @@
 
 .header-container-project {
   color: white;
-  width: 99vw;
+  width: 100vw;
 }
 .header-container-project img {
   transform: scaleX(-1);
   background-size: cover;
   position: absolute;
   z-index: -1;
+  padding: 0;
 }
 
 .square {
@@ -27,4 +28,8 @@
 .squares {
   position: relative;
   top: -70px;
+}
+.project-container {
+  width: 100%;
+  overflow-x: hidden;
 }

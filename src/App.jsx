@@ -11,6 +11,8 @@ import StickyButton from "./components/StickyButton";
 import Product from "./pages/Product";
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
+import Login from "./pages/Login";
+import SignUp from "./pages/Signup";
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
       <CartIcon />
 
       <Routes>
-        <Route path="/login" />
-        <Route path="/signup" />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/products" element={<ProductsAdmin />} />
