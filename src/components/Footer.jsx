@@ -5,15 +5,15 @@ function Footer() {
       <div className="container p-4" style={{ fontSize: "0.8rem" }}>
         <section className="mb-4">
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i class="bi bi-instagram"></i>
+            <i className="bi bi-instagram"></i>
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i class="bi bi-twitter"></i>
+            <i className="bi bi-twitter"></i>
           </Link>
 
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
-            <i class="bi bi-github"></i>
+            <i className="bi bi-github"></i>
           </Link>
         </section>
 
@@ -34,7 +34,7 @@ function Footer() {
                     className="form-control"
                     placeholder="Email address..."
                   />
-                  <label className="form-label mt-2" for="form5Example2">
+                  <label className="form-label mt-2" htmlFor="form5Example2">
                     The latest deals and savings, sent to your inbox weekly
                   </label>
                 </div>
