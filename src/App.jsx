@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
@@ -18,12 +18,15 @@ import { SET_CART } from "./redux/cartSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const hideCart = location.pathname === "/login" || location.pathname === "/signup";
+
   dispatch(SET_CART({ showed: false, products: [] }));
   return (
     <>
+      {!hideCart && <CartIcon />}
       <Cart />
       <StickyButton />
-      <CartIcon />
 
       <Routes>
         <Route path="/login" element={<Login />} />
