@@ -10,7 +10,6 @@ export default () => {
   const show = useSelector((state) => state.cart.showed);
   const dispatch = useDispatch();
 
-  console.log(show);
   return (
     <div className={`cart  border ${show ? "show-cart" : ""}`}>
       <div className="d-flex justify-content-between p-4">
