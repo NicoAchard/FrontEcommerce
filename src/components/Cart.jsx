@@ -1,17 +1,25 @@
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import "./Cart.css";
+import { useSelector } from "react-redux";
+import { TOGGLE_SHOWED } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 
-export default ({ show, handlerCart }) => {
+import "./Cart.css";
+
+export default () => {
+  const show = useSelector((state) => state.cart.showed);
+  const dispatch = useDispatch();
+
+  console.log(show);
   return (
-    <div className={`cart cart-container border ${show ? "show-cart" : ""}`}>
+    <div className={`cart  border ${show ? "show-cart" : ""}`}>
       <div className="d-flex justify-content-between p-4">
         <h5>Shopping cart</h5>
         <button
           type="button"
           className="btn-close "
           aria-label="Close"
-          onClick={() => handlerCart(show)}
+          onClick={() => dispatch(TOGGLE_SHOWED())}
         ></button>
       </div>
       <div className="shopping-cart d-flex flex-column align-items-center">
@@ -34,7 +42,7 @@ export default ({ show, handlerCart }) => {
       </div>
       <div className="d-flex justify-content-center gap-1">
         <p className="">or</p>
-        <p className="continue-shopping fw-bold" onClick={() => handlerCart(show)}>
+        <p className="continue-shopping fw-bold" onClick={() => dispatch(TOGGLE_SHOWED())}>
           Continue Shopping
         </p>
       </div>

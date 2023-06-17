@@ -8,11 +8,16 @@ import ProductsAdmin from "./pages/ProductsAdmin";
 import Users from "./pages/Users";
 import Orders from "./pages/Orders";
 import StickyButton from "./components/StickyButton";
+import Product from "./pages/Product";
+import CartIcon from "./components/CartIcon";
+import Cart from "./components/Cart";
 
 function App() {
   return (
     <>
+      <Cart />
       <StickyButton />
+      <CartIcon />
 
       <Routes>
         <Route path="/login" />
@@ -23,6 +28,7 @@ function App() {
         <Route path="/admin/orders" element={<Orders />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/product/:slug" element={<Product />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
       </Routes>
