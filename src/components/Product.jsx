@@ -6,14 +6,26 @@ import "./Product.css";
 function Product({ product }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleSlide = (selectedIndex) => {
-    setActiveIndex(selectedIndex);
+  const handleMouseEnter = () => {
+    setActiveIndex(1);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveIndex(0);
   };
 
   return (
     <Card style={{ width: "18rem", border: "none" }}>
       {product.photos.length > 1 ? (
-        <Carousel activeIndex={activeIndex} onSelect={handleSlide} interval={null}>
+        <Carousel
+          activeIndex={activeIndex}
+          onSelect={() => {}}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          controls={false}
+          slide={false}
+          indicators={false}
+        >
           {product.photos.map((photo) => (
             <Carousel.Item key={photo.url}>
               <img
