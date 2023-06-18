@@ -24,10 +24,8 @@ function ProductsList({ slice }) {
   }, []);
 
   return (
-    <div className="container mt-5">
-      <div className="d-flex flex-wrap justify-content-center">
-        {products && products.map((product) => <Product product={product} key={product.id} />)}
-      </div>
+    <div className="d-flex flex-wrap justify-content-around mt-5">
+      {products && products.map((product) => <Product product={product} key={product.id} />)}
     </div>
   );
 }

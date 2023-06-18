@@ -16,7 +16,7 @@ function Categories() {
   }
   return (
     <div className="d-flex justify-content-center categories rounded">
-      <div className="d-flex " style={{ width: "1000px", height: "650px" }}>
+      <div className="d-flex " style={{ width: "100%", height: "650px" }}>
         <div className=" category">
           <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
             <h4>Skateboards</h4>
