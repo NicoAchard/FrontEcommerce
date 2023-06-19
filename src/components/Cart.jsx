@@ -22,7 +22,7 @@ export default () => {
         ></button>
       </div>
       <div className="shopping-cart d-flex flex-column align-items-center">
-        <div className="content d-flex flex-column align-items-center p-4 ">
+        <div className="content d-none flex-column align-items-center p-4">
           <HiOutlineShoppingBag className="bag" />
           <h5 className="mt-3 mb-2">Your cart is empty</h5>
           <p className="text-center">Looks like your shopping cart is empty, give it some love!</p>
