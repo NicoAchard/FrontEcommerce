@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Product from "./Product";
+import Product from "./ProductIem";
 import axios from "axios";
 
 function ProductsList({ slice }) {

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
+import { useNavigate } from "react-router-dom";
+
 import "./Product.css";
 
 function Product({ product }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const navigate = useNavigate();
   const handleMouseEnter = () => {
     setActiveIndex(1);
   };
@@ -13,9 +15,14 @@ function Product({ product }) {
   const handleMouseLeave = () => {
     setActiveIndex(0);
   };
-
+  const handlerNavigateToProduct = (productSlug) => {
+    navigate(`/product/${productSlug}`);
+  };
   return (
-    <Card style={{ width: "18rem", border: "none" }}>
+    <Card
+      style={{ width: "18rem", border: "none", cursor: "pointer" }}
+      onClick={() => handlerNavigateToProduct(product.slug)}
+    >
       {product.photos.length > 1 ? (
         <Carousel
           activeIndex={activeIndex}
