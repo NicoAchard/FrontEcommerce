@@ -1,11 +1,33 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setToken } from "../../redux/slices";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SET_USER } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [failLogin, setFailLogin] = useState();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await axios({
+        method: "POST",
+        url: `${import.meta.env.VITE_API_URL}/tokens`,
+        data: {
+          email,
+          password,
+        },
+      });
+      dispatch(SET_USER(response.data));
+      response.data ? navigate("/") : setFailLogin(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <section className="vh-100">
       <div className="container-fluid">
@@ -17,6 +39,7 @@ function Login() {
 
             <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
               <form style={{ width: "23rem" }}>
+                {failLogin && <p>Usuario o contraseña incorrectos.</p>}
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
                   Log in
                 </h3>
@@ -24,10 +47,15 @@ function Login() {
                 <div className="form-outline mb-4">
                   <input
                     type="email"
-                    id="form2Example18"
+                    id="email"
+                    name="email"
                     className="form-control form-control-lg"
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
+                    value={email}
                   />
-                  <label className="form-label" htmlFor="form2Example18">
+                  <label className="form-label" htmlFor="email">
                     Email address
                   </label>
                 </div>
@@ -35,17 +63,26 @@ function Login() {
                 <div className="form-outline mb-4">
                   <input
                     type="password"
-                    id="form2Example28"
+                    id="password"
+                    name="password"
                     className="form-control form-control-lg"
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
+                    value={password}
                   />
-                  <label className="form-label" htmlFor="form2Example28">
+                  <label className="form-label" htmlFor="password">
                     Password
                   </label>
                 </div>
 
                 <div className="pt-1 mb-4">
                   <Link to="/" className="link-info">
-                    <button className="btn btn-dark btn-lg btn-block" type="button">
+                    <button
+                      className="btn btn-dark btn-lg btn-block"
+                      type="button"
+                      onClick={handleSubmit}
+                    >
                       Log in
                     </button>
                   </Link>

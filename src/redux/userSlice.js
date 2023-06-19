@@ -4,8 +4,8 @@ const userSlice = createSlice({
   name: "user",
   initialState: null,
   reducers: {
-    SET_TOKEN(state, action) {
-      return { ...state, token: action.payload };
+    SET_USER(state, action) {
+      return action.payload;
     },
     LOGOUT() {
       return null;
@@ -14,5 +14,5 @@ const userSlice = createSlice({
 });
 
 const { actions, reducer } = userSlice;
-export const { SET_TOKEN, LOGOUT } = actions;
+export const { SET_USER, LOGOUT } = actions;
 export default reducer;
