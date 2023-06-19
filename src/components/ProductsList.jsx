@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import Product from "./ProductIem";
 import axios from "axios";
+import Product from "./ProductIem";
+import SkeletonProduct from "./SkeletonProduct";
 
 function ProductsList({ slice }) {
   const [products, setProducts] = useState(null);
@@ -25,7 +26,13 @@ function ProductsList({ slice }) {
 
   return (
     <div className="d-flex flex-wrap justify-content-around mt-5">
-      {products && products.map((product) => <Product product={product} key={product.id} />)}
+      {products ? (
+        products.map((product) => <Product product={product} key={product.id} />)
+      ) : (
+        <div>
+          <SkeletonProduct count={4} />
+        </div>
+      )}
     </div>
   );
 }
