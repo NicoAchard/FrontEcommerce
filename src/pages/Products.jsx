@@ -4,13 +4,15 @@ import Footer from "../components/Footer";
 
 function Products() {
   return (
-    <>
-      <NavBar />
-      <div style={{ marginTop: "7rem", minHeight: "100vh" }}>
-        <ProductsList />
-        <Footer />
+    <div class="d-flex flex-column min-vh-100">
+      <div>
+        <NavBar />
+        <div style={{ marginTop: "7rem" }}>
+          <ProductsList />
+        </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 
