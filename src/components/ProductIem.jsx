@@ -58,7 +58,7 @@ function Product({ product }) {
         style={{ height: "250px" }}
       >
         <div className="title-container">
-          <Card.Title className="text-center h-20 product-title">{product.name}</Card.Title>
+          <Card.Title className="text-center product-title">{product.name}</Card.Title>
         </div>
         <Card.Text className="text-danger font-weight-bold">{product.price} USD</Card.Text>
       </Card.Body>
