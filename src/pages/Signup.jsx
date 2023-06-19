@@ -1,6 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { SET_USER } from "../redux/userSlice";
 
 function SignUp() {
+  const [inputFirstname, setInputFirstname] = useState("");
+  const [inputLastname, setInputLastname] = useState("");
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputAddress, setInputAddress] = useState("");
+  const [inputPhone_Number, setInputPhone_Number] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  async function handlerSubmit(event) {
+    event.preventDefault();
+
+    const response = await axios({
+      method: "POST",
+      url: `${import.meta.env.VITE_API_URL}/users`,
+      data: {
+        email: inputEmail,
+        password: inputPassword,
+        firstname: inputFirstname,
+        lastname: inputLastname,
+        address: inputAddress,
+        phone_number: inputPhone_Number,
+      },
+    });
+    if (response.data.error) {
+      console.log("Credenciales inválidas repetición");
+    }
+
+    dispatch(SET_USER(response.data.token));
+
+    navigate("/");
+  }
   return (
     <section className="vh-100">
       <div className="container-fluid">
@@ -11,7 +48,7 @@ function SignUp() {
             </div>
 
             <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              <form style={{ width: "23rem" }}>
+              <form style={{ width: "23rem" }} onSubmit={handlerSubmit}>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
                   Sign Up
                 </h3>
@@ -19,11 +56,14 @@ function SignUp() {
                 <div className="form-outline mb-4">
                   <input
                     type="email"
-                    id="form2Example18"
+                    name="email"
+                    id="email"
                     className="form-control form-control-lg"
+                    value={inputEmail}
+                    onChange={(event) => setInputEmail(event.target.value)}
                   />
-                  <label className="form-label" htmlFor="form2Example18">
-                    Email address
+                  <label className="form-label" htmlFor="email">
+                    Email
                   </label>
                 </div>
 
@@ -32,11 +72,15 @@ function SignUp() {
                     <div className="form-outline">
                       <input
                         type="text"
-                        id="form3Example1m"
+                        name="firstname"
+                        id="firstname"
                         className="form-control form-control-lg"
+                        value={inputFirstname}
+                        onChange={(event) => setInputFirstname(event.target.value)}
                       />
-                      <label className="form-label" htmlFor="form3Example1m">
-                        First name
+
+                      <label className="form-label" htmlFor="firstname">
+                        Firstname
                       </label>
                     </div>
                   </div>
@@ -44,11 +88,14 @@ function SignUp() {
                     <div className="form-outline">
                       <input
                         type="text"
-                        id="form3Example1m"
+                        id="lastname"
+                        name="lastname"
                         className="form-control form-control-lg"
+                        value={inputLastname}
+                        onChange={(event) => setInputLastname(event.target.value)}
                       />
-                      <label className="form-label" htmlFor="form3Example1m">
-                        Last name
+                      <label className="form-label" htmlFor="lastname">
+                        Lastname
                       </label>
                     </div>
                   </div>
@@ -59,10 +106,13 @@ function SignUp() {
                     <div className="form-outline">
                       <input
                         type="text"
-                        id="form3Example1m"
+                        name="phone_number"
+                        id="phone_number"
                         className="form-control form-control-lg"
+                        value={inputPhone_Number}
+                        onChange={(event) => setInputPhone_Number(event.target.value)}
                       />
-                      <label className="form-label" htmlFor="form3Example1m">
+                      <label className="form-label" htmlFor="phone_number">
                         Phone Number
                       </label>
                     </div>
@@ -71,10 +121,13 @@ function SignUp() {
                     <div className="form-outline">
                       <input
                         type="text"
-                        id="form3Example1m"
+                        name="address"
+                        id="address"
                         className="form-control form-control-lg"
+                        value={inputAddress}
+                        onChange={(event) => setInputAddress(event.target.value)}
                       />
-                      <label className="form-label" htmlFor="form3Example1m">
+                      <label className="form-label" htmlFor="address">
                         Address
                       </label>
                     </div>
@@ -85,10 +138,13 @@ function SignUp() {
                     <div className="form-outline mb-4">
                       <input
                         type="password"
-                        id="form2Example28"
+                        name="password"
+                        id="password"
                         className="form-control form-control-lg"
+                        value={inputPassword}
+                        onChange={(event) => setInputPassword(event.target.value)}
                       />
-                      <label className="form-label" htmlFor="form2Example28">
+                      <label className="form-label" htmlFor="password">
                         Password
                       </label>
                     </div>
@@ -108,13 +164,13 @@ function SignUp() {
                 </div>
 
                 <div className="pt-1 mb-2">
-                  <button className="btn btn-dark btn-lg btn-block" type="button">
+                  <button className="btn btn-dark btn-lg btn-block" type="submit">
                     Sign Up
                   </button>
                 </div>
 
                 <p>
-                  Already have an account?{" "}
+                  Already have an account?
                   <Link to="/login" className="link-info">
                     Log in
                   </Link>
