@@ -15,9 +15,11 @@ function Product({ product }) {
   const handleMouseLeave = () => {
     setActiveIndex(0);
   };
+
   const handlerNavigateToProduct = (productSlug) => {
     navigate(`/product/${productSlug}`);
   };
+
   return (
     <Card
       style={{ width: "18rem", border: "none", cursor: "pointer" }}
@@ -51,9 +53,14 @@ function Product({ product }) {
         />
       )}
 
-      <Card.Body style={{ height: "250px" }}>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>{product.description.slice(0, 150)} . . .</Card.Text>
+      <Card.Body
+        className="d-flex flex-column align-items-center justify-content-center"
+        style={{ height: "250px" }}
+      >
+        <div className="title-container">
+          <Card.Title className="text-center h-20 product-title">{product.name}</Card.Title>
+        </div>
+        <Card.Text className="text-danger font-weight-bold">{product.price} USD</Card.Text>
       </Card.Body>
     </Card>
   );
