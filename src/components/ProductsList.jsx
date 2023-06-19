@@ -3,8 +3,9 @@ import axios from "axios";
 import Product from "./ProductIem";
 import SkeletonProduct from "./SkeletonProduct";
 
-function ProductsList({ slice }) {
+function ProductsList({ slice, categoryID }) {
   const [products, setProducts] = useState(null);
+
   useEffect(() => {
     async function getProducts() {
       try {
@@ -12,17 +13,21 @@ function ProductsList({ slice }) {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
+        console.log(response.data);
         if (slice) {
           setProducts(response.data.slice(0, 3));
         } else {
           setProducts(response.data);
+        }
+        if (categoryID) {
+          setProducts(response.data.filter((product) => product.categoryId === categoryID));
         }
       } catch (error) {
         console.log(error);
       }
     }
     getProducts();
-  }, []);
+  }, [categoryID]);
 
   return (
     <div className="d-flex flex-wrap justify-content-around mt-5">
