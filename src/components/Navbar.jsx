@@ -5,7 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
+import heybroLogo from "../img/heybroInvert.png";
+import profilePicture from "../img/perfil.png";
 import "./Navbar.css";
+
 function NavBar() {
   return (
     <div className="position-relative">
@@ -18,7 +21,7 @@ function NavBar() {
         <Container>
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center">
-              <img src="src\img\heybroInvert.png" alt="" className="hey-bro-nav" />
+              <img src={heybroLogo} alt="" className="hey-bro-nav" />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -38,7 +41,7 @@ function NavBar() {
               <NavDropdown
                 title={
                   <img
-                    src="src\img\perfil.png"
+                    src={profilePicture}
                     alt="Profile"
                     className="rounded-circle profile-image  "
                   />

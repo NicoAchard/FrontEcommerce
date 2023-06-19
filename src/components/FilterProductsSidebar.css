@@ -1,0 +1,7 @@
+.filter-sidebar-item {
+  margin-left: 1rem;
+}
+.filter-sidebar-item:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
