@@ -35,8 +35,8 @@ function Product({ product }) {
           slide={false}
           indicators={false}
         >
-          {product.photos.map((photo) => (
-            <Carousel.Item key={photo.url}>
+          {product.photos.map((photo, index) => (
+            <Carousel.Item key={index}>
               <img
                 className="d-block w-100"
                 src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}

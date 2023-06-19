@@ -11,7 +11,22 @@ const cartSlice = createSlice({
       return null;
     },
     ADD_PRODUCT(state, action) {
-      return state.push(action.payload.product);
+      const existingProduct = state.products.find((product) => product.id === action.payload.id);
+
+      if (existingProduct) {
+        const updatedProducts = state.products.map((product) => {
+          if (product.id === action.payload.id) {
+            return { ...product, qty: product.qty + action.payload.qty };
+          } else {
+            return product;
+          }
+        });
+
+        return { ...state, products: updatedProducts };
+      } else {
+        state.products.push(action.payload);
+        return state;
+      }
     },
 
     REMOVE_PRODUCT(state, action) {
