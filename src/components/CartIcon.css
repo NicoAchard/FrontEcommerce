@@ -4,7 +4,7 @@
   left: 5%;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.5);
-  background-image: url(src/img/f5dcdc2372b57124e3e40ef0fc5dacae.jpg);
+  background-image: url("src/img/bg_dark_grafitti.jpg");
   background-size: cover;
   border: white solid 2px;
   color: white;
