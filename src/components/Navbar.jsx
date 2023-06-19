@@ -4,12 +4,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/heybroInvert.png";
 import profilePicture from "../img/perfil.png";
+
 import "./Navbar.css";
 
 function NavBar() {
+  const dispatch = useDispatch();
   return (
     <div className="position-relative">
       <Navbar
@@ -49,12 +53,29 @@ function NavBar() {
                 id="basic-nav-dropdown"
                 align="end"
               >
+                <NavDropdown.Item>
+                  <Link to="/login" className="text-decoration-none text-black">
+                    Login
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/signup" className="text-decoration-none text-black">
+                    Signup
+                  </Link>
+                </NavDropdown.Item>
                 <NavDropdown.Item href="/profile" className="">
                   Profile
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    dispatch(LOGOUT());
+                    navigate("/login");
+                  }}
+                >
+                  Logout
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
