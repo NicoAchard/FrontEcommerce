@@ -3,7 +3,11 @@ import Footer from "../components/Footer";
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+
+import { ADD_PRODUCT } from "../redux/cartSlice";
+
 import "./Product.css";
 
 export default () => {
@@ -11,6 +15,7 @@ export default () => {
   const [mainProductImg, setMainProductImg] = useState();
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const params = useParams();
   useEffect(() => {
     async function getProduct() {
@@ -36,11 +41,23 @@ export default () => {
     }
   };
   const handlerIncreseCountProduct = () => {
-    console.log(product.stock + "||" + productCount);
     if (productCount < product.stock) {
       setProductCount(productCount + 1);
     }
   };
+
+  const handlerAddTocart = (product) => {
+    dispatch(
+      ADD_PRODUCT({
+        id: product.id,
+        name: product.name,
+        unitPrice: product.price,
+        qty: productCount,
+        img: product.photos,
+      }),
+    );
+  };
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
@@ -55,6 +72,10 @@ export default () => {
                 >
                   Home
                 </span>
+                <span
+                  style={{ fontSize: "0.9rem", cursor: "pointer" }}
+                  onClick={() => navigate("/products")}
+                >{`> Products`}</span>
                 <span className="text-secondary">{`> ${product.name}`}</span>
               </div>
               <div className="container">
@@ -108,7 +129,10 @@ export default () => {
                               +
                             </button>
                           </div>
-                          <button className="btn btn-warning rounded-0 border-black">
+                          <button
+                            className="btn btn-warning rounded-0 border-black"
+                            onClick={() => handlerAddTocart(product)}
+                          >
                             ADD TO CART
                           </button>
                         </div>

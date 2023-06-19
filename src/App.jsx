@@ -13,15 +13,10 @@ import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
-import { useDispatch } from "react-redux";
-import { SET_CART } from "./redux/cartSlice";
 
 function App() {
-  const dispatch = useDispatch();
   const location = useLocation();
   const hideCart = location.pathname === "/login" || location.pathname === "/signup";
-
-  dispatch(SET_CART({ showed: false, products: [] }));
   return (
     <>
       {!hideCart && <CartIcon />}
