@@ -4,25 +4,23 @@ export default ({ count }) => {
       {Array(count)
         .fill()
         .map((_, index) => (
-          <p key={index}>
-            <div className="d-flex gap-4 justify-content-around">
-              <div>
-                <div class="skeleton-element"></div>
-                <div class="skeleton-text"></div>
-                <div class="skeleton-text"></div>
-              </div>
-              <div>
-                <div class="skeleton-element"></div>
-                <div class="skeleton-text"></div>
-                <div class="skeleton-text"></div>
-              </div>
-              <div>
-                <div class="skeleton-element"></div>
-                <div class="skeleton-text"></div>
-                <div class="skeleton-text"></div>
-              </div>
+          <div className="d-flex gap-4 justify-content-around" key={index}>
+            <div>
+              <div className="skeleton-element"></div>
+              <div className="skeleton-text"></div>
+              <div className="skeleton-text"></div>
             </div>
-          </p>
+            <div>
+              <div className="skeleton-element"></div>
+              <div className="skeleton-text"></div>
+              <div className="skeleton-text"></div>
+            </div>
+            <div>
+              <div className="skeleton-element"></div>
+              <div className="skeleton-text"></div>
+              <div className="skeleton-text"></div>
+            </div>
+          </div>
         ))}
     </div>
   );

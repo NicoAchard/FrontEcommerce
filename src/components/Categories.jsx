@@ -10,7 +10,6 @@ function Categories() {
   const initialHideConfig = { text1: "d-none", text2: "d-none", text3: "d-none", text4: "d-none" };
   const [textHide, setTextHide] = useState(initialHideConfig);
   function handleTextHide(target) {
-    console.log(target);
     setTextHide(initialHideConfig);
     setTextHide({ ...textHide, [target]: "d-flex" });
   }
