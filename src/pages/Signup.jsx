@@ -80,16 +80,31 @@ function SignUp() {
                     </div>
                   </div>
                 </div>
-
-                <div className="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="form2Example28"
-                    className="form-control form-control-lg"
-                  />
-                  <label className="form-label" htmlFor="form2Example28">
-                    Password
-                  </label>
+                <div className="row mb-1">
+                  <div className="col">
+                    <div className="form-outline mb-4">
+                      <input
+                        type="password"
+                        id="form2Example28"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form2Example28">
+                        Password
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="form-outline">
+                      <input
+                        type="password"
+                        id="form2Example28"
+                        className="form-control form-control-lg"
+                      />
+                      <label className="form-label" htmlFor="form2Example28">
+                        Repeat password
+                      </label>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="pt-1 mb-2">
