@@ -1,0 +1,7 @@
+.img-product-secondary {
+  height: 100px;
+  cursor: pointer;
+}
+.img-product-secondary:hover {
+  opacity: 0.7;
+}
