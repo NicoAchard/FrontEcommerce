@@ -13,6 +13,7 @@ import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
+import Checkout from "./components/Checkout";
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
       </Routes>
