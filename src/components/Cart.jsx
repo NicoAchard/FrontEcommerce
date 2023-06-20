@@ -13,6 +13,7 @@ export default () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleCheckoutClick = () => {
+    dispatch(TOGGLE_SHOWED());
     navigate("/checkout");
   };
 
