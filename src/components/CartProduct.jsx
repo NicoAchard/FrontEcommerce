@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { REMOVE_PRODUCT } from "../redux/cartSlice";
 import "./CartProduct.css";
 
-function CartProduct({ img, name, price, qty }) {
+function CartProduct({ key, img, name, price, qty }) {
+  const dispatch = useDispatch();
   return (
     <div className="cart-product d-flex p-3 me-2">
-      <img src={img} alt="" className="mr-3" />
+      <img src={`${import.meta.env.VITE_API_IMG}/${img}`} alt="product-img" />
       <div className="d-flex flex-column justify-content-between w-100">
         <div className="d-flex justify-content-between">
           <p>{name}</p>
@@ -12,7 +14,9 @@ function CartProduct({ img, name, price, qty }) {
         </div>
         <div className="d-flex justify-content-between">
           <p>Qty {qty}</p>
-          <p className="fw-bold">Remove</p>
+          <p className="fw-bold" onClick={() => dispatch(REMOVE_PRODUCT(key))}>
+            Remove
+          </p>
         </div>
       </div>
     </div>

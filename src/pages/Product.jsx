@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-import { ADD_PRODUCT } from "../redux/cartSlice";
+import { ADD_PRODUCT, TOGGLE_SHOWED } from "../redux/cartSlice";
 
 import "./Product.css";
 
@@ -55,6 +55,7 @@ export default () => {
         unitPrice: product.price,
         qty: productCount,
         img: product.photos,
+        stock: product.stock,
       }),
     );
 
@@ -127,7 +128,7 @@ export default () => {
                         </div>
                         <button
                           className="btn btn-warning rounded-0 border-black"
-                          onClick={() => handlerAddTocart(product)}
+                          onClick={() => handlerAddToCart(product)}
                         >
                           ADD TO CART
                         </button>

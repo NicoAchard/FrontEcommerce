@@ -16,7 +16,13 @@ const cartSlice = createSlice({
       if (existingProduct) {
         const updatedProducts = state.products.map((product) => {
           if (product.id === action.payload.id) {
-            return { ...product, qty: product.qty + action.payload.qty };
+            return {
+              ...product,
+              qty:
+                product.qty + action.payload.qty > action.payload.stock
+                  ? action.payload.stock
+                  : product.qty + action.payload.qty,
+            };
           } else {
             return product;
           }
@@ -30,9 +36,9 @@ const cartSlice = createSlice({
     },
 
     REMOVE_PRODUCT(state, action) {
-      return state
+      return state.products
         .filter((product) => {
-          if (product.id !== action.payload.productId) {
+          if (product.id !== action.payload) {
             return true;
           } else {
             if (product.count !== 1) {
@@ -43,7 +49,7 @@ const cartSlice = createSlice({
           }
         })
         .map((product) => {
-          if (product.id === action.payload.productId && product.count !== 1) {
+          if (product.id === action.payload && product.count !== 1) {
             return { ...product, count: product.count - 1 };
           }
           return product;

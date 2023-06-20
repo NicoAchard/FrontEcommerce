@@ -31,6 +31,7 @@ export default () => {
         <div className="cart-products">
           {product.map((product) => (
             <CartProduct
+              key={product.id}
               img={product.img[0].url}
               name={product.name}
               price={product.unitPrice}
