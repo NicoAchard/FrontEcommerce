@@ -1,17 +1,9 @@
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCol,
-  MDBContainer,
-  MDBIcon,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import "./ThanksForOrder.css";
 function ThanksForOrder() {
   return (
     <>
-      <div className="container ">
-        <div className="row mt-3">
+      <div className="p-5">
+        <div className="row">
           <p style={{ fontSize: "0.9rem", color: "blue" }}>Payment successful</p>
           <h2>Thanks for ordering</h2>
           <p style={{ color: "gray" }}>
@@ -28,7 +20,7 @@ function ThanksForOrder() {
             </p>
           </div>
         </div>
-        <div className="row border rounded mb-5 py-3">
+        <div className="row border rounded mb-5 pt-3">
           <div className="col-md-3 col-lg-2">
             <img className="img-fluid" src="src/img/heybroInvert.png" alt="Product Image" />
           </div>
@@ -53,60 +45,57 @@ function ThanksForOrder() {
             <p style={{ color: "gray" }}>User phone number 099 123 456</p>
             <p className="cursor-pointer text-primary">Edit</p>
           </div>
-          <section>
-            <MDBContainer className="py-1 h-25">
-              <MDBRow className="justify-content-center align-items-center h-100">
-                <MDBCol>
-                  <MDBCard className="card-stepper" style={{ borderRadius: "10px" }}>
-                    <MDBCardBody className="p-4">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div className="d-flex flex-column">
-                          <span className="lead fw-normal">Your order has been delivered</span>
-                          <span className="text-muted small">by DHFL on 21 Jan, 2023</span>
-                        </div>
-                        <div>
-                          <MDBBtn outline>Track order details</MDBBtn>
-                        </div>
-                      </div>
 
-                      <hr className="my-4" />
+          <div className="card mb-0">
+            <div className="row d-flex justify-content-between px-3 top">
+              <div className="d-flex">
+                <h5>
+                  ORDER <span className="text-primary font-weight-bold">#Y34XDHR</span>
+                </h5>
+              </div>
+              <div className="d-flex flex-column text-sm-right">
+                <p className="mb-0">
+                  Expected Arrival <span>20/07/23</span>
+                </p>
+                <p className="cursor-pointer text-primary">
+                  Shipment code USPS{" "}
+                  <span className="fw-bold text-dark">234094567242423422898</span>
+                </p>
+              </div>
+            </div>
 
-                      <div className="d-flex flex-row justify-content-between align-items-center align-content-center">
-                        <span className="dot"></span>
-                        <hr className="flex-fill track-line" style={{ color: "purple" }} />
-                        <span className="dot"></span>
-                        <hr className="flex-fill track-line" />
-                        <span className="dot"></span>
-                        <hr className="flex-fill track-line" />
-                        <span className="d-flex justify-content-center align-items-center big-dot dot">
-                          <MDBIcon icon="check text-white" />
-                        </span>
-                      </div>
+            <div className="row d-flex justify-content-center">
+              <div className="col-12">
+                <ul id="progressbar" className="text-center">
+                  <li className="active step0"></li>
+                  <li className="active step0"></li>
+                  <li className="active step0"></li>
+                  <li className="step0"></li>
+                </ul>
+              </div>
+            </div>
+            <div className="row d-flex justify-content-between text-center ">
+              <div className="col-3">
+                <img className="icon" src="https://i.imgur.com/9nnc9Et.png" />
+                <p className="fw-bold">Processed</p>
+              </div>
 
-                      <div className="d-flex flex-row justify-content-between align-items-center">
-                        <div className="d-flex flex-column justify-content-center">
-                          <span>15 Mar</span>
-                          <span>Order placed</span>
-                        </div>
-                        <div className="d-flex flex-column justify-content-center align-items-center">
-                          <span>15 Mar</span>
-                          <span>Order Dispatched</span>
-                        </div>
-                        <div className="d-flex flex-column align-items-center">
-                          <span>15 Mar</span>
-                          <span>Out for delivery</span>
-                        </div>
-                        <div className="d-flex flex-column align-items-end">
-                          <span>15 Mar</span>
-                          <span>Delivered</span>
-                        </div>
-                      </div>
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBCol>
-              </MDBRow>
-            </MDBContainer>
-          </section>
+              <div className="col-3">
+                <img className="icon" src="https://i.imgur.com/u1AzR7w.png" />
+                <p className="fw-bold">Shipped</p>
+              </div>
+
+              <div className="col-3">
+                <img className="icon" src="https://i.imgur.com/TkPm63y.png" />
+                <p className="fw-bold">En Route</p>
+              </div>
+
+              <div className="col-3">
+                <img className="icon" src="https://i.imgur.com/HdsziHP.png" />
+                <p className="fw-bold">Arrived</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="row border rounded py-3 mb-5">
@@ -120,7 +109,7 @@ function ThanksForOrder() {
           <div className="col-md-4 col-lg-4">
             <h6>Payment information</h6>
             <p>
-              <i class="bi bi-credit-card-2-front"></i> Ending with 2424
+              <i className="bi bi-credit-card-2-front"></i> Ending with 2424
             </p>
             <p style={{ color: "gray" }}>Expires 02 / 25</p>
           </div>
