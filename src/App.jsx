@@ -28,7 +28,7 @@ function App() {
       <StickyButton />
 
       <Routes>
-        <Route path="/login" element={<ThanksForOrder />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />

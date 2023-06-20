@@ -8,7 +8,7 @@ function ThanksForOrder() {
           <h2>Thanks for ordering</h2>
           <p style={{ color: "gray" }}>
             We appreciate your order, we’re currently processing it. So hang tight and we’ll send
-            you confirmation very soon!
+            you a confirmation very soon!
           </p>
         </div>
         <hr />
