@@ -22,8 +22,11 @@ export default () => {
           onClick={() => dispatch(TOGGLE_SHOWED())}
         ></button>
       </div>
-      <div className="shopping-cart h-100 d-flex flex-column ">
-        {console.log(products)}
+      <div
+        className={`shopping-cart h-100 d-flex flex-column ${
+          products.length > 0 ? "" : "align-items-center"
+        } `}
+      >
         {products.length > 0 ? (
           <div className="cart-products">
             {products.map((product) => (
@@ -38,10 +41,10 @@ export default () => {
             ))}
           </div>
         ) : (
-          <div className="content d-flex flex-column align-items-center p-4">
+          <div className="content d-flex flex-column align-items-center justify-content-center p-4">
             <HiOutlineShoppingBag className="bag" />
-            <h5 className="mt-3 mb-2">Your cart is empty</h5>
-            <p className="text-center">
+            <h5 className="mt-3 fs-4">Your cart is empty!</h5>
+            <p className="text-center fs-5 p-2">
               Looks like your shopping cart is empty, give it some love!
             </p>
           </div>

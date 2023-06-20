@@ -70,16 +70,14 @@ export default () => {
           {product ? (
             <div className="d-flex flex-column gap-3" key={product.id}>
               <div className="d-flex gap-2 align-items-center">
-                <span
-                  style={{ fontSize: "0.9rem", cursor: "pointer" }}
-                  onClick={() => navigate("/")}
-                >
+                <span onClick={() => navigate("/")} className="nav-product-item-secondary">
                   Home
                 </span>
-                <span
-                  style={{ fontSize: "0.9rem", cursor: "pointer" }}
-                  onClick={() => navigate("/products")}
-                >{`> Products`}</span>
+                {`>`}
+                <span onClick={() => navigate("/products")} className="nav-product-item-secondary">
+                  {" "}
+                  Products
+                </span>
                 <span className="text-secondary">{`> ${product.name}`}</span>
               </div>
               <div className="container">
