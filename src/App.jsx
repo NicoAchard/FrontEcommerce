@@ -16,7 +16,10 @@ import SignUp from "./pages/Signup";
 
 function App() {
   const location = useLocation();
-  const hideCart = location.pathname === "/login" || location.pathname === "/signup";
+  const hideCart =
+    location.pathname === "/login" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/about-this-project";
   return (
     <>
       {!hideCart && <CartIcon />}
