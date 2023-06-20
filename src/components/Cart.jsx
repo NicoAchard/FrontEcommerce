@@ -3,6 +3,7 @@ import { TOGGLE_SHOWED } from "../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import CartProduct from "./CartProduct";
+import React, { useRef, useEffect } from "react";
 
 import "./Cart.css";
 
@@ -10,9 +11,23 @@ export default () => {
   const products = useSelector((state) => state.cart.products);
   const show = useSelector((state) => state.cart.showed);
   const dispatch = useDispatch();
+  const cartRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (show && cartRef.current && !cartRef.current.contains(event.target)) {
+        dispatch(TOGGLE_SHOWED());
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [show]);
 
   return (
-    <div className={`cart  border ${show ? "show-cart" : ""}`}>
+    <div className={`cart  border ${show ? "show-cart" : ""}`} ref={cartRef}>
       <div className="cart-top d-flex justify-content-between p-4">
         <h5>Shopping cart</h5>
         <button
