@@ -46,7 +46,7 @@ export default () => {
     }
   };
 
-  const handlerAddTocart = (product) => {
+  const handlerAddToCart = (product) => {
     dispatch(
       ADD_PRODUCT({
         id: product.id,
@@ -56,6 +56,8 @@ export default () => {
         img: product.photos,
       }),
     );
+
+    dispatch(TOGGLE_SHOWED());
   };
 
   return (
@@ -131,7 +133,7 @@ export default () => {
                           </div>
                           <button
                             className="btn btn-warning rounded-0 border-black"
-                            onClick={() => handlerAddTocart(product)}
+                            onClick={() => handlerAddToCart(product)}
                           >
                             ADD TO CART
                           </button>
