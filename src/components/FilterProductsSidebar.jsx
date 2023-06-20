@@ -1,6 +1,6 @@
 import "./FilterProductsSidebar.css";
 import { BsChevronDown } from "react-icons/bs";
-export default () => {
+export default ({ setCategoryID }) => {
   return (
     <div>
       <h1 className="border-bottom border-5 py-2 mb-4">Filter Options</h1>
@@ -19,10 +19,18 @@ export default () => {
           Category <BsChevronDown />
         </h4>
         <ul className="list-unstyled">
-          <li className="filter-sidebar-item">Skateboards</li>
-          <li className="filter-sidebar-item">Longboards</li>
-          <li className="filter-sidebar-item">Cruiserboards</li>
-          <li className="filter-sidebar-item">Surfboards</li>
+          <li className="filter-sidebar-item" onClick={() => setCategoryID(1)}>
+            Skateboards
+          </li>
+          <li className="filter-sidebar-item" onClick={() => setCategoryID(2)}>
+            Cruiserboards
+          </li>
+          <li className="filter-sidebar-item" onClick={() => setCategoryID(3)}>
+            Longboards
+          </li>
+          <li className="filter-sidebar-item" onClick={() => setCategoryID(4)}>
+            Surfboards
+          </li>
         </ul>
       </div>
       <div className="border-bottom mb-2">

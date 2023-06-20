@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import { ADD_PRODUCT } from "../redux/cartSlice";
 
@@ -113,32 +114,65 @@ export default () => {
                         <b>In stock:</b> <span> {product.stock}</span>
                       </span>
                     </div>
-                    <div className="d-flex justify-content-between  ">
-                      <div>
-                        <h2>${product.price}.00</h2>
-                        <h3>Total: {`$${product.price * productCount}.00`}</h3>{" "}
-                        {/* TODO: Cambiar Total price para otro lugar */}
-                      </div>
-
-                      <div className="d-flex align-items-end justify-content-end flex-column gap-2">
-                        <div className="d-flex gap-2">
-                          <div className="border d-flex gap-2">
-                            <button className="btn" onClick={handlerDecrementCountProduct}>
-                              -
-                            </button>
-                            <span className="d-flex align-items-center">{productCount}</span>
-                            <button className="btn" onClick={handlerIncreseCountProduct}>
-                              +
-                            </button>
-                          </div>
-                          <button
-                            className="btn btn-warning rounded-0 border-black"
-                            onClick={() => handlerAddToCart(product)}
-                          >
-                            ADD TO CART
+                    <div className="d-flex align-items-end justify-content-end flex-column gap-2">
+                      <div className="d-flex gap-2">
+                        <div className="border d-flex gap-2 ">
+                          <button className="btn" onClick={handlerDecrementCountProduct}>
+                            -
+                          </button>
+                          <span className="d-flex align-items-center">{productCount}</span>
+                          <button className="btn" onClick={handlerIncreseCountProduct}>
+                            +
                           </button>
                         </div>
-                        <button className="btn btn-dark rounded-0 w-100">BUY NOW</button>
+                        <button
+                          className="btn btn-warning rounded-0 border-black"
+                          onClick={() => handlerAddTocart(product)}
+                        >
+                          ADD TO CART
+                        </button>
+                      </div>
+                      <h6>Total: {`$${product.price * productCount}.00`}</h6>
+
+                      <div className="row d-flex justify-content-between ">
+                        <div className="col-4 ">
+                          <div className="d-flex justify-content-between  ">
+                            <div>
+                              <h2>${product.price}.00</h2>
+
+                              <div>
+                                <p className="text-success mb-0">
+                                  {" "}
+                                  <i class="bi bi-arrow-return-left"></i> Free return
+                                </p>
+                                <p style={{ color: "gray", fontSize: "0.8rem" }}>
+                                  You have 30 days from the moment you receive it
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-6">
+                          <button className="btn btn-dark rounded-0 w-100">BUY NOW</button>
+                          <div className="text-start">
+                            <p className="mb-2">
+                              <Link
+                                to="/about-this-project"
+                                className="text-decoration-none"
+                                style={{ fontSize: "0.8rem" }}
+                              >
+                                <i class="bi bi-patch-check"></i> Protected purchase
+                              </Link>
+                              <span style={{ color: "gray", fontSize: "0.8rem" }}>
+                                , instant money refund if the product isn't what you expected.
+                              </span>
+                            </p>
+                            <p style={{ color: "gray", fontSize: "0.8rem" }}>
+                              <i class="bi bi-shield-slash"></i> 6 months manufacturer extended
+                              warranty.
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
