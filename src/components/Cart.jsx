@@ -1,6 +1,7 @@
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { TOGGLE_SHOWED } from "../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import CartProduct from "./CartProduct";
 import React, { useRef, useEffect } from "react";
@@ -10,6 +11,7 @@ import "./Cart.css";
 export default () => {
   const products = useSelector((state) => state.cart.products);
   const show = useSelector((state) => state.cart.showed);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartRef = useRef(null);
 
@@ -25,6 +27,10 @@ export default () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [show]);
+
+  const handleCheckoutClick = () => {
+    navigate("/checkout");
+  };
 
   return (
     <div className={`cart  border ${show ? "show-cart" : ""}`} ref={cartRef}>
@@ -73,7 +79,7 @@ export default () => {
         </div>
         <p className="ms-4">Shipping and taxes calculated at start </p>
         <div className="d-grid gap-2">
-          <Button variant="dark" size="lg" className="m-2">
+          <Button variant="dark" size="lg" className="m-2" onClick={handleCheckoutClick}>
             Checkout
           </Button>
         </div>
