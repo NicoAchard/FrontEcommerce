@@ -25,7 +25,7 @@ function Checkout() {
                     id="email"
                     placeholder="you@example.com"
                   />
-                  <hr className="mt-4" />
+                  <hr className="division" />
                   <div className="invalid-feedback">
                     {" "}
                     Please enter a valid email address for shipping updates.{" "}
@@ -93,7 +93,8 @@ function Checkout() {
                   <label htmlFor="phone-number">Phone number</label>
                   <input type="text" className="form-control" id="phone-number" />
                 </div>
-                <hr className="mb-4" />
+
+                <hr className="division" />
 
                 <h4 className="mb-3 fs-5">Payment</h4>
                 <div className="d-flex flex-direction-row gap-4 my-3">
