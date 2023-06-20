@@ -38,11 +38,9 @@ function SignUp() {
 
     dispatch(SET_USER(response.data.token));
 
-    navigate("/");
-
     if (inputPassword !== inputRepeatPassword) {
       setPasswordMatch(false);
-    }
+    } else navigate("/");
   }
   return (
     <section className="vh-100">
@@ -170,20 +168,17 @@ function SignUp() {
                       <label className="form-label" htmlFor="repeatPassword">
                         Repeat password
                       </label>
-                      {!passwordMatch && (
-                        <div className="invalid-feedback">
-                          Passwords do not match. Please try again.
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
+                {!passwordMatch && (
+                  <div style={{ fontSize: "0.8rem" }} className="text-danger">
+                    Passwords do not match. Please try again.
+                  </div>
+                )}
 
                 <div className="pt-1 mb-2">
-                  <button
-                    className="btn btn-dark btn-lg btn-block"
-                    type={passwordMatch ? "submit" : "button"}
-                  >
+                  <button className="btn btn-dark btn-lg btn-block" type="submit">
                     Sign Up
                   </button>
                 </div>
@@ -191,6 +186,7 @@ function SignUp() {
                 <p>
                   Already have an account?
                   <Link to="/login" className="link-info">
+                    {" "}
                     Log in
                   </Link>
                 </p>

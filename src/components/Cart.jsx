@@ -29,6 +29,7 @@ export default () => {
   }, [show]);
 
   const handleCheckoutClick = () => {
+    dispatch(TOGGLE_SHOWED());
     navigate("/checkout");
   };
 
