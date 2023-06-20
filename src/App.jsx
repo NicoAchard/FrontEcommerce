@@ -13,6 +13,7 @@ import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
+import ThanksForOrder from "./pages/ThanksForOrder";
 
 function App() {
   const location = useLocation();
@@ -27,7 +28,7 @@ function App() {
       <StickyButton />
 
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<ThanksForOrder />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
