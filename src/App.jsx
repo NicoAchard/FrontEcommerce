@@ -40,6 +40,7 @@ function App() {
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/about-this-project" element={<Project />} />
+        <Route path="/thanks" element={<ThanksForOrder />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>

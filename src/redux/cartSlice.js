@@ -7,8 +7,8 @@ const cartSlice = createSlice({
     SET_CART(state, action) {
       return action.payload;
     },
-    DELETE_CART() {
-      return null;
+    DELETE_CART(state) {
+      return { ...state, products: [] };
     },
     ADD_PRODUCT(state, action) {
       const existingProduct = state.products.find((product) => product.id === action.payload.id);
@@ -30,7 +30,13 @@ const cartSlice = createSlice({
 
         return { ...state, products: updatedProducts };
       } else {
-        state.products.push(action.payload);
+        state.products.push({
+          id: action.payload.id,
+          img: action.payload.img,
+          qty: action.payload.qty,
+          name: action.payload.name,
+          unitPrice: action.payload.unitPrice,
+        });
         return state;
       }
     },

@@ -3,17 +3,40 @@ import Footer from "./Footer";
 import "./Checkout.css";
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
-import { REMOVE_PRODUCT } from "../redux/cartSlice";
+import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Checkout() {
   const products = useSelector((state) => state.cart.products);
+  const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  async function handleCheckout(event) {
+    dispatch(DELETE_CART());
+    event.preventDefault();
+    try {
+      const response = await axios({
+        method: "POST",
+        url: `${import.meta.env.VITE_API_URL}/orders`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          products,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    navigate("/thanks");
+  }
   return (
     <>
       <NavBar />
       <div>
         <div className="checkout container">
-          <form className="needs-validation" noValidate="">
+          <form className="needs-validation" noValidate="" onSubmit={handleCheckout}>
             <div className="row">
               <div className="col-md-6 order-md-1">
                 <h4 className="mb-3 fs-5">Contact information</h4>
