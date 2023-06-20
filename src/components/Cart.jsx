@@ -27,7 +27,6 @@ export default () => {
           products.length > 0 ? "" : "align-items-center"
         } `}
       >
-        {console.log(products)}
         {products.length > 0 ? (
           <div className="cart-products">
             {products.map((product) => (
