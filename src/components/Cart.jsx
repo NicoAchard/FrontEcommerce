@@ -38,10 +38,10 @@ export default () => {
             ))}
           </div>
         ) : (
-          <div className="content d-flex flex-column align-items-center p-4">
-            <HiOutlineShoppingBag className="bag" />
-            <h5 className="mt-3 mb-2">Your cart is empty</h5>
-            <p className="text-center">
+          <div className="content d-flex flex-column align-items-center justify-content-center p-4">
+            <HiOutlineShoppingBag className="bag mt-4 mb-2" />
+            <h5 className="mt-3 fs-4">Your cart is empty!</h5>
+            <p className="text-center fs-5 p-2">
               Looks like your shopping cart is empty, give it some love!
             </p>
           </div>
