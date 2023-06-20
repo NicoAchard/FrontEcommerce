@@ -46,7 +46,7 @@ function ThanksForOrder() {
             <p className="cursor-pointer text-primary">Edit</p>
           </div>
 
-          <div className="card mb-0">
+          <div className=".thanks-card  mb-0">
             <div className="row d-flex justify-content-between px-3 top">
               <div className="d-flex">
                 <h5>
