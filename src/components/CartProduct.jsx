@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { REMOVE_PRODUCT } from "../redux/cartSlice";
 import "./CartProduct.css";
 
-function CartProduct({ key, img, name, price, qty }) {
+function CartProduct({ id, img, name, price, qty }) {
   const dispatch = useDispatch();
   return (
     <div className="cart-product d-flex p-3 me-2">
@@ -14,7 +14,7 @@ function CartProduct({ key, img, name, price, qty }) {
         </div>
         <div className="d-flex justify-content-between">
           <p>Qty {qty}</p>
-          <p className="fw-bold" onClick={() => dispatch(REMOVE_PRODUCT(key))}>
+          <p className="fw-bold cursor-pointer" onClick={() => dispatch(REMOVE_PRODUCT(id))}>
             Remove
           </p>
         </div>

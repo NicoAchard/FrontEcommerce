@@ -13,7 +13,7 @@ function ProductsList({ slice, categoryID }) {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-        console.log(response.data);
+
         if (slice) {
           setProducts(response.data.slice(0, 3));
         } else {

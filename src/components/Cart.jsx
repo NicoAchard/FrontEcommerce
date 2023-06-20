@@ -7,7 +7,7 @@ import CartProduct from "./CartProduct";
 import "./Cart.css";
 
 export default () => {
-  const product = useSelector((state) => state.cart.products);
+  const products = useSelector((state) => state.cart.products);
   const show = useSelector((state) => state.cart.showed);
   const dispatch = useDispatch();
 
@@ -23,22 +23,29 @@ export default () => {
         ></button>
       </div>
       <div className="shopping-cart h-100 d-flex flex-column ">
-        <div className="content d-none flex-column align-items-center p-4">
-          <HiOutlineShoppingBag className="bag" />
-          <h5 className="mt-3 mb-2">Your cart is empty</h5>
-          <p className="text-center">Looks like your shopping cart is empty, give it some love!</p>
-        </div>
-        <div className="cart-products">
-          {product.map((product) => (
-            <CartProduct
-              key={product.id}
-              img={product.img[0].url}
-              name={product.name}
-              price={product.unitPrice}
-              qty={product.qty}
-            />
-          ))}
-        </div>
+        {console.log(products)}
+        {products.length > 0 ? (
+          <div className="cart-products">
+            {products.map((product) => (
+              <CartProduct
+                key={product.id}
+                id={product.id}
+                img={product.img[0].url}
+                name={product.name}
+                price={product.unitPrice}
+                qty={product.qty}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="content d-flex flex-column align-items-center p-4">
+            <HiOutlineShoppingBag className="bag" />
+            <h5 className="mt-3 mb-2">Your cart is empty</h5>
+            <p className="text-center">
+              Looks like your shopping cart is empty, give it some love!
+            </p>
+          </div>
+        )}
       </div>
       <hr />
       <div className="cart-bottom border">

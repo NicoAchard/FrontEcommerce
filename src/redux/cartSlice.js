@@ -36,24 +36,27 @@ const cartSlice = createSlice({
     },
 
     REMOVE_PRODUCT(state, action) {
-      return state.products
-        .filter((product) => {
-          if (product.id !== action.payload) {
-            return true;
-          } else {
-            if (product.count !== 1) {
+      return {
+        ...state,
+        products: state.products
+          .filter((product) => {
+            if (product.id !== action.payload) {
               return true;
             } else {
-              return false;
+              if (product.qty !== 1) {
+                return true;
+              } else {
+                return false;
+              }
             }
-          }
-        })
-        .map((product) => {
-          if (product.id === action.payload && product.count !== 1) {
-            return { ...product, count: product.count - 1 };
-          }
-          return product;
-        });
+          })
+          .map((product) => {
+            if (product.id === action.payload && product.qty !== 1) {
+              return { ...product, qty: product.qty - 1 };
+            }
+            return product;
+          }),
+      };
     },
 
     TOGGLE_SHOWED(state) {

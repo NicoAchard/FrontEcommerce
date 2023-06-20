@@ -5,8 +5,12 @@ import ProductsList from "../components/ProductsList";
 import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
 import Header from "../components/Header";
+import { useDispatch } from "react-redux";
+import { SET_CART } from "../redux/cartSlice";
 
 function Home() {
+  const dispatch = useDispatch();
+  dispatch(SET_CART({ showed: false, products: [] }));
   return (
     <div>
       <Navbar />
