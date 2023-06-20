@@ -14,6 +14,7 @@ import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import Checkout from "./components/Checkout";
+import ThanksForOrder from "./pages/ThanksForOrder";
 
 function App() {
   const location = useLocation();

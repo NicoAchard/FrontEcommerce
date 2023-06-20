@@ -11,6 +11,8 @@ function SignUp() {
   const [inputPassword, setInputPassword] = useState("");
   const [inputAddress, setInputAddress] = useState("");
   const [inputPhone_Number, setInputPhone_Number] = useState("");
+  const [inputRepeatPassword, setInputRepeatPassword] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,6 +39,10 @@ function SignUp() {
     dispatch(SET_USER(response.data.token));
 
     navigate("/");
+
+    if (inputPassword !== inputRepeatPassword) {
+      setPasswordMatch(false);
+    }
   }
   return (
     <section className="vh-100">
@@ -140,7 +146,9 @@ function SignUp() {
                         type="password"
                         name="password"
                         id="password"
-                        className="form-control form-control-lg"
+                        className={`form-control form-control-lg ${
+                          passwordMatch ? "" : "is-invalid"
+                        }`}
                         value={inputPassword}
                         onChange={(event) => setInputPassword(event.target.value)}
                       />
@@ -153,18 +161,29 @@ function SignUp() {
                     <div className="form-outline">
                       <input
                         type="password"
-                        id="form2Example28"
+                        id="repeatPassword"
+                        name="repeatPassword"
+                        value={inputRepeatPassword}
+                        onChange={(event) => setInputRepeatPassword(event.target.value)}
                         className="form-control form-control-lg"
                       />
-                      <label className="form-label" htmlFor="form2Example28">
+                      <label className="form-label" htmlFor="repeatPassword">
                         Repeat password
                       </label>
+                      {!passwordMatch && (
+                        <div className="invalid-feedback">
+                          Passwords do not match. Please try again.
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-1 mb-2">
-                  <button className="btn btn-dark btn-lg btn-block" type="submit">
+                  <button
+                    className="btn btn-dark btn-lg btn-block"
+                    type={passwordMatch ? "submit" : "button"}
+                  >
                     Sign Up
                   </button>
                 </div>
