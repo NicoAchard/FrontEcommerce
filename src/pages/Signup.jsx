@@ -36,7 +36,7 @@ function SignUp() {
       console.log("Credenciales inválidas repetición");
     }
 
-    dispatch(SET_USER(response.data.token));
+    dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
 
     if (inputPassword !== inputRepeatPassword) {
       setPasswordMatch(false);

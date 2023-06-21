@@ -1,3 +1,4 @@
+import AdminOrdersList from "../components/AdminOrdersList";
 import AdminSidebar from "../components/AdminSidebar";
 import NavAdmin from "../components/NavAdmin";
 
@@ -7,6 +8,10 @@ export default () => (
       <AdminSidebar />
       <div className="col d-flex flex-column p-0">
         <NavAdmin />
+        <div className="pt-4 ps-4">
+          <h4>Orders</h4>
+        </div>
+        <AdminOrdersList />
       </div>
     </div>
   </div>
