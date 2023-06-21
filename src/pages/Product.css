@@ -5,3 +5,10 @@
 .img-product-secondary:hover {
   opacity: 0.7;
 }
+.nav-product-item-secondary {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.nav-product-item-secondary:hover {
+  color: gray;
+}
