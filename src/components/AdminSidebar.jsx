@@ -7,8 +7,8 @@ import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
 
 export default () => (
-  <div className="col-3 p-0 vh-100">
-    <div className="d-flex flex-column h-100">
+  <div className="col-3 p-0 vh-100  ">
+    <div className="d-flex flex-column h-100 ">
       <h1
         className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}

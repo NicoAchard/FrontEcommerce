@@ -1,5 +1,27 @@
+import { useEffect, useState } from "react";
 import { BsTrash, BsPencil } from "react-icons/bs";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
 function AdminProductsList() {
+  const [products, setProducts] = useState(null);
+  const token = useSelector((state) => state.user.token);
+
+  useEffect(() => {
+    const addProducts = async (event) => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/products`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setProducts(response.data);
+    };
+    addProducts();
+  }, []);
+
   return (
     <div className="p-4 ">
       <table className="table border rounded table-hover ">
@@ -13,21 +35,24 @@ function AdminProductsList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td className="text-secondary">Otto</td>
-            <td>@mdo</td>
+          {products &&
+            products.map((product) => (
+              <tr>
+                <th scope="row">{product.id}</th>
+                <td>{product.name}</td>
+                <td className="text-secondary">US$ {product.price}</td>
+                <td>{product.stock}</td>
 
-            <td className="  d-flex justify-content-between border-bottom-0">
-              <span>
-                <BsPencil className="fs-5 text-primary" />
-              </span>
-              <span>
-                <BsTrash className="fs-5 text-danger" />
-              </span>
-            </td>
-          </tr>
+                <td className="  d-flex justify-content-between border-bottom-0">
+                  <span>
+                    <BsPencil className="fs-5 text-primary" />
+                  </span>
+                  <span>
+                    <BsTrash className="fs-5 text-danger" />
+                  </span>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
