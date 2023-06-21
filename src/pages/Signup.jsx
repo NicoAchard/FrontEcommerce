@@ -13,23 +13,34 @@ function SignUp() {
   const [inputPhone_Number, setInputPhone_Number] = useState("");
   const [inputRepeatPassword, setInputRepeatPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [avatar, setAvatar] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleAvatar = (event) => {
+    const image = event.target.files[0];
+    setAvatar(image);
+  };
   async function handlerSubmit(event) {
     event.preventDefault();
+
+    const formdata = new FormData();
+
+    formdata.append("email", inputEmail);
+    formdata.append("password", inputPassword);
+    formdata.append("firstname", inputFirstname);
+    formdata.append("lastname", inputLastname);
+    formdata.append("address", inputAddress);
+    formdata.append("phone_number", inputPhone_Number);
+    formdata.append("avatar", avatar);
 
     const response = await axios({
       method: "POST",
       url: `${import.meta.env.VITE_API_URL}/users`,
-      data: {
-        email: inputEmail,
-        password: inputPassword,
-        firstname: inputFirstname,
-        lastname: inputLastname,
-        address: inputAddress,
-        phone_number: inputPhone_Number,
+      data: formdata,
+      headers: {
+        "content-type": "multipart/form-data",
       },
     });
     if (response.data.error) {
@@ -139,6 +150,18 @@ function SignUp() {
                 </div>
                 <div className="row mb-1">
                   <div className="col">
+                    <div className="form-outline">
+                      <input
+                        className="form-control"
+                        name="avatar"
+                        id="avatar"
+                        type="file"
+                        onChange={handleAvatar}
+                      />
+                      <label className="form-label" htmlFor="avatar">
+                        Profile Image
+                      </label>
+                    </div>
                     <div className="form-outline mb-4">
                       <input
                         type="password"
