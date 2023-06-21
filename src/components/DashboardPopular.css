@@ -1,0 +1,11 @@
+.popular-product img {
+  height: 65px;
+}
+
+.popular-price {
+  font-size: 0.7rem;
+}
+
+.popular-product p {
+  font-size: 0.9rem;
+}

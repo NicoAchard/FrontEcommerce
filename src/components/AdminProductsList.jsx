@@ -21,7 +21,17 @@ function AdminProductsList() {
     };
     addProducts();
   }, []);
+  const handleDeleteProduct = async (id) => {
+    await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_API_URL}/products/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
+    setProducts(products.filter((user) => user.id !== id));
+  };
   return (
     <div className="p-4 ">
       <table className="table border rounded table-hover ">
@@ -47,7 +57,7 @@ function AdminProductsList() {
                   <span>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
-                  <span>
+                  <span className="cursor-pointer" onClick={() => handleDeleteProduct(product.id)}>
                     <BsTrash className="fs-5 text-danger" />
                   </span>
                 </td>

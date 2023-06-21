@@ -22,7 +22,17 @@ function AdminUsersList() {
     };
     addUsers();
   }, []);
+  const handleDeleteUser = async (id) => {
+    const response = await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_API_URL}/users/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
+    setUsers(users.filter((user) => user.id !== id));
+  };
   return (
     <div className="p-4 ">
       <table className="table border rounded table-hover">
@@ -59,7 +69,7 @@ function AdminUsersList() {
                   <span>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
-                  <span>
+                  <span className="cursor-pointer " onClick={() => handleDeleteUser(user.id)}>
                     <BsTrash className="fs-5 text-danger" />
                   </span>
                 </td>
