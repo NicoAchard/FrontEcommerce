@@ -2,6 +2,7 @@ import AdminSidebar from "../components/AdminSidebar";
 import NavAdmin from "../components/NavAdmin";
 import DashboardCard from "../components/DashboardCard";
 import DashboardPopular from "../components/DashboardPopular";
+import DashboardUsers from "../components/DashboardUsers";
 import "./Dashboard.css";
 
 export default () => (
@@ -20,6 +21,7 @@ export default () => (
               </div>
               <div className="popular border rounded mt-2 me-1">
                 <DashboardPopular />
+                <DashboardUsers />
               </div>
             </div>
           </div>

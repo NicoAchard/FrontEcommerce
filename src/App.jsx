@@ -43,7 +43,7 @@ function App() {
         <Route path="/all-orders" element={<AllOrders />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
-
+        <Route path="/thanks" element={<ThanksForOrder />} />
         <Route element={<ProtectedRoutes />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
