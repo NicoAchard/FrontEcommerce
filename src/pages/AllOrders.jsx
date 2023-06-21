@@ -6,8 +6,6 @@ import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AiOutlineReload } from "react-icons/ai";
-
-import { IoIosArrowDropdownCircle } from "react-icons/Io";
 import "./AllOrders.css";
 
 function AllOrders() {
@@ -19,8 +17,8 @@ function AllOrders() {
           <h3 className="font-weight-bold">Order History</h3>
           <p>Check the status of recent orders, manage returns, and discover similar products.</p>
           <Card style={{ marginTop: "4.5rem" }}>
-            <Card.Header className="h-100 d-flex align-items-center border-bottom  px-4 row ">
-              <div class="row d-flex justify-content-between  align-items-center">
+            <Card.Header className="h-100 d-flex align-items-center border-bottom  p-4 row ">
+              <div class="row d-flex justify-content-between">
                 <div class="col-4 col-md-2">
                   <h6>Order id</h6>
                   <p>244a4cd8-ef2f-4fe6-8419-f987c3c5e99a</p>
@@ -42,7 +40,9 @@ function AllOrders() {
 
                   <div className="d-md-none">
                     <Dropdown>
-                      <IoIosArrowDropdownCircle />
+                      <Dropdown.Toggle variant="light" className="border">
+                        Actions
+                      </Dropdown.Toggle>
                       <Dropdown.Menu>
                         <Dropdown.Item>View Order</Dropdown.Item>
                         <Dropdown.Item>View Invoice</Dropdown.Item>
