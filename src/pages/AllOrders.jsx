@@ -26,7 +26,6 @@ function AllOrders() {
 
         const userOrders = response.data.filter((order) => order.userId === userId);
         setOrders(userOrders);
-        console.log(userOrders);
       } catch (error) {
         console.error("Error fetching orders:", error);
       }
@@ -91,7 +90,7 @@ function AllOrders() {
                   <Card.Body className="mt-4">
                     <div className="row pe-4">
                       <div className="col-3">
-                        {console.log(product)}
+                     
                         <img
                           className="d-block w-50"
                           src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
