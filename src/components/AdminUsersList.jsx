@@ -9,7 +9,7 @@ function AdminUsersList() {
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
-    const addOrders = async (event) => {
+    const addUsers = async (event) => {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/users`,
@@ -20,7 +20,7 @@ function AdminUsersList() {
 
       setUsers(response.data);
     };
-    addOrders();
+    addUsers();
   }, []);
 
   return (
@@ -41,13 +41,20 @@ function AdminUsersList() {
           {users &&
             users.map((user) => (
               <tr>
+                {console.log(user)}
                 <th scope="row">{user.id}</th>
-                <td>Mark</td>
+                <td>
+                  <img
+                    className="rounded-circle profile-image  "
+                    src={`${user.avatar}`}
+                    alt="User avatar"
+                  />
+                </td>
                 <td>
                   {user.firstname} {user.lastname}
                 </td>
                 <td>{user.email}</td>
-                <td> {user.roleId}</td>
+                <td> {user.role.name}</td>
 
                 <td className="  d-flex justify-content-between border-bottom-0">
                   <span>

@@ -52,9 +52,7 @@ function AdminOrdersList() {
                 </td>
                 <td>{order.status}</td>
                 <td className="  d-flex justify-content-between border-bottom-0">
-                  <span>
-                    <BsPencil className="fs-5 text-primary" />
-                  </span>
+                  <span className="text-primary cursor-pointer">Details</span>
                   <span>
                     <BsTrash className="fs-5 text-danger" />
                   </span>
