@@ -1,7 +1,10 @@
+import Footer from "../components/Footer";
+import NavBar from "../components/Navbar";
 import "./ThanksForOrder.css";
 function ThanksForOrder() {
   return (
     <>
+      <NavBar />
       <div className="p-5">
         <div className="row">
           <p style={{ fontSize: "0.9rem", color: "blue" }}>Payment successful</p>
@@ -137,6 +140,7 @@ function ThanksForOrder() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
