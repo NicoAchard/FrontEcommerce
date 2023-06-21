@@ -150,18 +150,6 @@ function SignUp() {
                 </div>
                 <div className="row mb-1">
                   <div className="col">
-                    <div className="form-outline">
-                      <input
-                        className="form-control"
-                        name="avatar"
-                        id="avatar"
-                        type="file"
-                        onChange={handleAvatar}
-                      />
-                      <label className="form-label" htmlFor="avatar">
-                        Profile Image
-                      </label>
-                    </div>
                     <div className="form-outline mb-4">
                       <input
                         type="password"
@@ -193,6 +181,18 @@ function SignUp() {
                       </label>
                     </div>
                   </div>
+                </div>
+                <div className="form-outline">
+                  <input
+                    className="form-control"
+                    name="avatar"
+                    id="avatar"
+                    type="file"
+                    onChange={handleAvatar}
+                  />
+                  <label className="form-label" htmlFor="avatar">
+                    Profile Image
+                  </label>
                 </div>
                 {!passwordMatch && (
                   <div style={{ fontSize: "0.8rem" }} className="text-danger">
