@@ -22,8 +22,12 @@ function Login() {
           password,
         },
       });
-      dispatch(SET_USER(response.data));
-      response.data ? navigate("/") : setFailLogin(true);
+      if (response.data.status === 200) {
+        dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
+        navigate("/");
+      } else {
+        setFailLogin(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +43,6 @@ function Login() {
 
             <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
               <form style={{ width: "23rem" }}>
-                {failLogin && <p>Usuario o contraseña incorrectos.</p>}
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
                   Log in
                 </h3>
@@ -49,14 +52,14 @@ function Login() {
                     type="email"
                     id="email"
                     name="email"
-                    className="form-control form-control-lg"
+                    className={`form-control ${failLogin && "is-invalid"}`}
                     onChange={(event) => {
                       setEmail(event.target.value);
                     }}
                     value={email}
                   />
                   <label className="form-label" htmlFor="email">
-                    Email address
+                    Email
                   </label>
                 </div>
 
@@ -65,7 +68,7 @@ function Login() {
                     type="password"
                     id="password"
                     name="password"
-                    className="form-control form-control-lg"
+                    className={`form-control ${failLogin && "is-invalid"}`}
                     onChange={(event) => {
                       setPassword(event.target.value);
                     }}
@@ -75,12 +78,13 @@ function Login() {
                     Password
                   </label>
                 </div>
+                {failLogin && <p className="text-danger">Email o contraseña incorrectos</p>}
 
                 <div className="pt-1 mb-4">
                   <Link to="/" className="link-info">
                     <button
                       className="btn btn-dark btn-lg btn-block"
-                      type="button"
+                      type="submit"
                       onClick={handleSubmit}
                     >
                       Log in
