@@ -31,6 +31,7 @@ const cartSlice = createSlice({
         return { ...state, products: updatedProducts };
       } else {
         state.products.push({
+          description: action.payload.description,
           id: action.payload.id,
           img: action.payload.img,
           qty: action.payload.qty,

@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/heybroInvert.png";
@@ -14,6 +15,7 @@ import "./Navbar.css";
 
 function NavBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="position-relative">
       <Navbar

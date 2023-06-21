@@ -51,6 +51,7 @@ export default () => {
     dispatch(
       ADD_PRODUCT({
         id: product.id,
+        description: product.description,
         name: product.name,
         unitPrice: product.price,
         qty: productCount,
