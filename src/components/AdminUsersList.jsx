@@ -41,7 +41,6 @@ function AdminUsersList() {
           {users &&
             users.map((user) => (
               <tr>
-                {console.log(user)}
                 <th scope="row">{user.id}</th>
                 <td>
                   <img
