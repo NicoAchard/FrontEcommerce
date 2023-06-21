@@ -84,7 +84,7 @@ function Login() {
                   <Link to="/" className="link-info">
                     <button
                       className="btn btn-dark btn-lg btn-block"
-                      type="button"
+                      type="submit"
                       onClick={handleSubmit}
                     >
                       Log in
