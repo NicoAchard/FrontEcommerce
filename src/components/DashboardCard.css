@@ -1,0 +1,13 @@
+.dash-card img {
+  height: 18px;
+}
+
+.dash-card {
+  width: 32.4%;
+}
+
+/* @media (max-width: 1200px) {
+  .dash-card {
+    width: 75%;
+  }
+} */
