@@ -13,6 +13,7 @@ import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
+import AllOrders from "./pages/AllOrders";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname === "/about-this-project";
+
   return (
     <>
       {!hideCart && <CartIcon />}
@@ -37,6 +39,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/about-this-project" element={<Project />} />
+        <Route path="/all-orders" element={<AllOrders />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </>
