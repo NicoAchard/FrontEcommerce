@@ -41,6 +41,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/all-orders" element={<AllOrders />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
       </Routes>
