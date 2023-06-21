@@ -13,6 +13,7 @@ function SignUp() {
   const [inputPhone_Number, setInputPhone_Number] = useState("");
   const [inputRepeatPassword, setInputRepeatPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [emailError, setEmailError] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
   const dispatch = useDispatch();
@@ -43,15 +44,18 @@ function SignUp() {
         "content-type": "multipart/form-data",
       },
     });
+
     if (response.data.error) {
       console.log("Credenciales inválidas repetición");
+
+      setEmailError(true);
+    } else {
+      dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
+
+      if (inputPassword !== inputRepeatPassword) {
+        setPasswordMatch(false);
+      } else navigate("/");
     }
-
-    dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
-
-    if (inputPassword !== inputRepeatPassword) {
-      setPasswordMatch(false);
-    } else navigate("/");
   }
   return (
     <section className="vh-100">
@@ -69,14 +73,20 @@ function SignUp() {
                 </h3>
 
                 <div className="form-outline mb-4">
+                  {emailError && (
+                    <div style={{ fontSize: "0.8rem" }} className="text-danger">
+                      Email already exists , please use another Email.
+                    </div>
+                  )}
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    className="form-control form-control-lg"
+                    className={`form-control form-control-lg ${emailError && "is-invalid"}`}
                     value={inputEmail}
                     onChange={(event) => setInputEmail(event.target.value)}
                   />
+
                   <label className="form-label" htmlFor="email">
                     Email
                   </label>
@@ -155,9 +165,7 @@ function SignUp() {
                         type="password"
                         name="password"
                         id="password"
-                        className={`form-control form-control-lg ${
-                          passwordMatch ? "" : "is-invalid"
-                        }`}
+                        className={`form-control form-control-lg ${!passwordMatch && "is-invalid"}`}
                         value={inputPassword}
                         onChange={(event) => setInputPassword(event.target.value)}
                       />
