@@ -14,12 +14,18 @@ export default ({ show, setShow }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPhoneNumber, setInputPhoneNumber] = useState("");
   const [inputImgFile, setInputImgFile] = useState("");
+
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [responseCreateUser, setResponseCreateUser] = useState(null);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
     setInputImgFile(image);
+  };
+
+  const handlevalidateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   async function handleSubmit(event) {
@@ -43,7 +49,7 @@ export default ({ show, setShow }) => {
           "content-type": "multipart/form-data",
         },
       });
-      console.log(response.data.status);
+
       setPasswordsUnmatch(false);
       //Good
       if (response.data.status === 200) {
@@ -55,23 +61,16 @@ export default ({ show, setShow }) => {
       }
       //Missed field
       if (response.data.status === 401) {
-        //Averiguar codigos de error para esats situaciones
         return setResponseCreateUser({ status: 401, message: response.data.response });
       }
       //Already exist that email in the System
       if (response.data.status === 402) {
-        //Averiguar codigos de error para esats situaciones
         return setResponseCreateUser({ status: 402, message: response.data.response });
       }
     } else {
       setPasswordsUnmatch(true);
     }
   }
-
-  const handlevalidateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
   return (
     <>
       <Modal show={show} size="lg" onHide={() => setShow(false)}>
@@ -87,12 +86,13 @@ export default ({ show, setShow }) => {
                 value={inputEmail}
                 onChange={(event) => setInputEmail(event.target.value)}
                 className={`${
-                  responseCreateUser
+                  responseCreateUser || !handlevalidateEmail(inputEmail)
                     ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
                       responseCreateUser.status === 401 &&
                       "is-invalid"
                     : ""
                 }`}
+                autoFocus
                 required
               />
               {responseCreateUser
@@ -116,7 +116,7 @@ export default ({ show, setShow }) => {
                       ? !inputFirstname && responseCreateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
-                  autoFocus
+                  required
                 />
               </Form.Group>
 
@@ -131,6 +131,7 @@ export default ({ show, setShow }) => {
                       ? !inputLastname && responseCreateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
+                  required
                 />
               </Form.Group>
             </div>
@@ -160,6 +161,7 @@ export default ({ show, setShow }) => {
                       ? !inputAddress && responseCreateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
+                  required
                 />
               </Form.Group>
             </div>
@@ -171,11 +173,11 @@ export default ({ show, setShow }) => {
                   value={inputPassword}
                   onChange={(event) => setInputPassword(event.target.value)}
                   className={`${
-                    responseCreateUser || passwordsUnmatch
-                      ? (!inputPassword && responseCreateUser.status === 401) ||
-                        (passwordsUnmatch && "is-invalid")
+                    responseCreateUser
+                      ? !inputPassword && responseCreateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3 w-100" controlId="ControlInput7">
@@ -184,12 +186,12 @@ export default ({ show, setShow }) => {
                   type="password"
                   value={inputPasswordRepeat}
                   onChange={(event) => setInputPasswordRepeat(event.target.value)}
-                  className={`${
-                    responseCreateUser || passwordsUnmatch
-                      ? (!inputPasswordRepeat && responseCreateUser.status === 401) ||
-                        (passwordsUnmatch && "is-invalid")
+                  className={` ${passwordsUnmatch && "is-invalid"} ${
+                    responseCreateUser
+                      ? !inputPasswordRepeat && responseCreateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
+                  required
                 />
 
                 {passwordsUnmatch && (
