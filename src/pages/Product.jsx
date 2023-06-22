@@ -62,7 +62,7 @@ export default () => {
 
     dispatch(TOGGLE_SHOWED());
   };
-
+  //TODO  Change Bootstrap icons for React Icons
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
@@ -143,7 +143,7 @@ export default () => {
                               <div>
                                 <p className="text-success mb-0">
                                   {" "}
-                                  <i class="bi bi-arrow-return-left"></i> Free return
+                                  <i className="bi bi-arrow-return-left"></i> Free return
                                 </p>
                                 <p style={{ color: "gray", fontSize: "0.8rem" }}>
                                   You have 30 days from the moment you receive it
@@ -161,14 +161,14 @@ export default () => {
                                 className="text-decoration-none"
                                 style={{ fontSize: "0.8rem" }}
                               >
-                                <i class="bi bi-patch-check"></i> Protected purchase
+                                <i className="bi bi-patch-check"></i> Protected purchase
                               </Link>
                               <span style={{ color: "gray", fontSize: "0.8rem" }}>
                                 , instant money refund if the product isn't what you expected.
                               </span>
                             </p>
                             <p style={{ color: "gray", fontSize: "0.8rem" }}>
-                              <i class="bi bi-shield-slash"></i> 6 months manufacturer extended
+                              <i className="bi bi-shield-slash"></i> 6 months manufacturer extended
                               warranty.
                             </p>
                           </div>
