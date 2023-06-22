@@ -1,6 +1,9 @@
 .header {
   height: 90vh;
-  padding-top: 30vh;
+  padding-top: 45vh;
+  z-index: 1;
+  padding-left: 9vw;
+  padding-right: 5vw;
 }
 
 .header-container-project {
@@ -29,7 +32,21 @@
   position: relative;
   top: -70px;
 }
+
 .project-container {
   width: 100%;
-  overflow-x: hidden;
+}
+
+.fade-overlay-2 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, white);
+  animation: fadeAnimation 1s ease-in-out forwards;
+}
+
+.team {
+  padding: 0 15vw 0 15vw;
+  margin-top: 5vh;
 }
