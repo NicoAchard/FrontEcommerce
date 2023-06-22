@@ -179,7 +179,7 @@ function ThanksForOrder() {
               <hr />
 
               <div className="d-flex justify-content-between">
-                <h6 style={{ color: "gray" }}>Tax</h6>
+                <h6 style={{ color: "gray" }}>Taxes</h6>
                 <p> US$ {taxPrice}</p>
               </div>
               <hr />

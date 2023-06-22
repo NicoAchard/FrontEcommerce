@@ -32,6 +32,11 @@ function Checkout() {
     }
     navigate("/thanks");
   }
+  const shippingPrice = 5;
+  const taxPrice = 15;
+
+  const shippingAndTaxPrice = shippingPrice + taxPrice;
+
   return (
     <>
       <NavBar />
@@ -241,24 +246,39 @@ function Checkout() {
                     <div>
                       <h6>Subtotal</h6>
                     </div>
-                    <span className="text-muted">USD</span>
+                    <span className="text-muted">
+                      US${" "}
+                      {products.reduce(
+                        (accumulator, currentValue) =>
+                          accumulator + currentValue.unitPrice * currentValue.qty,
+                        0,
+                      )}
+                    </span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                       <h6>Shipping</h6>
                     </div>
-                    <span className="text-muted">USD</span>
+                    <span className="text-muted">US$ {shippingPrice}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                       <h6 className="my-0">Taxes</h6>
                     </div>
-                    <span className="text-muted">USD</span>
+                    <span className="text-muted">US$ {taxPrice}</span>
                   </li>
 
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Total</span>
-                    <strong>USD</strong>
+                    <strong>
+                      US${" "}
+                      {shippingAndTaxPrice +
+                        products.reduce(
+                          (accumulator, currentValue) =>
+                            accumulator + currentValue.unitPrice * currentValue.qty,
+                          0,
+                        )}
+                    </strong>
                   </li>
                 </ul>
                 <button className="btn btn-dark btn-lg btn-block w-100" type="submit">
