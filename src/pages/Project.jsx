@@ -9,8 +9,13 @@ function Project() {
       <NavBar />
       <div className=" d-flex flex-column align-items-center">
         <div className="row header-container-project">
-          <img src="src/img/about-this-project.jpg" alt="Header img" />
-          <div className="header col-md-6 text-black ps-4 ms-4">
+          <img
+            src="src/img/about-this-project.jpg"
+            alt="Header img"
+            className=" header-image position-absolute"
+          />
+          <div className="fade-overlay-2 position-absolute" />
+          <div className="header col-md-7 text-black ms-4">
             <h1>About this project</h1>
             <p className="fs-5 ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam aperiam
@@ -21,7 +26,7 @@ function Project() {
         </div>
         <div className="squares row gap-3 d-flex justify-content-center">
           <div className="square col-lg-3 m-2 border rounded">
-            <h5>Duración</h5>
+            <h5>Duration</h5>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, aspernatur
               consectetur. Voluptatibus ipsum aut autem necessitatibus amet quae delectus.
@@ -30,7 +35,7 @@ function Project() {
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
-            <h5>Tecnologías</h5>
+            <h5>Tecnologies</h5>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione deserunt, nulla hic,
               similique aspernatur corrupti sit recusandae, voluptatibus illo modi omnis beatae
@@ -38,16 +43,16 @@ function Project() {
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
-            <h5>División de tareas</h5>
+            <h5>Methodology</h5>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto modi dicta, magnam hic
               aspernatur corporis dolor! Consequuntur, corporis quia laudantium necessitatibus nemo
               dolorem placeat obcaecati ut doloribus rerum expedita facere!
             </p>
           </div>
-          <div className=" team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2 ">
+          <div className="team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2">
             <div className="p-4">
-              <h2>Equipo</h2>
+              <h2>Team</h2>
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt repudiandae dicta
                 asperiores quia eligendi, libero impedit mollitia consequatur, itaque voluptate eos
