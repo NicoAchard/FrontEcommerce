@@ -24,7 +24,7 @@ function DashboardPopular({}) {
       <p className="text-center fw-bold fs-5 mt-2">Popular products</p>
       {highlights &&
         highlights.map((product) => (
-          <div className="popular-product d-flex p-1 me-2">
+          <div className="popular-product d-flex p-1 me-2" key={product.id}>
             <img
               src={`${import.meta.env.VITE_API_IMG}/${product.photos[0].url}`}
               alt="product-img"

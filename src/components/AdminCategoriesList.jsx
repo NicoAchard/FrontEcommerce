@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { BsTrash, BsPencil } from "react-icons/bs";
-import axios from "axios";
+import { BsTrash } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 export default () => {
   const [categories, setCategories] = useState(null);
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
-    const listCategories = async (event) => {
+    const listCategories = async () => {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/categories`,
@@ -46,12 +46,11 @@ export default () => {
         <tbody>
           {categories &&
             categories.map((category) => (
-              <tr>
+              <tr key={category.id}>
                 <th scope="row">{category.id}</th>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
                 <td className="d-flex gap-4 justify-content-between border-bottom-0">
-                  <span className="text-primary cursor-pointer">Details</span>
                   <span>
                     <BsTrash
                       className="fs-5 text-danger cursor-pointer"

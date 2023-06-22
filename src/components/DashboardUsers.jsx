@@ -17,7 +17,7 @@ function DashboardUsers({}) {
           },
         });
         const TopFiveBuyers = response.data.slice(0, 5);
-        console.log(TopFiveBuyers);
+
         settopBuyers(TopFiveBuyers);
       } catch (error) {
         console.log(error);
