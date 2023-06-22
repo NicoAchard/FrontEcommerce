@@ -52,6 +52,15 @@ export default () => (
               <AiOutlineShoppingCart className="fs-4" /> Orders
             </h2>
           </Link>
+          <Link to="/admin/categories" className="btn  w-100 p-0">
+            <h2
+              className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
+              style={{ fontSize: "0.9rem" }}
+            >
+              <HiOutlineUsers className="fs-4" />
+              Categories
+            </h2>
+          </Link>
         </div>
         <Link to="/" className="btn  w-100 p-0">
           <h2
