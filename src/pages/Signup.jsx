@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
 
 function SignUp() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [inputFirstname, setInputFirstname] = useState("");
   const [inputLastname, setInputLastname] = useState("");
   const [inputEmail, setInputEmail] = useState("");
@@ -12,49 +15,64 @@ function SignUp() {
   const [inputAddress, setInputAddress] = useState("");
   const [inputPhone_Number, setInputPhone_Number] = useState("");
   const [inputRepeatPassword, setInputRepeatPassword] = useState("");
-  const [passwordMatch, setPasswordMatch] = useState(true);
-  const [emailError, setEmailError] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
+  const [responseCreateUser, setResponseCreateUser] = useState(null);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
     setAvatar(image);
   };
+
+  const handlevalidateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   async function handlerSubmit(event) {
     event.preventDefault();
+    if (inputPassword === inputRepeatPassword) {
+      const formdata = new FormData();
 
-    const formdata = new FormData();
+      formdata.append("email", inputEmail);
+      formdata.append("password", inputPassword);
+      formdata.append("firstname", inputFirstname);
+      formdata.append("lastname", inputLastname);
+      formdata.append("address", inputAddress);
+      formdata.append("phone_number", inputPhone_Number);
+      formdata.append("avatar", avatar);
 
-    formdata.append("email", inputEmail);
-    formdata.append("password", inputPassword);
-    formdata.append("firstname", inputFirstname);
-    formdata.append("lastname", inputLastname);
-    formdata.append("address", inputAddress);
-    formdata.append("phone_number", inputPhone_Number);
-    formdata.append("avatar", avatar);
+      const response = await axios({
+        method: "POST",
+        url: `${import.meta.env.VITE_API_URL}/users`,
+        data: formdata,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      });
+      setPasswordsUnmatch(false);
 
-    const response = await axios({
-      method: "POST",
-      url: `${import.meta.env.VITE_API_URL}/users`,
-      data: formdata,
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
-
-    if (response.data.error) {
-      console.log("Credenciales inválidas repetición");
-
-      setEmailError(true);
+      //Good
+      if (response.data.status === 200) {
+        dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
+        setResponseCreateUser({ status: 200, message: response.data.response });
+        return navigate("/");
+      }
+      //Unexpected error
+      if (response.data.status === 400) {
+        return setResponseCreateUser({ status: 400, message: response.data.response });
+      }
+      //Missed field
+      if (response.data.status === 401) {
+        return setResponseCreateUser({ status: 401, message: response.data.response });
+      }
+      //Already exist that email in the System
+      if (response.data.status === 402) {
+        return setResponseCreateUser({ status: 402, message: response.data.response });
+      }
     } else {
-      dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
-
-      if (inputPassword !== inputRepeatPassword) {
-        setPasswordMatch(false);
-      } else navigate("/");
+      setPasswordsUnmatch(true);
     }
   }
   return (
@@ -73,18 +91,29 @@ function SignUp() {
                 </h3>
 
                 <div className="form-outline mb-4">
-                  {emailError && (
-                    <div style={{ fontSize: "0.8rem" }} className="text-danger">
-                      Email already exists , please use another Email.
-                    </div>
-                  )}
+                  {responseCreateUser
+                    ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
+                      responseCreateUser.status === 401 && (
+                        <span style={{ fontSize: "0.9rem", color: "red" }}>
+                          The entered email is not valid. Please provide a valid email address
+                        </span>
+                      )
+                    : ""}
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    className={`form-control form-control-lg ${emailError && "is-invalid"}`}
+                    placeholder="example@mail.com"
+                    className={`form-control  ${
+                      responseCreateUser
+                        ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
+                          responseCreateUser.status === 401 &&
+                          "is-invalid"
+                        : ""
+                    }`}
                     value={inputEmail}
                     onChange={(event) => setInputEmail(event.target.value)}
+                    required
                   />
 
                   <label className="form-label" htmlFor="email">
@@ -99,9 +128,14 @@ function SignUp() {
                         type="text"
                         name="firstname"
                         id="firstname"
-                        className="form-control form-control-lg"
+                        className={`form-control ${
+                          responseCreateUser
+                            ? !inputFirstname && responseCreateUser.status === 401 && "is-invalid"
+                            : ""
+                        } `}
                         value={inputFirstname}
                         onChange={(event) => setInputFirstname(event.target.value)}
+                        required
                       />
 
                       <label className="form-label" htmlFor="firstname">
@@ -115,9 +149,14 @@ function SignUp() {
                         type="text"
                         id="lastname"
                         name="lastname"
-                        className="form-control form-control-lg"
+                        className={`form-control  ${
+                          responseCreateUser
+                            ? !inputLastname && responseCreateUser.status === 401 && "is-invalid"
+                            : ""
+                        }`}
                         value={inputLastname}
                         onChange={(event) => setInputLastname(event.target.value)}
+                        required
                       />
                       <label className="form-label" htmlFor="lastname">
                         Lastname
@@ -133,7 +172,13 @@ function SignUp() {
                         type="text"
                         name="phone_number"
                         id="phone_number"
-                        className="form-control form-control-lg"
+                        className={`form-control ${
+                          responseCreateUser
+                            ? !inputPhone_Number &&
+                              responseCreateUser.status === 401 &&
+                              "is-invalid"
+                            : ""
+                        }`}
                         value={inputPhone_Number}
                         onChange={(event) => setInputPhone_Number(event.target.value)}
                       />
@@ -148,9 +193,14 @@ function SignUp() {
                         type="text"
                         name="address"
                         id="address"
-                        className="form-control form-control-lg"
+                        className={`form-control ${
+                          responseCreateUser
+                            ? !inputAddress && responseCreateUser.status === 401 && "is-invalid"
+                            : ""
+                        }`}
                         value={inputAddress}
                         onChange={(event) => setInputAddress(event.target.value)}
+                        required
                       />
                       <label className="form-label" htmlFor="address">
                         Address
@@ -165,9 +215,14 @@ function SignUp() {
                         type="password"
                         name="password"
                         id="password"
-                        className={`form-control form-control-lg ${!passwordMatch && "is-invalid"}`}
+                        className={`form-control ${
+                          responseCreateUser
+                            ? !inputPassword && responseCreateUser.status === 401 && "is-invalid"
+                            : ""
+                        }`}
                         value={inputPassword}
                         onChange={(event) => setInputPassword(event.target.value)}
+                        required
                       />
                       <label className="form-label" htmlFor="password">
                         Password
@@ -182,8 +237,20 @@ function SignUp() {
                         name="repeatPassword"
                         value={inputRepeatPassword}
                         onChange={(event) => setInputRepeatPassword(event.target.value)}
-                        className="form-control form-control-lg"
-                      />
+                        className={`form-control ${passwordsUnmatch && "is-invalid"} ${
+                          responseCreateUser
+                            ? !inputRepeatPassword &&
+                              responseCreateUser.status === 401 &&
+                              "is-invalid"
+                            : ""
+                        }`}
+                        required
+                      />{" "}
+                      {passwordsUnmatch && (
+                        <span style={{ fontSize: "0.9rem", color: "red" }}>
+                          Passwords do not match.
+                        </span>
+                      )}
                       <label className="form-label" htmlFor="repeatPassword">
                         Repeat password
                       </label>
@@ -202,12 +269,19 @@ function SignUp() {
                     Profile Image
                   </label>
                 </div>
-                {!passwordMatch && (
-                  <div style={{ fontSize: "0.8rem" }} className="text-danger">
-                    Passwords do not match. Please try again.
-                  </div>
+                {responseCreateUser ? (
+                  <span
+                    style={
+                      responseCreateUser.status !== 200
+                        ? { fontSize: "0.9rem", color: "red" }
+                        : { color: "green" }
+                    }
+                  >
+                    {responseCreateUser.message}
+                  </span>
+                ) : (
+                  ""
                 )}
-
                 <div className="pt-1 mb-2">
                   <button className="btn btn-dark btn-lg btn-block" type="submit">
                     Sign Up
@@ -217,7 +291,6 @@ function SignUp() {
                 <p>
                   Already have an account?
                   <Link to="/login" className="link-info">
-                    {" "}
                     Log in
                   </Link>
                 </p>
