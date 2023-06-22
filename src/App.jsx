@@ -1,23 +1,32 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
 import Error from "./pages/Error";
+import Login from "./pages/Login";
+import SignUp from "./pages/Signup";
+import AllOrders from "./pages/AllOrders";
+import Product from "./pages/Product";
 import Dashboard from "./pages/Dashboard";
 import AdminProducts from "./pages/AdminProducts";
 import AdminUsers from "./pages/AdminUsers";
 import AdminOrders from "./pages/AdminOrders";
-import StickyButton from "./components/StickyButton";
-import Product from "./pages/Product";
+import AdminCategories from "./pages/AdminCategories";
+
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
+<<<<<<< HEAD
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import Orders from "./pages/Orders";
 import Checkout from "./components/Checkout";
+=======
+>>>>>>> e3f2def347241815b040a1715d1bd6a9be769de4
 import ThanksForOrder from "./pages/ThanksForOrder";
-
+import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import Checkout from "./components/Checkout";
 
 function App() {
   const location = useLocation();
@@ -49,6 +58,7 @@ function App() {
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
+          <Route path="/admin/categories" element={<AdminCategories />} />
         </Route>
       </Routes>
     </>
