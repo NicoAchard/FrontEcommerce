@@ -8,7 +8,7 @@ function Project() {
     <div className="project-container">
       <NavBar />
       <div className=" d-flex flex-column align-items-center">
-        <div className="row header-container-project">
+        <div className="row header-container-project w-100">
           <img
             src="src/img/about-this-project.jpg"
             alt="Header img"
@@ -50,7 +50,7 @@ function Project() {
               dolorem placeat obcaecati ut doloribus rerum expedita facere!
             </p>
           </div>
-          <div className="team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2">
+          <div className=" team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2 ">
             <div className="p-4">
               <h2>Team</h2>
               <p>
