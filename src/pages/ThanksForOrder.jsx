@@ -1,11 +1,41 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
 import "./ThanksForOrder.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
+
 function ThanksForOrder() {
+  const user = useSelector((state) => state.user);
+
+  const [productsOrder, setProductsOrder] = useState(null);
+  const token = useSelector((state) => state.user.token);
+
+  useEffect(() => {
+    const userOrder = async (event) => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/orders/lastUserOrder`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setProductsOrder(response.data);
+    };
+    userOrder();
+  }, []);
+
+  const shippingPrice = 5;
+  const taxPrice = 15;
+
+  const shippingAndTaxPrice = shippingPrice + taxPrice;
+
   return (
     <>
       <NavBar />
-      <div className="p-5">
+
+      <div className="p-5 mt-5">
         <div className="row">
           <p style={{ fontSize: "0.9rem", color: "blue" }}>Payment successful</p>
           <h2>Thanks for ordering</h2>
@@ -17,42 +47,19 @@ function ThanksForOrder() {
         <hr />
         <div className="row">
           <div className="col-12 d-flex justify-content-between">
-            <h6>Order</h6>
+            <h6>Details</h6>
             <p style={{ color: "gray" }}>
-              Order placed <span className="text-dark">June 20, 2023</span>
+              Order placed{" "}
+              <span className="text-dark">{productsOrder && productsOrder.createdAt}</span>
             </p>
           </div>
         </div>
-        <div className="row border rounded mb-5 pt-3">
-          <div className="col-md-3 col-lg-2">
-            <img className="img-fluid" src="src/img/heybroInvert.png" alt="Product Image" />
-          </div>
-          <div className="col-md-5 col-lg-5">
-            <h6>Product name</h6>
-            <h6>Product price</h6>
-            <p style={{ color: "gray" }}>
-              Product description: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
-              nobis quam soluta voluptatum optio odio sint error autem possimus suscipit officia a
-              ad reprehenderit ullam, accusamus eaque in facilis excepturi.
-            </p>
-          </div>
-          <div className="col-md-2 col-lg-2">
-            <h6>Delivery address</h6>
-            <p style={{ color: "gray" }}>
-              User address here: Lorem ipsum apto.601 sit 8888, Montevideo Uruguay.
-            </p>
-          </div>
-          <div className="col-md-2 col-lg-2">
-            <h6>Shipping updates</h6>
-            <p style={{ color: "gray" }}>user@gmail.com</p>
-            <p style={{ color: "gray" }}>User phone number 099 123 456</p>
-            <p className="cursor-pointer text-primary">Edit</p>
-          </div>
 
-          <div className=".thanks-card  mb-0">
-            <div className="row d-flex justify-content-between px-3 top">
+        {productsOrder && (
+          <div className=".thanks-card mb-5 text-center ">
+            <div className="row d-flex justify-content-between ">
               <div className="d-flex">
-                <h5>
+                <h5 className="text-center">
                   ORDER <span className="text-primary font-weight-bold">#Y34XDHR</span>
                 </h5>
               </div>
@@ -99,49 +106,103 @@ function ThanksForOrder() {
               </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <div className="row border rounded py-3 mb-5">
-          <div className="col-md-4 col-lg-4">
-            <h6>Billing address</h6>
-            <p style={{ color: "gray" }}>User firstname - lastname</p>
-            <p style={{ color: "gray" }}>
-              User address here: Lorem ipsum apto.601 sit 8888, Montevideo Uruguay.
-            </p>
-          </div>
-          <div className="col-md-4 col-lg-4">
-            <h6>Payment information</h6>
-            <p>
-              <i className="bi bi-credit-card-2-front"></i> Ending with 2424
-            </p>
-            <p style={{ color: "gray" }}>Expires 02 / 25</p>
-          </div>
-          <div className="col-md-4 col-lg-4">
-            <div className="d-flex justify-content-between">
-              <h6 style={{ color: "gray" }}>Subtotal</h6>
-              <p>USD 250.00</p>
-            </div>
-            <hr />
-            <div className="d-flex justify-content-between">
-              <h6 style={{ color: "gray" }}>Shipping</h6>
-              <p>USD 5.00</p>
-            </div>
-            <hr />
+        {productsOrder &&
+          productsOrder.products.map((order) => (
+            <div key={order.id}>
+              <div className="row border rounded mb-4 p-3 align-items-self">
+                <div className="col-md-3 col-lg-2 text-center">
+                  <img
+                    style={{ width: "150px" }}
+                    src={`${import.meta.env.VITE_API_IMG}/${order.img[0].url}`}
+                    alt="Product Image"
+                  />
+                </div>
 
-            <div className="d-flex justify-content-between">
-              <h6 style={{ color: "gray" }}>Tax</h6>
-              <p>USD 33.00</p>
+                <div className="col-md-5 col-lg-5 mt-3 mt-sm-3 mt-xs-3 mt-md-0">
+                  <h6>{order.name}</h6>
+                  <h6>US$ {order.unitPrice}</h6>
+                  <h6>Quantity: {order.qty} </h6>
+                  <p style={{ color: "gray" }}>{order.description}</p>
+                </div>
+                <div className="col-md-4 row">
+                  <div className="col-lg-6 ">
+                    <h6>Delivery address</h6>
+                    <p style={{ color: "gray" }}>{user.data.address}</p>
+                  </div>
+                  <div className="col-lg-6 ">
+                    <h6>Shipping updates</h6>
+                    <p style={{ color: "gray" }}>{user.data.email}</p>
+                    <p style={{ color: "gray" }}>{user.data.phone_number}</p>
+                    <p className="cursor-pointer text-primary">Edit</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <hr />
-            <div className="d-flex justify-content-between">
-              <h6>Order total</h6>
-              <p className="text-primary">USD 250.00</p>
+          ))}
+
+        {productsOrder && (
+          <div className="row border rounded py-3 mb-5">
+            <div className="col-md-4 col-lg-4">
+              <h6>Billing address</h6>
+              <p style={{ color: "gray" }}>
+                {user.data.firstname} {user.data.lastname}
+              </p>
+              <p style={{ color: "gray" }}>{user.data.address}</p>
+            </div>
+            <div className="col-md-4 col-lg-4">
+              <h6>Payment information</h6>
+              <p>
+                <i className="bi bi-credit-card-2-front"></i> Ending with 2424
+              </p>
+              <p style={{ color: "gray" }}>Expires 02 / 25</p>
+            </div>
+            <div className="col-md-4 col-lg-4">
+              <div className="d-flex justify-content-between">
+                <h6 style={{ color: "gray" }}>Subtotal</h6>
+
+                <p>
+                  US${" "}
+                  {productsOrder.products.reduce(
+                    (accumulator, currentValue) =>
+                      accumulator + currentValue.unitPrice * currentValue.qty,
+                    0,
+                  )}
+                </p>
+              </div>
+              <hr />
+              <div className="d-flex justify-content-between">
+                <h6 style={{ color: "gray" }}>Shipping</h6>
+                <p> US$ {shippingPrice}</p>
+              </div>
+              <hr />
+
+              <div className="d-flex justify-content-between">
+                <h6 style={{ color: "gray" }}>Tax</h6>
+                <p> US$ {taxPrice}</p>
+              </div>
+              <hr />
+              <div className="d-flex justify-content-between">
+                <h6>Order total</h6>
+                <p className="text-primary">
+                  US${" "}
+                  {shippingAndTaxPrice +
+                    productsOrder.products.reduce(
+                      (accumulator, currentValue) =>
+                        accumulator + currentValue.unitPrice * currentValue.qty,
+                      0,
+                    )}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
+
       <Footer />
     </>
   );
 }
+
 export default ThanksForOrder;
