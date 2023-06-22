@@ -17,7 +17,7 @@ function AdminOrdersList() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
+
       setOrders(response.data);
     };
     addOrders();
