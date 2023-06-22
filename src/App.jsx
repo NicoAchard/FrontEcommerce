@@ -13,7 +13,7 @@ import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
-import AllOrders from "./pages/AllOrders";
+import Orders from "./pages/Orders";
 import Checkout from "./components/Checkout";
 import ThanksForOrder from "./pages/ThanksForOrder";
 
@@ -40,7 +40,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/all-orders" element={<AllOrders />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
         <Route path="/thanks" element={<ThanksForOrder />} />
