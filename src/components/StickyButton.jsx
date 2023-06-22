@@ -7,7 +7,7 @@ const StickyButton = () => {
     <div>
       <Link to="/about-this-project">
         <button
-          className="btn btn-light border border-black"
+          className="btn btn-dark border border-white"
           style={{ position: "fixed", bottom: "12px", right: "10px", zIndex: 1 }}
         >
           About this project
