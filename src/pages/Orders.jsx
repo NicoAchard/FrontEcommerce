@@ -119,7 +119,7 @@ function Orders() {
                           <AiOutlineReload /> Processing
                         </span>
                       </div>
-                      <div className="d-flex justify-content-around justify-md-content-end mt-2">
+                      <div className="d-flex justify-content-around justify-md-content-end mt-3">
                         <NavLink className="nav-link me-3 text-primary" to="/products">
                           View Product
                         </NavLink>
