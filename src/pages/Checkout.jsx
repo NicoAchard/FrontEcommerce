@@ -1,6 +1,7 @@
-import NavBar from "./Navbar";
-import Footer from "./Footer";
+import NavBar from "../components/./Navbar";
+import Footer from "../components/Footer";
 import "./Checkout.css";
+
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
@@ -214,7 +215,7 @@ function Checkout() {
                   <span className="badge badge-secondary badge-pill">3</span>
                 </h4>
                 {products.map((product) => (
-                  <div className="border img d-flex p-3 rounded">
+                  <div className="border img d-flex p-3 rounded" key={product}>
                     <img
                       src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
                       alt="product-img"
