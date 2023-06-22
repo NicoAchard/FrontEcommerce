@@ -1,16 +1,17 @@
-import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { NavLink } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { AiOutlineReload } from "react-icons/ai";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import "./AllOrders.css";
 
-function AllOrders() {
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "./Orders.css";
+
+function Orders() {
   const [orders, setOrders] = useState(null);
   const token = useSelector((state) => state.user.token);
   const userId = useSelector((state) => state.user.data.id);
@@ -43,18 +44,18 @@ function AllOrders() {
           <p>Check the status of recent orders, manage returns, and discover similar products.</p>
           {orders &&
             orders.map((order) => (
-              <Card style={{ marginTop: "4.5rem" }}>
-                <Card.Header className="h-100 d-flex align-items-center border-bottom  p-4 row ">
-                  <div class="row d-flex justify-content-between">
-                    <div class="col-4 col-md-2">
+              <Card className="my-5">
+                <Card.Header className="h-100 d-flex align-items-center border-bottom p-3">
+                  <div className="row justify-content-between text-center w-100">
+                    <div className="col-4 col-md-2">
                       <h6>Order id</h6>
                       <p>{order.id}</p>
                     </div>
-                    <div class="d-none d-md-block  col-md-2 ">
+                    <div className="col-md-2 d-none d-md-block">
                       <h6>Date placed</h6>
                       <p>{order.createdAt}</p>
                     </div>
-                    <div class="col-4 col-md-2">
+                    <div className="col-4 col-md-2">
                       <h6>Total amount</h6>
                       <p>
                         US${" "}
@@ -65,13 +66,11 @@ function AllOrders() {
                         )}
                       </p>
                     </div>
-
-                    <div className="col-4  d-flex justify-content-end ">
-                      <div className="d-none d-md-flex  align-items-center justify-content-end">
+                    <div className="col-4 d-flex align-items-center justify-content-end">
+                      <div className="d-none d-md-flex align-items-center justify-content-end">
                         <Button className="m-1 btn-light border">View Order</Button>
                         <Button className="m-1 btn-light border">View Invoice</Button>
                       </div>
-
                       <div className="d-md-none">
                         <Dropdown>
                           <Dropdown.Toggle variant="light" className="border">
@@ -86,11 +85,10 @@ function AllOrders() {
                     </div>
                   </div>
                 </Card.Header>
-                {order.products.map((product) => (
-                  <Card.Body className="mt-4">
-                    <div className="row pe-4">
+                {order.products.map((product, index) => (
+                  <Card.Body className={`mt-2 ${index > 0 ? "border-top" : ""}`}>
+                    <div className="row p-2">
                       <div className="col-3">
-                     
                         <img
                           className="d-block w-50"
                           src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
@@ -98,31 +96,34 @@ function AllOrders() {
                         />
                       </div>
                       <div className="col-9">
-                        <div className="d-flex flex-column flex-sm-row justify-content-between">
+                        <div className="d-flex flex-column flex-md-row justify-content-between">
                           <h6 className="mb-0">{product.name}</h6>
-                          <p className="mb-0  bold d-flex gap-5">
-                            <span> USD {product.unitPrice}</span>
-                            <span> Quantity: {product.qty}</span>
-                          </p>
+                          <div className="mb-0 d-flex gap-5">
+                            <p>
+                              US$ <span className="fw-bold"> {product.unitPrice} </span>
+                            </p>
+                            <p>
+                              Quantity: <span className="fw-bold"> {product.qty}</span>
+                            </p>
+                          </div>
                         </div>
-                        <div className="d-none d-md-block">
+                        <div className="d-none d-md-block mt-2">
                           <p>{product.description}</p>
                         </div>
                       </div>
                     </div>
-
                     <div className="mt-6 d-flex flex-column flex-lg-row justify-content-between px-3">
-                      <div className=" d-md-block">
-                        <span>Status </span>
-                        <AiOutlineReload />
-                        <span> Processing</span>
+                      <div className="d-md-block mt-2">
+                        <span>Status: </span>
+                        <span className="text-success">
+                          <AiOutlineReload /> Processing
+                        </span>
                       </div>
-                      <div className=" d-flex justify-content-around justify-md-content-end">
-                        <NavLink className="nav-link me-3  " to="/products">
+                      <div className="d-flex justify-content-around justify-md-content-end mt-3">
+                        <NavLink className="nav-link me-3 text-primary" to="/products">
                           View Product
                         </NavLink>
-
-                        <NavLink className="nav-link ms-3 " to="/ruta2">
+                        <NavLink className="nav-link ms-3 text-primary" to="/products">
                           Buy again
                         </NavLink>
                       </div>
@@ -138,4 +139,4 @@ function AllOrders() {
   );
 }
 
-export default AllOrders;
+export default Orders;

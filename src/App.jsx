@@ -6,7 +6,7 @@ import Project from "./pages/Project";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
-import AllOrders from "./pages/AllOrders";
+import Orders from "./pages/Orders";
 import Product from "./pages/Product";
 import Dashboard from "./pages/Dashboard";
 import AdminProducts from "./pages/AdminProducts";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/orders" element={<AllOrders />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
         <Route path="/thanks" element={<ThanksForOrder />} />
