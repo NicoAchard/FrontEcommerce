@@ -3,7 +3,6 @@ import img from "../img/graph-icon.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { MdOutlineBorderColor } from "react-icons/md";
 
 function DashboardCard({ url, title, icon }) {
   const [info, setInfo] = useState(null);
