@@ -3,9 +3,8 @@ import img from "../img/graph-icon.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { MdOutlineBorderColor } from "react-icons/md";
 
-function DashboardCard({ url, title }) {
+function DashboardCard({ url, title, icon }) {
   const [info, setInfo] = useState(null);
   const token = useSelector((state) => state.user.token);
   useEffect(() => {
@@ -31,12 +30,12 @@ function DashboardCard({ url, title }) {
         <div>
           <div className="d-flex justify-content-between mb-4">
             <p>{title}</p>
-            <div></div>
+            <img src={icon} alt="card-img" />
           </div>
           <div className="mb-4">
-            <p className="fs-2 fw-bold">{info.length}</p>
+            <p className="fs-2 ps-1 fw-bold">{info.length}</p>
           </div>
-          <div className="mb-4">
+          <div className="mb-3">
             <img src={img} alt="graph-icon" />
             <span> 17%</span>
             <span className="ps-4"> Since last week</span>

@@ -24,9 +24,11 @@ function Login() {
       });
       if (response.data.status === 200) {
         dispatch(SET_USER({ token: response.data.token, data: response.data.data }));
-        navigate("/");
+        return navigate("/");
       } else {
-        setFailLogin(true);
+        if (response.data.status === 404) {
+          setFailLogin(true);
+        }
       }
     } catch (error) {
       console.log(error);

@@ -7,7 +7,7 @@ import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
 
 export default () => (
-  <div className="col-3 p-0 vh-100  ">
+  <div className="col-2 p-0 vh-120  ">
     <div className="d-flex flex-column h-100 ">
       <h1
         className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
@@ -50,6 +50,15 @@ export default () => (
               style={{ fontSize: "0.9rem" }}
             >
               <AiOutlineShoppingCart className="fs-4" /> Orders
+            </h2>
+          </Link>
+          <Link to="/admin/categories" className="btn  w-100 p-0">
+            <h2
+              className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
+              style={{ fontSize: "0.9rem" }}
+            >
+              <HiOutlineUsers className="fs-4" />
+              Categories
             </h2>
           </Link>
         </div>

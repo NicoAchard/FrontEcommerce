@@ -142,7 +142,7 @@ function Checkout() {
                       required=""
                     />
                     <label className="custom-control-label ps-1" htmlFor="debit">
-                      Paypal
+                      MercadoPago
                     </label>
                   </div>
                   <div className="custom-control custom-radio">
@@ -154,7 +154,7 @@ function Checkout() {
                       required=""
                     />
                     <label className="custom-control-label ps-1" htmlFor="paypal">
-                      eTransfer
+                      PayPal
                     </label>
                   </div>
                 </div>
