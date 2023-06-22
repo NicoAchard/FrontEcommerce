@@ -10,7 +10,7 @@ export default () => (
   <div className="container-fluid">
     <div className="row">
       <AdminSidebar />
-      <div className="col d-flex flex-column p-0">
+      <div className="col-10 d-flex flex-column p-0">
         <NavAdmin />
         <div className="dashboard-space ">
           <div classname="d-flex">
