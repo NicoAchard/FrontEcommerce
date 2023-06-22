@@ -56,12 +56,12 @@ function NavBar() {
                 align="end"
               >
                 <NavDropdown.Item>
-                  <Link to="/login" className="text-decoration-none text-black">
+                  <Link to="/login" className="text-decoration-none text-black d-block">
                     Login
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/signup" className="text-decoration-none text-black">
+                  <Link to="/signup" className="text-decoration-none text-black d-block">
                     Signup
                   </Link>
                 </NavDropdown.Item>
