@@ -4,7 +4,7 @@ import "./ThanksForOrder.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-
+import { format } from "date-fns";
 function ThanksForOrder() {
   const user = useSelector((state) => state.user);
 
@@ -49,8 +49,10 @@ function ThanksForOrder() {
           <div className="col-12 d-flex justify-content-between">
             <h6>Details</h6>
             <p style={{ color: "gray" }}>
-              Order placed{" "}
-              <span className="text-dark">{productsOrder && productsOrder.createdAt}</span>
+              Order placed:{" "}
+              <span className="text-dark">
+                {productsOrder && format(new Date(productsOrder.createdAt), "dd/MM/yy HH:mm")}
+              </span>
             </p>
           </div>
         </div>
@@ -146,15 +148,15 @@ function ThanksForOrder() {
           <div className="row border rounded py-3 mb-5">
             <div className="col-md-4 col-lg-4">
               <h6>Billing address</h6>
-              <p style={{ color: "gray" }}>
+              <p className="mt-3" style={{ color: "gray" }}>
                 {user.data.firstname} {user.data.lastname}
               </p>
               <p style={{ color: "gray" }}>{user.data.address}</p>
             </div>
             <div className="col-md-4 col-lg-4">
               <h6>Payment information</h6>
-              <p>
-                <i className="bi bi-credit-card-2-front"></i> Ending with 2424
+              <p className="mt-3 text-secondary">
+                <i className="bi bi-credit-card-2-front "></i> Ending with 2424
               </p>
               <p style={{ color: "gray" }}>Expires 02 / 25</p>
             </div>
