@@ -3,10 +3,21 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterProductsSidebar";
 import FilterTopBar from "../components/FilterTopBar";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function Products() {
   const [categoryID, setCategoryID] = useState(null);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get("category");
+  useEffect(() => {
+    if (!isNaN(category)) {
+      setCategoryID(Number(category));
+    }
+  }, [category]);
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
