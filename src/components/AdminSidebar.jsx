@@ -3,6 +3,7 @@ import { BsHandbag } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { MdSkateboarding } from "react-icons/md";
+import { BiCategory } from "react-icons/bi";
 import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
 
@@ -50,6 +51,15 @@ export default () => (
               style={{ fontSize: "0.9rem" }}
             >
               <AiOutlineShoppingCart className="fs-4" /> Orders
+            </h2>
+          </Link>
+          <Link to="/admin/categories" className="btn  w-100 p-0">
+            <h2
+              className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
+              style={{ fontSize: "0.9rem" }}
+            >
+              <BiCategory className="fs-4" />
+              Categories
             </h2>
           </Link>
         </div>
