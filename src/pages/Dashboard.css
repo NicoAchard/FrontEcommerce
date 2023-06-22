@@ -15,5 +15,9 @@
 } */
 
 .popular {
-  width: 30%;
+  width: 20%;
+}
+
+.center-space {
+  width: 80%;
 }

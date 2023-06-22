@@ -9,3 +9,7 @@
 .text-hover-transition {
   color: #bac2d1;
 }
+
+h1 {
+  height: 85px;
+}
