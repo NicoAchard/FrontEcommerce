@@ -1,17 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-const SalesChart = () => {
+const SalesChart = ({ datasets }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    const generateRandomData = () => {
-      const data = [];
-      for (let i = 0; i < 7; i++) {
-        data.push(Math.floor(Math.random() * 100));
-      }
-      return data;
-    };
+    let chartInstance = null;
 
     const labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const datasets = [
@@ -41,35 +35,36 @@ const SalesChart = () => {
       },
     ];
 
-    const chartConfig = {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: datasets,
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
+    const updateChart = () => {
+      if (chartInstance) {
+        chartInstance.data.datasets = datasets;
+        chartInstance.update();
+      } else {
+        chartInstance = new Chart(chartRef.current, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: datasets,
           },
-        },
-      },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
     };
 
-    if (chartRef.current) {
-      if (chartRef.current.chart) {
-        chartRef.current.chart.destroy();
-      }
-
-      chartRef.current.chart = new Chart(chartRef.current, chartConfig);
-    }
+    updateChart();
 
     return () => {
-      if (chartRef.current.chart) {
-        chartRef.current.chart.destroy();
+      if (chartInstance) {
+        chartInstance.destroy();
       }
     };
-  }, []);
+  }, [datasets]);
 
   return <canvas ref={chartRef} />;
 };
