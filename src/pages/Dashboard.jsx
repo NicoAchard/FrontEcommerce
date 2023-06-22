@@ -21,6 +21,7 @@ export default () => (
               </div>
               <div className="popular border rounded mt-2 me-1">
                 <DashboardPopular />
+                <hr />
                 <DashboardUsers />
               </div>
             </div>
