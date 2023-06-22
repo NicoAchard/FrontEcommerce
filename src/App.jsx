@@ -6,7 +6,7 @@ import Project from "./pages/Project";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
-import AllOrders from "./pages/AllOrders";
+import Orders from "./pages/Orders";
 import Product from "./pages/Product";
 import Dashboard from "./pages/Dashboard";
 import AdminProducts from "./pages/AdminProducts";
@@ -16,13 +16,6 @@ import AdminCategories from "./pages/AdminCategories";
 
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
-<<<<<<< HEAD
-import Login from "./pages/Login";
-import SignUp from "./pages/Signup";
-import Orders from "./pages/Orders";
-import Checkout from "./components/Checkout";
-=======
->>>>>>> e3f2def347241815b040a1715d1bd6a9be769de4
 import ThanksForOrder from "./pages/ThanksForOrder";
 import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
