@@ -8,8 +8,9 @@ export default () => (
       <AdminSidebar />
       <div className="col d-flex flex-column p-0">
         <NavAdmin />
-        <div className="pt-4 ps-4">
-          <h4>Orders</h4>
+        <div className="pt-4 px-4 d-flex justify-content-between">
+          <h4>Categories</h4>
+          <button className="btn btn-dark">Add</button>
         </div>
         <AdminCategoriesList />
       </div>

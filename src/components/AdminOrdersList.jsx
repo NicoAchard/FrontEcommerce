@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsTrash, BsPencil } from "react-icons/bs";
+
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -16,7 +17,7 @@ function AdminOrdersList() {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      console.log(response.data);
       setOrders(response.data);
     };
     addOrders();

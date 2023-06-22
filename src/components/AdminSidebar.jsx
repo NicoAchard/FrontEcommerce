@@ -3,6 +3,7 @@ import { BsHandbag } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { MdSkateboarding } from "react-icons/md";
+import { BiCategory } from "react-icons/bi";
 import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
 
@@ -57,7 +58,7 @@ export default () => (
               className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin"
               style={{ fontSize: "0.9rem" }}
             >
-              <HiOutlineUsers className="fs-4" />
+              <BiCategory className="fs-4" />
               Categories
             </h2>
           </Link>
