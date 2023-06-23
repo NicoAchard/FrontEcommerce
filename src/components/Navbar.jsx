@@ -73,7 +73,7 @@ function NavBar() {
                 )}
                 {user && user.data.roleId === 200 && (
                   <NavDropdown.Item>
-                    <Link to="/Admin" className="text-decoration-none text-black d-block">
+                    <Link to="/admin" className="text-decoration-none text-black d-block">
                       Admin
                     </Link>
                   </NavDropdown.Item>
