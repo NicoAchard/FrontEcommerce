@@ -20,6 +20,7 @@ import Cart from "./components/Cart";
 import ThanksForOrder from "./pages/ThanksForOrder";
 import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import ProtectedProfile from "./components/ProtectedProfile";
 import Profile from "./pages/Profile";
 
 function App() {
@@ -44,7 +45,9 @@ function App() {
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<ProtectedProfile />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
         <Route path="/thanks" element={<ThanksForOrder />} />
