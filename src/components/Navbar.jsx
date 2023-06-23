@@ -83,15 +83,20 @@ function NavBar() {
                   Profile
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item
-                  onClick={() => {
-                    dispatch(LOGOUT());
-                    navigate("/login");
-                  }}
-                >
-                  Logout
-                </NavDropdown.Item>
+                {user && (
+                  <>
+                    <NavDropdown.Divider />
+
+                    <NavDropdown.Item
+                      onClick={() => {
+                        dispatch(LOGOUT());
+                        navigate("/login");
+                      }}
+                    >
+                      Logout
+                    </NavDropdown.Item>
+                  </>
+                )}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

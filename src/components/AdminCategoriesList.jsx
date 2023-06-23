@@ -29,7 +29,6 @@ export default () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response.data);
     setCategories(categories.filter((category) => category.id !== id));
   };
   return (
