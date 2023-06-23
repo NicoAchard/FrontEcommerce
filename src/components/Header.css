@@ -7,9 +7,9 @@
   position: relative;
   display: flex;
   justify-content: center;
+
   height: 100%;
 }
-
 .header-image {
   object-fit: cover;
   height: 100%;
@@ -20,7 +20,8 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 80%, white);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, white);
+
   animation: fadeAnimation 1s ease-in-out forwards;
 }
 

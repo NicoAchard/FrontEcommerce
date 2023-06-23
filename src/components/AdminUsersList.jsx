@@ -50,7 +50,7 @@ function AdminUsersList() {
         <tbody>
           {users &&
             users.map((user) => (
-              <tr key={user.id}>
+              <tr>
                 <th scope="row">{user.id}</th>
                 <td>
                   <img
