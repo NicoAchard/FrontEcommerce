@@ -25,16 +25,22 @@ import Profile from "./pages/Profile";
 
 function App() {
   const location = useLocation();
-  const hideCart =
+
+  const hideStickyButton =
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
-    location.pathname === "/about-this-project";
+    location.pathname === "/about-this-project" ||
+    location.pathname === "/admin/users" ||
+    location.pathname === "/admin/products" ||
+    location.pathname === "/admin/orders" ||
+    location.pathname === "/admin/categories" ||
+    location.pathname === "/admin";
 
   return (
     <>
-      {!hideCart && <CartIcon />}
+      {!hideStickyButton && <CartIcon />}
       <Cart />
-      <StickyButton />
+      {!hideStickyButton && <StickyButton />}
 
       <Routes>
         <Route path="/login" element={<Login />} />
