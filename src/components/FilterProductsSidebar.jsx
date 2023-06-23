@@ -3,18 +3,15 @@ import { BsChevronDown } from "react-icons/bs";
 export default ({ setCategoryID }) => {
   return (
     <div className="filter-container bg-color p-3">
-      <h1 className="py-2 mb-4">Filter Options</h1>
-      <div
-        className="mb-2 "
-        style={{ borderTop: "0.3rem solid white  ", borderBottom: "0.1rem solid white " }}
-      >
+      <h1 className="border-bottom border-5 py-2 mb-4">Filter Options</h1>
+      <div className="border-bottom mb-2">
         <h4 className="d-flex justify-content-between">
           Prices <BsChevronDown />
         </h4>
         <ul className="list-unstyled ">
-          <li className="filter-sidebar-item">up to US$200</li>
-          <li className="filter-sidebar-item">US$ 201 - 300</li>
-          <li className="filter-sidebar-item">more than US$ 301</li>
+          <li className="filter-sidebar-item">100.00$</li>
+          <li className="filter-sidebar-item">200.00$</li>
+          <li className="filter-sidebar-item">300.00$</li>
         </ul>
       </div>
       <div className="border-bottom mb-2">
