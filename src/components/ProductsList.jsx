@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
+import Product from "./Product";
 import axios from "axios";
-import Product from "./ProductIem";
-import SkeletonProduct from "./SkeletonProduct";
 
-function ProductsList({ slice, categoryID }) {
+function ProductsList() {
   const [products, setProducts] = useState(null);
-
   useEffect(() => {
     async function getProducts() {
       try {
@@ -13,30 +11,17 @@ function ProductsList({ slice, categoryID }) {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-        if (categoryID) {
-          setProducts(response.data.filter((product) => product.categoryId === categoryID));
-        } else {
-          setProducts(response.data);
-        }
-        if (slice) {
-          setProducts(products.slice(0, slice));
-        }
+        setProducts(response.data.slice(0, 3));
       } catch (error) {
         console.log(error);
       }
     }
     getProducts();
-  }, [categoryID, products]);
+  }, []);
 
   return (
-    <div className="d-flex flex-wrap justify-content-around mt-5">
-      {products ? (
-        products.map((product) => <Product product={product} key={product.id} />)
-      ) : (
-        <div>
-          <SkeletonProduct count={4} />
-        </div>
-      )}
+    <div className="d-flex  justify-content-around my-3">
+      {products && products.map((product) => <Product product={product} />)}
     </div>
   );
 }
