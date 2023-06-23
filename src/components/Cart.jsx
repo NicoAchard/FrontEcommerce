@@ -76,7 +76,14 @@ export default () => {
       <div className="cart-bottom border">
         <div className="d-flex justify-content-between px-4 pt-2 mb-0">
           <h5>Sub total</h5>
-          <p>USD 0</p>
+          <p>
+            US${" "}
+            {products.reduce(
+              (accumulator, currentValue) =>
+                accumulator + currentValue.unitPrice * currentValue.qty,
+              0,
+            )}
+          </p>
         </div>
         <p className="ms-4">Shipping and taxes calculated at start </p>
         <div className="d-grid gap-2">
