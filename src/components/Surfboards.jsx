@@ -3,12 +3,23 @@ import ProductsList from "./ProductsList";
 
 function Surfboards() {
   return (
-    <div className="container">
+    <div className="container surfboards-container" style={{ width: "100%" }}>
       <div className="row">
-        <div className="col-5">
-          <h3>MASTER THE WAVES WITH THESE NEWCOMERS</h3>
+        <div className="col-6 m-0 p-0">
+          <img
+            src="src\img\master-the-waves.jpg"
+            alt="master-the-waves"
+            style={{
+              height: "550px",
+            }}
+          />
         </div>
-        <div className="col-7">
+        <div
+          className="col-6 pe-0"
+          style={{
+            height: "550px",
+          }}
+        >
           <ProductsList categoryID={4} slice={2} />
         </div>
       </div>
