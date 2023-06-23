@@ -29,7 +29,7 @@ function Profile() {
       >
         <div className="text-center my-5">
           <h1>Profile</h1>
-          <p>This information will be displayed publicly so be careful what you share.</p>
+          <p>This information will be displayed publicly so be careful with what you share.</p>
         </div>
         <form style={{ width: "23rem" }} className="w-50">
           <div className="form-outline mb-4 d-flex align-items-center">
