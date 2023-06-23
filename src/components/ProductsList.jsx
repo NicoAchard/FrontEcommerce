@@ -13,21 +13,20 @@ function ProductsList({ slice, categoryID }) {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-
-        if (slice) {
-          setProducts(response.data.slice(0, 3));
+        if (categoryID) {
+          setProducts(response.data.filter((product) => product.categoryId === categoryID));
         } else {
           setProducts(response.data);
         }
-        if (categoryID) {
-          setProducts(response.data.filter((product) => product.categoryId === categoryID));
+        if (slice) {
+          setProducts(products.slice(0, slice));
         }
       } catch (error) {
         console.log(error);
       }
     }
     getProducts();
-  }, [categoryID]);
+  }, [categoryID, products]);
 
   return (
     <div className="d-flex flex-wrap justify-content-around mt-5">

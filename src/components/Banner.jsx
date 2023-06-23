@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Banner() {
   const navigate = useNavigate();
   const handleBannerClick = () => {
-    navigate("/products?category=1");
+    navigate("/products?category=1", { smooth: true });
   };
 
   return (
