@@ -13,19 +13,18 @@ function ProductsList({ slice, categoryID, filterPrice, max200, range201to300, m
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-
-        if (slice) {
-          setProducts(response.data.slice(0, slice));
+        if (categoryID) {
+          setProducts(response.data.filter((product) => product.categoryId === categoryID));
         } else {
           setProducts(response.data);
         }
-
-        if (categoryID) {
-          setProducts(response.data.filter((product) => product.categoryId === categoryID));
+        if (slice) {
+          setProducts(products.slice(0, slice));
         }
+
         if (filterPrice) {
           setProducts(
-            response.data.filter((product) => {
+            products.filter((product) => {
               if (max200 && product.price <= 200) {
                 return true;
               } else if (range201to300 && product.price >= 201 && product.price <= 300) {
