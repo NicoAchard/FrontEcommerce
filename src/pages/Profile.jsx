@@ -1,12 +1,18 @@
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
+import React from "react";
 import { SET_USER } from "../redux/userSlice";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import FeatureNotImplemented from "../components/FeatureNotImplemented";
 
 function Profile() {
+  const handleButtonClicked = () => {
+    setShowFeatureNotImplemented(true);
+  };
+
+  const [showFeatureNotImplemented, setShowFeatureNotImplemented] = React.useState(false);
   const userData = useSelector((state) => state.user.data);
   useEffect(() => {
     if (userData) {
@@ -22,6 +28,7 @@ function Profile() {
   return (
     <div className="">
       <Navbar />
+      <FeatureNotImplemented />
 
       <div
         className="d-flex  flex-column justify-content-center align-items-center h-100 "
@@ -40,7 +47,9 @@ function Profile() {
             </div>
             <div className="col-8 d-flex align-items-center">
               <img alt="Profile" className="rounded-circle profile-image me-2" id="photo" />
-              <button className="btn btn-sm btn-outline-secondary">Change Photo</button>
+              <button className="btn btn-sm btn-outline-secondary" onClick={handleButtonClicked}>
+                Change Photo
+              </button>
             </div>
           </div>
           <hr />
