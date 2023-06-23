@@ -43,14 +43,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
-        <Route path="/checkout" element={<Checkout />} />
+
         <Route path="/orders" element={<Orders />} />
         <Route element={<ProtectedProfile />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/thanks" element={<ThanksForOrder />} />
         </Route>
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
-        <Route path="/thanks" element={<ThanksForOrder />} />
+
         <Route element={<ProtectedRoutes />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
