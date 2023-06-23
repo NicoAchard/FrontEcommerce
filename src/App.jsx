@@ -20,7 +20,7 @@ import Cart from "./components/Cart";
 import ThanksForOrder from "./pages/ThanksForOrder";
 import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import Profile from "../pages/profile";
+import Profile from "./pages/Profile";
 
 function App() {
   const location = useLocation();
