@@ -5,7 +5,7 @@ function Surfboards() {
   return (
     <div className="container surfboards-container" style={{ width: "100%" }}>
       <div className="row">
-        <div className="col-6 m-0 p-0">
+        <div className="col-md-6 m-0 p-0">
           <img
             src="src\img\master-the-waves.jpg"
             alt="master-the-waves"
@@ -15,7 +15,7 @@ function Surfboards() {
           />
         </div>
         <div
-          className="col-6 pe-0"
+          className="col=md-6 pe-0"
           style={{
             height: "550px",
           }}

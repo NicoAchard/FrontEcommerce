@@ -3,6 +3,7 @@ import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterProductsSidebar";
 import FilterTopBar from "../components/FilterTopBar";
+import "./Product.css";
 
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -22,10 +23,10 @@ function Products() {
     <div className="d-flex flex-column min-vh-100">
       <div>
         <NavBar />
-        <div style={{ marginTop: "7rem" }}>
+        <div>
           <div className="container">
             <div className="row">
-              <div className="col-3">
+              <div className="col-3 ">
                 <FilterSidebar setCategoryID={setCategoryID} />
               </div>
               <div className="col">

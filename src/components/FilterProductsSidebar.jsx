@@ -3,7 +3,9 @@ import { BsChevronDown } from "react-icons/bs";
 export default ({ setCategoryID }) => {
   return (
     <div className="filter-container bg-color p-3">
-      <h1 className="py-2 mb-4">Filter Options</h1>
+      <h1 className="py-2 mb-4" style={{ marginTop: "100px" }}>
+        Filter Options
+      </h1>
       <div
         className="mb-2 "
         style={{ borderTop: "0.3rem solid white  ", borderBottom: "0.1rem solid white " }}
