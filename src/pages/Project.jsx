@@ -28,26 +28,24 @@ function Project() {
           <div className="square col-lg-3 m-2 border rounded">
             <h4>Duration</h4>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod, aspernatur
-              consectetur. Voluptatibus ipsum aut autem necessitatibus amet quae delectus.
-              Consequuntur officiis voluptatem adipisci eligendi doloremque earum reiciendis dolores
-              quas impedit?
+              This project was developed in just 3 weeks, during June 2023. It was divided into 3
+              sprints -Scrum- lasting one week each.
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
-            <h4>Tecnologies</h4>
+            <h4>Technologies</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione deserunt, nulla hic,
-              similique aspernatur corrupti sit recusandae, voluptatibus illo modi omnis beatae
-              harum! Cumque, culpa et molestiae accusamus consectetur dolorem!
+              For the Front-End of the site, this application was developed in React, using
+              Create-React-App. On the other hand, for the Back-End, a REST API was made using
+              Node.js, Express, SQL, and Git/GitHub.
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
             <h4>Methodology</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto modi dicta, magnam hic
-              aspernatur corporis dolor! Consequuntur, corporis quia laudantium necessitatibus nemo
-              dolorem placeat obcaecati ut doloribus rerum expedita facere!
+              For the organization of tasks during the project, Miro was used. This allowed each
+              member of the team to permanently be aware of the status of the project as well as the
+              task assignment and the MVP`s for each sprint.
             </p>
           </div>
           <div className=" team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2 ">
