@@ -11,6 +11,7 @@ function CallToAction2() {
     <div className="image-container my-5 cursor-pointer">
       <img
         style={{ width: "100%", height: "550px" }}
+        className="rounded"
         src="/src/img/CallToAction2.jpg"
         alt="Skate image"
         onClick={handleBannerClick}

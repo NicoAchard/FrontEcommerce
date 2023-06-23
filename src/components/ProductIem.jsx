@@ -55,7 +55,7 @@ function Product({ product }) {
 
       <Card.Body
         className="d-flex flex-column align-items-center justify-content-center"
-        style={{ height: "150px", marginBottom: "15px" }}
+        style={{ height: "250px" }}
       >
         <div className="title-container">
           <Card.Title className="text-center product-title">{product.name}</Card.Title>

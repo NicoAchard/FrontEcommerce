@@ -5,10 +5,9 @@ import ProductsList from "../components/ProductsList";
 import Surfboards from "../components/Surfboards";
 import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
-import Banner from "../components/banner";
-import FeaturedAnimation from "../components/FeaturedAnimation";
 import Header from "../components/Header";
 import "./Home.css";
+import ProductsList from "../components/ProductsList";
 
 function Home() {
   return (
@@ -16,11 +15,8 @@ function Home() {
       <Navbar />
       <div style={{ marginTop: "4.5rem" }}>
         <Header />
-        <div className="container home-container">
-          <FeaturedAnimation />
-          <ProductsList slice={3} />
-          <Banner />
-          <Surfboards />
+        <div className="container">
+          <ProductsList slice={true} />
           <CallToAction1 />
           <Categories />
           <CallToAction2 />
