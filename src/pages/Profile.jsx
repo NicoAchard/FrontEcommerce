@@ -1,13 +1,18 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { SET_USER } from "../redux/userSlice";
+// import { SET_USER } from "../redux/userSlice";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 function Profile() {
-  const userData = useSelector((state) => state.user.data);
+  const user = useSelector((state) => state.user);
+  let userData = null;
+  if (user) {
+    userData = useSelector((state) => state.user.data);
+  }
+
   useEffect(() => {
     if (userData) {
       document.getElementById("firstname").value = userData.firstname;
