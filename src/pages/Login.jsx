@@ -36,15 +36,14 @@ function Login() {
   }
   return (
     <section className="vh-100">
-      <div className="container-fluid">
-        <div className="row">
+      <div className="container-fluid h-100">
+        <div className="row h-100">
           <div className="col-sm-6 text-black">
-            <div className="px-5 ms-xl-4">
-              <img src="src\img\heybroInvert.png" alt="Logo" className="hey-bro-nav" />
-            </div>
-
-            <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              <form style={{ width: "23rem" }}>
+            <div className="d-flex flex-column justify-content-center h-100 align-items-center h-custom-2 p-0 mt-xl-n5">
+              <div className="px-5 ms-xl-4">
+                <img src="src\img\heybroInvert.png" alt="Logo" className="hey-bro-nav" />
+              </div>
+              <form>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
                   Log in
                 </h3>
