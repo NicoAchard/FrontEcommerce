@@ -13,15 +13,14 @@ import AdminProducts from "./pages/AdminProducts";
 import AdminUsers from "./pages/AdminUsers";
 import AdminOrders from "./pages/AdminOrders";
 import AdminCategories from "./pages/AdminCategories";
+import Checkout from "./pages/Checkout";
 
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import ThanksForOrder from "./pages/ThanksForOrder";
 import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import Checkout from "./components/Checkout";
-import Profile from "./pages/profile";
-import ProtectedProfile from "./components/ProtectedProfile";
+import Profile from "../pages/profile";
 
 function App() {
   const location = useLocation();
@@ -45,9 +44,7 @@ function App() {
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/orders" element={<Orders />} />
-        <Route element={<ProtectedProfile />}>
-          <Route path="/profile" element={<Profile />} />
-        </Route>
+        <Route path="/profile" element={<Profile />} />
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
         <Route path="/thanks" element={<ThanksForOrder />} />
