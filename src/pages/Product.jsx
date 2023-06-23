@@ -83,7 +83,7 @@ export default () => {
               </div>
               <div className="container">
                 <div className="row mx-4 gap-3">
-                  <div className="col-4 d-flex flex-column border p-0 align-items-center">
+                  <div className="col-4 d-flex flex-column border p-0 mb-4 align-items-center">
                     <img
                       className="d-block img-fluid"
                       src={`${import.meta.env.VITE_API_IMG}/${mainProductImg}`}

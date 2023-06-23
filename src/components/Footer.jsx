@@ -62,17 +62,17 @@ function Footer() {
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Carver
+                    Longboards
                   </Link>
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Longboard
+                    Cruisers
                   </Link>
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Penny
+                    Surfboards
                   </Link>
                 </li>
               </ul>

@@ -1,11 +1,8 @@
 .cart-icon-fixed {
   position: fixed;
-  bottom: 5%;
-  left: 5%;
+  bottom: 2%;
+  left: 2%;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-image: url("src/img/bg_dark_grafitti.jpg");
-  background-size: cover;
   border: white solid 2px;
   color: white;
 }
