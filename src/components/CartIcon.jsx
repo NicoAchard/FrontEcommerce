@@ -13,7 +13,7 @@ export default () => {
   };
 
   return (
-    <div className="rounded-circle p-2 cart-icon-fixed" onClick={handleIconClick}>
+    <div className="rounded-circle p-2 cart-icon-fixed bg-color" onClick={handleIconClick}>
       <AiOutlineShoppingCart size={32} />
     </div>
   );
