@@ -13,13 +13,13 @@ import AdminProducts from "./pages/AdminProducts";
 import AdminUsers from "./pages/AdminUsers";
 import AdminOrders from "./pages/AdminOrders";
 import AdminCategories from "./pages/AdminCategories";
+import Checkout from "./pages/Checkout";
 
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import ThanksForOrder from "./pages/ThanksForOrder";
 import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import Checkout from "./components/Checkout";
 import Profile from "./pages/profile";
 
 function App() {

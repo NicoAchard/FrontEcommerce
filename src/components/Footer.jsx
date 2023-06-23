@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function Footer() {
   return (
-    <footer className="bg-black text-center text-white  mt-auto ">
+    <footer className="bg-color text-center text-white  mt-auto ">
       <div className="container p-4" style={{ fontSize: "0.8rem" }}>
         <section className="mb-4">
           <Link className="btn btn-outline-light btn-floating m-1" to="/" role="button">
@@ -62,17 +62,17 @@ function Footer() {
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Carver
+                    Longboards
                   </Link>
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Longboard
+                    Cruisers
                   </Link>
                 </li>
                 <li>
                   <Link to="/" className="text-white text-decoration-none">
-                    Penny
+                    Surfboards
                   </Link>
                 </li>
               </ul>

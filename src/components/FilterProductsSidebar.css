@@ -5,3 +5,7 @@
   cursor: pointer;
   opacity: 0.5;
 }
+
+.filter-container {
+  height: 100%;
+}
