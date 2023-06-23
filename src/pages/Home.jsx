@@ -2,12 +2,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Categories from "../components/Categories";
 import ProductsList from "../components/ProductsList";
+import Surfboards from "../components/Surfboards";
 import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
 import Banner from "../components/banner";
 import FeaturedAnimation from "../components/FeaturedAnimation";
 import Header from "../components/Header";
-import "./Home.css";
 
 function Home() {
   return (
@@ -17,8 +17,9 @@ function Home() {
         <Header />
         <div className="container home-container">
           <FeaturedAnimation />
-          <ProductsList slice={true} />
+          <ProductsList slice={3} />
           <Banner />
+          <Surfboards />
           <CallToAction1 />
           <Categories />
           <CallToAction2 />

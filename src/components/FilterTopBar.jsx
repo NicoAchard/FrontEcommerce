@@ -3,7 +3,10 @@ import { FaThList } from "react-icons/fa";
 
 export default () => {
   return (
-    <div className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3">
+    <div
+      className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3"
+      style={{ marginTop: "100px" }}
+    >
       <div className="d-flex gap-2">
         <div className="bg-light p-2 rounded">
           <BsFillGrid3X3GapFill size={30} />

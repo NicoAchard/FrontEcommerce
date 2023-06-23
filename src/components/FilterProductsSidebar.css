@@ -7,5 +7,7 @@
 }
 
 .filter-container {
-  height: 100%;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }

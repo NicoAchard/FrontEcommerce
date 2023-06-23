@@ -15,7 +15,7 @@ function ProductsList({ slice, categoryID, filterPrice, max200, range201to300, m
         });
 
         if (slice) {
-          setProducts(response.data.slice(0, 3));
+          setProducts(response.data.slice(0, slice));
         } else {
           setProducts(response.data);
         }
@@ -42,7 +42,7 @@ function ProductsList({ slice, categoryID, filterPrice, max200, range201to300, m
       }
     }
     getProducts();
-  }, [categoryID, filterPrice, max200, range201to300, min301]);
+  }, [categoryID, filterPrice, max200, range201to300, min301, products]);
 
   return (
     <div className="d-flex flex-wrap justify-content-around mt-5">

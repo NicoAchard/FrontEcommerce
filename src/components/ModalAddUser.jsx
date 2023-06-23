@@ -86,7 +86,7 @@ export default ({ show, setShow }) => {
                 value={inputEmail}
                 onChange={(event) => setInputEmail(event.target.value)}
                 className={`${
-                  responseCreateUser || !handlevalidateEmail(inputEmail)
+                  responseCreateUser
                     ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
                       responseCreateUser.status === 401 &&
                       "is-invalid"

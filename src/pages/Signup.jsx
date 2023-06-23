@@ -75,22 +75,22 @@ function SignUp() {
       setPasswordsUnmatch(true);
     }
   }
+
   return (
     <section className="vh-100">
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6 text-black">
-            <div className="px-5 ms-xl-4">
-              <img src="src\img\heybroInvert.png" alt="Logo" className="hey-bro-nav" />
-            </div>
-
-            <div className="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-              <form style={{ width: "23rem" }} onSubmit={handlerSubmit}>
-                <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
+            <div className="d-flex flex-column h-100 align-items-center justify-content-center h-custom-2 px-5 ms-xl-4  pt-5 pt-xl-0 mt-xl-n5">
+              <div className="d-flex align-items-center gap-2 mb-4">
+                <img src="src\img\heybroInvert.png" alt="Logo" className="hey-bro-nav" />
+              </div>
+              <form onSubmit={handlerSubmit}>
+                <h3 className="fw-normal" style={{ letterSpacing: "1px" }}>
                   Sign Up
                 </h3>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-2">
                   {responseCreateUser
                     ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
                       responseCreateUser.status === 401 && (
@@ -121,7 +121,7 @@ function SignUp() {
                   </label>
                 </div>
 
-                <div className="row mb-4">
+                <div className="row mb-2">
                   <div className="col">
                     <div className="form-outline">
                       <input
@@ -165,7 +165,7 @@ function SignUp() {
                   </div>
                 </div>
 
-                <div className="row mb-4">
+                <div className="row mb-2">
                   <div className="col">
                     <div className="form-outline">
                       <input
@@ -208,9 +208,9 @@ function SignUp() {
                     </div>
                   </div>
                 </div>
-                <div className="row mb-1">
+                <div className="row">
                   <div className="col">
-                    <div className="form-outline mb-4">
+                    <div className="form-outline mb-2">
                       <input
                         type="password"
                         name="password"
@@ -289,7 +289,7 @@ function SignUp() {
                 </div>
 
                 <p>
-                  Already have an account?
+                  Already have an account?{" "}
                   <Link to="/login" className="link-info">
                     Log in
                   </Link>
