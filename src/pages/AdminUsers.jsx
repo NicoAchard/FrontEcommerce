@@ -1,6 +1,7 @@
 import AdminSidebar from "../components/AdminSidebar";
 import AdminUsersList from "../components/AdminUsersList";
 import NavAdmin from "../components/NavAdmin";
+import ModalAddUser from "../components/ModalAddUser";
 
 import { useState } from "react";
 export default () => {
@@ -20,8 +21,7 @@ export default () => {
           <AdminUsersList />
           <ModalAddUser show={show} setShow={setShow} />
         </div>
-        <AdminUsersList />
       </div>
     </div>
-  </div>
-);
+  );
+};

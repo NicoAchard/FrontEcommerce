@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsTrash, BsPencil } from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
 
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -38,7 +38,7 @@ function AdminOrdersList() {
         <tbody>
           {orders &&
             orders.map((order) => (
-              <tr>
+              <tr key={order.id}>
                 <th scope="row">{order.id}</th>
                 <td>
                   {order.user.firstname} {order.user.lastname}
