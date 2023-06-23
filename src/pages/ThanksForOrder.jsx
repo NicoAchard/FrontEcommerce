@@ -32,7 +32,7 @@ function ThanksForOrder() {
   const shippingAndTaxPrice = shippingPrice + taxPrice;
 
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <NavBar />
 
       <div className="p-5 mt-5">
@@ -203,7 +203,7 @@ function ThanksForOrder() {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

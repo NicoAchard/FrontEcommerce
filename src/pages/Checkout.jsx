@@ -38,7 +38,7 @@ function Checkout() {
   const shippingAndTaxPrice = shippingPrice + taxPrice;
 
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <div>
         <div className="checkout container">
@@ -290,7 +290,7 @@ function Checkout() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
