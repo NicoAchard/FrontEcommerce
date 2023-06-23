@@ -27,7 +27,7 @@ function Products() {
     <div className="d-flex flex-column min-vh-100">
       <div>
         <NavBar />
-        <div style={{ marginTop: "7rem" }}>
+        <div>
           <div className="container">
             <div className="row">
               <div className="col-3">
