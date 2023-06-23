@@ -8,7 +8,6 @@ import CallToAction2 from "../components/CallToAction2";
 import Banner from "../components/banner";
 import FeaturedAnimation from "../components/FeaturedAnimation";
 import Header from "../components/Header";
-import "./Home.css";
 
 function Home() {
   return (
