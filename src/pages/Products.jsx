@@ -9,6 +9,11 @@ import { useLocation } from "react-router-dom";
 
 function Products() {
   const [categoryID, setCategoryID] = useState(null);
+  const [filterPrice, setFilterPrice] = useState(false);
+  const [max200, setMax200] = useState(false);
+  const [range201to300, setRange201to300] = useState(false);
+  const [min301, setMin301] = useState(false);
+  const [products, setProducts] = useState([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
@@ -26,11 +31,24 @@ function Products() {
           <div className="container">
             <div className="row">
               <div className="col-3">
-                <FilterSidebar setCategoryID={setCategoryID} />
+                <FilterSidebar
+                  setCategoryID={setCategoryID}
+                  setFilterPrice={setFilterPrice}
+                  setMax200={setMax200}
+                  setRange201to300={setRange201to300}
+                  setMin301={setMin301}
+                />
               </div>
               <div className="col">
                 <FilterTopBar />
-                <ProductsList categoryID={categoryID} />
+                <ProductsList
+                  categoryID={categoryID}
+                  filterPrice={filterPrice}
+                  max200={max200}
+                  range201to300={range201to300}
+                  min301={min301}
+                  setProducts={setProducts}
+                />
               </div>
             </div>
           </div>
