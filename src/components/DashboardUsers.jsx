@@ -30,7 +30,7 @@ function DashboardUsers({}) {
       <p className="text-center fw-bold fs-5 mt-2">Top buyers</p>
       {topBuyers &&
         topBuyers.map((user) => (
-          <div className="top-buyers d-flex p-1 me-2  justify-content-center " key={user.id}>
+          <div className="top-buyers d-flex p-1 me-2  justify-content-center ">
             <div className="d-flex w-100 ms-4 ps-2">
               <img src={user.avatar} alt="product-img" className="rounded-circle me-3" />
               <div className="d-flex flex-column ">
