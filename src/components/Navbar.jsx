@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/heybroInvert.png";
 import profilePicture from "../img/perfil.png";
-
+import background from "../img/bg_dark_grafitti.jpg";
 import "./Navbar.css";
 
 function NavBar() {
@@ -23,7 +23,8 @@ function NavBar() {
         collapseOnSelect
         expand="lg"
         variant="dark"
-        className="d-flex align-items-center bg-nav"
+        className="d-flex align-items-center bg-nav "
+        style={{ backgroundImage: `url(${background})` }}
       >
         <Container>
           <Link to="/" className="text-decoration-none text-white">

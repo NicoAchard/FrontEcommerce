@@ -40,7 +40,9 @@ function Profile() {
             </div>
             <div className="col-8 d-flex align-items-center">
               <img alt="Profile" className="rounded-circle profile-image me-2" id="photo" />
-              <button className="btn btn-sm btn-outline-secondary">Change Photo</button>
+              <button className="btn btn-sm btn-outline-secondary" type="button">
+                Change Photo
+              </button>
             </div>
           </div>
           <hr />
