@@ -4,25 +4,27 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/heybroInvert.png";
 import profilePicture from "../img/perfil.png";
-
+import background from "../img/bg_dark_grafitti.jpg";
 import "./Navbar.css";
 
 function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
   return (
     <div className="position-relative">
       <Navbar
         collapseOnSelect
         expand="lg"
         variant="dark"
-        className="d-flex align-items-center bg-nav"
+        className="d-flex align-items-center bg-nav "
+        style={{ backgroundImage: `url(${background})` }}
       >
         <Container>
           <Link to="/" className="text-decoration-none text-white">
@@ -55,16 +57,28 @@ function NavBar() {
                 id="basic-nav-dropdown"
                 align="end"
               >
-                <NavDropdown.Item>
-                  <Link to="/login" className="text-decoration-none text-black d-block">
-                    Login
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/signup" className="text-decoration-none text-black d-block">
-                    Signup
-                  </Link>
-                </NavDropdown.Item>
+                {!user && (
+                  <>
+                    <NavDropdown.Item>
+                      <Link to="/login" className="text-decoration-none text-black d-block">
+                        Login
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link to="/signup" className="text-decoration-none text-black d-block">
+                        Signup
+                      </Link>
+                    </NavDropdown.Item>
+                  </>
+                )}
+                {user && user.data.roleId === 200 && (
+                  <NavDropdown.Item>
+                    <Link to="/Admin" className="text-decoration-none text-black d-block">
+                      Admin
+                    </Link>
+                  </NavDropdown.Item>
+                )}
+
                 <NavDropdown.Item href="/profile" className="">
                   Profile
                 </NavDropdown.Item>

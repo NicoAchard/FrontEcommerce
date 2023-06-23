@@ -110,17 +110,17 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/admin" className="text-white text-decoration-none">
+                  <Link to="/" className="text-white text-decoration-none">
                     Manage Account
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin" className="text-white text-decoration-none">
+                  <Link to="/" className="text-white text-decoration-none">
                     Returns and Exchanges
                   </Link>
                 </li>
                 <li>
-                  <Link to="/admin" className="text-white text-decoration-none">
+                  <Link to="/" className="text-white text-decoration-none">
                     Gift Cards
                   </Link>
                 </li>
