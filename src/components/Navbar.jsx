@@ -38,10 +38,10 @@ function NavBar() {
             className=" justify-content-end align-items-center text-end "
           >
             <Nav className=" gap-3 mt-3 mt-lg-0 ">
-              <Link to="/products" className="text-decoration-underline text-white  ">
+              <Link to="/products" className="text-decoration-none text-white  ">
                 Products
               </Link>
-              <Link to="/about-this-project" className=" text-decoration-underline text-white">
+              <Link to="/about-this-project" className=" text-decoration-none text-white">
                 About us
               </Link>
             </Nav>
