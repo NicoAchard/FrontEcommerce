@@ -1,7 +1,6 @@
-import NavBar from "../components/./Navbar";
-import Footer from "../components/Footer";
+import NavBar from "./Navbar";
+import Footer from "./Footer";
 import "./Checkout.css";
-
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
@@ -32,11 +31,6 @@ function Checkout() {
     }
     navigate("/thanks");
   }
-  const shippingPrice = 5;
-  const taxPrice = 15;
-
-  const shippingAndTaxPrice = shippingPrice + taxPrice;
-
   return (
     <>
       <NavBar />
@@ -220,7 +214,7 @@ function Checkout() {
                   <span className="badge badge-secondary badge-pill">3</span>
                 </h4>
                 {products.map((product) => (
-                  <div className="border img d-flex p-3 rounded" key={product}>
+                  <div className="border img d-flex p-3 rounded">
                     <img
                       src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
                       alt="product-img"
@@ -246,39 +240,24 @@ function Checkout() {
                     <div>
                       <h6>Subtotal</h6>
                     </div>
-                    <span className="text-muted">
-                      US${" "}
-                      {products.reduce(
-                        (accumulator, currentValue) =>
-                          accumulator + currentValue.unitPrice * currentValue.qty,
-                        0,
-                      )}
-                    </span>
+                    <span className="text-muted">USD</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                       <h6>Shipping</h6>
                     </div>
-                    <span className="text-muted">US$ {shippingPrice}</span>
+                    <span className="text-muted">USD</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div>
                       <h6 className="my-0">Taxes</h6>
                     </div>
-                    <span className="text-muted">US$ {taxPrice}</span>
+                    <span className="text-muted">USD</span>
                   </li>
 
                   <li className="list-group-item d-flex justify-content-between">
                     <span>Total</span>
-                    <strong>
-                      US${" "}
-                      {shippingAndTaxPrice +
-                        products.reduce(
-                          (accumulator, currentValue) =>
-                            accumulator + currentValue.unitPrice * currentValue.qty,
-                          0,
-                        )}
-                    </strong>
+                    <strong>USD</strong>
                   </li>
                 </ul>
                 <button className="btn btn-dark btn-lg btn-block w-100" type="submit">

@@ -18,15 +18,10 @@
   padding: 0;
 }
 
-.project-container h1 {
-  font-size: 3.2rem;
-  margin-bottom: 0;
-}
-
 .square {
   background-color: white;
   color: black;
-  padding: 70px 25px 20px 25px;
+  padding: 40px 25px 40px 25px;
   background: rgb(255, 255, 255);
   box-shadow: 2px 17px 24px -4px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 2px 17px 24px -4px rgba(0, 0, 0, 0.15);
@@ -54,8 +49,4 @@
 .team {
   padding: 0 15vw 0 15vw;
   margin-top: 5vh;
-}
-
-.team h2 {
-  margin: 10px;
 }
