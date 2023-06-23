@@ -14,9 +14,9 @@ export default ({ setCategoryID }) => {
           Prices <BsChevronDown />
         </h4>
         <ul className="list-unstyled ">
-          <li className="filter-sidebar-item">up to US$200</li>
-          <li className="filter-sidebar-item">US$ 201 - 300</li>
-          <li className="filter-sidebar-item">more than US$ 301</li>
+          <li className="filter-sidebar-item">100.00$</li>
+          <li className="filter-sidebar-item">200.00$</li>
+          <li className="filter-sidebar-item">300.00$</li>
         </ul>
       </div>
       <div className="border-bottom mb-2">

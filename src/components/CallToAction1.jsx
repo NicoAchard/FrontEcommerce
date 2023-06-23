@@ -14,6 +14,7 @@ function CallToAction1() {
           width: "100%",
           height: "550px",
         }}
+        className="rounded"
         src="/src/img/CallToAction1.jpg"
         alt="Skate image"
         onClick={handleBannerClick}
