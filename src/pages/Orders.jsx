@@ -133,8 +133,8 @@ function Orders() {
               </Card>
             ))}
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

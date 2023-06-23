@@ -44,11 +44,11 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:slug" element={<Product />} />
 
-        <Route path="/orders" element={<Orders />} />
         <Route element={<ProtectedProfile />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/thanks" element={<ThanksForOrder />} />
+          <Route path="/orders" element={<Orders />} />
         </Route>
         <Route path="/about-this-project" element={<Project />} />
         <Route path="*" element={<Error />} />
