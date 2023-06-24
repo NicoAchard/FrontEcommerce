@@ -41,11 +41,11 @@ function Checkout() {
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
       <div>
-        <div className="checkout container">
+        <div className="checkout container p-5 mt-5">
           <form className="needs-validation" noValidate="" onSubmit={handleCheckout}>
             <div className="row">
               <div className="col-md-6 order-md-1">
-                <h4 className="mb-3 fs-5">Contact information</h4>
+                <h4 className="mb-3 fs-5 ">Contact information</h4>
                 <div className="mb-3">
                   <label htmlFor="email">Email address</label>
                   <input
