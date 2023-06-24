@@ -38,6 +38,20 @@ export default ({ filterItems, setFilterItems }) => {
     }
   };
 
+  const handleRemoveFilters = () => {
+    console.log(filterItems);
+    const newFilterItems = filterItems.map((filter) => {
+      return {
+        ...filter,
+        options: filter.options.map((option) => {
+          return { ...option, active: false };
+        }),
+      };
+    });
+    setFilterItems(newFilterItems);
+    setSelected([]);
+  };
+
   return (
     <div className="filter-container bg-color p-3">
       <h1 className="py-2 mb-4" style={{ marginTop: "100px" }}>
@@ -76,6 +90,9 @@ export default ({ filterItems, setFilterItems }) => {
             ))
           : ""}
       </div>
+      <span className="cursor-pointer fw-bold" onClick={handleRemoveFilters}>
+        Remove filters
+      </span>
     </div>
   );
 };
