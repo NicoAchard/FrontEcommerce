@@ -14,6 +14,8 @@ function ProductsList({ filters }) {
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
 
+        const filterProductsByName = "";
+
         const activeFilters = filters.map((filter) => {
           return { ...filter, options: filter.options.find((option) => option.active === true) };
         });

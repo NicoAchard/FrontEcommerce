@@ -4,7 +4,7 @@ import { FaThList } from "react-icons/fa";
 export default (filterByName, setFilterByName, products) => {
   return (
     <div
-      className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3"
+      className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3, cursor-pointer"
       style={{ marginTop: "100px" }}
     >
       <div className="d-flex gap-2">
