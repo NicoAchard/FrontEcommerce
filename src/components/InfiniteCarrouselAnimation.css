@@ -4,11 +4,13 @@
   height: 30px; /* Adjust this value to your preference */
   overflow: hidden;
 }
-
+.featured-container-img {
+  overflow: hidden;
+  height: 200px;
+}
 .featured-line {
   display: flex;
-  animation: featured-animation 120s linear infinite;
-  animation-delay: -60s;
+  animation: featured-animation 60s linear infinite;
 }
 
 .featured-text {
@@ -21,18 +23,18 @@
 
 @keyframes featured-animation {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   25% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
   50% {
-    transform: translateX(-200%);
+    transform: translateX(-100%);
   }
   75% {
-    transform: translateX(-300%);
+    transform: translateX(-150%);
   }
   100% {
-    transform: translateX(-400%);
+    transform: translateX(-200%);
   }
 }

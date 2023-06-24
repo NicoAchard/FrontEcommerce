@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Carousel from "react-bootstrap/Carousel";
+
 import Product from "./ProductIem";
 import SkeletonProduct from "./SkeletonProduct";
+import InfiniteCarrouselAnimation from "./InfiniteCarrouselAnimation";
 
-export default ({ slice, categoryID, filterPrice, max200, range201to300, min301 }) => {
+export default ({ categoryID, interval, infinite }) => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -18,40 +21,27 @@ export default ({ slice, categoryID, filterPrice, max200, range201to300, min301 
         } else {
           setProducts(response.data);
         }
-        if (slice) {
-          setProducts(products.slice(0, slice));
-        }
-
-        if (filterPrice) {
-          setProducts(
-            products.filter((product) => {
-              if (max200 && product.price <= 200) {
-                return true;
-              } else if (range201to300 && product.price >= 201 && product.price <= 300) {
-                return true;
-              } else if (min301 && product.price > 300) {
-                return true;
-              }
-              return false;
-            }),
-          );
-        }
       } catch (error) {
         console.log(error);
       }
     }
     getProducts();
-  }, [categoryID, filterPrice, max200, range201to300, min301, products]);
-
-  return (
-    <div className="d-flex flex-wrap justify-content-around mt-5">
+  }, [categoryID]);
+  return !infinite ? (
+    <Carousel controls={false} indicators={false}>
       {products ? (
-        products.map((product) => <Product product={product} key={product.id} />)
+        products.map((product, index) => (
+          <Carousel.Item interval={interval || 5000} key={index}>
+            <Product product={product} key={product.id} carrousel={true} />
+          </Carousel.Item>
+        ))
       ) : (
         <div>
           <SkeletonProduct count={4} />
         </div>
       )}
-    </div>
+    </Carousel>
+  ) : (
+    products && <InfiniteCarrouselAnimation products={products} />
   );
 };

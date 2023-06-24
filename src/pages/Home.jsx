@@ -1,12 +1,12 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Categories from "../components/Categories";
-import ProductsList from "../components/ProductListCarrousel";
+import ProductListCarrousel from "../components/ProductListCarrousel";
 import Surfboards from "../components/Surfboards";
 import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
 import Banner from "../components/banner";
-import FeaturedAnimation from "../components/FeaturedAnimation";
+import InfiniteCarrouselAnimation from "../components/InfiniteCarrouselAnimation";
 import Header from "../components/Header";
 
 function Home() {
@@ -16,11 +16,12 @@ function Home() {
       <div style={{ marginTop: "4.5rem" }}>
         <Header />
         <div className="container home-container d-flex flex-column gap-5">
-          <FeaturedAnimation />
-          <ProductsList slice={3} />
+          <InfiniteCarrouselAnimation />
+          <ProductListCarrousel interval={1000} infinite={true} />
           <Banner />
           <Surfboards />
           {/* <CallToAction1 /> */}
+
           <Categories />
           {/* <CallToAction2 /> */}
         </div>

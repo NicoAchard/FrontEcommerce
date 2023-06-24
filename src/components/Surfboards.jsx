@@ -13,7 +13,7 @@ function Surfboards() {
           />
         </div>
         <div className="col-7 pe-0">
-          <ProductListCarrousel categoryID={4} slice={2} size="sm" />
+          <ProductListCarrousel categoryID={4} slice={2} size="sm" interval={3000} />
         </div>
       </div>
     </div>
