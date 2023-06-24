@@ -7,7 +7,7 @@ function Surfboards() {
       <div className="row">
         <div className="col-5 m-0 p-0">
           <img
-            src="src\img\master-the-waves.jpg"
+            src="src\img\master-the-waves2.jpg"
             alt="master-the-waves"
             className="img-fluid h-100"
           />

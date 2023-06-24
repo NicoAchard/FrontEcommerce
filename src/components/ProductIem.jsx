@@ -72,15 +72,16 @@ function Product({ product, carrousel }) {
     return (
       <>
         {product.photos.length > 1 ? (
-          <div className=" w-100">
+          <div className=" w-100 ">
             {product.photos.map(
               (photo, index) =>
                 index < 2 && (
                   <img
-                    className=" h-100"
+                    className=" h-100 cursor-pointer"
                     src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
                     alt={product.name}
                     key={index}
+                    onClick={() => handlerNavigateToProduct(product.slug)}
                   />
                 ),
             )}

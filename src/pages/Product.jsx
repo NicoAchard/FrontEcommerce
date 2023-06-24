@@ -62,12 +62,25 @@ export default () => {
 
     dispatch(TOGGLE_SHOWED());
   };
-  //TODO  Change Bootstrap icons for React Icons
+
+  const handlerBuyNow = (product) => {
+    dispatch(
+      ADD_PRODUCT({
+        id: product.id,
+        description: product.description,
+        name: product.name,
+        unitPrice: product.price,
+        qty: productCount,
+        img: product.photos,
+        stock: product.stock,
+      }),
+    );
+  };
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
         <NavBar />
-        <div className="container" style={{ marginTop: "6rem" }}>
+        <div className="container mb-4" style={{ marginTop: "6rem" }}>
           {product ? (
             <div className="d-flex flex-column gap-3" key={product.id}>
               <div className="d-flex gap-2 align-items-center">
@@ -154,7 +167,14 @@ export default () => {
                           </div>
                         </div>
                         <div className="col-6">
-                          <button className="btn btn-dark rounded-0 w-100">BUY NOW</button>
+                          <Link to="/checkout">
+                            <button
+                              onClick={() => handlerBuyNow(product)}
+                              className="btn btn-dark rounded-0 w-100"
+                            >
+                              BUY NOW
+                            </button>
+                          </Link>
                           <div className="text-start">
                             <p className="mb-2">
                               <Link
