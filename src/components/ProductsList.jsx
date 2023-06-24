@@ -14,6 +14,8 @@ function ProductsList({ filters }) {
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
 
+        const filterProductsByName = "";
+
         const activeFilters = filters.map((filter) => {
           return { ...filter, options: filter.options.find((option) => option.active === true) };
         });
@@ -48,7 +50,7 @@ function ProductsList({ filters }) {
   }, [filters]);
 
   return (
-    <div className="d-flex flex-wrap justify-content-around ">
+    <div className="d-flex flex-wrap justify-content-around mt-3">
       {products ? (
         products.map((product) => <Product product={product} key={product.id} />)
       ) : (

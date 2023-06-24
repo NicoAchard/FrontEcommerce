@@ -12,10 +12,10 @@ function Products() {
   // const location = useLocation();
   // const searchParams = new URLSearchParams(location.search);
   // const category = searchParams.get("category");
-
+  const [filterByName, setFilterByName] = useState("");
   const [filterItems, setFilterItems] = useState([
     {
-      tittle: "Prices",
+      title: "Prices",
       value: "price",
       prop: "range",
       options: [
@@ -34,18 +34,18 @@ function Products() {
           url: `${import.meta.env.VITE_API_URL}/categories`,
         });
         if (response.data.status === 200) {
-          const existCategories = filterItems.find((item) => item.tittle === "Categories");
+          const existCategories = filterItems.find((item) => item.title === "Categories");
           if (!existCategories) {
             const options = response.data.categories.map((category) => {
               return { name: category.name, value: category.id, active: false };
             });
 
-            const CategoriesOptions = {
-              tittle: "Categories",
+            const categoriesOptions = {
+              title: "Categories",
               value: "categoryId",
               options,
             };
-            return setFilterItems([...filterItems, CategoriesOptions]);
+            return setFilterItems([...filterItems, categoriesOptions]);
           }
         }
       } catch (error) {
@@ -71,7 +71,7 @@ function Products() {
                 <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />
               </div>
               <div className="col">
-                <FilterTopBar />
+                <FilterTopBar setFilterByName={setFilterByName} filterByName={filterByName} />
                 <ProductsList filters={filterItems} />
               </div>
             </div>

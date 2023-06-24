@@ -5,9 +5,9 @@ import { useState } from "react";
 export default ({ filterItems, setFilterItems }) => {
   const [selected, setSelected] = useState([]);
 
-  const handleSelectFilterOption = (FilterOptionTittle, FilterOptionSelected) => {
+  const handleSelectFilterOption = (FilterOptionTitle, FilterOptionSelected) => {
     const changeFilterOption = filterItems.map((item) =>
-      item.tittle === FilterOptionTittle
+      item.title === FilterOptionTitle
         ? {
             ...item,
             options: item.options.map((option) =>
@@ -20,21 +20,19 @@ export default ({ filterItems, setFilterItems }) => {
     );
     setFilterItems(changeFilterOption);
     if (selected.length > 0) {
-      const existOption = selected.find(
-        (selectedItem) => selectedItem.tittle === FilterOptionTittle,
-      );
+      const existOption = selected.find((selectedItem) => selectedItem.title === FilterOptionTitle);
       if (existOption) {
         const updateSelectedOptions = selected.map((selectedItem) =>
-          selectedItem.tittle === FilterOptionTittle
+          selectedItem.title === FilterOptionTitle
             ? { ...selectedItem, value: FilterOptionSelected }
             : selectedItem,
         );
         setSelected(updateSelectedOptions);
       } else {
-        setSelected([...selected, { tittle: FilterOptionTittle, value: FilterOptionSelected }]);
+        setSelected([...selected, { title: FilterOptionTitle, value: FilterOptionSelected }]);
       }
     } else {
-      setSelected([{ tittle: FilterOptionTittle, value: FilterOptionSelected }]);
+      setSelected([{ title: FilterOptionTitle, value: FilterOptionSelected }]);
     }
   };
 
@@ -65,18 +63,18 @@ export default ({ filterItems, setFilterItems }) => {
           ? filterItems.map((filterItem, index) => (
               <div key={index}>
                 <h4 className="d-flex justify-content-between mt-2">
-                  {filterItem.tittle} <BsChevronDown />
+                  {filterItem.title} <BsChevronDown />
                 </h4>
                 <ul className="list-unstyled">
                   {filterItem.options.map((option, index) => (
                     <li
                       key={index}
-                      onClick={() => handleSelectFilterOption(filterItem.tittle, option.name)}
+                      onClick={() => handleSelectFilterOption(filterItem.title, option.name)}
                       className={`filter-sidebar-item ${
                         selected.length > 0 &&
                         selected.find(
                           (selectedItem) =>
-                            selectedItem.tittle === filterItem.tittle &&
+                            selectedItem.title === filterItem.title &&
                             selectedItem.value === option.name,
                         ) &&
                         "text-decoration-underline"
