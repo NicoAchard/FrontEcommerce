@@ -1,26 +1,19 @@
 import "./Surfboards.css";
-import ProductsList from "./ProductsList";
+import ProductListCarrousel from "./ProductListCarrousel";
 
 function Surfboards() {
   return (
-    <div className="container surfboards-container" style={{ width: "100%" }}>
+    <div className="container surfboards-container">
       <div className="row">
-        <div className="col-md-6 m-0 p-0">
+        <div className="col-5 m-0 p-0">
           <img
             src="src\img\master-the-waves.jpg"
             alt="master-the-waves"
-            style={{
-              height: "550px",
-            }}
+            className="img-fluid h-100"
           />
         </div>
-        <div
-          className="col-md-6 pe-0"
-          style={{
-            height: "550px",
-          }}
-        >
-          <ProductsList categoryID={4} slice={2} />
+        <div className="col-7 pe-0">
+          <ProductListCarrousel categoryID={4} slice={2} size="sm" />
         </div>
       </div>
     </div>
