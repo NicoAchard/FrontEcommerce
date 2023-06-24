@@ -48,7 +48,7 @@ function ProductsList({ filters }) {
   }, [filters]);
 
   return (
-    <div className="d-flex flex-wrap justify-content-around ">
+    <div className="d-flex flex-wrap justify-content-around mt-3">
       {products ? (
         products.map((product) => <Product product={product} key={product.id} />)
       ) : (
