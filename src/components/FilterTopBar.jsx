@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { BsFillGrid3X3GapFill, BsSearch } from "react-icons/bs";
 import { FaThList } from "react-icons/fa";
 
-export default (filterByName, setFilterByName, products) => {
+export default ({ setFilterByName }) => {
+  const [searchItem, setSearchItem] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setFilterByName(searchItem);
+  };
   return (
     <div
       className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3, cursor-pointer"
@@ -16,7 +22,7 @@ export default (filterByName, setFilterByName, products) => {
         </div>
       </div>
 
-      <form className="d-flex w-100 align-items-center justify-content-end">
+      <form className="d-flex w-100 align-items-center justify-content-end" onSubmit={handleSubmit}>
         <label
           htmlFor="product_name"
           className="bg-light rounded border d-flex align-items-center p-2  rounded-end-0 h-100"
@@ -29,8 +35,10 @@ export default (filterByName, setFilterByName, products) => {
           name="product_name"
           className="form-control w-50 border-start-0 p-2 rounded-start-0 h-100"
           placeholder="Product name.."
-          value={filterByName}
-          onChange={(e) => setFilterByName(e.target.value)}
+          value={searchItem}
+          onChange={(event) => {
+            setSearchItem(event.target.value);
+          }}
         />
       </form>
     </div>

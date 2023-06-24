@@ -72,7 +72,7 @@ function Products() {
               </div>
               <div className="col">
                 <FilterTopBar setFilterByName={setFilterByName} filterByName={filterByName} />
-                <ProductsList filters={filterItems} />
+                <ProductsList filters={filterItems} filterByName={filterByName} />
               </div>
             </div>
           </div>

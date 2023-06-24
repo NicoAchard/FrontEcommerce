@@ -3,7 +3,7 @@ import axios from "axios";
 import Product from "./ProductIem";
 import SkeletonProduct from "./SkeletonProduct";
 
-function ProductsList({ filters }) {
+function ProductsList({ filters, filterByName }) {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -13,14 +13,18 @@ function ProductsList({ filters }) {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/products`,
         });
-
-        const filterProductsByName = "";
+        let filteredList = response.data;
+        if (filterByName) {
+          filteredList = filteredList.filter(
+            (product) => product.name.toLowerCase().indexOf(filterByName.toLowerCase()) !== -1,
+          );
+        }
 
         const activeFilters = filters.map((filter) => {
           return { ...filter, options: filter.options.find((option) => option.active === true) };
         });
         if (activeFilters.find((filter) => filter.options !== undefined)) {
-          const filteredProducts = response.data.filter((product) => {
+          const filteredProducts = filteredList.filter((product) => {
             let returnProduct = product;
             activeFilters.forEach((filter) => {
               if (filter.options !== undefined) {
@@ -40,14 +44,14 @@ function ProductsList({ filters }) {
           });
           return setProducts(filteredProducts);
         } else {
-          return setProducts(response.data);
+          return setProducts(filteredList);
         }
       } catch (error) {
         console.log(error);
       }
     }
     getProducts();
-  }, [filters]);
+  }, [filters, filterByName]);
 
   return (
     <div className="d-flex flex-wrap justify-content-around mt-3">
