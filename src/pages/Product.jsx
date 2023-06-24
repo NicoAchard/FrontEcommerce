@@ -76,12 +76,11 @@ export default () => {
       }),
     );
   };
-  //TODO  Change Bootstrap icons for React Icons
   return (
     <div className="d-flex flex-column min-vh-100">
       <div>
         <NavBar />
-        <div className="container" style={{ marginTop: "6rem" }}>
+        <div className="container mb-4" style={{ marginTop: "6rem" }}>
           {product ? (
             <div className="d-flex flex-column gap-3" key={product.id}>
               <div className="d-flex gap-2 align-items-center">
