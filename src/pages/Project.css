@@ -1,6 +1,6 @@
 .header {
   height: 90vh;
-  padding-top: 45vh;
+  padding-top: 30vh;
   z-index: 1;
   padding-left: 9vw;
   padding-right: 5vw;
@@ -16,6 +16,10 @@
   position: absolute;
   z-index: -1;
   padding: 0;
+}
+
+.header-image {
+  opacity: 0.6;
 }
 
 .project-container h1 {
