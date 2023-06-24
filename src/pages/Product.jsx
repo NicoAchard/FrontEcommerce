@@ -83,17 +83,18 @@ export default () => {
               </div>
               <div className="container">
                 <div className="row mx-4 gap-3">
-                  <div className="col-4 d-flex flex-column border p-0 mb-4 align-items-center">
+                  <div className="col-4 d-flex flex-column  p-0  align-items-center position-relative ">
+                    <i className=" bi bi-heart position-absolute top-0 end-0 mx-1 "></i>
                     <img
-                      className="d-block img-fluid"
+                      className="d-block img-fluid border-bottom border-3"
                       src={`${import.meta.env.VITE_API_IMG}/${mainProductImg}`}
                       alt={product.name}
                     />
                     {product.photos.length > 1 && (
-                      <div className="d-flex border-top w-100 gap-2">
+                      <div className="d-flex  w-100 gap-2 mt-2">
                         {product.photos.map((photo) => {
                           return (
-                            <div className="my-2" key={photo.url}>
+                            <div className=" mx-auto" key={photo.url}>
                               <img
                                 className="img-fluid img-product-secondary"
                                 src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
