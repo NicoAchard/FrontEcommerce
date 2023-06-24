@@ -7,13 +7,13 @@ function Surfboards() {
       <div className="row">
         <div className="col-5 m-0 p-0">
           <img
-            src="src\img\master-the-waves.jpg"
+            src="src\img\master-the-waves2.jpg"
             alt="master-the-waves"
             className="img-fluid h-100"
           />
         </div>
         <div className="col-7 pe-0">
-          <ProductListCarrousel categoryID={4} slice={2} size="sm" interval={3000} />
+          <ProductListCarrousel categoryID={4} interval={3000} count={2} />
         </div>
       </div>
     </div>

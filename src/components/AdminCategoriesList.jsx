@@ -16,7 +16,9 @@ export default () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCategories(response.data);
+      if (response.data.status === 200) {
+        setCategories(response.data.categories);
+      }
     };
     listCategories();
   }, []);

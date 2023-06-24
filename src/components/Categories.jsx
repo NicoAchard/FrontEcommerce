@@ -17,7 +17,7 @@ function Categories() {
       <div className="d-flex " style={{ width: "100%", height: "650px" }}>
         <div className=" category">
           <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-            <h4>Skateboards</h4>
+            <h4>SKATEBOARDS</h4>
           </div>
           <img
             src="src\img\category-skate.jpg"
@@ -29,7 +29,7 @@ function Categories() {
         </div>
         <div className="category">
           <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-            <h4>Longboards</h4>
+            <h4>LONGBOARDS</h4>
           </div>
           <img
             src="src\img\category-longboard.jpg"
@@ -41,7 +41,7 @@ function Categories() {
         </div>
         <div className="category">
           <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-            <h4>Cruisers</h4>
+            <h4>CRUISERS</h4>
           </div>
           <img
             src="src\img\category-cruiser.jpg"
@@ -53,7 +53,7 @@ function Categories() {
         </div>
         <div className="category">
           <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-            <h4>Surfboards</h4>
+            <h4>SURFBOARDS</h4>
           </div>
           <img
             src="src\img\category-surf.jpg"

@@ -4,6 +4,9 @@ import DashboardCard from "../components/DashboardCard";
 import DashboardPopular from "../components/DashboardPopular";
 import DashboardUsers from "../components/DashboardUsers";
 import SalesChart from "../components/SalesChart";
+import orders from "../img/order.png";
+import users from "../img/perfil.png";
+import products from "../img/user.png";
 import "./Dashboard.css";
 
 export default () => (
@@ -17,9 +20,9 @@ export default () => (
             <div className="d-flex px-1 mb-4">
               <div className="center-space d-flex flex-column">
                 <div className="cards d-flex w-100 mb-4">
-                  <DashboardCard url="orders" title="Orders" icon="src\img\order.png" />
-                  <DashboardCard url="users" title="Users" icon="src\img\user.png" />
-                  <DashboardCard url="products" title="Products" icon="src\img\skateboard.png" />
+                  <DashboardCard url="orders" title="Orders" icon={orders} />
+                  <DashboardCard url="users" title="Users" icon={users} />
+                  <DashboardCard url="products" title="Products" icon={products} />
                 </div>
                 <SalesChart />
               </div>

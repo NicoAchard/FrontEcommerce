@@ -19,11 +19,13 @@ function Product({ product, carrousel }) {
   const handlerNavigateToProduct = (productSlug) => {
     navigate(`/product/${productSlug}`);
   };
+
   if (!carrousel) {
     return (
       <Card
         style={{ width: "18rem", border: "none", cursor: "pointer" }}
         onClick={() => handlerNavigateToProduct(product.slug)}
+        className="d-flex gap-4"
       >
         {product.photos.length > 1 ? (
           <Carousel
@@ -54,13 +56,15 @@ function Product({ product, carrousel }) {
         )}
 
         <Card.Body
-          className="d-flex flex-column align-items-center justify-content-center"
-          style={{ height: "150px", marginBottom: "15px" }}
+          className="d-flex flex-column p-0 justify-content-center align-items-center  h-50"
+          style={{ height: "150px" }}
         >
           <div className="title-container">
-            <Card.Title className="text-center product-title">{product.name}</Card.Title>
+            <Card.Title className="text-center product-title fw-normal  ">
+              {product.name.length > 25 ? `${product.name.slice(0, 25)}...` : product.name}
+            </Card.Title>
           </div>
-          <Card.Text className="text-danger font-weight-bold">{product.price} USD</Card.Text>
+          <Card.Text className="product-price text-center">{product.price} USD</Card.Text>
         </Card.Body>
       </Card>
     );
@@ -68,15 +72,16 @@ function Product({ product, carrousel }) {
     return (
       <>
         {product.photos.length > 1 ? (
-          <div className=" w-100">
+          <div className=" w-100 ">
             {product.photos.map(
               (photo, index) =>
                 index < 2 && (
                   <img
-                    className=" h-100"
+                    className=" h-100 cursor-pointer"
                     src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
                     alt={product.name}
                     key={index}
+                    onClick={() => handlerNavigateToProduct(product.slug)}
                   />
                 ),
             )}

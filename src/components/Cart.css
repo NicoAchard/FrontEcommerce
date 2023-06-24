@@ -16,7 +16,8 @@
 
 .cart {
   width: 35vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: fixed;
   background-color: white;
   z-index: 3; /* More than 2 - 2 is the z-Index of the Navbar*/
