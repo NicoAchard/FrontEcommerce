@@ -1,9 +1,15 @@
-import { useState } from "react";
 import { BsFillGrid3X3GapFill, BsSearch } from "react-icons/bs";
+import { ToastContainer, toast } from "react-toastify";
 import { FaThList } from "react-icons/fa";
+import { useState } from "react";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default ({ setFilterByName }) => {
   const [searchItem, setSearchItem] = useState("");
+
+  const notify = () => toast("This functionality is under development");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setFilterByName(searchItem);
@@ -13,12 +19,17 @@ export default ({ setFilterByName }) => {
       className="d-flex gap-2 w-100 justify-content-between border-bottom pb-3, cursor-pointer"
       style={{ marginTop: "100px" }}
     >
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <div className="d-flex gap-2">
         <div className="bg-light p-2 rounded">
-          <BsFillGrid3X3GapFill size={30} />
+          <BsFillGrid3X3GapFill size={30} onClick={notify} />
         </div>
         <div className=" p-2 rounded">
-          <FaThList size={30} />
+          <FaThList size={30} onClick={notify} />
         </div>
       </div>
 

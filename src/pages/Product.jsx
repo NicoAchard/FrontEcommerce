@@ -1,23 +1,29 @@
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { ADD_PRODUCT, TOGGLE_SHOWED } from "../redux/cartSlice";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./Product.css";
 
 export default () => {
   const [productCount, setProductCount] = useState(1);
   const [mainProductImg, setMainProductImg] = useState();
   const [product, setProduct] = useState(null);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
+
+  const notify = () => toast("This functionality is under development");
+
   useEffect(() => {
     async function getProduct() {
       try {
@@ -97,7 +103,15 @@ export default () => {
               <div className="container">
                 <div className="row mx-4 gap-3">
                   <div className="col-4 d-flex flex-column  p-0  align-items-center position-relative ">
-                    <i className=" bi bi-heart position-absolute top-0 end-0 mx-1 "></i>
+                    <i
+                      className=" bi bi-heart position-absolute top-0 end-0 mx-1 cursor-pointer"
+                      onClick={notify}
+                    ></i>
+                    <ToastContainer
+                      theme="dark"
+                      pauseOnFocusLoss={false}
+                      progressStyle={{ backgroundColor: "#52C9B0" }}
+                    />
                     <img
                       className="d-block img-fluid border-bottom border-3"
                       src={`${import.meta.env.VITE_API_IMG}/${mainProductImg}`}
@@ -205,7 +219,6 @@ export default () => {
           )}
         </div>
       </div>
-
       <Footer />
     </div>
   );
