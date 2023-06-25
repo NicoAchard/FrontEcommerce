@@ -28,33 +28,53 @@ function Project() {
         </div>
         <div className="squares row gap-3 d-flex justify-content-center mx-3">
           <div className="square col-lg-3 m-2 border rounded">
-            <h4>Duration</h4>
+            <div className="row align-items-center justify-content-between">
+              <div className="col-auto">
+                <h4>Duration</h4>
+              </div>
+              <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="icon-square">
+                  <i className="fs-4 bi bi-clock-fill"></i>
+                </div>
+              </div>
+            </div>
             <p>
               Overall, this project was built in 3 weeks time, during June 2023. It was divided into
               3 sprints (Scrum) lasting one week each.
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
-            <h4>Technologies</h4>
+            <div className="row align-items-center justify-content-between">
+              <div className="col-auto">
+                <h4>Stack</h4>
+              </div>
+              <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="icon-square">
+                  <i className="fs-4 bi bi-tools"></i>
+                </div>
+              </div>
+            </div>
             <p>
-              For the Front-End of the site, this application was developed in React, using
-              Vite-Latest. On the other hand, for the Back-End, a REST API was made using Node.js,
+              Front-End: full React, using Vite-Latest. Back-End, a REST API was made using Node.js,
               Express, SQL, and Git/GitHub.
             </p>
           </div>
           <div className="square col-lg-3 m-2 border rounded">
-            <h4>Methodology</h4>
-            <p>
-              For the organization of tasks during the project, the Miro platform was used. This
-              allowed each member of the team to permanently be aware of the status of the project
-              as well as the task assignment and the MVP`s for each sprint.
-            </p>
-          </div>
-          <div className=" team  d-flex flex-column align-items-center justify-content-center gap-3 mx-auto mx-2 ">
-            <div className="ps-5 text-center">
-              <h2>The Team</h2>
-              <p>We introduce you to the team behind the Hey Bro! website</p>
+            <div className="row align-items-center justify-content-between">
+              <div className="col-auto">
+                <h4>Tasks</h4>
+              </div>
+              <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="icon-square">
+                  <i className="fs-4 bi bi-kanban"></i>
+                </div>
+              </div>
             </div>
+            <p>
+              Miro platform was used for the organization of tasks. This allowed each member of the
+              team to permanently be aware of the status of the project as well as the task
+              assignment and the MVP's for each sprint.
+            </p>
           </div>
         </div>
       </div>
@@ -71,8 +91,6 @@ function Project() {
               <h5 className="card-title">Iván Pintos</h5>
               <div className="d-flex flex-column card-text">
                 <div>
-                  {" "}
-                  <i className="bi bi-google"></i>
                   <span className="text-secondary"> ivanleonpintos@gmail.com</span>
                   <hr />
                 </div>
@@ -101,8 +119,6 @@ function Project() {
               <h5 className="card-title">Diego Valiente</h5>
               <div className="d-flex flex-column card-text">
                 <div>
-                  {" "}
-                  <i className="bi bi-google"></i>
                   <span className="text-secondary"> dievaliente@gmail.com</span>
                   <hr />
                 </div>
@@ -132,7 +148,6 @@ function Project() {
               <h5 className="card-title">Ramiro Vidal</h5>
               <div className="d-flex flex-column card-text">
                 <div>
-                  <i className="bi bi-google"></i>
                   <span className="text-secondary"> ramavidal96@gmail.com</span>
                   <hr />
                 </div>
@@ -166,7 +181,6 @@ function Project() {
               <h5 className="card-title">Nicolás Achard</h5>
               <div className="d-flex flex-column card-text">
                 <div>
-                  <i className="bi bi-google"></i>
                   <span className="text-secondary"> achardn@gmail.com</span>
                   <hr />
                 </div>
