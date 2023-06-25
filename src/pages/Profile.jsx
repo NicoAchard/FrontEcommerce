@@ -6,12 +6,16 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
+import "react-toastify/dist/ReactToastify.css";
 function Profile() {
   const user = useSelector((state) => state.user);
+
   let userData = null;
   if (user) {
     userData = useSelector((state) => state.user.data);
   }
+
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     if (userData) {
@@ -58,13 +62,14 @@ function Profile() {
             </div>
             <div className="col-8 d-flex align-items-center">
               <img alt="Profile" className="rounded-circle profile-image me-2" id="photo" />
-              <button
-                className="btn btn-sm btn-outline-secondary"
-                type="button"
-                onClick={handleNotify}
-              >
+              <button className="btn btn-sm btn-outline-secondary" type="button">
                 Change Photo
               </button>
+              <ToastContainer
+                theme="dark"
+                pauseOnFocusLoss={false}
+                progressStyle={{ backgroundColor: "#52C9B0" }}
+              />
             </div>
           </div>
           <hr />

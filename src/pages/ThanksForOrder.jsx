@@ -1,15 +1,22 @@
-import Footer from "../components/Footer";
-import NavBar from "../components/Navbar";
-import "./ThanksForOrder.css";
+import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
+import axios from "axios";
+
+import Footer from "../components/Footer";
+import NavBar from "../components/Navbar";
+
+import "./ThanksForOrder.css";
+import "react-toastify/dist/ReactToastify.css";
+
 function ThanksForOrder() {
   const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.user.token);
 
   const [productsOrder, setProductsOrder] = useState(null);
-  const token = useSelector((state) => state.user.token);
+
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const userOrder = async (event) => {
@@ -34,7 +41,11 @@ function ThanksForOrder() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
-
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <div className="p-5 mt-5">
         <div className="row">
           <p style={{ fontSize: "0.9rem", color: "blue" }}>Payment successful</p>
@@ -137,7 +148,9 @@ function ThanksForOrder() {
                     <h6>Shipping updates</h6>
                     <p style={{ color: "gray" }}>{user.data.email}</p>
                     <p style={{ color: "gray" }}>{user.data.phone_number}</p>
-                    <p className="cursor-pointer text-primary">Edit</p>
+                    <p className="cursor-pointer text-primary" onClick={notify}>
+                      Edit
+                    </p>
                   </div>
                 </div>
               </div>
