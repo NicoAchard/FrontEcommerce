@@ -52,7 +52,7 @@ export default ({ filterItems, setFilterItems }) => {
 
   return (
     <div className="filter-container bg-color p-3">
-      <h1 className="py-2 mb-4" style={{ marginTop: "100px" }}>
+      <h1 className="py-2 mb-4" style={{ marginTop: "65px" }}>
         Filter Options
       </h1>
       <div
@@ -88,9 +88,11 @@ export default ({ filterItems, setFilterItems }) => {
             ))
           : ""}
       </div>
-      <span className="cursor-pointer fw-bold" onClick={handleRemoveFilters}>
-        Remove filters
-      </span>
+      <div className="text-center">
+        <span className="cursor-pointer fw-bold fs-5 " onClick={handleRemoveFilters}>
+          Remove all filters
+        </span>
+      </div>
     </div>
   );
 };

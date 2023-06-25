@@ -57,7 +57,7 @@ function ProductsList({ filters, filterByName }) {
   }, [filters, filterByName]);
 
   return (
-    <div className="d-flex flex-wrap w-100 mt-3 h-100 ">
+    <div className="d-flex flex-wrap w-100 mt-3 h-100 border-top pt-3">
       {products ? (
         products.length > 0 ? (
           products.map((product) => <Product product={product} key={product.id} />)
