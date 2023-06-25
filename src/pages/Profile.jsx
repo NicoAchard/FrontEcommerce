@@ -15,8 +15,6 @@ function Profile() {
     userData = useSelector((state) => state.user.data);
   }
 
-  const notify = () => toast("This functionality is under development");
-
   useEffect(() => {
     if (userData) {
       document.getElementById("firstname").value = userData.firstname;
@@ -62,7 +60,11 @@ function Profile() {
             </div>
             <div className="col-8 d-flex align-items-center">
               <img alt="Profile" className="rounded-circle profile-image me-2" id="photo" />
-              <button className="btn btn-sm btn-outline-secondary" type="button">
+              <button
+                className="btn btn-sm btn-outline-secondary"
+                type="button"
+                onClick={handleNotify}
+              >
                 Change Photo
               </button>
               <ToastContainer
