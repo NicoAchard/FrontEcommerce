@@ -1,8 +1,8 @@
+import React from "react";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
-// import { SET_USER } from "../redux/userSlice";
-
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -24,10 +24,23 @@ function Profile() {
     }
   }, [userData]);
 
+  const handleNotify = () => {
+    toast.error("This feature has not been implemented yet", {
+      position: "top-right",
+      autoClose: 4500,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
     <div className="">
       <Navbar />
-
+      <ToastContainer />
       <div
         className="d-flex  flex-column justify-content-center align-items-center h-100 "
         style={{ height: "100vh", marginTop: "4.5rem" }}
@@ -45,7 +58,11 @@ function Profile() {
             </div>
             <div className="col-8 d-flex align-items-center">
               <img alt="Profile" className="rounded-circle profile-image me-2" id="photo" />
-              <button className="btn btn-sm btn-outline-secondary" type="button">
+              <button
+                className="btn btn-sm btn-outline-secondary"
+                type="button"
+                onClick={handleNotify}
+              >
                 Change Photo
               </button>
             </div>
