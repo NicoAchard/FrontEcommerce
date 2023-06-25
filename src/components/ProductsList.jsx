@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { MdOutlineSearchOff } from "react-icons/md";
 import axios from "axios";
+
 import Product from "./ProductIem";
 import SkeletonProduct from "./SkeletonProduct";
 
+import img_not_found from "../img/filter_not_found.jpg";
 function ProductsList({ filters, filterByName }) {
   const [products, setProducts] = useState(null);
 
@@ -54,9 +57,31 @@ function ProductsList({ filters, filterByName }) {
   }, [filters, filterByName]);
 
   return (
-    <div className="d-flex flex-wrap justify-content-around mt-3">
+    <div className="d-flex flex-wrap w-100 mt-3 h-100 ">
       {products ? (
-        products.map((product) => <Product product={product} key={product.id} />)
+        products.length > 0 ? (
+          products.map((product) => <Product product={product} key={product.id} />)
+        ) : (
+          <div className="d-flex border flex-column flex-sm-row justify-content-center align-items-center w-100 h-100 gap-4 p-1 p-md-2  p-lg-4 ">
+            <img src={img_not_found} className="pe-none img_filter" alt="Products not found" />
+            <div className="d-flex flex-column gap-2">
+              <span className=" fw-medium title-responsive">
+                Sorry, no products were found with the selected filters.
+              </span>
+              <ul>
+                <li className="text-responsive">
+                  Try again with <b>different filter options</b>
+                </li>
+                <li className="text-responsive">
+                  Please <b>check the spelling</b> of the word
+                </li>
+                <li className="text-responsive">
+                  Try using <b>more generic terms</b> or fewer words
+                </li>
+              </ul>
+            </div>
+          </div>
+        )
       ) : (
         <div>
           <SkeletonProduct count={4} />

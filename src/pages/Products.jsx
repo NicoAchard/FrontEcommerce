@@ -67,10 +67,10 @@ function Products() {
         <div>
           <div className="container">
             <div className="row">
-              <div className="col-3">
+              <div className="d-none d-md-block col-3">
                 <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />
               </div>
-              <div className="col">
+              <div className="col h-100 p-4">
                 <FilterTopBar setFilterByName={setFilterByName} filterByName={filterByName} />
                 <ProductsList filters={filterItems} filterByName={filterByName} />
               </div>
