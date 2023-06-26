@@ -3,8 +3,11 @@ import { BsHandbag } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { BiCategory } from "react-icons/bi";
-import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
+
+import "./AdminSidebar.css";
+
+import heybroLogo from "../img/LogoHey.svg";
 
 export default () => (
   <div className="col-2 p-0 vh-100 position-fixed">
@@ -13,7 +16,7 @@ export default () => (
         className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}
       >
-        HEY! BOARDS
+        <img src={heybroLogo} alt="Logo hey boards" className="hey-bro-nav" />
       </h1>
       <div className="d-flex flex-column py-2 gap-1 h-100" style={{ backgroundColor: "#292A2D" }}>
         <div className="border-bottom border-0 p-3">
