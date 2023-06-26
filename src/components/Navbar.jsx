@@ -10,6 +10,7 @@ import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/LogoHey.svg";
 import profilePicture from "../img/perfil.png";
 import background from "../img/bg_dark_grafitti.jpg";
+import { CgMenuLeftAlt } from "react-icons/cg";
 import "./Navbar.css";
 
 function NavBar() {
@@ -59,7 +60,9 @@ function NavBar() {
                       alt="Profile"
                       className="rounded-circle profile-image"
                     />
-                  ) : null
+                  ) : (
+                    <CgMenuLeftAlt />
+                  )
                 }
                 id="basic-nav-dropdown"
                 align="end"
