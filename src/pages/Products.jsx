@@ -10,9 +10,9 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 function Products() {
-  // const location = useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-  // const category = searchParams.get("category");
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const categoryParam = Number(searchParams.get("category"));
 
   const [showFilterSidebar, setShowFilterSidebar] = useState(false);
   const [filterByName, setFilterByName] = useState("");
@@ -29,6 +29,7 @@ function Products() {
       ],
     },
   ]);
+
   useEffect(() => {
     const getCategories = async () => {
       try {
@@ -36,11 +37,16 @@ function Products() {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/categories`,
         });
+
         if (response.data.status === 200) {
           const existCategories = filterItems.find((item) => item.title === "Categories");
           if (!existCategories) {
             const options = response.data.categories.map((category) => {
-              return { name: category.name, value: category.id, active: false };
+              return {
+                name: category.name,
+                value: category.id,
+                active: !isNaN(categoryParam) && categoryParam === category.id ? true : false,
+              };
             });
 
             const categoriesOptions = {
@@ -57,11 +63,6 @@ function Products() {
     };
     getCategories();
   }, []);
-  // useEffect(() => {
-  //   if (!isNaN(category)) {
-  //     setFilterItems(Number(category));
-  //   }
-  // }, [category]);
 
   return (
     <div className="d-flex flex-column min-vh-100">
