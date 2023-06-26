@@ -83,7 +83,7 @@ function SignUp() {
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column h-100 align-items-center justify-content-center h-custom-2 px-5 ms-xl-4  pt-5 pt-xl-0 mt-xl-n5">
               <div className="d-flex align-items-center gap-2 mb-4">
-                <img src="src\img\heybroInvert.png" alt="Logo" className="hey-bro-nav" />
+                <img src="src\img\LogoHey.svg" alt="Logo" className="hey-bro-nav bg-dark mb-4" />
               </div>
               <form onSubmit={handlerSubmit}>
                 <h3 className="fw-normal" style={{ letterSpacing: "1px" }}>
