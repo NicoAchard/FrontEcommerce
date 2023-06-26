@@ -89,7 +89,7 @@ export default () => {
         <div className="container mb-4" style={{ marginTop: "6rem" }}>
           {product ? (
             <div className="d-flex flex-column gap-3" key={product.id}>
-              <div className="d-flex gap-2 align-items-center">
+              <div className=" gap-2 align-items-center d-none d-sm-flex">
                 <span onClick={() => navigate("/")} className="nav-product-item-secondary">
                   Home
                 </span>
@@ -102,23 +102,25 @@ export default () => {
               </div>
               <div className="container">
                 <div className="row mx-4 gap-3">
-                  <div className="col-4 d-flex flex-column  p-0  align-items-center position-relative ">
-                    <i
-                      className=" bi bi-heart position-absolute top-0 end-0 mx-1 cursor-pointer"
-                      onClick={notify}
-                    ></i>
-                    <ToastContainer
-                      theme="dark"
-                      pauseOnFocusLoss={false}
-                      progressStyle={{ backgroundColor: "#52C9B0" }}
-                    />
+                  <div className="col-12 col-md-6  d-flex  flex-column p-0 align-items-center position-relative ">
+                    <div>
+                      <i
+                        className=" bi bi-heart position-absolute top-0 end-0 mx-1 cursor-pointer"
+                        onClick={notify}
+                      ></i>
+                      <ToastContainer
+                        theme="dark"
+                        pauseOnFocusLoss={false}
+                        progressStyle={{ backgroundColor: "#52C9B0" }}
+                      />
+                    </div>
                     <img
-                      className="d-block img-fluid border-bottom border-3"
+                      className="d-block img-fluid border-bottom border-3 pb-3 mb-3"
                       src={`${import.meta.env.VITE_API_IMG}/${mainProductImg}`}
                       alt={product.name}
                     />
                     {product.photos.length > 1 && (
-                      <div className="d-flex  w-100 gap-2 mt-2">
+                      <div className="d-flex h-100  w-100 gap-2 mt-2">
                         {product.photos.map((photo) => {
                           return (
                             <div className=" mx-auto" key={photo.url}>
@@ -136,15 +138,15 @@ export default () => {
                   </div>
                   <div className="col d-flex flex-column gap-2">
                     <div className="d-flex flex-column gap-2">
-                      <h1> {product.name}</h1>
-                      <span>{product.description}</span>
+                      <h1 className="title-responsive h-100"> {product.name}</h1>
+                      <span className="d-md-block text-responsive">{product.description}</span>
                       <span>
                         <b>In stock:</b> <span> {product.stock}</span>
                       </span>
                     </div>
                     <div className="d-flex align-items-end justify-content-end flex-column gap-2">
-                      <div className="d-flex gap-2">
-                        <div className="border d-flex gap-2 ">
+                      <div className="d-flex flex-column gap-2 w-100">
+                        <div className="border d-flex gap-2  justify-content-between">
                           <button className="btn" onClick={handlerDecrementCountProduct}>
                             -
                           </button>
@@ -162,15 +164,14 @@ export default () => {
                       </div>
                       <h6>Total: {`$${product.price * productCount}.00`}</h6>
 
-                      <div className="row d-flex justify-content-between ">
-                        <div className="col-4 ">
+                      <div className="row d-flex flex-column flex-md-row justify-content-between ">
+                        <div className="col-12 col-md-6">
                           <div className="d-flex justify-content-between  ">
                             <div>
                               <h2>${product.price}.00</h2>
 
                               <div>
                                 <p className="text-success mb-0">
-                                  {" "}
                                   <i className="bi bi-arrow-return-left"></i> Free return
                                 </p>
                                 <p style={{ color: "gray", fontSize: "0.8rem" }}>
@@ -180,7 +181,7 @@ export default () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-6">
+                        <div className="col-12 col-md-6">
                           <Link to="/checkout">
                             <button
                               onClick={() => handlerBuyNow(product)}

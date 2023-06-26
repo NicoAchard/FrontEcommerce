@@ -5,6 +5,10 @@
   z-index: 2;
   border: white solid 2px;
   color: white;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
 }
 .cart-icon-fixed:hover {
   color: #00d4a6;

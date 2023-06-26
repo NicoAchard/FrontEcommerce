@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { MdOutlineSearchOff } from "react-icons/md";
 import axios from "axios";
 
 import Product from "./ProductIem";
@@ -57,7 +56,7 @@ function ProductsList({ filters, filterByName }) {
   }, [filters, filterByName]);
 
   return (
-    <div className="d-flex flex-wrap w-100 mt-3 h-100 border-top pt-3">
+    <div className="d-flex flex-wrap w-100 mt-3 h-100 border-top pt-3 justify-content-center justify-content-md-between">
       {products ? (
         products.length > 0 ? (
           products.map((product) => <Product product={product} key={product.id} />)
