@@ -29,7 +29,7 @@ function Project() {
           />
           <div className="fade-overlay-2 position-absolute" />
           <div ref={introductionRef} className="header col-md-7 text-black ms-4">
-            <h1>About this project</h1>
+            <h1>About us</h1>
             <p className="fs-5 ">
               Welcome to the Hey Bro! e-commerce website. This project was developed under the
               context of the final integrative test of the Hack Academy Web Development Bootcamp.
