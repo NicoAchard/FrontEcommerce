@@ -41,7 +41,7 @@ function NavBar() {
                 Products
               </Link>
               <Link to="/about-this-project" className=" text-decoration-none text-white">
-                About us
+                About this project
               </Link>
             </Nav>
             <Nav>
@@ -78,10 +78,12 @@ function NavBar() {
                   </NavDropdown.Item>
                 )}
 
-                <NavDropdown.Item href="/profile" className="">
+                <NavDropdown.Item href="/profile" className="text-black">
                   Profile
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
+                <NavDropdown.Item href="/orders" className="text-black">
+                  Orders
+                </NavDropdown.Item>
                 {user && (
                   <>
                     <NavDropdown.Divider />
