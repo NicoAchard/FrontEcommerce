@@ -10,7 +10,6 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  padding-top: 20px;
 }
 .img_filter {
   height: 10rem;
@@ -25,6 +24,13 @@
 }
 .offcanvas-sidebar-active {
   left: 0vw;
+}
+
+.filter-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1));
 }
 
 @media screen and (min-width: 0px) and (max-width: 320px) {

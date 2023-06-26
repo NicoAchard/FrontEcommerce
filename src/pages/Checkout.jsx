@@ -1,21 +1,24 @@
 import NavBar from "../components/./Navbar";
 import Footer from "../components/Footer";
 import "./Checkout.css";
-
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 function Checkout() {
   const products = useSelector((state) => state.cart.products);
   const token = useSelector((state) => state.user.token);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   async function handleCheckout(event) {
     dispatch(DELETE_CART());
     event.preventDefault();
+    setIsLoading(true);
     try {
       const response = await axios({
         method: "POST",
@@ -30,7 +33,11 @@ function Checkout() {
     } catch (error) {
       console.log(error);
     }
-    navigate("/thanks");
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/thanks");
+    }, 3000);
   }
   const shippingPrice = 5;
   const taxPrice = 15;
@@ -281,8 +288,12 @@ function Checkout() {
                     </strong>
                   </li>
                 </ul>
-                <button className="btn btn-dark btn-lg btn-block w-100" type="submit">
-                  Confirm order
+                <button
+                  className="btn btn-dark btn-lg btn-block w-100"
+                  type="submit"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Processing your order..." : "Confirm Order"}
                 </button>
               </div>
             </div>
@@ -295,6 +306,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-{
-}
