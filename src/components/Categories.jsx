@@ -20,7 +20,7 @@ function Categories() {
             <h4>SKATEBOARDS</h4>
           </div>
           <img
-            src="src\img\category-skate.jpg"
+            src="src\img\category-skate.webp"
             alt="Skates"
             className="category-img"
             onClick={() => navigate("/products?category=1")}
@@ -32,7 +32,7 @@ function Categories() {
             <h4>LONGBOARDS</h4>
           </div>
           <img
-            src="src\img\category-longboard.jpg"
+            src="src\img\category-longboard.webp"
             alt="Longboards"
             className="category-img"
             onClick={() => navigate("/products?category=3")}
@@ -44,7 +44,7 @@ function Categories() {
             <h4>CRUISERS</h4>
           </div>
           <img
-            src="src\img\category-cruiser.jpg"
+            src="src\img\category-cruiser.webp"
             alt="Cruisers"
             className="category-img"
             onClick={() => navigate("/products?category=2")}
@@ -56,7 +56,7 @@ function Categories() {
             <h4>SURFBOARDS</h4>
           </div>
           <img
-            src="src\img\category-surf.jpg"
+            src="src\img\category-surf.webp"
             alt="Surfboards"
             className="category-img"
             onClick={() => navigate("/products?category=4")}
