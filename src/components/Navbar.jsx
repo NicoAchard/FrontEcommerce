@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/LogoHey.svg";
 import profilePicture from "../img/perfil.png";
-import background from "../img/bg_dark_grafitti.jpg";
+import background from "../img/navbar-img.jpg";
 import "./Navbar.css";
 
 function NavBar() {
