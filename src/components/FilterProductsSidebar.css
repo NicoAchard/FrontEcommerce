@@ -24,7 +24,7 @@
 
 .filter-container {
   position: sticky;
-  top: 90px;
+  top: 100px;
   height: 90vh;
   padding: 2rem;
   background-color: rgb(32, 32, 32);
