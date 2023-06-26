@@ -41,7 +41,7 @@ function Login() {
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column justify-content-center h-100 align-items-center h-custom-2 p-0 mt-xl-n5">
               <div className="px-5 ms-xl-4">
-                <img src="src\img\LogoHey.svg" alt="Logo" className="hey-bro-nav bg-dark mb-4" />
+                <img src="src\img\logoHeyBoards2.svg" alt="Logo" className="hey-bro-nav mb-4" />
               </div>
               <form>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
