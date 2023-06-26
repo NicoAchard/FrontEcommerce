@@ -27,6 +27,8 @@ function Orders() {
         });
 
         const userOrders = response.data.filter((order) => order.userId === userId);
+        userOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
         setOrders(userOrders);
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -45,7 +47,7 @@ function Orders() {
           <p>Check the status of recent orders, manage returns, and discover similar products.</p>
           {orders &&
             orders.map((order) => (
-              <Card className="my-5">
+              <Card key={order.id} className="my-5">
                 <Card.Header className="h-100 d-flex align-items-center border-bottom p-3">
                   <div className="row justify-content-between text-center w-100">
                     <div className="col-md-6 d-none d-md-block">
