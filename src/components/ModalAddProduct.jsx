@@ -18,22 +18,30 @@ export default ({ show, setShow }) => {
 
   const token = useSelector((state) => state.user.token);
 
+  const handleImage = (event) => {
+    const image = event.target.files[0];
+    setInputProductPhotos(image);
+  };
+
   const handleSubmit = async () => {
+    const formdata = new FormData();
+
+    formdata.append("name", inputProductName);
+    formdata.append("description", inputProductDescription);
+    formdata.append("highlight", inputProductHighlight);
+    formdata.append("stock", inputProductStock);
+    formdata.append("price", inputProductPrice);
+    formdata.append("photos", inputProductPhotos);
+    formdata.append("categoryId", inputProductCategoryId);
+
     const response = await axios({
       method: "POST",
       url: `${import.meta.env.VITE_API_URL}/products`,
       headers: {
         Authorization: `Bearer ${token}`,
+        "content-type": "multipart/form-data",
       },
-      data: {
-        name: inputProductName,
-        description: inputProductDescription,
-        highlight: inputProductHighlight,
-        stock: inputProductStock,
-        price: inputProductPrice,
-        photos: inputProductPhotos,
-        categoryId: inputProductCategoryId,
-      },
+      data: formdata,
     });
 
     if (response.data.status === 200) {
@@ -123,18 +131,9 @@ export default ({ show, setShow }) => {
               </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="controlInput6">
+            <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Photos</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                required={true}
-                value={inputProductPhotos}
-                className={`${
-                  !inputProductPhotos && responseCreateProduct === 401 && "is-invalid"
-                }`}
-                onChange={(event) => setInputProductPhotos(event.target.value)}
-              />
+              <Form.Control type="file" onChange={(event) => handleImage(event)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="controlInput7">
               <Form.Label>Highlight</Form.Label>
