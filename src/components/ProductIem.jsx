@@ -24,7 +24,7 @@ function Product({ product, carrousel }) {
     return (
       <Card
         onClick={() => handlerNavigateToProduct(product.slug)}
-        className="d-flex gap-4 product-card"
+        className="d-flex gap-4 my-3 product-card"
       >
         {product.photos.length > 1 ? (
           <Carousel
