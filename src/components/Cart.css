@@ -20,7 +20,7 @@
   height: 100%;
   position: fixed;
   background-color: white;
-  z-index: 3; /* More than 2 - 2 is the z-Index of the Navbar*/
+  z-index: 3;
   right: -35vw;
   transition: all 0.5s linear;
   top: 0;

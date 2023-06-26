@@ -42,7 +42,7 @@ function ProductsList({ filters, filterByName }) {
                 }
               }
             });
-            return returnProduct !== null; // Filtrar los productos que no cumplen ninguna condición
+            return returnProduct !== null;
           });
           return setProducts(filteredProducts);
         } else {
