@@ -2,6 +2,7 @@ import ProductsList from "../components/ProductsList";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterProductsSidebar";
+import FilterSidebarOffcanvas from "../components/FilterProductsSidebarOffcanvas";
 import FilterTopBar from "../components/FilterTopBar";
 
 import axios from "axios";
@@ -12,6 +13,8 @@ function Products() {
   // const location = useLocation();
   // const searchParams = new URLSearchParams(location.search);
   // const category = searchParams.get("category");
+
+  const [showFilterSidebar, setShowFilterSidebar] = useState(false);
   const [filterByName, setFilterByName] = useState("");
   const [filterItems, setFilterItems] = useState([
     {
@@ -62,16 +65,27 @@ function Products() {
 
   return (
     <div className="d-flex flex-column min-vh-100">
+      <FilterSidebarOffcanvas
+        filterItems={filterItems}
+        setFilterItems={setFilterItems}
+        showFilterSidebar={showFilterSidebar}
+        setShowFilterSidebar={setShowFilterSidebar}
+      />
       <div>
         <NavBar />
         <div>
           <div className="container">
             <div className="row">
-              <div className="d-none d-md-block col-3">
+              <div className="d-none d-md-block  col-3">
                 <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />
               </div>
               <div className="col h-100 p-4">
-                <FilterTopBar setFilterByName={setFilterByName} filterByName={filterByName} />
+                <FilterTopBar
+                  setFilterByName={setFilterByName}
+                  filterByName={filterByName}
+                  setShowFilterSidebar={setShowFilterSidebar}
+                  showFilterSidebar={showFilterSidebar}
+                />
                 <ProductsList filters={filterItems} filterByName={filterByName} />
               </div>
             </div>

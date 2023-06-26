@@ -14,6 +14,17 @@
 .img_filter {
   height: 10rem;
 }
+.offcanvas-sidebar-base {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  z-index: 10;
+  left: -100vw;
+  transition: all 0.5s linear;
+}
+.offcanvas-sidebar-active {
+  left: 0vw;
+}
 
 @media screen and (min-width: 0px) and (max-width: 320px) {
   .img_filter {

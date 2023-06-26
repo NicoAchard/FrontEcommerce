@@ -1,11 +1,11 @@
-import { BsFillGrid3X3GapFill, BsSearch } from "react-icons/bs";
+import { BsFillGrid3X3GapFill, BsSearch, BsFilter } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import { FaThList } from "react-icons/fa";
 import { useState } from "react";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export default ({ setFilterByName }) => {
+export default ({ setFilterByName, setShowFilterSidebar, showFilterSidebar }) => {
   const [searchItem, setSearchItem] = useState("");
 
   const notify = () => toast("This functionality is under development");
@@ -25,6 +25,12 @@ export default ({ setFilterByName }) => {
         progressStyle={{ backgroundColor: "#52C9B0" }}
       />
       <div className="d-flex gap-2">
+        <div
+          className={`${showFilterSidebar && "bg-light"} d-md-none  p-2 rounded `}
+          onClick={() => setShowFilterSidebar(!showFilterSidebar)}
+        >
+          <BsFilter size={30} />
+        </div>
         <div className="bg-light p-2 rounded">
           <BsFillGrid3X3GapFill size={30} onClick={notify} />
         </div>
