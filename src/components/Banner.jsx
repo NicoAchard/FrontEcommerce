@@ -9,17 +9,31 @@ function Banner() {
   };
 
   return (
-    <div className="banner-img-container cursor-pointer">
-      <Link to="/products?category=1" role="button">
-        <img
-          style={{
-            width: "100%",
-          }}
-          src="src\img\banner.jpg"
-          alt="Skate image"
-          onClick={handleBannerClick}
-        />
-      </Link>
+    <div>
+      <div className="banner-img-container md-banner">
+        <Link to="/products?category=1" role="button">
+          <img
+            style={{
+              width: "100%",
+            }}
+            src="src/img/banner.jpg"
+            alt="Skate image"
+            onClick={handleBannerClick}
+          />
+        </Link>
+      </div>
+      <div className="banner-img-container sm-banner">
+        <Link to="/products?category=1" role="button">
+          <img
+            style={{
+              width: "100%",
+            }}
+            src="src/img/banner2.jpg"
+            alt="Skate image"
+            onClick={handleBannerClick}
+          />
+        </Link>
+      </div>
     </div>
   );
 }

@@ -16,6 +16,30 @@
 }
 
 .image-container img {
-  filter: brightness(50%); /* Adjust the percentage to control the darkness */
+  filter: brightness(70%);
   object-fit: cover;
+}
+
+.image-container h2 {
+  font-size: 4.5rem;
+  padding-top: 30px;
+}
+
+.image-container p {
+  font-size: 2.3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .image-container img {
+    height: auto;
+  }
+
+  .image-container h2 {
+    font-size: 3rem;
+    padding-top: 20px;
+  }
+
+  .image-container p {
+    font-size: 1.6rem;
+  }
 }

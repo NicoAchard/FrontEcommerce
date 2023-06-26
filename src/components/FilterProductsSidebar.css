@@ -10,6 +10,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  padding-top: 20px;
 }
 .img_filter {
   height: 10rem;

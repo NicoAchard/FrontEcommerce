@@ -2,3 +2,13 @@
   margin-top: 50px;
   margin-left: 40px;
 }
+
+.img-size-lg {
+  width: 100%; /* Adjust the width as desired */
+  height: auto;
+}
+
+.img-size-sm {
+  width: 100%; /* Adjust the width as desired */
+  height: auto;
+}

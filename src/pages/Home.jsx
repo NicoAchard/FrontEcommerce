@@ -20,8 +20,7 @@ function Home() {
           <ProductListCarrousel interval={1000} infinite={true} />
           <Banner />
           <Surfboards />
-          <CallToAction1 />
-
+          {/* <CallToAction1 /> */}
           <Categories />
           <CallToAction2 />
         </div>

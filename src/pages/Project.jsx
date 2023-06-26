@@ -1,14 +1,24 @@
-import "./Project.css";
-import TeamCard from "../components/TeamCard";
+import React, { useEffect, useRef } from "react";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import {} from "module";
+import "./Project.css";
+
 function Project() {
+  const durationRef = useRef(null);
+  const stackRef = useRef(null);
+  const tasksRef = useRef(null);
+
+  useEffect(() => {
+    durationRef.current.classList.add("animate-duration");
+    stackRef.current.classList.add("animate-stack");
+    tasksRef.current.classList.add("animate-tasks");
+  }, []);
+
   return (
     <div className="project-container">
       <NavBar />
-      <div className=" d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center">
         <div className="row header-container-project w-100">
           <img
             src="src/img/about-this-project.jpg"
@@ -16,7 +26,7 @@ function Project() {
             className=" header-image position-absolute"
           />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header col-md-9 text-black ms-4">
+          <div className="header col-md-7 text-black ms-4">
             <h1>About this project</h1>
             <p className="fs-5 ">
               Welcome to the Hey Bro! e-commerce website. This project was developed under the
@@ -27,7 +37,7 @@ function Project() {
           </div>
         </div>
         <div className="squares row gap-3 d-flex justify-content-center mx-3">
-          <div className="square col-lg-3 m-2 border rounded">
+          <div ref={durationRef} className="square col-lg-3 m-2 border rounded">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <h4>Duration</h4>
@@ -43,7 +53,7 @@ function Project() {
               3 sprints (Scrum) lasting one week each.
             </p>
           </div>
-          <div className="square col-lg-3 m-2 border rounded">
+          <div ref={stackRef} className="square col-lg-3 m-2 border rounded">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <h4>Stack</h4>
@@ -59,7 +69,7 @@ function Project() {
               Express, SQL, and Git/GitHub.
             </p>
           </div>
-          <div className="square col-lg-3 m-2 border rounded">
+          <div ref={tasksRef} className="square col-lg-3 m-2 border rounded">
             <div className="row align-items-center justify-content-between">
               <div className="col-auto">
                 <h4>Tasks</h4>

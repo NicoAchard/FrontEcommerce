@@ -14,6 +14,7 @@
   transition: 0.5s ease;
   height: 100%;
 }
+
 .category img {
   height: 90%;
 }
@@ -24,8 +25,16 @@
 
 .category:hover {
   width: 230px;
-
   cursor: pointer;
   opacity: 1;
   filter: contrast(120%);
+}
+
+@media screen and (max-width: 768px) {
+  .category-img {
+    filter: grayscale(0%);
+  }
+  .category h4 {
+    font-size: 1rem;
+  }
 }
