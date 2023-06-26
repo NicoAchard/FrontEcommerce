@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import "./Project.css";
 
 function Project() {
+  const introductionRef = useRef(null);
   const durationRef = useRef(null);
   const stackRef = useRef(null);
   const tasksRef = useRef(null);
 
   useEffect(() => {
+    introductionRef.current.classList.add("animate-introduction");
     durationRef.current.classList.add("animate-duration");
     stackRef.current.classList.add("animate-stack");
     tasksRef.current.classList.add("animate-tasks");
@@ -26,7 +28,7 @@ function Project() {
             className=" header-image position-absolute"
           />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header col-md-7 text-black ms-4">
+          <div ref={introductionRef} className="header col-md-7 text-black ms-4">
             <h1>About this project</h1>
             <p className="fs-5 ">
               Welcome to the Hey Bro! e-commerce website. This project was developed under the
