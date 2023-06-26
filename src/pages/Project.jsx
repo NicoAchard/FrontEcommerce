@@ -28,14 +28,21 @@ function Project() {
             className=" header-image position-absolute"
           />
           <div className="fade-overlay-2 position-absolute" />
-          <div ref={introductionRef} className="header col-md-7 text-black ms-4">
-            <h1>About us</h1>
-            <p className="fs-5 ">
-              Welcome to the Hey Bro! e-commerce website. This project was developed under the
-              context of the final integrative test of the Hack Academy Web Development Bootcamp.
-              It's the result of hard work, planning, team-job and many, many hours of coding...
-              Hope you enjoy the visuals and its functionalities.
-            </p>
+          <div
+            ref={introductionRef}
+            className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4"
+          >
+            <div style={{ marginTop: "-250px", marginBottom: "20px" }}>
+              <h1>About this project</h1>
+            </div>
+            <div>
+              <p className="fs-5">
+                Welcome to the Hey Bro! e-commerce website. This project was developed under the
+                context of the final integrative test of the Hack Academy Web Development Bootcamp.
+                It's the result of hard work, planning, team-job and many, many hours of coding...
+                Hope you enjoy the visuals and its functionalities.
+              </p>
+            </div>
           </div>
         </div>
         <div className="squares row gap-3 d-flex justify-content-center mx-3">
