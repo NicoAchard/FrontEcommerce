@@ -5,8 +5,8 @@ import DashboardPopular from "../components/DashboardPopular";
 import DashboardUsers from "../components/DashboardUsers";
 import SalesChart from "../components/SalesChart";
 import orders from "../img/order.png";
-import users from "../img/perfil.png";
-import products from "../img/user.png";
+import users from "../img/user.png";
+import products from "../img/skateboard.png";
 import "./Dashboard.css";
 
 export default () => (

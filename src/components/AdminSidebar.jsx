@@ -13,7 +13,7 @@ export default () => (
         className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}
       >
-        Hey Bro!
+        HEY! BOARDS
       </h1>
       <div className="d-flex flex-column py-2 gap-1 h-100" style={{ backgroundColor: "#292A2D" }}>
         <div className="border-bottom border-0 p-3">
