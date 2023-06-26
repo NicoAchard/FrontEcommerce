@@ -6,14 +6,10 @@
   opacity: 0.5;
 }
 
-.filter-container {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-}
 .img_filter {
   height: 10rem;
 }
+
 .offcanvas-sidebar-base {
   position: fixed;
   top: 0;
@@ -28,9 +24,11 @@
 
 .filter-container {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1));
+  top: 90px;
+  height: 90vh;
+  padding: 2rem;
+  background-color: rgb(32, 32, 32);
+  color: rgb(255, 255, 255);
 }
 
 @media screen and (min-width: 0px) and (max-width: 320px) {
