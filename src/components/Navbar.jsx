@@ -6,7 +6,6 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/LogoHey.svg";
 import profilePicture from "../img/perfil.png";
@@ -29,7 +28,7 @@ function NavBar() {
         <Container>
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center">
-              <img src={heybroLogo} alt="" className="hey-bro-nav" />
+              <img src={heybroLogo} alt="" className="hey-boards-nav" />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

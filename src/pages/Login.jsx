@@ -44,7 +44,7 @@ function Login() {
                 <img
                   src="src\img\logoHeyBoards2.svg"
                   alt="Logo"
-                  className="hey-bro-nav mb-4 pe-4"
+                  className="hey-boards-logo mb-4 pe-4 pb-4"
                 />
               </div>
               <form>
