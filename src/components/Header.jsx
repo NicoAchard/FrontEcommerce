@@ -20,18 +20,20 @@ function Header() {
 
   return (
     <div className="header-container container-fluid p-0">
-      <div className={`header-image-container ${logoLoaded ? "logo-loaded" : ""}`}>
+      <div className={`header-image-container h-100  ${logoLoaded ? "logo-loaded" : ""}`}>
         <img
           className="header-image2 position-absolute"
           src="src/img/header.jpg"
           alt="Skate image"
         />
-        <img
-          className={`position-absolute logo ${logoLoaded ? "logo-show" : ""}`}
-          src="src/img/logoHeyBoards2.svg"
-          alt="Logo image"
-        />
         <div className="fade-overlay position-absolute" />
+        <div className="d-flex h-100 justify-content-center align-items-center">
+          <img
+            className={`position-absolute logo ${logoLoaded ? "logo-show" : ""}`}
+            src="src/img/logoHeyBoards2.svg"
+            alt="Logo image"
+          />
+        </div>
       </div>
     </div>
   );

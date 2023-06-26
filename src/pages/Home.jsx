@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Categories from "../components/Categories";
 import ProductListCarrousel from "../components/ProductListCarrousel";
 import Surfboards from "../components/Surfboards";
-import CallToAction1 from "../components/CallToAction1";
+// import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
 import Banner from "../components/banner";
 import InfiniteCarrouselAnimation from "../components/InfiniteCarrouselAnimation";
@@ -13,7 +13,7 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div style={{ marginTop: "4.5rem" }}>
+      <div style={{ marginTop: "5rem" }}>
         <Header />
         <div className="container home-container d-flex flex-column gap-5">
           <InfiniteCarrouselAnimation />

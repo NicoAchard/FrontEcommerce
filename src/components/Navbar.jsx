@@ -28,7 +28,7 @@ function NavBar() {
         <Container>
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center">
-              <img src={heybroLogo} alt="" className="hey-boards-nav" />
+              <img src={heybroLogo} alt="" className="hey-boards-nav cursor" />
             </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

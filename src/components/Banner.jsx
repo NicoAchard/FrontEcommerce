@@ -10,7 +10,7 @@ function Banner() {
 
   return (
     <div>
-      <div className="banner-img-container md-banner">
+      <div className="banner-img-container md-banner cursor-pointer">
         <Link to="/products?category=1" role="button">
           <img
             style={{
@@ -18,6 +18,7 @@ function Banner() {
             }}
             src="src/img/banner.jpg"
             alt="Skate image"
+            className="pe-none"
             onClick={handleBannerClick}
           />
         </Link>
