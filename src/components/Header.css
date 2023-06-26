@@ -10,11 +10,17 @@
   height: 100%;
 }
 
+.header-image2 {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 .header-image {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
+
 .fade-overlay {
   position: absolute;
   height: 100%;

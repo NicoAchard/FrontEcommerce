@@ -22,7 +22,7 @@ function Header() {
     <div className="header-container container-fluid p-0">
       <div className={`header-image-container ${logoLoaded ? "logo-loaded" : ""}`}>
         <img
-          className="header-image position-absolute"
+          className="header-image2 position-absolute"
           src="src/img/header.jpg"
           alt="Skate image"
         />
