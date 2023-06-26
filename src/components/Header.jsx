@@ -30,7 +30,7 @@ function Header() {
         <div className="d-flex h-100 justify-content-center align-items-center">
           <img
             className={`position-absolute logo ${logoLoaded ? "logo-show" : ""}`}
-            src="src/img/logoHeyBoards2.svg"
+            src="src/img/logoHeyBoards.svg"
             alt="Logo image"
           />
         </div>
