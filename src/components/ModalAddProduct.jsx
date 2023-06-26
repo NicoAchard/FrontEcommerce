@@ -19,8 +19,8 @@ export default ({ show, setShow }) => {
   const token = useSelector((state) => state.user.token);
 
   const handleImage = (event) => {
-    const image = event.target.files[0];
-    setInputProductPhotos(image);
+    const images = event.target.files;
+    setInputProductPhotos(images);
   };
 
   const handleSubmit = async () => {
@@ -31,8 +31,11 @@ export default ({ show, setShow }) => {
     formdata.append("highlight", inputProductHighlight);
     formdata.append("stock", inputProductStock);
     formdata.append("price", inputProductPrice);
-    formdata.append("photos", inputProductPhotos);
     formdata.append("categoryId", inputProductCategoryId);
+
+    for (let i = 0; i < inputProductPhotos.length; i++) {
+      formdata.append("photos", inputProductPhotos[i]);
+    }
 
     const response = await axios({
       method: "POST",
@@ -133,7 +136,7 @@ export default ({ show, setShow }) => {
 
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Photos</Form.Label>
-              <Form.Control type="file" onChange={(event) => handleImage(event)} />
+              <Form.Control type="file" multiple onChange={(event) => handleImage(event)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="controlInput7">
               <Form.Label>Highlight</Form.Label>
