@@ -32,7 +32,7 @@ function Project() {
       <div className="d-flex flex-column align-items-center">
         <div className="row header-container-project w-100">
           <img
-            src="src/img/about-this-project.jpg"
+            src="src/img/about-this-project.webp"
             alt="Header img"
             className=" header-image position-absolute"
           />
