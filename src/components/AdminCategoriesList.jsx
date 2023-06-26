@@ -1,11 +1,15 @@
+import { ToastContainer, toast } from "react-toastify";
+import { BsTrash, BsPencil } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { BsTrash } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
+import "react-toastify/dist/ReactToastify.css";
 export default () => {
   const [categories, setCategories] = useState(null);
   const token = useSelector((state) => state.user.token);
+
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const listCategories = async () => {
@@ -35,6 +39,11 @@ export default () => {
   };
   return (
     <div className="p-4 ">
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <table className="table border rounded table-hover ">
         <thead className="table-light">
           <tr>
@@ -52,6 +61,9 @@ export default () => {
                 <td>{category.name}</td>
                 <td>{category.description}</td>
                 <td className="d-flex gap-4 justify-content-between border-bottom-0">
+                  <span className="cursor-pointer " onClick={notify}>
+                    <BsPencil className="fs-5 text-primary" />
+                  </span>
                   <span>
                     <BsTrash
                       className="fs-5 text-danger cursor-pointer"

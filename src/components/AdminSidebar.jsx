@@ -2,7 +2,6 @@ import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { HiOutlineUsers } from "react-icons/hi";
 import { HiArrowUturnLeft } from "react-icons/hi2";
-import { MdSkateboarding } from "react-icons/md";
 import { BiCategory } from "react-icons/bi";
 import "./AdminSidebar.css";
 import { Link } from "react-router-dom";
@@ -14,7 +13,6 @@ export default () => (
         className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}
       >
-        <MdSkateboarding />
         Hey Bro!
       </h1>
       <div className="d-flex flex-column py-2 gap-1 h-100" style={{ backgroundColor: "#292A2D" }}>

@@ -1,12 +1,20 @@
+import { ToastContainer, toast } from "react-toastify";
 import { BsTrash, BsPencil } from "react-icons/bs";
 import { useEffect, useState } from "react";
-
-import axios from "axios";
 import { useSelector } from "react-redux";
+import axios from "axios";
+
+import "react-toastify/dist/ReactToastify.css";
+
+import ModalUpdateUser from "./ModalUpdateUser";
 
 function AdminUsersList() {
+  const [show, setShow] = useState(false);
+  const [userId, setUserId] = useState(false);
   const [users, setUsers] = useState(null);
   const token = useSelector((state) => state.user.token);
+
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const addUsers = async (event) => {
@@ -22,6 +30,10 @@ function AdminUsersList() {
     };
     addUsers();
   }, []);
+  const handleUpdateUser = async (id) => {
+    setShow(true);
+    setUserId(id);
+  };
   const handleDeleteUser = async (id) => {
     const response = await axios({
       method: "DELETE",
@@ -33,8 +45,14 @@ function AdminUsersList() {
 
     setUsers(users.filter((user) => user.id !== id));
   };
+
   return (
     <div className="p-4 ">
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <table className="table border rounded table-hover">
         <thead className="table-light">
           <tr>
@@ -42,8 +60,7 @@ function AdminUsersList() {
             <th scope="col">Avatar</th>
             <th scope="col">Full name</th>
             <th scope="col">Email</th>
-            <th scope="col"> Role</th>
-
+            <th scope="col">Role</th>
             <th scope="col"> </th>
           </tr>
         </thead>
@@ -66,7 +83,7 @@ function AdminUsersList() {
                 <td> {user.role.name}</td>
 
                 <td className="  d-flex justify-content-between border-bottom-0">
-                  <span>
+                  <span className="cursor-pointer " onClick={notify}>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
                   <span className="cursor-pointer " onClick={() => handleDeleteUser(user.id)}>
@@ -77,6 +94,7 @@ function AdminUsersList() {
             ))}
         </tbody>
       </table>
+      <ModalUpdateUser show={show} setShow={setShow} userId={userId} />
     </div>
   );
 }

@@ -1,11 +1,16 @@
+import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { BsTrash, BsPencil } from "react-icons/bs";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
+import "react-toastify/dist/ReactToastify.css";
+
 function AdminProductsList() {
   const [products, setProducts] = useState(null);
   const token = useSelector((state) => state.user.token);
+
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const addProducts = async (event) => {
@@ -34,6 +39,11 @@ function AdminProductsList() {
   };
   return (
     <div className="p-4 ">
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <table className="table border rounded table-hover ">
         <thead className="table-light">
           <tr>
@@ -54,7 +64,7 @@ function AdminProductsList() {
                 <td>{product.stock}</td>
 
                 <td className="  d-flex justify-content-between border-bottom-0">
-                  <span>
+                  <span className="cursor-pointer " onClick={notify}>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
                   <span className="cursor-pointer" onClick={() => handleDeleteProduct(product.id)}>
