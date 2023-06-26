@@ -52,8 +52,8 @@ export default ({ filterItems, setFilterItems, showFilterSidebar, setShowFilterS
 
   return (
     <>
-      <div className="filter-container bg-color p-3 d-none d-md-block">
-        <h1 className="py-2" style={{ marginTop: "100px" }}>
+      <div className="filter-container p-3 d-none d-md-block">
+        <h1 className="py-2" style={{ marginTop: "10px" }}>
           Filter Options
         </h1>
         <div
