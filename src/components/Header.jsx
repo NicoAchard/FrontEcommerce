@@ -11,7 +11,7 @@ function Header() {
           alt="Skate image"
         />
 
-        <img className="position-absolute logo" src="src\img\heybro.png" alt="Logo image" />
+        <img className="position-absolute logo" src="src\img\logoHeyBoards2.svg" alt="Logo image" />
 
         <div className="fade-overlay position-absolute" />
       </div>

@@ -30,7 +30,7 @@ function DashboardCard({ url, title, icon }) {
         <div>
           <div className="d-flex justify-content-between mb-4">
             <p>{title}</p>
-            <img src="src\img\order.png" alt="card-img" />
+            <img src={icon} alt="card-img" />
           </div>
           <div className="mb-4">
             <p className="fs-2 ps-1 fw-bold">{info.length}</p>

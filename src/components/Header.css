@@ -35,6 +35,7 @@
 
 .logo {
   width: 40%;
+  padding-top: 40px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 320px) {
@@ -94,6 +95,6 @@
     height: 90vh;
   }
   .logo {
-    width: 35%;
+    width: 40%;
   }
 }

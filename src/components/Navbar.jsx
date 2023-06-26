@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { LOGOUT } from "../redux/userSlice";
-import heybroLogo from "../img/heybroInvert.png";
+import heybroLogo from "../img/LogoHey.svg";
 import profilePicture from "../img/perfil.png";
 import background from "../img/bg_dark_grafitti.jpg";
 import "./Navbar.css";
