@@ -24,7 +24,7 @@ export default ({ show, setShow }) => {
         description: inputCategoryDescription,
       },
     });
-    console.log(response.data);
+
     if (response.data.status === 200) {
       return setResponseCreateCategory(200);
     }
