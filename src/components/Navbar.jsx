@@ -32,7 +32,7 @@ function NavBar() {
         className="d-flex align-items-center bg-nav"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <Container className="p-0 pe-3">
+        <Container className="p-0 pe-1">
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center ps-0">
               <img src={heybroLogo} alt="" className="hey-boards-nav cursor" />
@@ -69,7 +69,7 @@ function NavBar() {
               >
                 {user && user.data.roleId === 200 && (
                   <NavDropdown.Item>
-                    <Link to="/admin" className="text-decoration-none text-black d-block pe-3">
+                    <Link to="/admin" className="text-decoration-none text-black d-block">
                       Admin
                     </Link>
                   </NavDropdown.Item>
