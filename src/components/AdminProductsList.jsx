@@ -8,18 +8,16 @@ import "react-toastify/dist/ReactToastify.css";
 function AdminProductsList({
   setShow,
   setProductId,
-  setProductName,
-  setproductDescription,
-  setProductHighlight,
-  setProductStock,
-  setProductPrice,
-  setProductPhotos,
-  setProductCategoryId,
+  setName,
+  setDescription,
+  setHighlight,
+  setStock,
+  setPrice,
+  setPhotos,
+  setCategoryId,
 }) {
   const [products, setProducts] = useState(null);
   const token = useSelector((state) => state.user.token);
-
-  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const addProducts = async (event) => {
@@ -50,13 +48,13 @@ function AdminProductsList({
   const handleUpdate = (id, name, description, highlight, stock, price, photos, categoryId) => {
     setShow(true);
     setProductId(id);
-    setProductName(name);
-    setproductDescription(description);
-    setProductHighlight(highlight);
-    setProductStock(stock);
-    setProductPrice(price);
-    setProductPhotos(photos);
-    setProductCategoryId(categoryId);
+    setName(name);
+    setDescription(description);
+    setHighlight(highlight);
+    setStock(stock);
+    setPrice(price);
+    setPhotos(photos);
+    setCategoryId(categoryId);
   };
 
   return (
@@ -82,7 +80,7 @@ function AdminProductsList({
                 <th scope="row">{product.id}</th>
 
                 <td>{product.name}</td>
-                <td>{product.description}</td>
+                <td>{product.description.split(" ").slice(0, 15).join(" ")} ...</td>
                 <td>{product.highlight ? "Yes" : "No"}</td>
                 <td>{product.stock}</td>
                 <td className="text-secondary">US$ {product.price}</td>

@@ -1,30 +1,54 @@
-import NavBar from "../components/./Navbar";
-import Footer from "../components/Footer";
-import "./Checkout.css";
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
-import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
-import axios from "axios";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import axios from "axios";
+
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
+
+import NavBar from "../components/./Navbar";
+import Footer from "../components/Footer";
+
+import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
+import Card from "../components/CreditCard";
 
 function Checkout() {
   const products = useSelector((state) => state.cart.products);
-  const token = useSelector((state) => state.user.token);
-  const [isLoading, setIsLoading] = useState(false);
+  const user = useSelector((state) => state.user);
+
+  const shippingPrice = 5;
+  const taxPrice = 15;
+
+  const shippingAndTaxPrice = shippingPrice + taxPrice;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  async function handleCheckout(event) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [finishProcess, setFinishProcess] = useState(false);
+  const [badShippingInformation, setBadShippingInformation] = useState(false);
+  const [showShippingInformation, setShowShippingInformation] = useState(true);
+
+  //Inputs
+  const [firstname, setFirstname] = useState(user.data.firstname);
+  const [lastname, setLastname] = useState(user.data.lastname);
+  const [phoneNumber, setPhoneNumber] = useState(user.data.phone_number);
+  const [address, setAddress] = useState(user.data.address);
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("UYU");
+  const [state, setState] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+
+  const handleCheckout = async () => {
     dispatch(DELETE_CART());
-    event.preventDefault();
+
     setIsLoading(true);
     try {
       const response = await axios({
         method: "POST",
         url: `${import.meta.env.VITE_API_URL}/orders`,
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user.token}`,
         },
         data: {
           products,
@@ -38,80 +62,118 @@ function Checkout() {
       setIsLoading(false);
       navigate("/thanks");
     }, 3000);
-  }
-  const shippingPrice = 5;
-  const taxPrice = 15;
+  };
 
-  const shippingAndTaxPrice = shippingPrice + taxPrice;
+  const handleSubmitShippingInformation = (event) => {
+    event.preventDefault();
+    if (
+      !firstname ||
+      !lastname ||
+      !phoneNumber ||
+      !address ||
+      !city ||
+      !country ||
+      !state ||
+      !postalCode
+    ) {
+      return setBadShippingInformation(true);
+    }
+    setBadShippingInformation(false);
+    return setShowShippingInformation(false);
+  };
 
   return (
     <div className="d-flex flex-column min-vh-100">
       <NavBar />
-      <div>
-        <div className="checkout container p-5 mt-5">
-          <form className="needs-validation" noValidate="" onSubmit={handleCheckout}>
-            <div className="row">
-              <div className="col-md-6 order-md-1">
-                <h4 className="mb-3 fs-5 ">Contact information</h4>
-                <div className="mb-3">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="you@example.com"
-                  />
-                  <hr className="division" />
-                  <div className="invalid-feedback">
-                    {" "}
-                    Please enter a valid email address for shipping updates.{" "}
-                  </div>
-                </div>
+      <div className="row pt-5 mt-5">
+        <div className="col p-5">
+          {showShippingInformation ? (
+            <div>
+              <form
+                onSubmit={(event) => handleSubmitShippingInformation(event)}
+                className="d-flex flex-column"
+              >
+                <h4 className="billing-address mb-3 fs-5">Shipping information</h4>
+                <label htmlFor="firstName">Firstname</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="firstName"
+                  value={firstname}
+                  onChange={(event) => setFirstname(event.target.value)}
+                />
+                {badShippingInformation && !firstname && (
+                  <span className="text-danger"> Valid firstname is required. </span>
+                )}
 
-                <div className="row">
-                  <h4 className="billing-address mb-3 fs-5">Shipping information</h4>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="firstName">First name</label>
-                    <input type="text" className="form-control" id="firstName" placeholder="" />
-                    <div className="invalid-feedback"> Valid first name is required. </div>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="lastName">Last name</label>
-                    <input type="text" className="form-control" id="lastName" placeholder="" />
-                    <div className="invalid-feedback"> Valid last name is required. </div>
-                  </div>
-                </div>
+                <label htmlFor="lastName">Lastname</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="lastName"
+                  value={lastname}
+                  onChange={(event) => setLastname(event.target.value)}
+                />
+                {badShippingInformation && !lastname && (
+                  <span className="text-danger"> Valid lastname is required. </span>
+                )}
 
                 <div className="mb-3">
                   <label htmlFor="address">Address</label>
-                  <input type="text" className="form-control" id="address" required="" />
-                  <div className="invalid-feedback"> Please enter your shipping address. </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="address"
+                    value={address}
+                    onChange={(event) => setAddress(event.target.value)}
+                  />
+                  {badShippingInformation && !address && (
+                    <span className="text-danger"> Please enter your shipping address. </span>
+                  )}
                 </div>
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label htmlFor="state">City</label>
-                    <input type="text" className="form-control" id="city" />
-                    <div className="invalid-feedback"> Please provide a valid state. </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="city"
+                      value={city}
+                      onChange={(event) => setCity(event.target.value)}
+                    />
+                    {badShippingInformation && !city && (
+                      <span className="text-danger"> Please provide a valid city. </span>
+                    )}
                   </div>
                   <div className="col-md-6 mb-3">
                     <label htmlFor="country">Country</label>
                     <select
                       className="custom-select d-block w-100 form-control"
                       id="country"
-                      required=""
+                      value={country}
+                      onChange={(event) => setCountry(event.target.value)}
                     >
-                      <option value="">Choose...</option>
-                      <option>Uruguay</option>
-                      <option>United States</option>
-                      <option>Canada</option>
-                      <option>Mexico</option>
+                      <option value="UYU">Uruguay</option>
+                      <option value="USA">United States</option>
+                      <option value="CAN">Canada</option>
+                      <option value="MEX">Mexico</option>
                     </select>
-                    <div className="invalid-feedback"> Please select a valid country. </div>
+                    {badShippingInformation && !country && (
+                      <span className="text-danger"> Please select a valid country. </span>
+                    )}
                   </div>
                   <div className="col-md-6 mb-3">
                     <label htmlFor="state">State / Province</label>
-                    <input type="text" className="form-control" id="state" />
-                    <div className="invalid-feedback"> Please provide a valid state. </div>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="state"
+                      value={state}
+                      onChange={(event) => setState(event.target.value)}
+                    />
+                    {badShippingInformation && !state && (
+                      <span className="text-danger"> Please provide a valid state. </span>
+                    )}
                   </div>
                   <div className="col-md-6 mb-3">
                     <label htmlFor="zip">Postal code</label>
@@ -119,185 +181,124 @@ function Checkout() {
                       type="text"
                       className="form-control"
                       id="zip"
-                      placeholder=""
-                      required=""
+                      value={postalCode}
+                      onChange={(event) => setPostalCode(event.target.value)}
                     />
-                    <div className="invalid-feedback"> Zip code required. </div>
+                    {badShippingInformation && !postalCode && (
+                      <span className="text-danger">Zip code required.</span>
+                    )}
                   </div>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="phone-number">Phone number</label>
-                  <input type="text" className="form-control" id="phone-number" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="phone-number"
+                    value={phoneNumber}
+                    onChange={(event) => setPhoneNumber(event.target.value)}
+                  />
+                  {badShippingInformation && !phoneNumber && (
+                    <span className="text-danger">Phone number required.</span>
+                  )}
                 </div>
-
-                <hr className="division" />
-
-                <h4 className="mb-3 fs-5">Payment</h4>
-                <div className="d-flex flex-direction-row gap-4 my-3">
-                  <div className="custom-control custom-radio ">
-                    <input
-                      id="credit"
-                      name="paymentMethod"
-                      type="radio"
-                      className="custom-control-input"
-                      required=""
-                    />
-                    <label className="custom-control-label ps-1" htmlFor="credit">
-                      Credit card
-                    </label>
-                  </div>
-                  <div className="custom-control custom-radio">
-                    <input
-                      id="debit"
-                      name="paymentMethod"
-                      type="radio"
-                      className="custom-control-input"
-                      required=""
-                    />
-                    <label className="custom-control-label ps-1" htmlFor="debit">
-                      MercadoPago
-                    </label>
-                  </div>
-                  <div className="custom-control custom-radio">
-                    <input
-                      id="paypal"
-                      name="paymentMethod"
-                      type="radio"
-                      className="custom-control-input"
-                      required=""
-                    />
-                    <label className="custom-control-label ps-1" htmlFor="paypal">
-                      PayPal
-                    </label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="cc-name">Name on card</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="cc-name"
-                      placeholder=""
-                      required=""
-                    />
-                    <small className="text-muted">Full name as displayed on card</small>
-                    <div className="invalid-feedback"> Name on card is required </div>
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="cc-number">Card number</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="cc-number"
-                      placeholder=""
-                      required=""
-                    />
-                    <div className="invalid-feedback"> Credit card number is required </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-9 mb-3">
-                    <label htmlFor="cc-expiration">Expiration date (MM/YY)</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="cc-expiration"
-                      placeholder=""
-                      required=""
-                    />
-                    <div className="invalid-feedback"> Expiration date required </div>
-                  </div>
-                  <div className="col-md-3 mb-3">
-                    <label htmlFor="cc-cvv">CVV</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="cc-cvv"
-                      placeholder=""
-                      required=""
-                    />
-                    <div className="invalid-feedback"> Security code required </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 order-md-2 mb-4">
-                <h4 className="d-flex justify-content-between align-items-center mb-3">
-                  <span className="text-muted fs-5">Order summary</span>
-                  <span className="badge badge-secondary badge-pill">3</span>
-                </h4>
-                {products.map((product) => (
-                  <div className="border img d-flex p-3 rounded" key={product}>
-                    <img
-                      src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
-                      alt="product-img"
-                      className=""
-                    />
-                    <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
-                      <div className="d-flex justify-content-between">
-                        <p className="fw-bold">{product.name}</p>
-                        <BsTrashFill
-                          className="cursor"
-                          onClick={() => dispatch(REMOVE_PRODUCT(product.id))}
-                        />
-                      </div>
-                      <div className="d-flex justify-content-between">
-                        <p className="fw-bold">USD {product.unitPrice}</p>
-                        <p>Qty {product.qty}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <ul className="list-group mb-3 ">
-                  <li className="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                      <h6>Subtotal</h6>
-                    </div>
-                    <span className="text-muted">
-                      US${" "}
-                      {products.reduce(
-                        (accumulator, currentValue) =>
-                          accumulator + currentValue.unitPrice * currentValue.qty,
-                        0,
-                      )}
-                    </span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                      <h6>Shipping</h6>
-                    </div>
-                    <span className="text-muted">US$ {shippingPrice}</span>
-                  </li>
-                  <li className="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                      <h6 className="my-0">Taxes</h6>
-                    </div>
-                    <span className="text-muted">US$ {taxPrice}</span>
-                  </li>
-
-                  <li className="list-group-item d-flex justify-content-between">
-                    <span>Total</span>
-                    <strong>
-                      US${" "}
-                      {shippingAndTaxPrice +
-                        products.reduce(
-                          (accumulator, currentValue) =>
-                            accumulator + currentValue.unitPrice * currentValue.qty,
-                          0,
-                        )}
-                    </strong>
-                  </li>
-                </ul>
-                <button
-                  className="btn btn-dark btn-lg btn-block w-100"
-                  type="submit"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "Processing your order..." : "Confirm Order"}
+                <button type="submit" className="btn btn-dark">
+                  Confirm
                 </button>
+              </form>
+            </div>
+          ) : (
+            <Tabs defaultActiveKey="Credit_card" id="uncontrolled-tab-example" className="mb-3">
+              <Tab eventKey="Credit_card" title="Credit card">
+                <Card FinishProcess={setFinishProcess} />
+              </Tab>
+              <Tab eventKey="mercado_pago" title="mercado_pago">
+                <span>texto</span>
+              </Tab>
+              <Tab eventKey="Paypal" title="Paypal">
+                Tab content for Contact
+              </Tab>
+            </Tabs>
+          )}
+        </div>
+        <div className="col-12 col-md-6 p-5">
+          <h4 className="d-flex justify-content-between align-items-center mb-3">
+            <span className="text-muted fs-5">Order summary</span>
+            <span className="badge text-black badge-pill">{products.length}</span>
+          </h4>
+          {products.map((product) => (
+            <div className="border d-flex p-3 rounded" style={{ height: "8rem" }} key={product.id}>
+              <img
+                src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
+                alt="product-img"
+                className="img-fluid"
+              />
+              <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
+                <div className="d-flex justify-content-between">
+                  <p className="fw-bold">{product.name}</p>
+                  <span className="text-danger">
+                    <BsTrashFill
+                      className="cursor-pointer"
+                      onClick={() => dispatch(REMOVE_PRODUCT(product.id))}
+                    />
+                  </span>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p className="fw-bold">USD {product.unitPrice}</p>
+                  <p>Qty {product.qty}</p>
+                </div>
               </div>
             </div>
-          </form>
+          ))}
+          <ul className="list-group mb-3 ">
+            <li className="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6>Subtotal</h6>
+              </div>
+              <span className="text-muted">
+                US${" "}
+                {products.reduce(
+                  (accumulator, currentValue) =>
+                    accumulator + currentValue.unitPrice * currentValue.qty,
+                  0,
+                )}
+              </span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6>Shipping</h6>
+              </div>
+              <span className="text-muted">US$ {shippingPrice}</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 className="my-0">Taxes</h6>
+              </div>
+              <span className="text-muted">US$ {taxPrice}</span>
+            </li>
+
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong>
+                US${" "}
+                {shippingAndTaxPrice +
+                  products.reduce(
+                    (accumulator, currentValue) =>
+                      accumulator + currentValue.unitPrice * currentValue.qty,
+                    0,
+                  )}
+              </strong>
+            </li>
+          </ul>
+
+          <button
+            className="btn btn-dark btn-lg btn-block w-100"
+            onClick={handleCheckout}
+            disabled={!finishProcess}
+          >
+            {isLoading ? "Processing your order..." : "Confirm Order"}
+          </button>
+          {!finishProcess && <span>Please complete the fields</span>}
         </div>
       </div>
       <Footer />
