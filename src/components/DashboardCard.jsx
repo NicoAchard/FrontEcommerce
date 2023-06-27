@@ -36,7 +36,7 @@ function DashboardCard({ url, title, icon }) {
             <p className="fs-2 ps-1 fw-bold">{info.length}</p>
           </div>
           <div className="growth mb-3 d-flex">
-            <img src={img} alt="graph-icon" />
+            <img src={img} alt="graph-icon" className="pe-2" />
             <span> 17%</span>
             <p className="ps-4"> Since last week </p>
           </div>

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
@@ -21,16 +21,7 @@ import StickyButton from "./components/StickyButton";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import ProtectedProfile from "./components/ProtectedProfile";
 import Profile from "./pages/Profile";
-
-const ScrollToTop = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-
-  return null;
-};
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
