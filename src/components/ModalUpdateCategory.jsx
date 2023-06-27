@@ -6,36 +6,48 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
 
-export default ({ show, setShow, setCategories, categories }) => {
-  const [inputCategoryName, setInputCategoryName] = useState(null);
-  const [inputCategoryDescription, setInputCategoryDescription] = useState(null);
-  const [responseCreateCategory, setResponseCreateCategory] = useState(null);
+export default ({
+  show,
+  setShow,
+  name,
+  description,
+  id,
+  setDescription,
+  setName,
+  setCategories,
+  categories,
+}) => {
   const token = useSelector((state) => state.user.token);
+  const [responseUpdateCategory, setResponseUpdateCategory] = useState(null);
 
   const handleSubmit = async () => {
     const response = await axios({
-      method: "POST",
-      url: `${import.meta.env.VITE_API_URL}/categories`,
+      method: "PATCH",
+      url: `${import.meta.env.VITE_API_URL}/categories/${id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
       data: {
-        name: inputCategoryName,
-        description: inputCategoryDescription,
+        name,
+        description,
       },
     });
 
     if (response.data.status === 200) {
-      setCategories([...categories, response.data.value]);
-      return setResponseCreateCategory(200);
+      setCategories(
+        categories.map((category) =>
+          category.id === id ? { ...category, name, description } : category,
+        ),
+      );
+      return setResponseUpdateCategory(200);
     }
     if (response.data.status === 400) {
-      return setResponseCreateCategory(400);
+      return setResponseUpdateCategory(400);
     }
     if (response.data.status === 401) {
       //Averiguar codigos de error para esats situaciones
 
-      setResponseCreateCategory(401);
+      setResponseUpdateCategory(401);
     }
   };
 
@@ -43,20 +55,18 @@ export default ({ show, setShow, setCategories, categories }) => {
     <>
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Create Category</Modal.Title>
+          <Modal.Title>Update Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Category name</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 placeholder="Skateboard"
-                value={inputCategoryName}
-                onChange={(event) => setInputCategoryName(event.target.value)}
-                className={`${
-                  !inputCategoryName && responseCreateCategory === 401 && "is-invalid"
-                }`}
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className={`${!name && responseUpdateCategory === 401 && "is-invalid"}`}
                 autoFocus
               />
             </Form.Group>
@@ -66,20 +76,18 @@ export default ({ show, setShow, setCategories, categories }) => {
                 as="textarea"
                 rows={3}
                 required={true}
-                value={inputCategoryDescription}
-                className={`${
-                  !inputCategoryDescription && responseCreateCategory === 401 && "is-invalid"
-                }`}
-                onChange={(event) => setInputCategoryDescription(event.target.value)}
+                value={description}
+                className={`${!description && responseUpdateCategory === 401 && "is-invalid"}`}
+                onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>
           </Form>
-          {responseCreateCategory ? (
-            responseCreateCategory === 200 ? (
+          {responseUpdateCategory ? (
+            responseUpdateCategory === 200 ? (
               <span style={{ fontSize: "0.9rem", color: "green" }}>
-                Category Created succesfull!!
+                Category Updated succesfull!!
               </span>
-            ) : responseCreateCategory === 401 ? (
+            ) : responseUpdateCategory === 401 ? (
               <span style={{ fontSize: "0.9rem", color: "red" }}>
                 <span style={{ fontSize: "0.9rem", color: "red" }}>
                   Please enter the requested information.
@@ -99,7 +107,7 @@ export default ({ show, setShow, setCategories, categories }) => {
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+            Update Changes
           </Button>
         </Modal.Footer>
       </Modal>
