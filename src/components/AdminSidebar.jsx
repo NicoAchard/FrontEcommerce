@@ -12,9 +12,9 @@ import heybroLogo from "../img/LogoHey.svg";
 
 export default () => (
   <div className=" col-2 p-0 vh-100 position-fixed">
-    <div className="d-flex flex-column h-100 ">
+    <div className="d-flex flex-column h-100">
       <h1
-        className="h5 d-flex justify-content-center align-items-center text-white py-3 m-0 gap-2"
+        className="d-flex justify-content-center align-items-center text-white py-2 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}
       >
         <img src={heybroLogo} alt="Logo hey boards" className="hey-boards-nav" />
