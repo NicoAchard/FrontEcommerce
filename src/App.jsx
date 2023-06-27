@@ -1,5 +1,5 @@
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
@@ -14,7 +14,6 @@ import AdminUsers from "./pages/AdminUsers";
 import AdminOrders from "./pages/AdminOrders";
 import AdminCategories from "./pages/AdminCategories";
 import Checkout from "./pages/Checkout";
-
 import CartIcon from "./components/CartIcon";
 import Cart from "./components/Cart";
 import ThanksForOrder from "./pages/ThanksForOrder";
@@ -23,24 +22,23 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import ProtectedProfile from "./components/ProtectedProfile";
 import Profile from "./pages/Profile";
 
-function App() {
+const ScrollToTop = () => {
   const location = useLocation();
 
-  const hideStickyButton =
-    location.pathname === "/login" ||
-    location.pathname === "/signup" ||
-    location.pathname === "/about-this-project" ||
-    location.pathname === "/admin/users" ||
-    location.pathname === "/admin/products" ||
-    location.pathname === "/admin/orders" ||
-    location.pathname === "/admin/categories" ||
-    location.pathname === "/admin";
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
+  return null;
+};
+
+const App = () => {
   return (
     <>
-      {!hideStickyButton && <CartIcon />}
+      <CartIcon />
       <Cart />
-      {!hideStickyButton && <StickyButton />}
+      <StickyButton />
+      <ScrollToTop />
 
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -69,6 +67,6 @@ function App() {
       </Routes>
     </>
   );
-}
+};
 
 export default App;

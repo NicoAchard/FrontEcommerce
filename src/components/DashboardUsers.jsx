@@ -38,7 +38,7 @@ function DashboardUsers({}) {
                   {user.firstname} {user.lastname}
                 </p>
                 <p className="p-0 total-spent">
-                  total spent: USD {Math.floor(Math.random() * (5000 - 2000 + 1) + 2000)}
+                  Total spent: USD {Math.floor(Math.random() * (5000 - 2000 + 1) + 2000)}
                 </p>
               </div>
             </div>
