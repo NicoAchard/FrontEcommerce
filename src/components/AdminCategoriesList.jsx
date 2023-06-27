@@ -1,28 +1,10 @@
 import { BsTrash, BsPencil } from "react-icons/bs";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 import "react-toastify/dist/ReactToastify.css";
-export default ({ setShow, setName, setDescription, setID }) => {
-  const [categories, setCategories] = useState(null);
+export default ({ categories, setCategories, setShow, setName, setDescription, setID }) => {
   const token = useSelector((state) => state.user.token);
-
-  useEffect(() => {
-    const listCategories = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_URL}/categories`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.data.status === 200) {
-        setCategories(response.data.categories);
-      }
-    };
-    listCategories();
-  }, []);
 
   const handleRemove = async (id) => {
     const response = await axios({

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
 
-export default ({ show, setShow }) => {
+export default ({ show, setShow, setCategories, categories }) => {
   const [inputCategoryName, setInputCategoryName] = useState(null);
   const [inputCategoryDescription, setInputCategoryDescription] = useState(null);
   const [responseCreateCategory, setResponseCreateCategory] = useState(null);
@@ -26,6 +26,7 @@ export default ({ show, setShow }) => {
     });
 
     if (response.data.status === 200) {
+      setCategories([...categories, response.data.value]);
       return setResponseCreateCategory(200);
     }
     if (response.data.status === 400) {
