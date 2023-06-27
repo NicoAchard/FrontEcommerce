@@ -245,7 +245,7 @@ function Checkout() {
                 </div>
                 <div className="d-flex justify-content-between">
                   <p className="fw-bold">USD {product.unitPrice}</p>
-                  <p>Qty {product.qty}</p>
+                  <p>Quantity {product.qty}</p>
                 </div>
               </div>
             </div>
