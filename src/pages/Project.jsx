@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
-
-import "./Project.css";
 import vite from "../img/Vite.js.svg";
 import redux from "../img/redux.svg";
 import react from "../img/react.svg";
@@ -12,44 +10,44 @@ import nodejs from "../img/nodejs.svg";
 import bootstrap from "../img/Bootstrap.svg";
 import express from "../img/express.svg";
 import github from "../img/github.svg";
+import "./Project.css";
+import TechnologiesCarousel from "../components/TechnologiesCarousel";
 
 function Project() {
-  const introductionRef = useRef(null);
   const durationRef = useRef(null);
   const stackRef = useRef(null);
   const tasksRef = useRef(null);
+  const headerRef = useRef(null);
 
   useEffect(() => {
-    introductionRef.current.classList.add("animate-introduction");
     durationRef.current.classList.add("animate-duration");
     stackRef.current.classList.add("animate-stack");
     tasksRef.current.classList.add("animate-tasks");
+    headerRef.current.classList.add("animate-header");
   }, []);
 
   return (
     <div className="project-container">
       <NavBar />
       <div className="d-flex flex-column align-items-center">
-        <div className="row header-container-project w-100">
+        <div ref={headerRef} className="row header-container-project w-100 ">
           <img
             src="src/img/about-this-project.webp"
             alt="Header img"
             className=" header-image position-absolute"
           />
           <div className="fade-overlay-2 position-absolute" />
-          <div
-            ref={introductionRef}
-            className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4"
-          >
+          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4">
             <div style={{ marginTop: "-250px", marginBottom: "20px" }}>
               <h1>About this project</h1>
             </div>
             <div>
               <p className="fs-5">
-                Welcome to the Hey Bro! e-commerce website. This project was developed under the
-                context of the final integrative test of the Hack Academy Web Development Bootcamp.
-                It's the result of hard work, planning, team-job and many, many hours of coding...
-                Hope you enjoy the visuals and its functionalities.
+                Welcome to the Hey! Boards e-commerce website. This project was developed as part of
+                the final integrative exam of the Hack Academy Web Development Bootcamp. It is the
+                result of hard work, meticulous planning, effective teamwork, and many, many hours
+                of coding. We sincerely hope that you enjoy the visuals and functionalities of our
+                website.
               </p>
             </div>
           </div>
@@ -68,8 +66,10 @@ function Project() {
                 </div>
               </div>
               <p>
-                Overall, this project was built in 3 weeks time, during June 2023. It was divided
-                into 3 sprints (Scrum) lasting one week each.
+                The development process followed the Scrum methodology and was divided into three
+                sprints, each lasting one week, resulting in a total of three weeks of focused work
+                during the month of June 2023. By adopting this approach, our team effectively
+                managed time and maintained a consistent pace throughout the project.
               </p>
             </div>
             <div ref={stackRef} className="square col-lg-3 border rounded">
@@ -84,8 +84,9 @@ function Project() {
                 </div>
               </div>
               <p>
-                Front-End: full React, using Vite-Latest. Back-End, a REST API was made using
-                Node.js, Express, SQL, and Git/GitHub.
+                For the Front-End of the site, an application was developed in React (using
+                Vite.js), while for the Back-End, a REST API was built with Node.js, Express, SQL,
+                and Git/GitHub.
               </p>
             </div>
             <div ref={tasksRef} className="square col-lg-3  border rounded">
@@ -101,14 +102,15 @@ function Project() {
               </div>
               <p>
                 Miro platform was used for the organization of tasks. This allowed each member of
-                the team to permanently be aware of the status of the project as well as the task
-                assignment and the MVP's for each sprint.
+                the team to permanently be aware of the status of the project as well as the task's
+                assignment and the MVP (Minimum Viable Product) for each sprint.
               </p>
             </div>
           </div>
           <div className="row squere px-3   mb-5">
             <h3 className="text-center pt-3 pb-lg-3">Technologies</h3>
-            <div className="col d-flex justify-content-center justify-content-md-between  flex-wrap p-3 p-0">
+            <TechnologiesCarousel />
+            {/* <div className="col d-flex justify-content-center justify-content-md-between  flex-wrap p-3 p-0">
               <div className="d-flex flex-column  align-items-center gap-2">
                 <img src={vite} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
                 <span>Vite.js</span>
@@ -141,15 +143,16 @@ function Project() {
                 <img src={github} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
                 <span>Github</span>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="row squere px-3   mb-2">
-            <div className="col">
+            <div className="col fs-5 text-center">
               <p>
-                Final integrative exam project of the Full Stack web development bootcamp at Hack
-                Academy, Uruguay. More than 700 practical hours, in Full Time mode. Instruction:
-                develop an ecommerce of a product of your choice using the technologies numbered
-                before.
+                This intensive three-month course has equipped us with over 700 practical hours,
+                dedicated to learning and honing the skills required to build robust and dynamic web
+                applications. Following the given instructions, we embarked on the task of
+                developing an e-commerce website for a product of our choosing, employing these
+                technologies to bring this project to life.
               </p>
             </div>
           </div>
@@ -258,6 +261,10 @@ function Project() {
                 </div>
               </div>
             </div>
+            <p className="fs-5 mt-4">
+              We are excited to showcase this e-commerce project as a culmination of our journey to
+              become full stack web developers.
+            </p>
           </div>
         </div>
       </div>
