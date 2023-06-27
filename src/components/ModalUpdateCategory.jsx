@@ -6,7 +6,17 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
 
-export default ({ show, setShow, name, description, id, setDescription, setName }) => {
+export default ({
+  show,
+  setShow,
+  name,
+  description,
+  id,
+  setDescription,
+  setName,
+  setCategories,
+  categories,
+}) => {
   const token = useSelector((state) => state.user.token);
   const [responseUpdateCategory, setResponseUpdateCategory] = useState(null);
 
@@ -23,8 +33,12 @@ export default ({ show, setShow, name, description, id, setDescription, setName 
       },
     });
 
-    console.log(response.data);
     if (response.data.status === 200) {
+      setCategories(
+        categories.map((category) =>
+          category.id === id ? { ...category, name, description } : category,
+        ),
+      );
       return setResponseUpdateCategory(200);
     }
     if (response.data.status === 400) {
@@ -52,9 +66,7 @@ export default ({ show, setShow, name, description, id, setDescription, setName 
                 placeholder="Skateboard"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                // className={`${
-                //   !inputCategoryName && responseUpdateCategory === 401 && "is-invalid"
-                // }`}
+                className={`${!name && responseUpdateCategory === 401 && "is-invalid"}`}
                 autoFocus
               />
             </Form.Group>
@@ -65,9 +77,7 @@ export default ({ show, setShow, name, description, id, setDescription, setName 
                 rows={3}
                 required={true}
                 value={description}
-                // className={`${
-                //   !inputCategoryDescription && responseUpdateCategory === 401 && "is-invalid"
-                // }`}
+                className={`${!description && responseUpdateCategory === 401 && "is-invalid"}`}
                 onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>

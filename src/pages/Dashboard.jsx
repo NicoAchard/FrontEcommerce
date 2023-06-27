@@ -17,9 +17,9 @@ export default () => (
         <NavAdmin />
         <div className="dashboard-space ">
           <div classname="d-flex">
-            <div className="d-flex px-1 mb-4">
+            <div className="d-flex justify-content-center px-1 mb-4">
               <div className="center-space d-flex flex-column">
-                <div className="cards d-flex w-100 mb-4">
+                <div className="cards d-flex mb-4">
                   <DashboardCard url="orders" title="Orders" icon={orders} />
                   <DashboardCard url="users" title="Users" icon={users} />
                   <DashboardCard url="products" title="Products" icon={products} />

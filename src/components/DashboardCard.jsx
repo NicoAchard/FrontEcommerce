@@ -25,20 +25,20 @@ function DashboardCard({ url, title, icon }) {
     getInfo();
   }, []);
   return (
-    <div className="dash-card rounded p-4 my-2 mx-1 border">
+    <div className="rounded p-4 my-2 mx-1 border">
       {info ? (
         <div>
-          <div className="d-flex justify-content-between mb-4">
+          <div className="dash-card d-flex justify-content-between mb-4">
             <p>{title}</p>
             <img src={icon} alt="card-img" />
           </div>
           <div className="mb-4">
             <p className="fs-2 ps-1 fw-bold">{info.length}</p>
           </div>
-          <div className="mb-3">
+          <div className="growth mb-3 d-flex">
             <img src={img} alt="graph-icon" />
             <span> 17%</span>
-            <span className="ps-4"> Since last week</span>
+            <p className="ps-4"> Since last week </p>
           </div>
         </div>
       ) : (
