@@ -37,7 +37,7 @@ function Products() {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/categories`,
         });
-
+        console.log(response.data);
         if (response.data.status === 200) {
           const existCategories = filterItems.find((item) => item.title === "Categories");
           if (!existCategories) {
@@ -74,21 +74,19 @@ function Products() {
       />
       <div>
         <NavBar />
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className="d-none d-md-block  col-3">
-                <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />
-              </div>
-              <div className="col h-100 p-4">
-                <FilterTopBar
-                  setFilterByName={setFilterByName}
-                  filterByName={filterByName}
-                  setShowFilterSidebar={setShowFilterSidebar}
-                  showFilterSidebar={showFilterSidebar}
-                />
-                <ProductsList filters={filterItems} filterByName={filterByName} />
-              </div>
+        <div className="container">
+          <div className="row">
+            <div className="d-none d-md-block  col-3 " style={{ marginTop: "6.5rem" }}>
+              <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />
+            </div>
+            <div className="col h-100 p-4">
+              <FilterTopBar
+                setFilterByName={setFilterByName}
+                filterByName={filterByName}
+                setShowFilterSidebar={setShowFilterSidebar}
+                showFilterSidebar={showFilterSidebar}
+              />
+              <ProductsList filters={filterItems} filterByName={filterByName} />
             </div>
           </div>
         </div>
