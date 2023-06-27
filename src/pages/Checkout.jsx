@@ -241,8 +241,13 @@ function Checkout() {
               />
               <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
                 <div className="d-flex justify-content-between">
+<<<<<<< Updated upstream
                   <p>{product.name}</p>
                   <span className="text-danger">
+=======
+                  <p className="fw-bold">{product.name}</p>
+                  <span className="text-danger cursor-pointer">
+>>>>>>> Stashed changes
                     <BsTrashFill
                       className="cursor-pointer"
                       onClick={() => dispatch(REMOVE_PRODUCT(product.id))}
