@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Tab from "react-bootstrap/Tab";
@@ -38,6 +38,12 @@ function Checkout() {
   const [country, setCountry] = useState("UYU");
   const [state, setState] = useState("");
   const [postalCode, setPostalCode] = useState("");
+
+  useEffect(() => {
+    if (products.length === 0) {
+      navigate("/products");
+    }
+  }, [products, navigate]);
 
   const handleCheckout = async () => {
     dispatch(DELETE_CART());
