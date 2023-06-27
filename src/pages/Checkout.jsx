@@ -235,7 +235,7 @@ function Checkout() {
               />
               <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
                 <div className="d-flex justify-content-between">
-                  <p className="fw-bold">{product.name}</p>
+                  <p>{product.name}</p>
                   <span className="text-danger">
                     <BsTrashFill
                       className="cursor-pointer"
@@ -244,8 +244,10 @@ function Checkout() {
                   </span>
                 </div>
                 <div className="d-flex justify-content-between">
-                  <p className="fw-bold">USD {product.unitPrice}</p>
-                  <p>Quantity {product.qty}</p>
+                  <p>USD {product.unitPrice}</p>
+                  <p>
+                    Quantity <span className="fw-bold">{product.qty} </span>
+                  </p>
                 </div>
               </div>
             </div>
