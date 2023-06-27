@@ -3,9 +3,21 @@ import NavAdmin from "../components/NavAdmin";
 import AdminProductsList from "../components/AdminProductsList";
 import { useState } from "react";
 import ModalAddProduct from "../components/ModalAddProduct";
+import ModalUpdateProduct from "../components/ModalUpdateProduct";
 
 export default () => {
   const [show, setShow] = useState(false);
+  const [showUpdateProduct, setShowUpdateProduct] = useState(false);
+
+  const [productId, setProductId] = useState(false);
+  const [productName, setProductName] = useState(false);
+  const [productDescription, setproductDescription] = useState(false);
+  const [productHighlight, setProductHighlight] = useState(false);
+  const [productStock, setProductStock] = useState(false);
+  const [productPrice, setProductPrice] = useState(false);
+  const [productPhotos, setProductPhotos] = useState(false);
+  const [productCategoryId, setProductCategoryId] = useState(false);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -18,8 +30,37 @@ export default () => {
               Add products
             </button>
           </div>
-          <AdminProductsList />
+          <AdminProductsList
+            setProductId={setProductId}
+            setName={setProductName}
+            setDescription={setproductDescription}
+            setHighlight={setProductHighlight}
+            setStock={setProductStock}
+            setPrice={setProductPrice}
+            setPhotos={setProductPhotos}
+            setCategoryId={setProductCategoryId}
+            setShow={setShowUpdateProduct}
+          />
           <ModalAddProduct show={show} setShow={setShow} />
+          <ModalUpdateProduct
+            show={showUpdateProduct}
+            setShow={setShowUpdateProduct}
+            id={productId}
+            name={productName}
+            setName={setProductName}
+            description={productDescription}
+            setDescription={setproductDescription}
+            highlight={productHighlight}
+            setHighlight={setProductHighlight}
+            stock={productStock}
+            setStock={setProductStock}
+            price={productPrice}
+            setPrice={setProductPrice}
+            photos={productPhotos}
+            setPhotos={setProductPhotos}
+            categoryId={productCategoryId}
+            setCategoryId={setProductCategoryId}
+          />
         </div>
       </div>
     </div>
