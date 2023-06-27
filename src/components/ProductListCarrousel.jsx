@@ -41,7 +41,7 @@ export default ({ categoryID, interval, infinite, count }) => {
   }, [categoryID]);
 
   return !infinite ? (
-    <Carousel controls={false} indicators={false}>
+    <Carousel controls={true} indicators={false}>
       {products ? (
         count ? (
           products.map((productsArray, index) => (
