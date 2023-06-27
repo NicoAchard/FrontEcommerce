@@ -13,7 +13,9 @@ function CartProduct({ id, img, name, price, qty }) {
           <p>USD {price}</p>
         </div>
         <div className="d-flex justify-content-between">
-          <p>Qty {qty}</p>
+          <p>
+            Quantity <span className="fw-bold"> {qty}</span>
+          </p>
           <p className="fw-bold cursor-pointer" onClick={() => dispatch(REMOVE_PRODUCT(id))}>
             Remove
           </p>
