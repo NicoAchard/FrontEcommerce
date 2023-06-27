@@ -61,7 +61,14 @@ export default ({
 
   const handleImage = (event) => {
     const images = event.target.files;
-    setPhotos(images);
+    console.log(images[0].name);
+    setPhotos([{ url: images[0].name }]);
+  };
+
+  const removePhoto = (index) => {
+    const updatedPhotos = [...photos];
+    updatedPhotos.splice(index, 1);
+    setPhotos(updatedPhotos);
   };
 
   useEffect(() => {
@@ -107,7 +114,6 @@ export default ({
                 onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>
-
             <Row>
               <Col>
                 <Form.Group className="mb-3" controlId="controlInput3">
@@ -134,22 +140,59 @@ export default ({
                 </Form.Group>
               </Col>
             </Row>
-
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Photos</Form.Label>
+              <div>
+                {photos &&
+                  photos.map((photo, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        position: "relative",
+                        display: "inline-block",
+                        marginRight: "10px",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <img
+                        src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
+                        alt={`Photo ${index + 1}`}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                        }}
+                      />
+                      <button
+                        className="btn btn-primary"
+                        style={{
+                          position: "absolute",
+                          top: "-5px",
+                          right: "-5px",
+                          width: "20px",
+                          height: "20px",
+                          padding: "0",
+                          fontSize: "12px",
+                        }}
+                        onClick={() => removePhoto(index)}
+                      >
+                        x
+                      </button>
+                    </div>
+                  ))}
+              </div>
               <Form.Control type="file" multiple onChange={(event) => handleImage(event)} />
             </Form.Group>
+
             <Form.Group className="mb-3" controlId="controlInput7">
               <Form.Label>Highlight</Form.Label>
               <Form.Check
                 type="checkbox"
                 required={true}
-                checked={highlight === "1"}
+                checked={highlight}
                 className={`${!highlight && responseUpdateProduct === 401 && "is-invalid"}`}
                 onChange={(event) => setHighlight(event.target.checked ? "1" : "0")}
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="controlInput5">
               <Form.Label>Category Id</Form.Label>
               <Form.Select

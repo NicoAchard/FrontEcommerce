@@ -9,14 +9,14 @@ export default () => {
   const [show, setShow] = useState(false);
   const [showUpdateProduct, setShowUpdateProduct] = useState(false);
 
-  const [productId, setProductId] = useState(false);
-  const [productName, setProductName] = useState(false);
-  const [productDescription, setproductDescription] = useState(false);
-  const [productHighlight, setProductHighlight] = useState(false);
-  const [productStock, setProductStock] = useState(false);
-  const [productPrice, setProductPrice] = useState(false);
-  const [productPhotos, setProductPhotos] = useState(false);
-  const [productCategoryId, setProductCategoryId] = useState(false);
+  const [productId, setProductId] = useState();
+  const [productName, setProductName] = useState("");
+  const [productDescription, setproductDescription] = useState("");
+  const [productHighlight, setProductHighlight] = useState("");
+  const [productStock, setProductStock] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productPhotos, setProductPhotos] = useState("");
+  const [productCategoryId, setProductCategoryId] = useState("");
 
   return (
     <div className="container-fluid">
