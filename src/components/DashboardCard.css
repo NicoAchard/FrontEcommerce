@@ -1,11 +1,13 @@
 .dash-card img {
-  height: 18px;
-}
-
-.dash-card {
-  width: 32.4%;
-}
-
-.dash-card img {
   height: 40px;
+}
+
+.growth img {
+  height: 40px;
+}
+
+@media (max-width: 1200px) {
+  .growth img {
+    height: 30px;
+  }
 }
