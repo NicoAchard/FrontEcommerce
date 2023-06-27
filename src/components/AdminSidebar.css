@@ -13,3 +13,9 @@
 h1 {
   height: 85px;
 }
+
+@media (max-width: 992px) {
+  .btn {
+    justify-content: center;
+  }
+}
