@@ -1,15 +1,12 @@
-import { ToastContainer, toast } from "react-toastify";
 import { BsTrash, BsPencil } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 import "react-toastify/dist/ReactToastify.css";
-export default () => {
+export default ({ setShow, setName, setDescription, setID }) => {
   const [categories, setCategories] = useState(null);
   const token = useSelector((state) => state.user.token);
-
-  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const listCategories = async () => {
@@ -27,7 +24,7 @@ export default () => {
     listCategories();
   }, []);
 
-  const handleRemoveCategory = async (id) => {
+  const handleRemove = async (id) => {
     const response = await axios({
       method: "DELETE",
       url: `${import.meta.env.VITE_API_URL}/categories/${id}`,
@@ -37,13 +34,15 @@ export default () => {
     });
     setCategories(categories.filter((category) => category.id !== id));
   };
+  const handleUpdate = (id, name, description) => {
+    setShow(true);
+    setDescription(description);
+    setName(name);
+    setID(id);
+  };
+
   return (
     <div className="p-4 ">
-      <ToastContainer
-        theme="dark"
-        pauseOnFocusLoss={false}
-        progressStyle={{ backgroundColor: "#52C9B0" }}
-      />
       <table className="table border rounded table-hover ">
         <thead className="table-light">
           <tr>
@@ -61,13 +60,16 @@ export default () => {
                 <td>{category.name}</td>
                 <td>{category.description}</td>
                 <td className="d-flex gap-4 justify-content-between border-bottom-0">
-                  <span className="cursor-pointer " onClick={notify}>
+                  <span
+                    className="cursor-pointer"
+                    onClick={() => handleUpdate(category.id, category.name, category.description)}
+                  >
                     <BsPencil className="fs-5 text-primary" />
                   </span>
                   <span>
                     <BsTrash
                       className="fs-5 text-danger cursor-pointer"
-                      onClick={() => handleRemoveCategory(category.id)}
+                      onClick={() => handleRemove(category.id)}
                     />
                   </span>
                 </td>

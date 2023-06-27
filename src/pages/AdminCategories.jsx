@@ -2,11 +2,24 @@ import AdminCategoriesList from "../components/AdminCategoriesList";
 import AdminSidebar from "../components/AdminSidebar";
 import NavAdmin from "../components/NavAdmin";
 import ModalAddCategory from "../components/ModalAddCategory";
+import ModalUpdateCategory from "../components/ModalUpdateCategory";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default () => {
-  const [show, setShow] = useState(false);
+  const [showAddCategory, setShowAddCategory] = useState(false);
+  const [showUpdateCategory, setShowUpdateCategory] = useState(false);
+
+  const [categoryId, setCategoryId] = useState(false);
+  const [categoryName, setCategoryName] = useState(false);
+  const [categoryDescription, setCategoryDescription] = useState(false);
+
+  useEffect(() => {
+    console.log(categoryId);
+    console.log(categoryName);
+    console.log(categoryDescription);
+  }, [categoryId, categoryName, categoryDescription]);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -19,8 +32,22 @@ export default () => {
               Add
             </button>
           </div>
-          <AdminCategoriesList />
-          <ModalAddCategory show={show} setShow={setShow} />
+          <AdminCategoriesList
+            setShow={setShowUpdateCategory}
+            setName={setCategoryName}
+            setDescription={setCategoryDescription}
+            setID={setCategoryId}
+          />
+          <ModalAddCategory show={showAddCategory} setShow={setShowAddCategory} />
+          <ModalUpdateCategory
+            show={showUpdateCategory}
+            setShow={setShowUpdateCategory}
+            name={categoryName}
+            description={categoryDescription}
+            id={categoryId}
+            setDescription={setCategoryDescription}
+            setName={setCategoryName}
+          />
         </div>
       </div>
     </div>
