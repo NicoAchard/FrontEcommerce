@@ -35,11 +35,11 @@ function Project() {
             </div>
             <div>
               <p className="fs-5">
-                Welcome to the Hey! Boards e-commerce website. This project was developed as part of
-                the final integrative exam of the Hack Academy Web Development Bootcamp. It is the
-                result of hard work, meticulous planning, effective teamwork, and many, many hours
-                of coding. We sincerely hope that you enjoy the visuals and functionalities of our
-                website.
+                Welcome to the Hey! Boards' e-commerce website. This project was developed as part
+                of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
+                the result of hard work, meticulous planning, effective teamwork, and many, many
+                hours of coding. We sincerely hope that you enjoy the visuals and functionalities of
+                our website.
               </p>
             </div>
           </div>
