@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LOGOUT } from "../redux/userSlice";
 import heybroLogo from "../img/LogoHey.svg";
-import profilePicture from "../img/perfil.png";
 import background from "../img/navbar-img.jpg";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import "./Navbar.css";
@@ -50,6 +49,33 @@ function NavBar() {
               <Link to="/about-this-project" className="text-decoration-none text-white">
                 About this project
               </Link>
+              <Nav className="d-lg-none">
+                {user && (
+                  <>
+                    <Nav.Link href="/profile" className="text-white">
+                      Profile
+                    </Nav.Link>
+                    <Nav.Link href="/orders" className="text-white">
+                      Orders
+                    </Nav.Link>
+                    {user.data.roleId === 200 && (
+                      <Nav.Link href="/admin" className="text-white ">
+                        Admin
+                      </Nav.Link>
+                    )}
+                    <Nav.Link onClick={handleLogout} className="text-white ">
+                      Logout
+                    </Nav.Link>
+                  </>
+                )}
+                {!user && (
+                  <>
+                    <Link to="/login" className="text-decoration-none text-white">
+                      login
+                    </Link>
+                  </>
+                )}
+              </Nav>
             </Nav>
             <Nav>
               <NavDropdown
@@ -66,26 +92,27 @@ function NavBar() {
                 }
                 id="basic-nav-dropdown"
                 align="end"
+                className=" d-none d-lg-block"
               >
                 {user && user.data.roleId === 200 && (
-                  <NavDropdown.Item>
-                    <Link to="/admin" className="text-decoration-none text-black d-block">
-                      Admin
-                    </Link>
-                  </NavDropdown.Item>
+                  <Nav.Link href="/admin" className="text-decoration-none text-black d-block">
+                    Admin
+                  </Nav.Link>
                 )}
 
                 {user && (
                   <>
-                    <NavDropdown.Item href="/profile" className="text-black">
+                    <Nav.Link href="/profile" className="text-decoration-none text-black">
                       Profile
-                    </NavDropdown.Item>
+                    </Nav.Link>
 
-                    <NavDropdown.Item href="/orders" className="text-black">
+                    <Nav.Link href="/orders" className="text-decoration-none text-black">
                       Orders
-                    </NavDropdown.Item>
+                    </Nav.Link>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                    <Nav.Link onClick={handleLogout} className="text-decoration-none text-black">
+                      Logout
+                    </Nav.Link>
                   </>
                 )}
                 {!user && (

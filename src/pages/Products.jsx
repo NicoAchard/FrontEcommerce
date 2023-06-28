@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 function Products() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const categoryParam = Number(searchParams.get("category"));
+  const categoryParam = searchParams.get("category");
 
   const [showFilterSidebar, setShowFilterSidebar] = useState(false);
   const [filterByName, setFilterByName] = useState("");
@@ -37,7 +37,6 @@ function Products() {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/categories`,
         });
-        console.log(response.data);
         if (response.data.status === 200) {
           const existCategories = filterItems.find((item) => item.title === "Categories");
           if (!existCategories) {
