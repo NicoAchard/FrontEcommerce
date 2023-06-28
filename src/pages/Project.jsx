@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./Project.css";
+import aboutImg from "../img/about-this-project.webp";
 import Technologies from "../components/Technologies";
 
 function Project() {
@@ -23,11 +24,7 @@ function Project() {
       <NavBar />
       <div className="d-flex flex-column align-items-center">
         <div ref={headerRef} className="row header-container-project w-100 ">
-          <img
-            src="src/img/about-this-project.webp"
-            alt="Header img"
-            className=" header-image position-absolute"
-          />
+          <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
           <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4">
             <div style={{ marginTop: "-250px", marginBottom: "20px" }}>

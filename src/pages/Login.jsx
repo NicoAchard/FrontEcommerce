@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logo from "../img/LogoHeyBoards2.svg";
+import skateLogin from "../img/skateLogin.jpg";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -41,11 +43,7 @@ function Login() {
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column justify-content-center h-100 align-items-center h-custom-2 p-0 mt-xl-n5">
               <div className="px-5 ms-xl-4">
-                <img
-                  src="src\img\logoHeyBoards2.svg"
-                  alt="Logo"
-                  className="hey-boards-logo mb-4 pe-4 pb-4"
-                />
+                <img src={logo} alt="Logo" className="hey-boards-logo mb-4 pe-4 pb-4" />
               </div>
               <form>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
@@ -113,7 +111,7 @@ function Login() {
           </div>
           <div className="col-sm-6 px-0 d-none d-sm-block">
             <img
-              src="src/img/skateLogin.jpg"
+              src={skateLogin}
               alt="Login image"
               className="w-100 vh-100"
               style={{ objectFit: "cover", objectPosition: "left" }}
