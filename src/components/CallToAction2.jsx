@@ -1,6 +1,6 @@
 import React from "react";
-import "./CallToAction.css";
-import { Link, useNavigate } from "react-router-dom";
+import "./CallToAction2.css";
+import { useNavigate } from "react-router-dom";
 
 function CallToAction2() {
   const navigate = useNavigate();

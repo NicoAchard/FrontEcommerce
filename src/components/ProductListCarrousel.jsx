@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 
-import Product from "./ProductIem";
+import Product from "./ProductItem";
 import SkeletonProduct from "./SkeletonProduct";
 import InfiniteCarrouselAnimation from "./InfiniteCarrouselAnimation";
 

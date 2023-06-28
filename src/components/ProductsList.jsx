@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import Product from "./ProductIem";
+import Product from "./ProductItem";
 import SkeletonProduct from "./SkeletonProduct";
 
 import img_not_found from "../img/filter_not_found.jpg";
