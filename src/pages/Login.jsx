@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import logo from "../img/LogoHeyBoards.svg";
+import logo from "../img/logoHeyBoards.svg";
 import skateLogin from "../img/SkateLogin.jpg";
 
 function Login() {

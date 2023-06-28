@@ -37,7 +37,6 @@ function Products() {
           method: "GET",
           url: `${import.meta.env.VITE_API_URL}/categories`,
         });
-        console.log(response.data);
         if (response.data.status === 200) {
           const existCategories = filterItems.find((item) => item.title === "Categories");
           if (!existCategories) {
