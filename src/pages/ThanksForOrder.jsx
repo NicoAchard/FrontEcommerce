@@ -1,6 +1,7 @@
 import { ToastContainer, toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { DELETE_CART } from "../redux/cartSlice";
 import { format } from "date-fns";
 import axios from "axios";
 
@@ -13,12 +14,13 @@ import "react-toastify/dist/ReactToastify.css";
 function ThanksForOrder() {
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.user.token);
-
+  const dispatch = useDispatch();
   const [productsOrder, setProductsOrder] = useState(null);
 
   const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
+    dispatch(DELETE_CART());
     const userOrder = async (event) => {
       const response = await axios({
         method: "GET",

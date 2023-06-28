@@ -10,7 +10,7 @@ import Tabs from "react-bootstrap/Tabs";
 import NavBar from "../components/./Navbar";
 import Footer from "../components/Footer";
 
-import { REMOVE_PRODUCT, DELETE_CART } from "../redux/cartSlice";
+import { REMOVE_PRODUCT } from "../redux/cartSlice";
 import Card from "../components/CreditCard";
 
 function Checkout() {
@@ -46,8 +46,6 @@ function Checkout() {
   }, [products, navigate]);
 
   const handleCheckout = async () => {
-    dispatch(DELETE_CART());
-
     setIsLoading(true);
     try {
       const response = await axios({
