@@ -12,7 +12,7 @@ function Header() {
     };
 
     const logoImage = new Image();
-    logoImage.src = "src/img/logoHeyBoards2.svg";
+    logoImage.src = logo;
     logoImage.onload = handleLogoLoad;
 
     return () => {
