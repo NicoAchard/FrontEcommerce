@@ -1,5 +1,6 @@
 .bg-nav {
   background-color: black;
+  background-position: center;
   position: fixed;
   z-index: 2;
   width: 100vw;

@@ -31,7 +31,7 @@ function NavBar() {
         className="d-flex align-items-center bg-nav"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <Container className="p-0 pe-1">
+        <Container className="p-3 p-lg-0 ">
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center ps-0">
               <img src={heybroLogo} alt="" className="hey-boards-nav cursor" />
@@ -42,42 +42,43 @@ function NavBar() {
             id="responsive-navbar-nav"
             className="justify-content-end align-items-center text-end"
           >
-            <Nav className="gap-3 mt-3 mt-lg-0">
+            <Nav className="gap-3 mt-3 mt-lg-0 d-flex align-items-lg-center">
               <Link to="/products" className="text-decoration-none text-white">
                 Products
               </Link>
               <Link to="/about-this-project" className="text-decoration-none text-white">
                 About this project
               </Link>
-              <Nav className="d-lg-none">
+              <div className=" d-lg-none gap-3  mt-lg-0 d-flex flex-column align-items-lg-center">
                 {user && (
                   <>
-                    <Nav.Link href="/profile" className="text-white">
+                    <Link to="/profile" className="text-white text-decoration-none">
                       Profile
-                    </Nav.Link>
-                    <Nav.Link href="/orders" className="text-white">
+                    </Link>
+                    <Link to="/orders" className="text-white text-decoration-none">
                       Orders
-                    </Nav.Link>
+                    </Link>
                     {user.data.roleId === 200 && (
-                      <Nav.Link href="/admin" className="text-white ">
+                      <Link to="/admin" className="text-white text-decoration-none ">
                         Admin
-                      </Nav.Link>
+                      </Link>
                     )}
-                    <Nav.Link onClick={handleLogout} className="text-white ">
+                    <Link onClick={handleLogout} className="text-white text-decoration-none">
                       Logout
-                    </Nav.Link>
+                    </Link>
                   </>
                 )}
                 {!user && (
                   <>
-                    <Link to="/login" className="text-decoration-none text-white">
-                      login
+                    <Link to="/login" className="d-block text-decoration-none text-white">
+                      Login
+                    </Link>
+                    <Link to="/login" className="d-block text-decoration-none text-white">
+                      Sign up
                     </Link>
                   </>
                 )}
-              </Nav>
-            </Nav>
-            <Nav>
+              </div>
               <NavDropdown
                 title={
                   user ? (
