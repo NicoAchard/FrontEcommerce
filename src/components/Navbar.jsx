@@ -96,24 +96,24 @@ function NavBar() {
                 className=" d-none d-lg-block"
               >
                 {user && user.data.roleId === 200 && (
-                  <Nav.Link href="/admin" className="text-decoration-none text-black d-block">
+                  <Link href="/admin" className="text-decoration-none text-black d-block">
                     Admin
-                  </Nav.Link>
+                  </Link>
                 )}
 
                 {user && (
                   <>
-                    <Nav.Link href="/profile" className="text-decoration-none text-black">
+                    <Link href="/profile" className="text-decoration-none text-black">
                       Profile
-                    </Nav.Link>
+                    </Link>
 
-                    <Nav.Link href="/orders" className="text-decoration-none text-black">
+                    <Link href="/orders" className="text-decoration-none text-black">
                       Orders
-                    </Nav.Link>
+                    </Link>
                     <NavDropdown.Divider />
-                    <Nav.Link onClick={handleLogout} className="text-decoration-none text-black">
+                    <Link onClick={handleLogout} className="text-decoration-none text-black">
                       Logout
-                    </Nav.Link>
+                    </Link>
                   </>
                 )}
                 {!user && (
