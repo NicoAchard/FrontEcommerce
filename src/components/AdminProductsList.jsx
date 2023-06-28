@@ -20,7 +20,7 @@ function AdminProductsList({
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
-    const addProducts = async (event) => {
+    const addProducts = async () => {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/products`,
@@ -33,6 +33,7 @@ function AdminProductsList({
     };
     addProducts();
   }, []);
+
   const handleDeleteProduct = async (id) => {
     await axios({
       method: "DELETE",
@@ -42,7 +43,7 @@ function AdminProductsList({
       },
     });
 
-    setProducts(products.filter((user) => user.id !== id));
+    setProducts(products.filter((product) => product.id !== id));
   };
 
   const handleUpdate = (id, name, description, highlight, stock, price, photos, categoryId) => {
@@ -58,48 +59,62 @@ function AdminProductsList({
   };
 
   return (
-    <div className="p-4 ">
-      <table className="table border rounded table-hover ">
+    <div className="p-4 table-responsive">
+      <table className="table border rounded table-hover">
         <thead className="table-light">
           <tr>
-            <th scope="col">Id</th>
+            <th scope="col" className="d-none d-md-table-cell">
+              Id
+            </th>
             <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Highlight</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Price</th>
+            <th scope="col" className="d-none d-md-table-cell">
+              Description
+            </th>
+            <th scope="col" className="d-none d-md-table-cell">
+              Highlight
+            </th>
+            <th scope="col" className="d-none d-md-table-cell">
+              Stock
+            </th>
+            <th scope="col" className="d-none d-md-table-cell">
+              Price
+            </th>
             <th scope="col">Photos</th>
-            <th scope="col">CategoryId</th>
+            <th scope="col" className="d-none d-md-table-cell">
+              CategoryId
+            </th>
             <th scope="col"> </th>
           </tr>
         </thead>
         <tbody>
           {products &&
             products.map((product) => (
-              <tr>
-                <th scope="row">{product.id}</th>
-
+              <tr key={product.id}>
+                <th scope="row" className="d-none d-md-table-cell">
+                  {product.id}
+                </th>
                 <td>{product.name}</td>
-                <td>{product.description.split(" ").slice(0, 15).join(" ")} ...</td>
-                <td>{product.highlight ? "Yes" : "No"}</td>
-                <td>{product.stock}</td>
-                <td className="text-secondary">US$ {product.price}</td>
+                <td className="d-none d-md-table-cell">
+                  {product.description.split(" ").slice(0, 15).join(" ")} ...
+                </td>
+                <td className="d-none d-md-table-cell">{product.highlight ? "Yes" : "No"}</td>
+                <td className="d-none d-md-table-cell">{product.stock}</td>
+                <td className="text-secondary d-none d-md-table-cell">US$ {product.price}</td>
                 <td>
                   {product.photos.map((photo, index) => (
                     <img
-                      className="my-2"
                       key={index}
+                      className="my-2"
                       style={{ width: "80px", height: "90px" }}
                       src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
                       alt={`Photo ${index}`}
                     />
                   ))}
                 </td>
-                <td>{product.categoryId}</td>
-
-                <td className="  d-flex justify-content-between border-bottom-0">
+                <td className="d-none d-md-table-cell">{product.categoryId}</td>
+                <td className="d-flex justify-content-between border-bottom-0">
                   <span
-                    className="cursor-pointer "
+                    className="cursor-pointer"
                     onClick={() =>
                       handleUpdate(
                         product.id,
