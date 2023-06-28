@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
-import logo from "../img/LogoHeyBoards2.svg";
+import logo from "../img/logoHeyBoards2.svg";
 import skateSignup from "../img/skateLogin.jpg";
 
 function SignUp() {
