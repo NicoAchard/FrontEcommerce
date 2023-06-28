@@ -47,7 +47,7 @@ function Login() {
               </div>
               <form>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
-                  Log in
+                  Login
                 </h3>
 
                 <div className="form-outline mb-4">

@@ -97,7 +97,7 @@ function NavBar() {
                     </NavDropdown.Item>
                     <NavDropdown.Item>
                       <Link to="/signup" className="text-decoration-none text-black d-block">
-                        Sign In
+                        Sign Up
                       </Link>
                     </NavDropdown.Item>
                   </>
