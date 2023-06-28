@@ -10,7 +10,7 @@ export default () => {
     <div className="container-fluid">
       <div className="row">
         <AdminSidebar />
-        <div className="col d-flex flex-column p-0 offset-2">
+        <div className="col d-flex flex-column p-0  offset-2">
           <NavAdmin />
           <div className="pt-4 px-4 d-flex justify-content-between">
             <h4>Users</h4>
