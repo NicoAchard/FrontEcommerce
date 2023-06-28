@@ -5,7 +5,7 @@ import ProductListCarrousel from "../components/ProductListCarrousel";
 import Surfboards from "../components/Surfboards";
 // import CallToAction1 from "../components/CallToAction1";
 import CallToAction2 from "../components/CallToAction2";
-import Banner from "../components/banner";
+import Banner from "../components/Banner";
 import InfiniteCarrouselAnimation from "../components/InfiniteCarrouselAnimation";
 import Header from "../components/Header";
 
