@@ -2,16 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
-import vite from "../img/Vite.js.svg";
-import redux from "../img/redux.svg";
-import react from "../img/react.svg";
-import mysql from "../img/mysql.svg";
-import nodejs from "../img/nodejs.svg";
-import bootstrap from "../img/Bootstrap.svg";
-import express from "../img/express.svg";
-import github from "../img/github.svg";
 import "./Project.css";
-import TechnologiesCarousel from "../components/TechnologiesCarousel";
+import Technologies from "../components/Technologies";
 
 function Project() {
   const durationRef = useRef(null);
@@ -68,8 +60,7 @@ function Project() {
               <p>
                 The development process followed the Scrum methodology and was divided into three
                 sprints, each lasting one week, resulting in a total of three weeks of focused work
-                during the month of June 2023. By adopting this approach, our team effectively
-                managed time and maintained a consistent pace throughout the project.
+                during the month of June 2023.
               </p>
             </div>
             <div ref={stackRef} className="square col-lg-3 border rounded">
@@ -111,48 +102,14 @@ function Project() {
                   </Link>
                 </span>
                 platform was used for the organization of tasks. This allowed each member of the
-                team to permanently be aware of the status of the project as well as the task's
+                team to permanently be aware of the status of the project as well as the task
                 assignment and the MVP (Minimum Viable Product) for each sprint.
               </p>
             </div>
           </div>
           <div className="row squere px-3   mb-5">
             <h3 className="text-center pt-3 pb-lg-3">Technologies</h3>
-            <TechnologiesCarousel />
-            {/* <div className="col d-flex justify-content-center justify-content-md-between  flex-wrap p-3 p-0">
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={vite} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>Vite.js</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={bootstrap} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>Bootstrap</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={redux} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>Redux.js</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={react} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>react</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={mysql} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>MySql</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={nodejs} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>node.js</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={express} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>Express</span>
-              </div>
-              <div className="d-flex flex-column  align-items-center gap-2">
-                <img src={github} alt="" style={{ width: "64px", height: "64px" }} srcset="" />
-                <span>Github</span>
-              </div>
-            </div> */}
+            <Technologies />
           </div>
           <div className="row squere px-3   mb-2">
             <div className="col fs-5 text-center">

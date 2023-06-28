@@ -1,0 +1,18 @@
+.carousel-icon {
+  width: 64px;
+  height: 64px;
+  animation: flipAnimation 4s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes flipAnimation {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(800px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(360deg);
+  }
+}
