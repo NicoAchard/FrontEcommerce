@@ -1,5 +1,5 @@
 import React from "react";
-import "./CallToAction.css";
+
 import { Link, useNavigate } from "react-router-dom";
 
 function CallToAction1() {
