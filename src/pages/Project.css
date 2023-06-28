@@ -79,6 +79,15 @@
   border-radius: 50%;
 }
 
+.miro {
+  text-decoration: none;
+  color: black;
+}
+
+.miro:hover {
+  color: rgb(37, 37, 37);
+}
+
 .icon-square i {
   color: white;
 }

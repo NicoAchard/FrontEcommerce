@@ -101,8 +101,17 @@ function Project() {
                 </div>
               </div>
               <p>
-                Miro platform was used for the organization of tasks. This allowed each member of
-                the team to permanently be aware of the status of the project as well as the task's
+                <span className="fw-bold">
+                  <Link
+                    to="https://miro.com/app/board/uXjVM_QQ1hE=/"
+                    target="blank"
+                    className="miro"
+                  >
+                    Miro{" "}
+                  </Link>
+                </span>
+                platform was used for the organization of tasks. This allowed each member of the
+                team to permanently be aware of the status of the project as well as the task's
                 assignment and the MVP (Minimum Viable Product) for each sprint.
               </p>
             </div>
