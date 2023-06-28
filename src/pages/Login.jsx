@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import logo from "../img/logoHeyBoards2.svg";
-import skateLogin from "../img/skateLogin.jpg";
+import logo from "../img/LogoHeyBoards.svg";
+import skateLogin from "../img/SkateLogin.jpg";
 
 function Login() {
   const [email, setEmail] = useState("");

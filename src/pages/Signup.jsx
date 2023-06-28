@@ -3,8 +3,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { SET_USER } from "../redux/userSlice";
-import logo from "../img/logoHeyBoards2.svg";
-import skateSignup from "../img/skateLogin.jpg";
+import logo from "../img/LogoHeyBoards.svg";
+import skateSignup from "../img/SkateLogin.jpg";
 
 function SignUp() {
   const dispatch = useDispatch();
