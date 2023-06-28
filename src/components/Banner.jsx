@@ -1,5 +1,7 @@
 import React from "react";
 import "./Banner.css";
+import banner from "../img/banner.jpg";
+import banner2 from "../img/banner2.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
 function Banner() {
@@ -16,7 +18,7 @@ function Banner() {
             style={{
               width: "100%",
             }}
-            src="src/img/banner.jpg"
+            src={banner}
             alt="Skate image"
             className="pe-none"
             onClick={handleBannerClick}
@@ -29,7 +31,7 @@ function Banner() {
             style={{
               width: "100%",
             }}
-            src="src/img/banner2.jpg"
+            src={banner2}
             alt="Skate image"
             onClick={handleBannerClick}
           />

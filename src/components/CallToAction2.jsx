@@ -1,5 +1,6 @@
 import React from "react";
 import "./CallToAction2.css";
+import skater from "../img/CallToAction2.webp";
 import { useNavigate } from "react-router-dom";
 
 function CallToAction2() {
@@ -11,7 +12,7 @@ function CallToAction2() {
     <div className="image-container mb-5 cursor-pointer">
       <img
         style={{ width: "100%", height: "550px" }}
-        src="/src/img/CallToAction2.webp"
+        src={skater}
         alt="Skate image"
         onClick={handleBannerClick}
       />

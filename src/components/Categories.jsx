@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./Categories.css";
 import { useNavigate } from "react-router-dom";
+import skate from "../img/category-skate.webp";
+import longboard from "../img/category-longboard.webp";
+import cruiser from "../img/category-cruiser.webp";
+import surfboard from "../img/category-surf.webp";
 
 function Categories() {
   const navigate = useNavigate();
@@ -20,7 +24,7 @@ function Categories() {
             <h4>SKATEBOARDS</h4>
           </div>
           <img
-            src="src\img\category-skate.webp"
+            src={skate}
             alt="Skates"
             className="category-img"
             onClick={() => navigate("/products?category=1")}
@@ -32,7 +36,7 @@ function Categories() {
             <h4>LONGBOARDS</h4>
           </div>
           <img
-            src="src\img\category-longboard.webp"
+            src={longboard}
             alt="Longboards"
             className="category-img"
             onClick={() => navigate("/products?category=3")}
@@ -44,7 +48,7 @@ function Categories() {
             <h4>CRUISERS</h4>
           </div>
           <img
-            src="src\img\category-cruiser.webp"
+            src={cruiser}
             alt="Cruisers"
             className="category-img"
             onClick={() => navigate("/products?category=2")}
@@ -56,8 +60,8 @@ function Categories() {
             <h4>SURFBOARDS</h4>
           </div>
           <img
-            src="src\img\category-surf.webp"
-            alt="Surfboards"
+            src={surfboard}
+            alt="surfboards"
             className="category-img"
             onClick={() => navigate("/products?category=4")}
             onMouseEnter={() => handleTextHide("text4")}

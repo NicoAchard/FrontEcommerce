@@ -1,4 +1,6 @@
 import "./Surfboards.css";
+import masterTheWaves from "../img/master-the-waves.jpg";
+import masterTheWaves2 from "../img/master-the-waves2.jpg";
 import ProductListCarrousel from "./ProductListCarrousel";
 
 function Surfboards() {
@@ -7,12 +9,12 @@ function Surfboards() {
       <div className="row">
         <div className="col-12 col-md-5 m-0 p-0">
           <img
-            src="src\img\master-the-waves2.jpg"
+            src={masterTheWaves2}
             alt="master-the-waves"
             className="img-fluid h-100 img-size-lg d-none d-md-block"
           />
           <img
-            src="src\img\master-the-waves.jpg"
+            src={masterTheWaves}
             alt="master-the-waves"
             className="img-fluid h-100 img-size-sm d-md-none"
           />
