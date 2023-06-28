@@ -96,18 +96,18 @@ function NavBar() {
                 className=" d-none d-lg-block"
               >
                 {user && user.data.roleId === 200 && (
-                  <Link href="/admin" className="text-decoration-none text-black d-block">
+                  <Link to="/admin" className="text-decoration-none text-black d-block">
                     Admin
                   </Link>
                 )}
 
                 {user && (
                   <>
-                    <Link href="/profile" className="text-decoration-none text-black">
+                    <Link to="/profile" className="text-decoration-none text-black">
                       Profile
                     </Link>
 
-                    <Link href="/orders" className="text-decoration-none text-black">
+                    <Link to="/orders" className="text-decoration-none text-black">
                       Orders
                     </Link>
                     <NavDropdown.Divider />
