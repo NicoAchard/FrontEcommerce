@@ -162,7 +162,7 @@ export default () => {
                           ADD TO CART
                         </button>
                       </div>
-                      <h6>Total: {`$${product.price * productCount}.00`}</h6>
+                      <h6>Total: {`$${product.price * productCount}`}</h6>
 
                       <div className="row d-flex flex-column flex-md-row justify-content-between ">
                         <div className="col-12 col-md-6">

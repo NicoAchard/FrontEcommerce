@@ -21,7 +21,7 @@ function Surfboards() {
         </div>
 
         <div className="col-md-7 pe-0 pt-4">
-          <ProductListCarrousel categoryID={4} interval={3000} count={2} />
+          <ProductListCarrousel categoryID="4" interval={3000} count={2} />
         </div>
       </div>
     </div>

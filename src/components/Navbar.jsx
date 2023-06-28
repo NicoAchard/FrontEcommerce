@@ -110,12 +110,16 @@ function NavBar() {
                 )}
                 {!user && (
                   <>
-                    <Nav.Link href="/login" className="text-decoration-none text-black d-block">
-                      Login
-                    </Nav.Link>
-                    <Nav.Link href="/signup" className="text-decoration-none text-black d-block">
-                      Sign In
-                    </Nav.Link>
+                    <NavDropdown.Item>
+                      <Link to="/login" className="text-decoration-none text-black d-block">
+                        Login
+                      </Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link to="/signup" className="text-decoration-none text-black d-block">
+                        Sign Up
+                      </Link>
+                    </NavDropdown.Item>
                   </>
                 )}
               </NavDropdown>
