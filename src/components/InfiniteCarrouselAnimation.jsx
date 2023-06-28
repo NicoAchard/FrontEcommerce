@@ -1,6 +1,6 @@
 import React from "react";
 import "./InfiniteCarrouselAnimation.css";
-import Product from "./ProductIem";
+import Product from "./ProductItem";
 
 const FeaturedAnimation = ({ products }) => {
   const featuredText = "FEATURED ".repeat(500);
