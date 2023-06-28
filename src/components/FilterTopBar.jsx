@@ -16,7 +16,7 @@ export default ({ setFilterByName, setShowFilterSidebar, showFilterSidebar }) =>
   };
   return (
     <div
-      className="d-flex gap-2 w-100 justify-content-between  pb-3, cursor-pointer"
+      className="d-flex gap-2 w-100 justify-content-between pt-2 pb-3, cursor-pointer"
       style={{ marginTop: "70px" }}
     >
       <ToastContainer
