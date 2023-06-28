@@ -68,6 +68,13 @@ function NavBar() {
                     </Nav.Link>
                   </>
                 )}
+                {!user && (
+                  <>
+                    <Link to="/login" className="text-decoration-none text-white">
+                      login
+                    </Link>
+                  </>
+                )}
               </Nav>
             </Nav>
             <Nav>
