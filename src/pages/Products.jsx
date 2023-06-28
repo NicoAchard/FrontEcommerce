@@ -13,7 +13,7 @@ function Products() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const categoryParam = Number(searchParams.get("category"));
-
+  console.log(categoryParam);
   const [showFilterSidebar, setShowFilterSidebar] = useState(false);
   const [filterByName, setFilterByName] = useState("");
   const [filterItems, setFilterItems] = useState([
