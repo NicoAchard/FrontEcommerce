@@ -111,11 +111,14 @@ function NavBar() {
                         Profile
                       </Link>
 
-                      <Link to="/orders" className="text-decoration-none text-black">
+                      <Link to="/orders" className="text-decoration-none d-block text-black">
                         Orders
                       </Link>
                       <NavDropdown.Divider />
-                      <Link onClick={handleLogout} className="text-decoration-none text-black">
+                      <Link
+                        onClick={handleLogout}
+                        className="text-decoration-none d-block text-black"
+                      >
                         Logout
                       </Link>
                     </>
