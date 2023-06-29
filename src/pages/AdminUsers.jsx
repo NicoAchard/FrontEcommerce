@@ -13,7 +13,7 @@ export default () => {
         <AdminSidebar />
         <div className="col d-flex flex-column p-0  offset-2">
           <NavAdmin />
-          <div className="pt-4 px-4 d-flex justify-content-between">
+          <div className="col pt-4 px-4 d-flex justify-content-between">
             <h4>Users</h4>
             <button className="btn btn-dark" onClick={() => setShowAdduser(true)}>
               Add users

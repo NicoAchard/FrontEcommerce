@@ -17,7 +17,7 @@ export default () => (
         className="d-flex justify-content-center align-items-center text-white py-2 m-0 gap-2"
         style={{ backgroundColor: "#212529" }}
       >
-        <img src={heybroLogo} alt="Logo hey boards" className="hey-boards-nav" />
+        <img src={heybroLogo} alt="Logo hey boards" className="hey-boards-nav p-1" />
       </h1>
       <div
         className="d-flex flex-column align-items-center gap-1 h-100"
