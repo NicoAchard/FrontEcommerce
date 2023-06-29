@@ -1,3 +1,5 @@
+import ModalConfirmPassword from "../components/ModalConfirmPassword";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -19,8 +21,9 @@ export default ({ show, setShow, user }) => {
   const [profileImg, setProfileImg] = useState("");
   const [inputImgFile, setInputImgFile] = useState("");
 
-  const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [responseUpdateUser, setResponseUpdateUser] = useState(null);
+  const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -31,6 +34,7 @@ export default ({ show, setShow, user }) => {
       setInputPhoneNumber(user.phone_number);
       setInputImgFile(user.firstname);
       setProfileImg(user.avatar);
+      setChangePassword(false);
     }
   }, [user]);
 
@@ -196,7 +200,14 @@ export default ({ show, setShow, user }) => {
                 />
               </Form.Group>
             </div>
-            <div className="d-flex gap-3">
+            <button
+              className={`btn border mb-4 ${!changePassword ? "btn-light" : "btn-outline-danger"}`}
+              onClick={() => setChangePassword((prev) => !prev)}
+              type="button"
+            >
+              {changePassword ? "Cancel Change password" : "Change password"}
+            </button>
+            <div className={`${!changePassword ? "d-none" : "d-flex"} gap-3`}>
               <Form.Group className="mb-3 w-100" controlId="ControlInput6">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
