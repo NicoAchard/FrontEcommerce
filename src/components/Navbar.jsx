@@ -42,7 +42,7 @@ function NavBar() {
             id="responsive-navbar-nav"
             className="justify-content-end align-items-center text-end"
           >
-            <Nav className="gap-3 mt-3 mt-lg-0 d-flex align-items-lg-center">
+            <Nav className="gap-3 mt-2 mt-lg-0 d-flex align-items-lg-center">
               <Link to="/products" className="text-decoration-none text-white">
                 Products
               </Link>
@@ -66,7 +66,7 @@ function NavBar() {
                       </Link>
                     )}
 
-                    <Link onClick={handleLogout} className="text-white text-decoration-none">
+                    <Link onClick={handleLogout} className="text-white text-decoration-none pb-3">
                       Logout
                     </Link>
                   </>
