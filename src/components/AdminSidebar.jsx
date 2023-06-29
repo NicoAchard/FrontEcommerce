@@ -11,7 +11,7 @@ import "./AdminSidebar.css";
 import heybroLogo from "../img/LogoHey.svg";
 
 export default () => (
-  <div className=" col-2 p-0 vh-100 position-fixed">
+  <div className=" col-2 p-0 h-100 position-fixed">
     <div className="d-flex flex-column h-100">
       <h1
         className="d-flex justify-content-center align-items-center text-white py-2 m-0 gap-2"
