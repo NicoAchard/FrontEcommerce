@@ -55,14 +55,17 @@ function NavBar() {
                     <Link to="/profile" className="text-white text-decoration-none">
                       Profile
                     </Link>
+
                     <Link to="/orders" className="text-white text-decoration-none">
                       Orders
                     </Link>
+
                     {user.data.roleId === 200 && (
                       <Link to="/admin" className="text-white text-decoration-none ">
                         Admin
                       </Link>
                     )}
+
                     <Link onClick={handleLogout} className="text-white text-decoration-none">
                       Logout
                     </Link>
@@ -95,27 +98,29 @@ function NavBar() {
                 align="end"
                 className=" d-none d-lg-block"
               >
-                {user && user.data.roleId === 200 && (
-                  <Link to="/admin" className="text-decoration-none text-black d-block">
-                    Admin
-                  </Link>
-                )}
+                <div className="px-2">
+                  {user && user.data.roleId === 200 && (
+                    <Link to="/admin" className="text-decoration-none text-black d-block">
+                      Admin
+                    </Link>
+                  )}
 
-                {user && (
-                  <>
-                    <Link to="/profile" className="text-decoration-none text-black">
-                      Profile
-                    </Link>
+                  {user && (
+                    <>
+                      <Link to="/profile" className="text-decoration-none d-block text-black">
+                        Profile
+                      </Link>
 
-                    <Link to="/orders" className="text-decoration-none text-black">
-                      Orders
-                    </Link>
-                    <NavDropdown.Divider />
-                    <Link onClick={handleLogout} className="text-decoration-none text-black">
-                      Logout
-                    </Link>
-                  </>
-                )}
+                      <Link to="/orders" className="text-decoration-none text-black">
+                        Orders
+                      </Link>
+                      <NavDropdown.Divider />
+                      <Link onClick={handleLogout} className="text-decoration-none text-black">
+                        Logout
+                      </Link>
+                    </>
+                  )}
+                </div>
                 {!user && (
                   <>
                     <NavDropdown.Item>

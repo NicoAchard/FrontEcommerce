@@ -37,8 +37,9 @@ export default ({
     formdata.append("price", price);
     formdata.append("categoryId", categoryId);
 
-    formdata.append("photos", photos[0].url);
-    console.log(photos[0].url);
+    for (let i = 0; i < photos.length; i++) {
+      formdata.append("photos", photos[i]);
+    }
 
     const response = await axios({
       method: "PATCH",
@@ -49,7 +50,7 @@ export default ({
         "content-type": "multipart/form-data",
       },
     });
-    console.log(response.data);
+
     if (response.data.status === 200) {
       return setResponseUpdateProduct(200);
     }
@@ -60,8 +61,7 @@ export default ({
 
   const handleImage = (event) => {
     const images = event.target.files;
-    console.log(images[0].name);
-    setPhotos((prev) => [...prev, { url: images[0].name }]);
+    setPhotos(Array.from(images));
   };
 
   const removePhoto = (index) => {
