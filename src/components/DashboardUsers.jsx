@@ -32,7 +32,11 @@ function DashboardUsers({}) {
         topBuyers.map((user) => (
           <div className="top-buyers d-flex p-1 me-2 " key={user.id}>
             <div className="d-flex w-100 ms-1 ps-2">
-              <img src={user.avatar} alt="product-img" className="rounded-circle me-3" />
+              <img
+                src={`${import.meta.env.VITE_API_IMG}/${user.avatar}`}
+                alt="product-img"
+                className="rounded-circle me-3"
+              />
               <div className="d-flex flex-column ">
                 <p className="p-0 m-0 fw-bold">
                   {user.firstname} {user.lastname}

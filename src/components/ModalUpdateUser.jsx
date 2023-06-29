@@ -217,7 +217,7 @@ export default ({ show, setShow, user }) => {
               </Form.Group>
             </div>
             <img
-              src={profileImg}
+              src={`${import.meta.env.VITE_API_IMG}/${profileImg}`}
               alt="Avatar image user selected"
               className="rounded-circle profile-image"
             />
