@@ -1,43 +1,33 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { SET_USER } from "../redux/userSlice";
+import { useState } from "react";
+import React from "react";
+import axios from "axios";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import ModalConfirmPassword from "../components/ModalConfirmPassword";
 
 function Profile() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.user.token);
 
-  const [avatar, setAvatar] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone_number, setPhone_number] = useState("");
+  const [avatar, setAvatar] = useState(user.data.avatar);
+  const [firstname, setFirstname] = useState(user.data.firstname);
+  const [lastname, setLastname] = useState(user.data.lastname);
+  const [email, setEmail] = useState(user.data.email);
+  const [address, setAddress] = useState(user.data.address);
+  const [phone_number, setPhone_number] = useState(user.data.phone_number);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
+  const [showModalConfirm, setShowModalConfirm] = useState(false);
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
-
-  let userData = null;
-  if (user) {
-    userData = user.data;
-  }
-
-  useEffect(() => {
-    if (userData) {
-      setAvatar(userData.avatar);
-      setFirstname(userData.firstname);
-      setLastname(userData.lastname);
-      setEmail(userData.email);
-      setAddress(userData.address);
-      setPhone_number(userData.phone_number);
-    }
-  }, [userData]);
+  const [changePassword, setChangePassword] = useState(false);
+  const [responseUpdateUser, setResponseUpdateUser] = useState(0);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
@@ -52,58 +42,59 @@ function Profile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password === repeatPassword) {
-      const formdata = new FormData();
+    if (password !== repeatPassword && changePassword === true) {
+      return setPasswordsUnmatch(true);
+    }
+    const formdata = new FormData();
 
-      formdata.append("email", email);
-      formdata.append("password", password);
+    formdata.append("email", email);
+    formdata.append("password", password);
 
-      formdata.append("firstname", firstname);
-      formdata.append("lastname", lastname);
-      formdata.append("address", address);
-      formdata.append("phone_number", phone_number);
-      formdata.append("avatar", avatar);
+    formdata.append("firstname", firstname);
+    formdata.append("lastname", lastname);
+    formdata.append("address", address);
+    formdata.append("phone_number", phone_number);
+    formdata.append("avatar", avatar);
 
-      const response = await axios({
-        method: "PATCH",
-        url: `${import.meta.env.VITE_API_URL}/users/${userData.id}`,
-        data: formdata,
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setPasswordsUnmatch(false);
+    const response = await axios({
+      method: "PATCH",
+      url: `${import.meta.env.VITE_API_URL}/users/${user.data.id}`,
+      data: formdata,
+      headers: {
+        "content-type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setPasswordsUnmatch(false);
 
-      console.log(user);
-      //Good
-      if (response.data.status === 200) {
-        console.log(response.data);
-        dispatch(SET_USER({ token: user.token, data: response.data.user }));
-        setResponseCreateUser({ status: 200, message: response.data.response });
-        return navigate("/");
-      }
-      //Unexpected error
-      if (response.data.status === 400) {
-        return setResponseCreateUser({ status: 400, message: response.data.response });
-      }
-      //Missed field
-      if (response.data.status === 401) {
-        return setResponseCreateUser({ status: 401, message: response.data.response });
-      }
-      //Already exist that email in the System
-      if (response.data.status === 402) {
-        return setResponseCreateUser({ status: 402, message: response.data.response });
-      }
-    } else {
-      setPasswordsUnmatch(true);
+    //Good
+    if (response.data.status === 200) {
+      dispatch(SET_USER({ token: user.token, data: response.data.user }));
+      setResponseUpdateUser({ status: 200, message: response.data.response });
+      return navigate("/");
+    }
+    //Unexpected error
+    if (response.data.status === 400) {
+      return setResponseUpdateUser({ status: 400, message: response.data.response });
+    }
+    //Missed field
+    if (response.data.status === 401) {
+      return setResponseUpdateUser({ status: 401, message: response.data.response });
+    }
+    //Already exist that email in the System
+    if (response.data.status === 402) {
+      return setResponseUpdateUser({ status: 402, message: response.data.response });
     }
   };
 
   return (
-    <div className="">
+    <div>
       <Navbar />
-
+      <ModalConfirmPassword
+        show={showModalConfirm}
+        setShow={setShowModalConfirm}
+        setConfirmPassword={setChangePassword}
+      />
       <div
         className="d-flex  flex-column justify-content-center align-items-center h-100 "
         style={{ height: "100vh", marginTop: "4.5rem" }}
@@ -119,10 +110,10 @@ function Profile() {
                 Photo
               </label>
             </div>
-            <div className="col-8 d-flex align-items-center">
+            <div className="col d-flex align-items-center">
               <img
                 alt="Profile"
-                src={avatar}
+                src={`${import.meta.env.VITE_API_IMG}/${user.data.avatar}`}
                 className="rounded-circle profile-image me-2"
                 id="photo"
               />
@@ -142,7 +133,7 @@ function Profile() {
                 Firstname
               </label>
             </div>
-            <div className="col-5">
+            <div className="col">
               <input
                 type="text"
                 name="firstname"
@@ -160,7 +151,7 @@ function Profile() {
                 Lastname
               </label>
             </div>
-            <div className="col-5">
+            <div className="col">
               <input
                 type="text"
                 id="lastname"
@@ -178,7 +169,7 @@ function Profile() {
                 Email address
               </label>
             </div>
-            <div className="col-8">
+            <div className="col">
               <input
                 type="email"
                 name="email"
@@ -196,7 +187,7 @@ function Profile() {
                 Street address
               </label>
             </div>
-            <div className="col-8">
+            <div className="col">
               <input
                 type="text"
                 name="address"
@@ -214,7 +205,7 @@ function Profile() {
                 Phone number
               </label>
             </div>
-            <div className="col-5">
+            <div className="col">
               <input
                 type="text"
                 name="phone"
@@ -226,45 +217,56 @@ function Profile() {
             </div>
           </div>
           <hr />
-          <div className="form-outline mb-4 d-flex">
-            <div className="col-4">
-              <label className="form-label" htmlFor="password" style={{ marginTop: "8px" }}>
-                Password
-              </label>
+          <button
+            className={`btn border mb-4 ${!changePassword ? "btn-light" : "btn-outline-danger"}`}
+            onClick={() =>
+              !changePassword ? setShowModalConfirm((prev) => !prev) : setChangePassword(false)
+            }
+            type="button"
+          >
+            {changePassword ? "Cancel Change password" : "Change password"}
+          </button>
+          <div className={`${!changePassword && "d-none"}`}>
+            <div className="form-outline mb-4 d-flex">
+              <div className="col-4">
+                <label className="form-label" htmlFor="password" style={{ marginTop: "8px" }}>
+                  Password
+                </label>
+              </div>
+              <div className="col">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-control form-control-lg"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+                {passwordsUnmatch && (
+                  <span style={{ fontSize: "0.9rem", color: "red" }}>Passwords do not match.</span>
+                )}
+              </div>
             </div>
-            <div className="col-5">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="form-control form-control-lg"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
-              {passwordsUnmatch && (
-                <span style={{ fontSize: "0.9rem", color: "red" }}>Passwords do not match.</span>
-              )}
+            <hr />
+            <div className="form-outline mb-4 d-flex">
+              <div className="col-4">
+                <label className="form-label" htmlFor="repeatPassword" style={{ marginTop: "8px" }}>
+                  Repeat Password
+                </label>
+              </div>
+              <div className="col">
+                <input
+                  type="password"
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  className="form-control form-control-lg"
+                  value={repeatPassword}
+                  onChange={(event) => setRepeatPassword(event.target.value)}
+                />
+              </div>
             </div>
           </div>
-          <hr />
-          <div className="form-outline mb-4 d-flex">
-            <div className="col-4">
-              <label className="form-label" htmlFor="repeatPassword" style={{ marginTop: "8px" }}>
-                Repeat Password
-              </label>
-            </div>
-            <div className="col-5">
-              <input
-                type="password"
-                id="repeatPassword"
-                name="repeatPassword"
-                className="form-control form-control-lg"
-                value={repeatPassword}
-                onChange={(event) => setRepeatPassword(event.target.value)}
-              />
-            </div>
-          </div>
-          <button className="btn btn-dark btn-lg btn-block" type="submit">
+          <button className="btn btn-dark btn-lg btn-block w-100 mb-5" type="submit">
             Save Changes
           </button>
         </form>
