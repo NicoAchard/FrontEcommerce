@@ -47,8 +47,6 @@ const SalesChart = ({ datasets }) => {
             datasets: datasets,
           },
           options: {
-            maintainAspectRatio: false, // Allow the chart to be responsive
-            responsive: true, // Enable responsiveness
             scales: {
               y: {
                 beginAtZero: true,
@@ -68,7 +66,11 @@ const SalesChart = ({ datasets }) => {
     };
   }, [datasets]);
 
-  return <canvas ref={chartRef} />;
+  return (
+    <div className="d-none d-md-flex">
+      <canvas ref={chartRef} />
+    </div>
+  );
 };
 
 export default SalesChart;
