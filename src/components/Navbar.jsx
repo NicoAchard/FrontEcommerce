@@ -31,7 +31,7 @@ function NavBar() {
         className="d-flex align-items-center bg-nav"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <Container className="p-3 p-lg-0 ">
+        <Container className="p-1 p-lg-0 ">
           <Link to="/" className="text-decoration-none text-white">
             <Navbar.Brand className="d-flex align-items-center ps-0">
               <img src={heybroLogo} alt="" className="hey-boards-nav cursor" />
