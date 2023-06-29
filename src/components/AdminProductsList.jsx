@@ -15,8 +15,11 @@ function AdminProductsList({
   setPrice,
   setPhotos,
   setCategoryId,
+  photoGallery,
+  setPhotoGallery,
 }) {
   const [products, setProducts] = useState(null);
+
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
@@ -56,6 +59,7 @@ function AdminProductsList({
     setPrice(price);
     setPhotos(photos);
     setCategoryId(categoryId);
+    setPhotoGallery(photos);
   };
 
   return (
