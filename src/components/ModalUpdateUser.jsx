@@ -44,6 +44,19 @@ export default ({ show, setShow, user }) => {
     return emailRegex.test(email);
   };
 
+  const defaultAvatar = "defaultProfile.jpg";
+  const removeAvatar = async () => {
+    await axios({
+      method: "DELETE",
+      url: `${import.meta.env.VITE_API_URL}/users/img/${profileImg}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setProfileImg(defaultAvatar);
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     if (inputPassword === inputPasswordRepeat) {
@@ -216,11 +229,31 @@ export default ({ show, setShow, user }) => {
                 )}
               </Form.Group>
             </div>
-            <img
-              src={profileImg}
-              alt="Avatar image user selected"
-              className="rounded-circle profile-image"
-            />
+            <div className="position-relative">
+              <img
+                src={`${import.meta.env.VITE_API_IMG}/${profileImg}`}
+                alt="Avatar image user selected"
+                className="rounded-circle profile-image"
+              />
+              {profileImg === defaultAvatar ? null : (
+                <button
+                  className="btn btn-primary"
+                  style={{
+                    position: "absolute",
+                    top: "-5px",
+                    left: "38px",
+                    width: "20px",
+                    height: "20px",
+                    padding: "0",
+                    fontSize: "12px",
+                  }}
+                  onClick={() => removeAvatar(profileImg)}
+                  type="button"
+                >
+                  x
+                </button>
+              )}
+            </div>
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Avatar image</Form.Label>
               <Form.Control type="file" onChange={(event) => handleAvatar(event)} />

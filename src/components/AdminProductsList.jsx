@@ -15,8 +15,11 @@ function AdminProductsList({
   setPrice,
   setPhotos,
   setCategoryId,
+  photoGallery,
+  setPhotoGallery,
 }) {
   const [products, setProducts] = useState(null);
+
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
@@ -56,11 +59,12 @@ function AdminProductsList({
     setPrice(price);
     setPhotos(photos);
     setCategoryId(categoryId);
+    setPhotoGallery(photos);
   };
 
   return (
     <div className="p-4 table-responsive">
-      <table className="table border rounded table-hover">
+      <table className="table border rounded">
         <thead className="table-light">
           <tr>
             <th scope="col" className="d-none d-md-table-cell">
