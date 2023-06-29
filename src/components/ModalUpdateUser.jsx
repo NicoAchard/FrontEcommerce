@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-export default ({ show, setShow, userId }) => {
+export default ({ show, setShow, user }) => {
+  const token = useSelector((state) => state.user.token);
+
   const [inputFirstname, setInputFirstname] = useState("");
   const [inputLastname, setInputLastname] = useState("");
   const [inputAddress, setInputAddress] = useState("");
@@ -14,32 +16,23 @@ export default ({ show, setShow, userId }) => {
   const [inputPasswordRepeat, setInputPasswordRepeat] = useState("");
   const [inputEmail, setInputEmail] = useState("");
   const [inputPhoneNumber, setInputPhoneNumber] = useState("");
+  const [profileImg, setProfileImg] = useState("");
   const [inputImgFile, setInputImgFile] = useState("");
 
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [responseUpdateUser, setResponseUpdateUser] = useState(null);
 
-  const token = useSelector((state) => state.user.token);
   useEffect(() => {
-    if (userId) {
-      const getuser = async (event) => {
-        const response = await axios({
-          method: "GET",
-          url: `${import.meta.env.VITE_API_URL}/users/${userId}`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log(response.data);
-        setInputEmail(response.data.user.email);
-        setInputFirstname(response.data.user.firstname);
-        setInputLastname(response.data.user.lastname);
-        setInputAddress(response.data.user.address);
-        setInputPhoneNumber(response.data.user.phone_number);
-      };
-      getuser();
+    if (user) {
+      setInputFirstname(user.firstname);
+      setInputLastname(user.lastname);
+      setInputAddress(user.address);
+      setInputEmail(user.email);
+      setInputPhoneNumber(user.phone_number);
+      setInputImgFile(user.firstname);
+      setProfileImg(user.avatar);
     }
-  }, [userId]);
+  }, [user]);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
@@ -66,12 +59,14 @@ export default ({ show, setShow, userId }) => {
 
       const response = await axios({
         method: "PATCH",
-        url: `${import.meta.env.VITE_API_URL}/users`,
+        url: `${import.meta.env.VITE_API_URL}/users/${user.id}`,
         data: formdata,
         headers: {
+          Authorization: `Bearer ${token}`,
           "content-type": "multipart/form-data",
         },
       });
+
       setPasswordsUnmatch(false);
       //Good
       if (response.data.status === 200) {
@@ -215,12 +210,16 @@ export default ({ show, setShow, userId }) => {
                   }`}
                   required
                 />
-
                 {passwordsUnmatch && (
                   <span style={{ fontSize: "0.9rem", color: "red" }}>Passwords do not match.</span>
                 )}
               </Form.Group>
             </div>
+            <img
+              src={profileImg}
+              alt="Avatar image user selected"
+              className="rounded-circle profile-image"
+            />
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Avatar image</Form.Label>
               <Form.Control type="file" onChange={(event) => handleAvatar(event)} />

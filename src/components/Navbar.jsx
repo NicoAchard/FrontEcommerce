@@ -83,7 +83,7 @@ function NavBar() {
                 title={
                   user ? (
                     <img
-                      src={user.data.avatar ? user.data.avatar : profilePicture}
+                      src={`${import.meta.env.VITE_API_IMG}/${user.data.avatar}`}
                       alt="Profile"
                       className="rounded-circle profile-image"
                     />

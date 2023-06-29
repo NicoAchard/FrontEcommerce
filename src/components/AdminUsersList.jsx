@@ -1,20 +1,15 @@
-import { ToastContainer, toast } from "react-toastify";
 import { BsTrash, BsPencil } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-import "react-toastify/dist/ReactToastify.css";
-
 import ModalUpdateUser from "./ModalUpdateUser";
 
-function AdminUsersList() {
+export default () => {
   const [show, setShow] = useState(false);
-  const [userId, setUserId] = useState(false);
+  const [userSelected, setUserSelected] = useState(false);
   const [users, setUsers] = useState(null);
   const token = useSelector((state) => state.user.token);
-
-  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const addUsers = async (event) => {
@@ -30,9 +25,10 @@ function AdminUsersList() {
     };
     addUsers();
   }, []);
-  const handleUpdateUser = async (id) => {
+
+  const handleUpdateUser = async (user) => {
     setShow(true);
-    setUserId(id);
+    setUserSelected(user);
   };
   const handleDeleteUser = async (id) => {
     const response = await axios({
@@ -48,11 +44,6 @@ function AdminUsersList() {
 
   return (
     <div className="p-4 ">
-      <ToastContainer
-        theme="dark"
-        pauseOnFocusLoss={false}
-        progressStyle={{ backgroundColor: "#52C9B0" }}
-      />
       <table className="table border rounded table-hover">
         <thead className="table-light">
           <tr>
@@ -72,7 +63,7 @@ function AdminUsersList() {
                 <td>
                   <img
                     className="rounded-circle profile-image  "
-                    src={`${user.avatar}`}
+                    src={`${import.meta.env.VITE_API_IMG}/${user.avatar}`}
                     alt="User avatar"
                   />
                 </td>
@@ -83,7 +74,7 @@ function AdminUsersList() {
                 <td> {user.role.name}</td>
 
                 <td className="  d-flex justify-content-between border-bottom-0">
-                  <span className="cursor-pointer " onClick={notify}>
+                  <span className="cursor-pointer" onClick={() => handleUpdateUser(user)}>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
                   <span className="cursor-pointer " onClick={() => handleDeleteUser(user.id)}>
@@ -94,9 +85,7 @@ function AdminUsersList() {
             ))}
         </tbody>
       </table>
-      <ModalUpdateUser show={show} setShow={setShow} userId={userId} />
+      <ModalUpdateUser show={show} setShow={setShow} user={userSelected} />
     </div>
   );
-}
-
-export default AdminUsersList;
+};
