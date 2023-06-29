@@ -2,13 +2,28 @@ import { Link } from "react-router-dom";
 
 import "./OffCanvas.css";
 import { FaUserAlt } from "react-icons/fa";
+import { useEffect, useRef } from "react";
 
 export default ({ showOffCanvas, setShowOffCanvas }) => {
+  const cartRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showOffCanvas && cartRef.current && !cartRef.current.contains(event.target)) {
+        setShowOffCanvas(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showOffCanvas]);
+
   const handleClick = () => {
     setShowOffCanvas(!showOffCanvas);
   };
   return (
-    <div className={`offCanvas  border p-4 ${showOffCanvas ? "show-offCanvas" : ""}`}>
+    <div className={`offCanvas  border p-4 ${showOffCanvas ? "show-offCanvas" : ""}`} ref={cartRef}>
       <div className=" d-flex justify-content-between ">
         <h5>About this Project</h5>
         <button
