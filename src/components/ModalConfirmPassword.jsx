@@ -68,6 +68,7 @@ export default ({ show, setShow, setConfirmPassword }) => {
               value={inputPassword}
               type="password"
               onChange={(event) => setInpuPassword(event.target.value)}
+              placeholder="Enter your password..."
               className={` ${
                 passwordStatus && inputPassword
                   ? passwordStatus.code !== 200
@@ -84,6 +85,7 @@ export default ({ show, setShow, setConfirmPassword }) => {
               value={inputRepeatPassword}
               type="password"
               onChange={(event) => setInpuRepeatPassword(event.target.value)}
+              placeholder="Enter your password..."
               className={` ${
                 passwordStatus && inputRepeatPassword
                   ? passwordStatus.code !== 200
