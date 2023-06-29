@@ -50,7 +50,7 @@ export default ({
       },
       data: formdata,
     });
-
+    console.log(response.data);
     if (response.data.status === 200) {
       return setResponseUpdateProduct(200);
     }
