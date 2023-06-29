@@ -26,12 +26,12 @@ function Project() {
         <div ref={headerRef} className="row header-container-project w-100 ">
           <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4">
-            <div style={{ marginTop: "-250px", marginBottom: "20px" }}>
+          <div className="header  d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-4">
+            <div style={{ marginTop: "-250px" }}>
               <h1>About this project</h1>
             </div>
-            <div>
-              <p className="fs-5">
+            <div className="mt-5 mt-sm-0">
+              <p className="fs-5  ">
                 Welcome to the Hey! Boards' e-commerce website. This project was developed as part
                 of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
                 the result of hard work, meticulous planning, effective teamwork, and many, many

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -22,13 +22,16 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import ProtectedProfile from "./components/ProtectedProfile";
 import Profile from "./pages/Profile";
 import ScrollToTop from "./components/ScrollToTop";
+import GeneralInfoOffCanvas from "./components/GeneralInfoOffCanvas";
 
 const App = () => {
+  const [showOffCanvas, setShowOffCanvas] = useState(false);
   return (
     <>
       <CartIcon />
       <Cart />
-      <StickyButton />
+      <StickyButton showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
+      <GeneralInfoOffCanvas showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       <ScrollToTop />
 
       <Routes>

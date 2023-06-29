@@ -14,7 +14,7 @@
   margin-bottom: 90px;
 }
 
-.cart {
+.offCanvas {
   width: 35vw;
   min-height: 100vh;
   height: 100%;
@@ -25,7 +25,7 @@
   transition: all 0.5s linear;
   top: 0;
 }
-.show-cart {
+.show-offCanvas {
   right: 0px;
 }
 
@@ -34,7 +34,7 @@
   cursor: pointer;
 }
 
-.cart-bottom {
+.offCanvas-bottom {
   position: absolute;
   bottom: 0;
   background-color: white;
@@ -42,61 +42,61 @@
   height: 30%;
 }
 
-.cart-products {
+.offCanvas-products {
   max-height: 60%;
   overflow-y: auto;
   background-color: white;
 }
 
-.cart-top {
+.offCanvas-top {
   height: 10%;
 }
 
 @media screen and (min-width: 0px) and (max-width: 320px) {
-  .cart {
+  .offCanvas {
     width: 100vw;
     right: -100vw;
   }
-  .show-cart {
+  .show-offCanvas {
     right: 0px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 576px) {
-  .cart {
+  .offCanvas {
     width: 100vw;
     right: -100vw;
   }
-  .show-cart {
+  .show-offCanvas {
     right: 0px;
   }
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
-  .cart {
+  .offCanvas {
     width: 70vw;
     right: -70vw;
   }
-  .show-cart {
+  .show-offCanvas {
     right: 0px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
-  .cart {
+  .offCanvas {
     width: 60vw;
     right: -60vw;
   }
-  .show-cart {
+  .show-offCanvas {
     right: 0px;
   }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
-  .cart {
+  .offCanvas {
     width: 50vw;
     right: -50vw;
   }
-  .show-cart {
+  .show-offCanvas {
     right: 0px;
   }
 }
