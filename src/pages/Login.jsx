@@ -13,6 +13,9 @@ function Login() {
   const [failLogin, setFailLogin] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const handleHomeClick = () => {
+    navigate("/");
+  };
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -43,7 +46,12 @@ function Login() {
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column justify-content-center h-100 align-items-center h-custom-2 p-0 mt-xl-n5">
               <div className="px-5 ms-xl-4">
-                <img src={logo} alt="Logo" className="hey-boards-logo mb-4 pe-4 pb-4" />
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="hey-boards-logo mb-4 pe-4 pb-4 cursor-pointer"
+                  onClick={handleHomeClick}
+                />
               </div>
               <form>
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
