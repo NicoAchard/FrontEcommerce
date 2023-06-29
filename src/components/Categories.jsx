@@ -62,8 +62,13 @@ function Categories() {
       <div className="d-flex justify-content-center categories2 d-md-none">
         <div className="d-flex gap-1" style={{ width: "100%", height: "300px" }}>
           <div className="category2">
-            <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-              <h4>SKATEBOARDS</h4>
+            <div className="text-center fw-bold py-2 m-0 pt-3">
+              <h4
+                className=""
+                style={{ color: "#FF4081", letterSpacing: "1px", textTransform: "uppercase" }}
+              >
+                SKATEBOARDS
+              </h4>
             </div>
             <img
               src={skate}
@@ -73,8 +78,13 @@ function Categories() {
             />
           </div>
           <div className="category2">
-            <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-              <h4>LONGBOARDS</h4>
+            <div className="text-center fw-bold py-2 m-0 pt-3">
+              <h4
+                className=""
+                style={{ color: "#00BCD4", letterSpacing: "1px", textTransform: "uppercase" }}
+              >
+                LONGBOARDS
+              </h4>
             </div>
             <img
               src={longboard}
@@ -84,8 +94,13 @@ function Categories() {
             />
           </div>
           <div className="category2">
-            <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-              <h4>CRUISERS</h4>
+            <div className="text-center fw-bold py-2 m-0 pt-3">
+              <h4
+                className=""
+                style={{ color: "#8BC34A", letterSpacing: "1px", textTransform: "uppercase" }}
+              >
+                CRUISERS
+              </h4>
             </div>
             <img
               src={cruiser}
@@ -95,8 +110,13 @@ function Categories() {
             />
           </div>
           <div className="category2">
-            <div className="text-center text-white fw-bold bg-dark py-2 m-0 pt-3">
-              <h4>SURFBOARDS</h4>
+            <div className="text-center fw-bold py-2 m-0 pt-3">
+              <h4
+                className=""
+                style={{ color: "#FFC107", letterSpacing: "1px", textTransform: "uppercase" }}
+              >
+                SURFBOARDS
+              </h4>
             </div>
             <img
               src={surfboard}
