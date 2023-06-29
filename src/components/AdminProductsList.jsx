@@ -60,7 +60,7 @@ function AdminProductsList({
 
   return (
     <div className="p-4 table-responsive">
-      <table className="table border rounded table-hover">
+      <table className="table border rounded">
         <thead className="table-light">
           <tr>
             <th scope="col" className="d-none d-md-table-cell">
