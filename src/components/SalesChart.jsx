@@ -47,6 +47,8 @@ const SalesChart = ({ datasets }) => {
             datasets: datasets,
           },
           options: {
+            maintainAspectRatio: false, // Allow the chart to be responsive
+            responsive: true, // Enable responsiveness
             scales: {
               y: {
                 beginAtZero: true,
