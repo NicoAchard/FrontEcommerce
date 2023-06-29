@@ -56,6 +56,7 @@ export default ({ show, setShow, user }) => {
       formdata.append("address", inputAddress);
       formdata.append("phone_number", inputPhoneNumber);
       formdata.append("avatar", inputImgFile);
+      console.log(formdata);
 
       const response = await axios({
         method: "PATCH",

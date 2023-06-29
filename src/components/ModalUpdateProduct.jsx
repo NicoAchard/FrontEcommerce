@@ -37,18 +37,17 @@ export default ({
     formdata.append("price", price);
     formdata.append("categoryId", categoryId);
 
-    for (let i = 0; i < photos.length; i++) {
-      formdata.append("photos", photos[i]);
-    }
+    formdata.append("photos", photos[0].url);
+    console.log(photos[0].url);
 
     const response = await axios({
       method: "PATCH",
       url: `${import.meta.env.VITE_API_URL}/products/${id}`,
+      data: formdata,
       headers: {
         Authorization: `Bearer ${token}`,
         "content-type": "multipart/form-data",
       },
-      data: formdata,
     });
     console.log(response.data);
     if (response.data.status === 200) {
@@ -62,7 +61,7 @@ export default ({
   const handleImage = (event) => {
     const images = event.target.files;
     console.log(images[0].name);
-    setPhotos([{ url: images[0].name }]);
+    setPhotos((prev) => [...prev, { url: images[0].name }]);
   };
 
   const removePhoto = (index) => {
