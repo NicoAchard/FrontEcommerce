@@ -43,8 +43,8 @@ export default () => {
   };
 
   return (
-    <div className="p-4 ">
-      <table className="table border rounded table-hover">
+    <div className="p-4 table-responsive">
+      <table className="table border rounded">
         <thead className="table-light">
           <tr>
             <th scope="col">Id</th>
@@ -73,7 +73,7 @@ export default () => {
                 <td>{user.email}</td>
                 <td> {user.role.name}</td>
 
-                <td className="  d-flex justify-content-between border-bottom-0">
+                <td className=" d-flex justify-content-between border-bottom-0">
                   <span className="cursor-pointer" onClick={() => handleUpdateUser(user)}>
                     <BsPencil className="fs-5 text-primary" />
                   </span>

@@ -25,7 +25,7 @@ export default ({ categories, setCategories, setShow, setName, setDescription, s
 
   return (
     <div className="p-4 ">
-      <table className="table border rounded table-hover ">
+      <table className="table border rounded">
         <thead className="table-light">
           <tr>
             <th scope="col">Id</th>
