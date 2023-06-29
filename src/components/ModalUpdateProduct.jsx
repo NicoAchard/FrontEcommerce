@@ -22,6 +22,8 @@ export default ({
   setPhotos,
   categoryId,
   setCategoryId,
+  photoGallery,
+  setPhotoGallery,
 }) => {
   const token = useSelector((state) => state.user.token);
   const [responseUpdateProduct, setResponseUpdateProduct] = useState(null);
@@ -64,10 +66,21 @@ export default ({
     setPhotos(Array.from(images));
   };
 
-  const removePhoto = (index) => {
+  const removePhoto = async (index) => {
     const updatedPhotos = [...photos];
     updatedPhotos.splice(index, 1);
+
+    await axios({
+      method: "PUT",
+      url: `${import.meta.env.VITE_API_URL}/products/img/${id}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: { index },
+    });
+
     setPhotos(updatedPhotos);
+    setPhotoGallery(updatedPhotos);
   };
 
   useEffect(() => {
@@ -142,8 +155,8 @@ export default ({
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Photos</Form.Label>
               <div>
-                {photos &&
-                  photos.map((photo, index) => (
+                {photoGallery &&
+                  photoGallery.map((photo, index) => (
                     <div
                       key={index}
                       style={{
@@ -173,13 +186,14 @@ export default ({
                           fontSize: "12px",
                         }}
                         onClick={() => removePhoto(index)}
+                        type="button"
                       >
                         x
                       </button>
                     </div>
                   ))}
               </div>
-              <Form.Control type="file" multiple onChange={(event) => handleImage(event)} />
+              <Form.Control type="file" onChange={(event) => handleImage(event)} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="controlInput7">

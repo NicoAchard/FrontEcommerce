@@ -17,6 +17,7 @@ export default () => {
   const [productPrice, setProductPrice] = useState("");
   const [productPhotos, setProductPhotos] = useState("");
   const [productCategoryId, setProductCategoryId] = useState("");
+  const [photoGallery, setPhotoGallery] = useState([]);
 
   return (
     <div className="container-fluid">
@@ -40,6 +41,8 @@ export default () => {
             setPhotos={setProductPhotos}
             setCategoryId={setProductCategoryId}
             setShow={setShowUpdateProduct}
+            setPhotoGallery={setPhotoGallery}
+            photoGallery={photoGallery}
           />
           <ModalAddProduct show={show} setShow={setShow} />
           <ModalUpdateProduct
@@ -60,6 +63,8 @@ export default () => {
             setPhotos={setProductPhotos}
             categoryId={productCategoryId}
             setCategoryId={setProductCategoryId}
+            setPhotoGallery={setPhotoGallery}
+            photoGallery={photoGallery}
           />
         </div>
       </div>
