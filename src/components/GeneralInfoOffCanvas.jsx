@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./OffCanvas.css";
 import { FaUserAlt } from "react-icons/fa";
 import { useEffect, useRef } from "react";
@@ -24,6 +25,13 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
     setShowOffCanvas(!showOffCanvas);
   };
 
+  const notify = () =>
+    toast(
+      <div>
+        <div style={{ marginBottom: "0.5rem", textAlign: "center" }}>Database reset!</div>
+        <div style={{ fontSize: "1rem", textAlign: "center" }}>♻️ Please refresh the page ♻️</div>
+      </div>,
+    );
   const handleResetSeeders = async () => {
     try {
       await axios({
@@ -39,6 +47,12 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
 
   return (
     <div className={`offCanvas  border p-4 ${showOffCanvas ? "show-offCanvas" : ""}`} ref={cartRef}>
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+        pauseOnHover={false}
+      />
       <div className=" d-flex justify-content-between ">
         <h5>About this Project</h5>
         <button
@@ -84,7 +98,14 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
         </div>
         <div className="position-fixed" style={{ bottom: "2%" }}>
           {" "}
-          <button className="btn btn-dark" type="button" onClick={handleResetSeeders}>
+          <button
+            className="btn btn-dark"
+            type="button"
+            onClick={() => {
+              handleResetSeeders();
+              notify();
+            }}
+          >
             Reset Database
           </button>
         </div>
