@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import CartProduct from "./CartProduct";
 import React, { useRef, useEffect } from "react";
 
-import "./Cart.css";
+import "./OffCanvas.css";
 
 export default () => {
   const products = useSelector((state) => state.cart.products);
@@ -34,8 +34,8 @@ export default () => {
   };
 
   return (
-    <div className={`cart  border ${show ? "show-cart" : ""}`} ref={cartRef}>
-      <div className="cart-top d-flex justify-content-between p-4">
+    <div className={`offCanvas  border ${show ? "show-offCanvas" : ""}`} ref={cartRef}>
+      <div className="offCanvas-top d-flex justify-content-between p-4">
         <h5>Shopping cart</h5>
         <button
           type="button"
@@ -45,12 +45,12 @@ export default () => {
         ></button>
       </div>
       <div
-        className={`shopping-cart h-100 d-flex flex-column ${
+        className={`shopping-offCanvas h-100 d-flex flex-column ${
           products.length > 0 ? "" : "align-items-center"
         } `}
       >
         {products.length > 0 ? (
-          <div className="cart-products">
+          <div className="offCanvas-products">
             {products.map((product) => (
               <CartProduct
                 key={product.id}
@@ -73,7 +73,7 @@ export default () => {
         )}
       </div>
       <hr />
-      <div className="cart-bottom border">
+      <div className="offCanvas-bottom border">
         <div className="d-flex justify-content-between px-4 pt-2 mb-0">
           <h5>Sub total</h5>
           <p>
