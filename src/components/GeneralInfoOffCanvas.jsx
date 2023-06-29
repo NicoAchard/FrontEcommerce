@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./OffCanvas.css";
 import { FaUserAlt } from "react-icons/fa";
 import { useEffect, useRef } from "react";
@@ -22,8 +24,35 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
   const handleClick = () => {
     setShowOffCanvas(!showOffCanvas);
   };
+
+  const notify = () =>
+    toast(
+      <div>
+        <div style={{ marginBottom: "0.5rem", textAlign: "center" }}>Database reset!</div>
+        <div style={{ fontSize: "1rem", textAlign: "center" }}>♻️ Please refresh the page ♻️</div>
+      </div>,
+    );
+  const handleResetSeeders = async () => {
+    try {
+      await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/runAllSeeders`,
+      });
+
+      console.log("Database reset successful");
+    } catch (error) {
+      console.error("Failed to reset database", error);
+    }
+  };
+
   return (
     <div className={`offCanvas  border p-4 ${showOffCanvas ? "show-offCanvas" : ""}`} ref={cartRef}>
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+        pauseOnHover={false}
+      />
       <div className=" d-flex justify-content-between ">
         <h5>About this Project</h5>
         <button
@@ -54,20 +83,32 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
           <p>To simplify access to the application, the following test users are provided:</p>
           <p className="fw-bold">Login as buyer:</p>
           <ul>
-            <li>E-mail:</li>
-            <li>Password:1234</li>
+            <li>E-mail: maria.perez@gmail.com</li>
+            <li>Password: 1234</li>
           </ul>
 
           <p className="fw-bold">Login as admin:</p>
           <ul>
-            <li>E-mail:</li>
-            <li>Password:1234</li>
+            <li>E-mail: admin@gmail.com</li>
+            <li>Password: 1234</li>
           </ul>
           <Link to="/login" className="btn btn-secondary  ">
             Login
           </Link>
         </div>
-        <div></div>
+        <div className="position-fixed" style={{ bottom: "2%" }}>
+          {" "}
+          <button
+            className="btn btn-dark"
+            type="button"
+            onClick={() => {
+              handleResetSeeders();
+              notify();
+            }}
+          >
+            Reset Database
+          </button>
+        </div>
       </div>
     </div>
   );
