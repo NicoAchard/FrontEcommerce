@@ -188,7 +188,10 @@ function Project() {
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Ramiro Vidal</h5>
                     <div className="d-flex flex-column justify-content-between h-75">
-                      <span className="text-secondary text-responsive"> ramavidal96@gmail.com</span>
+                      <span className="text-secondary text-responsive">
+                        {" "}
+                        ramirovidalc@gmail.com
+                      </span>
                       <div className="d-flex justify-content-center fs-3 gap-2 border-top">
                         <Link
                           target="_blank"
