@@ -17,12 +17,10 @@ function AdminOrdersList() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setOrders(response.data);
     };
     getAll();
   }, []);
-
   return (
     <div className="p-4 ">
       <table className="table border rounded">
