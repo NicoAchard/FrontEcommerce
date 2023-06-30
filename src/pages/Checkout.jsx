@@ -12,6 +12,8 @@ import Footer from "../components/Footer";
 
 import { REMOVE_PRODUCT } from "../redux/cartSlice";
 import Card from "../components/CreditCard";
+import MercadoPago from "../components/MercadoPago";
+import PayPal from "../components/Paypal";
 
 function Checkout() {
   const products = useSelector((state) => state.cart.products);
@@ -65,7 +67,7 @@ function Checkout() {
     setTimeout(() => {
       setIsLoading(false);
       navigate("/thanks");
-    }, 3000);
+    }, 1000);
   };
 
   const handleSubmitShippingInformation = (event) => {
@@ -217,11 +219,12 @@ function Checkout() {
                 <Tab eventKey="Credit_card" title="Credit card">
                   <Card FinishProcess={setFinishProcess} />
                 </Tab>
-                <Tab eventKey="mercado_pago" title="mercado_pago">
-                  <span>texto</span>
+                <Tab eventKey="mercado_pago" title="Mercado Pago">
+                  <MercadoPago FinishProcess={setFinishProcess} />
                 </Tab>
-                <Tab eventKey="Paypal" title="Paypal">
-                  Tab content for Contact
+
+                <Tab eventKey="Paypal" title="PayPal">
+                  <PayPal FinishProcess={setFinishProcess} />
                 </Tab>
               </Tabs>
             )}
@@ -309,7 +312,11 @@ function Checkout() {
             >
               {isLoading ? "Processing your order..." : "Confirm Order"}
             </button>
-            {!finishProcess && <span>Please complete the fields</span>}
+            {!finishProcess && (
+              <span className="text-danger" style={{ fontSize: "0.9rem" }}>
+                Please complete all the fields to confirm order
+              </span>
+            )}
           </div>
         </div>
       </div>

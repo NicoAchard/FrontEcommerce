@@ -41,7 +41,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <VscTools className="fs-3" />
-                <span className="d-none d-lg-block fs-6"> Dashboard </span>
+                <span className="d-none d-lg-block admin-text "> Dashboard </span>
               </div>
             </Link>
             <Link to="/admin/products" className="btn d-flex p-0 py-1">
@@ -50,7 +50,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <BsHandbag className="fs-3" />{" "}
-                <span className="d-none d-lg-block fs-6">Products</span>
+                <span className="d-none d-lg-block admin-text">Products</span>
               </div>
             </Link>
             <Link to="/admin/users" className="btn d-flex p-0 py-1">
@@ -59,7 +59,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <HiOutlineUsers className="fs-3" />
-                <span className="d-none d-lg-block fs-6"> Users </span>
+                <span className="d-none d-lg-block admin-text"> Users </span>
               </div>
             </Link>
             <Link to="/admin/orders" className="btn d-flex p-0 py-1">
@@ -68,7 +68,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <AiOutlineShoppingCart className="fs-3" />{" "}
-                <span className="d-none d-lg-block fs-6"> Orders </span>
+                <span className="d-none d-lg-block admin-text"> Orders </span>
               </div>
             </Link>
             <Link to="/admin/categories" className="btn d-flex p-0 py-1">
@@ -77,7 +77,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <BiCategory className="fs-3" />
-                <span className="d-none d-lg-block fs-6"> Categories </span>
+                <span className="d-none d-lg-block admin-text"> Categories </span>
               </div>
             </Link>
           </div>
@@ -87,7 +87,7 @@ export default () => {
               style={{ fontSize: "1.1rem" }}
             >
               <HiArrowUturnLeft className="fs-3" />{" "}
-              <span className="d-none d-lg-block fs-6"> Return to Website </span>
+              <span className="d-none d-lg-block admin-text"> Return to Website </span>
             </div>
           </Link>
         </div>

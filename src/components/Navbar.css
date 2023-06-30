@@ -9,3 +9,8 @@
   background-blend-mode: multiply;
   background-size: cover;
 }
+
+.nav-text {
+  font-family: "Assistant", sans-serif;
+  font-size: 1.15rem;
+}

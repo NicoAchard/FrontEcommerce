@@ -59,7 +59,7 @@ function Product({ product, carrousel }) {
           style={{ height: "150px" }}
         >
           <div className="title-container">
-            <Card.Title className="text-center product-title fw-normal  ">
+            <Card.Title className="text-center product-title">
               {product.name.length > 25 ? `${product.name.slice(0, 25)}...` : product.name}
             </Card.Title>
           </div>

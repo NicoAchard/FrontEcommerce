@@ -16,9 +16,11 @@ function CallToAction2() {
         alt="Skate image"
         onClick={handleBannerClick}
       />
-      <div className="text-white w-100">
-        <h2>Enjoy the ride with Hey! Boards</h2>
-        <p>Let it flow, surf the streets and feel the good vibes come along</p>
+      <div className="text-white w-100 call-text">
+        <h2 className="call-text">Enjoy the ride with Hey! Boards</h2>
+        <p className="call-text">
+          Let it flow, surf the streets and feel the good vibes come along
+        </p>
       </div>
     </div>
   );

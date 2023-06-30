@@ -32,7 +32,7 @@
   width: 40%;
   opacity: 0;
   transform: scale(0.5);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: opacity 1s ease-in-out, transform 1.7s ease-in-out;
   margin-bottom: 60px;
 }
 

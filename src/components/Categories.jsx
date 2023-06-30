@@ -70,7 +70,7 @@ function Categories() {
       <div className="d-flex justify-content-center categories2 d-md-none">
         <div className="d-flex gap-1" style={{ width: "100%", height: "450px" }}>
           <div className="category2">
-            <div className="text-center fw-bold m-0 pt-3">
+            <div className="text-center fw-bolder m-0 pt-3">
               <h4 className="" style={{ color: "#FF7F50", letterSpacing: "1px" }}>
                 SKATEBOARDS
               </h4>

@@ -139,7 +139,9 @@ export default () => {
                   <div className="col d-flex flex-column gap-2">
                     <div className="d-flex flex-column gap-2">
                       <h1 className="title-responsive h-100"> {product.name}</h1>
-                      <span className="d-md-block text-responsive">{product.description}</span>
+                      <span className="d-md-block text-responsive" style={{ fontSize: "1.1rem" }}>
+                        {product.description}
+                      </span>
                       <span>
                         <b>In stock:</b> <span> {product.stock}</span>
                       </span>
@@ -147,28 +149,33 @@ export default () => {
                     <div className="d-flex align-items-end justify-content-end flex-column gap-2">
                       <div className="d-flex flex-column gap-2 w-100">
                         <div className="border d-flex gap-2  justify-content-between">
-                          <button className="btn" onClick={handlerDecrementCountProduct}>
+                          <button
+                            className="btn fw-bold fs-5"
+                            onClick={handlerDecrementCountProduct}
+                          >
                             -
                           </button>
                           <span className="d-flex align-items-center">{productCount}</span>
-                          <button className="btn" onClick={handlerIncreseCountProduct}>
+                          <button className="btn fw-bold fs-5" onClick={handlerIncreseCountProduct}>
                             +
                           </button>
                         </div>
                         <button
-                          className="btn btn-warning rounded-0 border-black"
+                          className="btn btn-warning rounded-0 border-black fw-bold"
                           onClick={() => handlerAddToCart(product)}
                         >
                           ADD TO CART
                         </button>
                       </div>
-                      <h6>Total: {`$${product.price * productCount}`}</h6>
+                      <h6 style={{ fontSize: "1.1rem" }}>
+                        Total: {`$${product.price * productCount}`}
+                      </h6>
 
                       <div className="row d-flex flex-column flex-md-row justify-content-between ">
                         <div className="col-12 col-md-6">
                           <div className="d-flex justify-content-between  ">
                             <div>
-                              <h2>${product.price}.00</h2>
+                              <h2>${product.price}</h2>
 
                               <div>
                                 <p className="text-success mb-0">

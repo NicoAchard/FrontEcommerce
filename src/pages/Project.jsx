@@ -58,7 +58,7 @@ function Project() {
             <div ref={durationRef} className="square col-lg-3  border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Duration</h4>
+                  <h4 className="fw-bold">Duration</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -75,7 +75,7 @@ function Project() {
             <div ref={stackRef} className="square col-lg-3 border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Stack</h4>
+                  <h4 className="fw-bold">Stack</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -92,7 +92,7 @@ function Project() {
             <div ref={tasksRef} className="square col-lg-3  border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Tasks</h4>
+                  <h4 className="fw-bold">Tasks</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -107,7 +107,7 @@ function Project() {
                 <Link
                   to="https://miro.com/app/board/uXjVM_QQ1hE=/?share_link_id=515675317311"
                   target="blank"
-                  className="miro fw-bold"
+                  className="miro fw-bold text-decoration-none"
                 >
                   here
                 </Link>
@@ -115,16 +115,14 @@ function Project() {
             </div>
           </div>
           <h3
-            className="w-100 text-center mt-4 pb-lg-3 fs-4 outlined-text"
+            className="w-100 text-center mt-4 pb-lg-3 fs-3 outlined-text"
             data-text="Technologies"
           >
             Technologies
           </h3>
-          <div className="row square border rounded px-3 pt-3 mb-5">
+          <div className="d-flex flex-column row square border rounded px-3 pt-3 mb-5">
             <Technologies />
-          </div>
-          <div className="row square border rounded px-3 mb-2">
-            <div className="col fs-5">
+            <div className="col fs-5 mt-5">
               <p>
                 This intensive three-month course has equipped us with over 700 practical hours,
                 dedicated to learning and honing the skills required to build robust and dynamic web
@@ -138,7 +136,7 @@ function Project() {
             <h2 className="m-4 outlined-text" data-text="Team">
               Team
             </h2>
-            <div className="row w-100 g-4 pb-4">
+            <div className="row w-100 g-4">
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card team-card w-75 h-100">
                   <img style={{ height: "16rem", objectFit: "cover" }} src={Ivan} alt="Ivan" />
@@ -229,7 +227,7 @@ function Project() {
               </div>
             </div>
           </div>
-          <p className="fs-5 mb-5 text-center">
+          <p className="fs-5 mb-5 pb-2 text-center">
             We are excited to showcase this e-commerce project as a culmination of our journey to
             become full stack web developers.
           </p>

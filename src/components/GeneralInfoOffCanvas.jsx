@@ -51,7 +51,6 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
         showOffCanvas ? "show-offCanvas" : ""
       }`}
       ref={cartRef}
-      style={{ width: "30%" }}
     >
       <div>
         <ToastContainer
