@@ -66,11 +66,7 @@ const SalesChart = ({ datasets }) => {
     };
   }, [datasets]);
 
-  return (
-    <div className="d-none d-md-flex">
-      <canvas ref={chartRef} />
-    </div>
-  );
+  return <canvas ref={chartRef} />;
 };
 
 export default SalesChart;
