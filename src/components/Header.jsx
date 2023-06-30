@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import header from "../img/header.jpg";
 import logo from "../img/logoHeyBoards.svg";
 import "./Header.css";
 
 function Header() {
   const [logoLoaded, setLogoLoaded] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const handleLogoLoad = () => {
@@ -15,6 +16,8 @@ function Header() {
     logoImage.src = logo;
     logoImage.onload = handleLogoLoad;
 
+    headerRef.current.classList.add("animate-header");
+
     return () => {
       logoImage.onload = null;
     };
@@ -23,7 +26,12 @@ function Header() {
   return (
     <div className="header-container container-fluid p-0">
       <div className={`header-image-container h-100  ${logoLoaded ? "logo-loaded" : ""}`}>
-        <img className="header-image2 position-absolute" src={header} alt="Skate image" />
+        <img
+          ref={headerRef}
+          className="header-image2 position-absolute"
+          src={header}
+          alt="Skate image"
+        />
         <div className="fade-overlay position-absolute" />
         <div className="d-flex h-100 justify-content-center align-items-center">
           <img
