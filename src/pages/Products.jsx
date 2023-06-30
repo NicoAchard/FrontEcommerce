@@ -18,6 +18,12 @@ function Products() {
   const [filterByName, setFilterByName] = useState("");
   const [filterItems, setFilterItems] = useState([
     {
+      title: "Highlight",
+      value: "highlight",
+      prop: "boolean",
+      options: [{ active: false }],
+    },
+    {
       title: "Prices",
       value: "price",
       prop: "range",

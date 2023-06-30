@@ -28,6 +28,7 @@ function ProductsList({ filters, filterByName }) {
         if (activeFilters.find((filter) => filter.options !== undefined)) {
           const filteredProducts = filteredList.filter((product) => {
             let returnProduct = product;
+
             activeFilters.forEach((filter) => {
               if (filter.options !== undefined) {
                 if (filter.prop === "range") {
@@ -37,8 +38,13 @@ function ProductsList({ filters, filterByName }) {
                       ? returnProduct
                       : null;
                 } else {
-                  returnProduct =
-                    product[filter.value] === filter.options.value ? returnProduct : null;
+                  if (filter.prop === "boolean") {
+                    returnProduct =
+                      product[filter.value] === filter.options.active ? returnProduct : null;
+                  } else {
+                    returnProduct =
+                      product[filter.value] === filter.options.value ? returnProduct : null;
+                  }
                 }
               }
             });
