@@ -17,7 +17,7 @@ function CallToAction2() {
         onClick={handleBannerClick}
       />
       <div className="text-white w-100 call-text">
-        <h2 className="call-text">Enjoy the ride with Hey! Boards</h2>
+        <h2 className="call-text fw-bold">ENJOY THE RIDE WITH HEY! BOARDS</h2>
         <p className="call-text">
           Let it flow, surf the streets and feel the good vibes come along
         </p>
