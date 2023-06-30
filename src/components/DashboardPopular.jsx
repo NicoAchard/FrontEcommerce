@@ -48,7 +48,7 @@ function DashboardPopular({}) {
           .sort(([, a], [, b]) => b.qty - a.qty)
           .slice(0, 5)
           .map(([id, product]) => ({ id, ...product }));
-        console.log(topProducts);
+
         sethighlights(topProducts);
       } catch (error) {
         console.log(error);
@@ -63,7 +63,6 @@ function DashboardPopular({}) {
       {highlights &&
         highlights.map((product) => (
           <div className="popular-product d-flex p-1 me-2 position-relative" key={product.id}>
-            {console.log(product)}
             <img src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`} alt="product-img" />
             <div className="d-flex flex-column w-100">
               <div className="border-bottom ">

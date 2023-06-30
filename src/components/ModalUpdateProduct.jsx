@@ -54,7 +54,6 @@ export default ({
       },
     });
     if (response.data.status === 200) {
-      console.log(photos);
       setProducts((prev) =>
         prev.map((product) =>
           product.id === id

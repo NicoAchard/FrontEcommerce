@@ -45,7 +45,6 @@ export default ({ filterItems, setFilterItems }) => {
   };
 
   const handleRemoveFilters = () => {
-    console.log(filterItems);
     const newFilterItems = filterItems.map((filter) => {
       return {
         ...filter,
