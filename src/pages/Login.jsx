@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../img/logoHeyBoards.svg";
 import skateLogin from "../img/SkateLogin.jpg";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
@@ -44,6 +44,11 @@ function Login() {
   }
   return (
     <section className="vh-100">
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <div className="container-fluid h-100">
         <div className="row h-100">
           <div className="col-sm-6 text-black">

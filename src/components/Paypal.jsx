@@ -1,11 +1,12 @@
 import paypalLogo from "../img/paypalLogo.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default ({ FinishProcess }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-
+  const notify = () => toast("This functionality is under development");
   useEffect(() => {
     if (inputEmail && inputPassword) {
       FinishProcess(true);
@@ -16,6 +17,11 @@ export default ({ FinishProcess }) => {
 
   return (
     <div className="d-flex justify-content-center mt-5">
+      <ToastContainer
+        theme="dark"
+        pauseOnFocusLoss={false}
+        progressStyle={{ backgroundColor: "#52C9B0" }}
+      />
       <div className="w-100 px-3 px-md-0" style={{ maxWidth: "500px" }}>
         <h6 className="text-center" style={{ fontFamily: "sans-serif" }}>
           Login with your PayPal account
@@ -60,12 +66,17 @@ export default ({ FinishProcess }) => {
                 color: "white",
                 border: "none",
               }}
+              onClick={notify}
             >
               Login
             </button>
             <div className="text-center mt-2">
               <span style={{ fontFamily: "sans-serif" }}>Don't have an account?</span>
-              <Link style={{ fontFamily: "sans-serif" }} className="text-decoration-none">
+              <Link
+                style={{ fontFamily: "sans-serif" }}
+                className="text-decoration-none"
+                onClick={notify}
+              >
                 {" "}
                 Register
               </Link>
