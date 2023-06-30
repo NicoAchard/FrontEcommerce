@@ -24,6 +24,7 @@ export default ({
   setCategoryId,
   photoGallery,
   setPhotoGallery,
+  setProducts,
 }) => {
   const token = useSelector((state) => state.user.token);
   const [responseUpdateProduct, setResponseUpdateProduct] = useState(null);
@@ -52,8 +53,29 @@ export default ({
         "content-type": "multipart/form-data",
       },
     });
-
     if (response.data.status === 200) {
+      console.log(photos);
+      setProducts((prev) =>
+        prev.map((product) =>
+          product.id === id
+            ? {
+                ...product,
+                name,
+                description,
+                highlight,
+                stock,
+                price,
+                photos: response.data.product.photos,
+                categoryId,
+              }
+            : product,
+        ),
+      );
+      setTimeout(() => {
+        setResponseUpdateProduct(null);
+        setResponseCategories(null);
+        setShow((prev) => !prev);
+      }, 1000);
       return setResponseUpdateProduct(200);
     }
     if (response.data.status === 400) {

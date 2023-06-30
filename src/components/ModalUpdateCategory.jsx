@@ -32,7 +32,6 @@ export default ({
         description,
       },
     });
-
     if (response.data.status === 200) {
       setCategories(
         categories.map((category) =>
@@ -45,8 +44,6 @@ export default ({
       return setResponseUpdateCategory(400);
     }
     if (response.data.status === 401) {
-      //Averiguar codigos de error para esats situaciones
-
       setResponseUpdateCategory(401);
     }
   };

@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
 import { BsTrash, BsPencil } from "react-icons/bs";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
-import "react-toastify/dist/ReactToastify.css";
+import ModalUpdateProduct from "../components/ModalUpdateProduct";
 
-function AdminProductsList({
-  setShow,
-  setProductId,
-  setName,
-  setDescription,
-  setHighlight,
-  setStock,
-  setPrice,
-  setPhotos,
-  setCategoryId,
-  photoGallery,
-  setPhotoGallery,
-}) {
+function AdminProductsList() {
   const [products, setProducts] = useState(null);
+  const [showUpdateProduct, setShowUpdateProduct] = useState(false);
+
+  const [productId, setProductId] = useState();
+  const [productName, setProductName] = useState("");
+  const [productDescription, setproductDescription] = useState("");
+  const [productHighlight, setProductHighlight] = useState("");
+  const [productStock, setProductStock] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const [productPhotos, setProductPhotos] = useState("");
+  const [productCategoryId, setProductCategoryId] = useState("");
+  const [photoGallery, setPhotoGallery] = useState([]);
 
   const token = useSelector((state) => state.user.token);
 
@@ -50,20 +49,42 @@ function AdminProductsList({
   };
 
   const handleUpdate = (id, name, description, highlight, stock, price, photos, categoryId) => {
-    setShow(true);
+    setShowUpdateProduct(true);
     setProductId(id);
-    setName(name);
-    setDescription(description);
-    setHighlight(highlight);
-    setStock(stock);
-    setPrice(price);
-    setPhotos(photos);
-    setCategoryId(categoryId);
+    setProductName(name);
+    setproductDescription(description);
+    setProductHighlight(highlight);
+    setProductStock(stock);
+    setProductPrice(price);
+    setProductPhotos(photos);
+    setProductCategoryId(categoryId);
     setPhotoGallery(photos);
   };
 
   return (
     <div className="p-4 table-responsive">
+      <ModalUpdateProduct
+        show={showUpdateProduct}
+        setShow={setShowUpdateProduct}
+        id={productId}
+        name={productName}
+        setName={setProductName}
+        description={productDescription}
+        setDescription={setproductDescription}
+        highlight={productHighlight}
+        setHighlight={setProductHighlight}
+        stock={productStock}
+        setStock={setProductStock}
+        price={productPrice}
+        setPrice={setProductPrice}
+        photos={productPhotos}
+        setPhotos={setProductPhotos}
+        categoryId={productCategoryId}
+        setCategoryId={setProductCategoryId}
+        setPhotoGallery={setPhotoGallery}
+        photoGallery={photoGallery}
+        setProducts={setProducts}
+      />
       <table className="table border rounded">
         <thead className="table-light">
           <tr>
