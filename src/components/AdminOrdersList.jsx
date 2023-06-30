@@ -9,7 +9,7 @@ function AdminOrdersList() {
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {
-    const addOrders = async (event) => {
+    const getAll = async (event) => {
       const response = await axios({
         method: "GET",
         url: `${import.meta.env.VITE_API_URL}/orders`,
@@ -17,10 +17,10 @@ function AdminOrdersList() {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      console.log(response.data);
       setOrders(response.data);
     };
-    addOrders();
+    getAll();
   }, []);
 
   return (
