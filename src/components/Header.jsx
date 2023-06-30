@@ -25,7 +25,9 @@ function Header() {
 
   return (
     <div className="header-container container-fluid p-0">
-      <div className={`header-image-container h-100  ${logoLoaded ? "logo-loaded" : ""}`}>
+      <div
+        className={`header-image-container h-100 mt-0 mt-sm-5 ${logoLoaded ? "logo-loaded" : ""}`}
+      >
         <img
           ref={headerRef}
           className="header-image2 position-absolute"
