@@ -28,10 +28,10 @@ function Products() {
       value: "price",
       prop: "range",
       options: [
-        { name: "Under $100", max: 100, min: 0, active: false },
-        { name: "$100 to $200", max: 200, min: 100, active: false },
-        { name: "$200 to $500", max: 500, min: 200, active: false },
-        { name: "$500 to $1000", max: 1000, min: 500, active: false },
+        { name: "Under $150", max: 150, min: 0, active: false },
+        { name: "$150 to $200", max: 200, min: 150, active: false },
+        { name: "$200 to $400", max: 400, min: 200, active: false },
+        { name: "$400 to $1000", max: 1000, min: 400, active: false },
       ],
     },
   ]);
