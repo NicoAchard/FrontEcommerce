@@ -55,7 +55,7 @@ function Orders() {
               </p>
 
               {orders.map((order) => (
-                <Card key={order.id} className="my-5">
+                <Card key={order.id} className="my-5 team-card">
                   <Card.Header className="h-100 d-flex align-items-center border-bottom p-3">
                     <div className="row justify-content-between text-center w-100">
                       <div className="col-md-6 d-none d-md-block">

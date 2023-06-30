@@ -42,41 +42,44 @@ function NavBar() {
             id="responsive-navbar-nav"
             className="justify-content-end align-items-center text-end"
           >
-            <Nav className="gap-3 mt-2 mt-lg-0 d-flex align-items-lg-center">
-              <Link to="/products" className="text-decoration-none text-white">
+            <Nav className="gap-3 mt-2 mt-lg-0 d-flex align-items-lg-center ">
+              <Link to="/products" className="text-decoration-none text-white nav-text">
                 Products
               </Link>
-              <Link to="/about-this-project" className="text-decoration-none text-white">
+              <Link to="/about-this-project" className="text-decoration-none text-white nav-text">
                 About this project
               </Link>
               <div className=" d-lg-none gap-3  mt-lg-0 d-flex flex-column align-items-lg-center">
                 {user && (
                   <>
-                    <Link to="/profile" className="text-white text-decoration-none">
+                    <Link to="/profile" className="text-white text-decoration-none nav-text">
                       Profile
                     </Link>
 
-                    <Link to="/orders" className="text-white text-decoration-none">
+                    <Link to="/orders" className="text-white text-decoration-none nav-text">
                       Orders
                     </Link>
 
                     {user.data.roleId === 200 && (
-                      <Link to="/admin" className="text-white text-decoration-none ">
+                      <Link to="/admin" className="text-white text-decoration-none nav-text">
                         Admin
                       </Link>
                     )}
 
-                    <Link onClick={handleLogout} className="text-white text-decoration-none pb-3">
+                    <Link
+                      onClick={handleLogout}
+                      className="text-white text-decoration-none pb-3 nav-text"
+                    >
                       Logout
                     </Link>
                   </>
                 )}
                 {!user && (
                   <>
-                    <Link to="/login" className="d-block text-decoration-none text-white">
+                    <Link to="/login" className="d-block text-decoration-none text-white nav-text">
                       Login
                     </Link>
-                    <Link to="/signup" className="d-block text-decoration-none text-white">
+                    <Link to="/signup" className="d-block text-decoration-none text-white nav-text">
                       Sign up
                     </Link>
                   </>
@@ -100,24 +103,30 @@ function NavBar() {
               >
                 <div className="px-2">
                   {user && user.data.roleId === 200 && (
-                    <Link to="/admin" className="text-decoration-none text-black d-block">
+                    <Link to="/admin" className="text-decoration-none text-black d-block nav-text">
                       Admin
                     </Link>
                   )}
 
                   {user && (
                     <>
-                      <Link to="/profile" className="text-decoration-none d-block text-black">
+                      <Link
+                        to="/profile"
+                        className="text-decoration-none d-block text-black nav-text"
+                      >
                         Profile
                       </Link>
 
-                      <Link to="/orders" className="text-decoration-none d-block text-black">
+                      <Link
+                        to="/orders"
+                        className="text-decoration-none d-block text-black nav-text"
+                      >
                         Orders
                       </Link>
                       <NavDropdown.Divider />
                       <Link
                         onClick={handleLogout}
-                        className="text-decoration-none d-block text-black"
+                        className="text-decoration-none d-block text-black nav-text"
                       >
                         Logout
                       </Link>
@@ -127,12 +136,18 @@ function NavBar() {
                 {!user && (
                   <>
                     <NavDropdown.Item>
-                      <Link to="/login" className="text-decoration-none text-black d-block">
+                      <Link
+                        to="/login"
+                        className="text-decoration-none text-black d-block nav-text"
+                      >
                         Login
                       </Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item>
-                      <Link to="/signup" className="text-decoration-none text-black d-block">
+                      <Link
+                        to="/signup"
+                        className="text-decoration-none text-black d-block nav-text"
+                      >
                         Sign Up
                       </Link>
                     </NavDropdown.Item>
