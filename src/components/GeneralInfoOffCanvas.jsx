@@ -64,37 +64,59 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
       </div>
       <div>
         <p>
-          This e-commerce website is a project developed by students of the Hack Academy Coding
-          Bootcamp.
+          This e-commerce website is a project developed by students of the{" "}
+          <span>
+            <Link
+              className="text-decoration-none"
+              to="https://ha.dev/cursos/bootcamp-desarrollo-web"
+              target="_blank"
+            >
+              Hack Academy Coding Bootcamp
+            </Link>
+          </span>
+          .
         </p>
-        <Link to="/about-this-project" className="btn btn-secondary ">
+        <Link
+          to="/about-this-project"
+          style={{ width: "200px", margin: "auto" }}
+          className="btn btn-success d-flex justify-content-center mt-5 "
+        >
           More info
         </Link>
       </div>
 
       <hr />
       <div>
-        <div className="d-flex gap-2">
-          <FaUserAlt />
+        <div className="d-flex gap-2 ">
+          <FaUserAlt className="mt-1" />
 
-          <h6>Test user</h6>
+          <h5>Test user</h5>
         </div>
         <div>
           <p>To simplify access to the application, the following test users are provided:</p>
-          <p className="fw-bold">Login as buyer:</p>
+          <p>
+            Login as <span className="fw-bold">buyer:</span>
+          </p>
           <ul>
             <li>E-mail: maria.perez@gmail.com</li>
             <li>Password: 1234</li>
           </ul>
 
-          <p className="fw-bold">Login as admin:</p>
+          <p>
+            Login as <span className="fw-bold"> admin:</span>
+          </p>
           <ul>
             <li>E-mail: admin@gmail.com</li>
             <li>Password: 1234</li>
           </ul>
-          <Link to="/login" className="btn btn-secondary  ">
+          <Link
+            to="/login"
+            style={{ width: "200px", margin: "auto" }}
+            className="btn btn-success d-flex justify-content-center mt-5"
+          >
             Login
           </Link>
+          <hr />
         </div>
         <div className="position-fixed" style={{ bottom: "2%" }}>
           {" "}
