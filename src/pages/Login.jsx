@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logo from "../img/logoHeyBoards.svg";
 import skateLogin from "../img/SkateLogin.jpg";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +15,7 @@ function Login() {
   const [failLogin, setFailLogin] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const notify = () => toast("This functionality is under development");
   const handleHomeClick = () => {
     navigate("/");
   };
@@ -104,7 +107,7 @@ function Login() {
                 </div>
 
                 <p className="small mb-5 pb-lg-2">
-                  <Link to="/signup" className="text-muted">
+                  <Link to="" className="text-muted" onClick={notify}>
                     Forgot password?
                   </Link>
                 </p>
