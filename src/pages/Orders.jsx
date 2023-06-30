@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { NavLink } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
+import { useEffect, useState } from "react";
 import { AiOutlineReload } from "react-icons/ai";
+import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Card from "react-bootstrap/Card";
 import { format } from "date-fns";
+import axios from "axios";
 
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
+
 import "./Orders.css";
 
 function Orders() {
@@ -20,7 +21,9 @@ function Orders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/orders`, {
+        const response = await axios({
+          method: "GET",
+          url: `${import.meta.env.VITE_API_URL}/orders`,
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,26 +31,30 @@ function Orders() {
 
         const userOrders = response.data.filter((order) => order.userId === userId);
         userOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-        setOrders(userOrders);
+        if (userOrders.length > 0) {
+          return setOrders(userOrders);
+        }
       } catch (error) {
         console.error("Error fetching orders:", error);
       }
     };
 
     fetchOrders();
-  }, [token, userId]);
+  }, []);
 
   return (
     <div className="d-flex flex-column min-vh-100 justify-content-between">
       <div>
         <NavBar />
         <div style={{ marginTop: "8.5rem" }}>
-          <div className="container">
-            <h3 className="font-weight-bold">Order History</h3>
-            <p>Check the status of recent orders, manage returns, and discover similar products.</p>
-            {orders &&
-              orders.map((order) => (
+          {orders ? (
+            <div className="container">
+              <h3 className="font-weight-bold">Order History</h3>
+              <p>
+                Check the status of recent orders, manage returns, and discover similar products.
+              </p>
+
+              {orders.map((order) => (
                 <Card key={order.id} className="my-5">
                   <Card.Header className="h-100 d-flex align-items-center border-bottom p-3">
                     <div className="row justify-content-between text-center w-100">
@@ -132,9 +139,26 @@ function Orders() {
                   ))}
                 </Card>
               ))}
-          </div>
+            </div>
+          ) : (
+            <div className="container border shadow rounded p-3">
+              <h3>No Pending Orders</h3>
+              <p>
+                Currently, you have no pending orders. This is the perfect time to explore our
+                <b>wide range of products</b> and make your first purchase! Discover{" "}
+                <b>high-quality items</b> and enjoy an exceptional shopping experience.
+              </p>
+              <p>
+                <b>Click</b> the button below to start your shopping experience right away.
+              </p>
+              <NavLink to="/products" className="btn btn-warning border-dark ">
+                Explore Products
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
+
       <Footer />
     </div>
   );
