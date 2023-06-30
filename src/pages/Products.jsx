@@ -64,7 +64,7 @@ function Products() {
   }, []);
 
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column min-vh-100 justify-content-between">
       <FilterSidebarOffcanvas
         filterItems={filterItems}
         setFilterItems={setFilterItems}

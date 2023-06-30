@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-export default ({ show, setShow, user }) => {
+export default ({ show, setShow, user, setUsers }) => {
   const token = useSelector((state) => state.user.token);
 
   const [inputFirstname, setInputFirstname] = useState("");
@@ -32,7 +32,7 @@ export default ({ show, setShow, user }) => {
       setInputAddress(user.address);
       setInputEmail(user.email);
       setInputPhoneNumber(user.phone_number);
-      setInputImgFile(user.firstname);
+      setInputImgFile(user.avatar);
       setProfileImg(user.avatar);
       setChangePassword(false);
     }
@@ -88,6 +88,21 @@ export default ({ show, setShow, user }) => {
       setPasswordsUnmatch(false);
       //Good
       if (response.data.status === 200) {
+        setUsers((prev) =>
+          prev.map((listUseritem) =>
+            listUseritem.id === user.id
+              ? {
+                  ...listUseritem,
+                  firstname: inputFirstname,
+                  lastname: inputLastname,
+                  address: inputAddress,
+                  email: inputEmail,
+                  phone_number: inputPhoneNumber,
+                  avatar: profileImg,
+                }
+              : listUseritem,
+          ),
+        );
         return setResponseUpdateUser({ status: 200, message: response.data.response });
       }
       //Unexpected error

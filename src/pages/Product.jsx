@@ -83,7 +83,7 @@ export default () => {
     );
   };
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column min-vh-100 justify-content-between">
       <div>
         <NavBar />
         <div className="container mb-4" style={{ marginTop: "6rem" }}>

@@ -85,7 +85,7 @@ export default () => {
             ))}
         </tbody>
       </table>
-      <ModalUpdateUser show={show} setShow={setShow} user={userSelected} />
+      <ModalUpdateUser show={show} setShow={setShow} user={userSelected} setUsers={setUsers} />
     </div>
   );
 };
