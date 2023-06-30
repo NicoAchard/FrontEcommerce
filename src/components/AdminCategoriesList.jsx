@@ -41,7 +41,7 @@ export default ({ categories, setCategories, setShow, setName, setDescription, s
                 <th scope="row">{category.id}</th>
                 <td>{category.name}</td>
                 <td>{category.description}</td>
-                <td className="d-flex gap-4 justify-content-between border-bottom-0">
+                <td className="d-flex justify-content-between border-bottom-0">
                   <span
                     className="cursor-pointer"
                     onClick={() => handleUpdate(category.id, category.name, category.description)}

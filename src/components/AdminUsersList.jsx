@@ -73,7 +73,7 @@ export default () => {
                 <td>{user.email}</td>
                 <td> {user.role.name}</td>
 
-                <td className=" d-flex justify-content-between border-bottom-0">
+                <td className=" d-flex border-bottom-0">
                   <span className="cursor-pointer" onClick={() => handleUpdateUser(user)}>
                     <BsPencil className="fs-5 text-primary" />
                   </span>
