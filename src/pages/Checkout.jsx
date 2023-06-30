@@ -87,224 +87,230 @@ function Checkout() {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <NavBar />
-      <div className="row pt-5 mt-5">
-        <div className="col p-5">
-          {showShippingInformation ? (
-            <div>
-              <form
-                onSubmit={(event) => handleSubmitShippingInformation(event)}
-                className="d-flex flex-column"
+    <div className="d-flex flex-column min-vh-100 justify-content-between">
+      <div>
+        <NavBar />
+        <div className="row pt-5 mt-5">
+          <div className="col p-5">
+            {showShippingInformation ? (
+              <div>
+                <form
+                  onSubmit={(event) => handleSubmitShippingInformation(event)}
+                  className="d-flex flex-column"
+                >
+                  <h4 className="billing-address mb-3 fs-5">Shipping information</h4>
+                  <label htmlFor="firstName">Firstname</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="firstName"
+                    value={firstname}
+                    onChange={(event) => setFirstname(event.target.value)}
+                  />
+                  {badShippingInformation && !firstname && (
+                    <span className="text-danger"> Valid firstname is required. </span>
+                  )}
+
+                  <label htmlFor="lastName">Lastname</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="lastName"
+                    value={lastname}
+                    onChange={(event) => setLastname(event.target.value)}
+                  />
+                  {badShippingInformation && !lastname && (
+                    <span className="text-danger"> Valid lastname is required. </span>
+                  )}
+
+                  <div className="mb-3">
+                    <label htmlFor="address">Address</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="address"
+                      value={address}
+                      onChange={(event) => setAddress(event.target.value)}
+                    />
+                    {badShippingInformation && !address && (
+                      <span className="text-danger"> Please enter your shipping address. </span>
+                    )}
+                  </div>
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="state">City</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="city"
+                        value={city}
+                        onChange={(event) => setCity(event.target.value)}
+                      />
+                      {badShippingInformation && !city && (
+                        <span className="text-danger"> Please provide a valid city. </span>
+                      )}
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="country">Country</label>
+                      <select
+                        className="custom-select d-block w-100 form-control"
+                        id="country"
+                        value={country}
+                        onChange={(event) => setCountry(event.target.value)}
+                      >
+                        <option value="UYU">Uruguay</option>
+                        <option value="USA">United States</option>
+                        <option value="CAN">Canada</option>
+                        <option value="MEX">Mexico</option>
+                      </select>
+                      {badShippingInformation && !country && (
+                        <span className="text-danger"> Please select a valid country. </span>
+                      )}
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="state">State / Province</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="state"
+                        value={state}
+                        onChange={(event) => setState(event.target.value)}
+                      />
+                      {badShippingInformation && !state && (
+                        <span className="text-danger"> Please provide a valid state. </span>
+                      )}
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <label htmlFor="zip">Postal code</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="zip"
+                        value={postalCode}
+                        onChange={(event) => setPostalCode(event.target.value)}
+                      />
+                      {badShippingInformation && !postalCode && (
+                        <span className="text-danger">Zip code required.</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="phone-number">Phone number</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="phone-number"
+                      value={phoneNumber}
+                      onChange={(event) => setPhoneNumber(event.target.value)}
+                    />
+                    {badShippingInformation && !phoneNumber && (
+                      <span className="text-danger">Phone number required.</span>
+                    )}
+                  </div>
+                  <button type="submit" className="btn btn-dark">
+                    Confirm
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <Tabs defaultActiveKey="Credit_card" id="uncontrolled-tab-example" className="mb-3">
+                <Tab eventKey="Credit_card" title="Credit card">
+                  <Card FinishProcess={setFinishProcess} />
+                </Tab>
+                <Tab eventKey="mercado_pago" title="mercado_pago">
+                  <span>texto</span>
+                </Tab>
+                <Tab eventKey="Paypal" title="Paypal">
+                  Tab content for Contact
+                </Tab>
+              </Tabs>
+            )}
+          </div>
+          <div className="col-12 col-md-6 p-5">
+            <h4 className="d-flex justify-content-between align-items-center mb-3">
+              <span className="text-muted fs-5">Order summary</span>
+              <span className="badge text-black badge-pill">{products.length}</span>
+            </h4>
+            {products.map((product) => (
+              <div
+                className="border d-flex p-3 rounded"
+                style={{ height: "8rem" }}
+                key={product.id}
               >
-                <h4 className="billing-address mb-3 fs-5">Shipping information</h4>
-                <label htmlFor="firstName">Firstname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="firstName"
-                  value={firstname}
-                  onChange={(event) => setFirstname(event.target.value)}
+                <img
+                  src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
+                  alt="product-img"
+                  className="img-fluid"
                 />
-                {badShippingInformation && !firstname && (
-                  <span className="text-danger"> Valid firstname is required. </span>
-                )}
-
-                <label htmlFor="lastName">Lastname</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="lastName"
-                  value={lastname}
-                  onChange={(event) => setLastname(event.target.value)}
-                />
-                {badShippingInformation && !lastname && (
-                  <span className="text-danger"> Valid lastname is required. </span>
-                )}
-
-                <div className="mb-3">
-                  <label htmlFor="address">Address</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="address"
-                    value={address}
-                    onChange={(event) => setAddress(event.target.value)}
-                  />
-                  {badShippingInformation && !address && (
-                    <span className="text-danger"> Please enter your shipping address. </span>
-                  )}
-                </div>
-                <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="state">City</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="city"
-                      value={city}
-                      onChange={(event) => setCity(event.target.value)}
-                    />
-                    {badShippingInformation && !city && (
-                      <span className="text-danger"> Please provide a valid city. </span>
-                    )}
+                <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
+                  <div className="d-flex justify-content-between">
+                    <p>{product.name}</p>
+                    <span className="text-danger">
+                      <BsTrashFill
+                        className="cursor-pointer"
+                        onClick={() => dispatch(REMOVE_PRODUCT(product.id))}
+                      />
+                    </span>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="country">Country</label>
-                    <select
-                      className="custom-select d-block w-100 form-control"
-                      id="country"
-                      value={country}
-                      onChange={(event) => setCountry(event.target.value)}
-                    >
-                      <option value="UYU">Uruguay</option>
-                      <option value="USA">United States</option>
-                      <option value="CAN">Canada</option>
-                      <option value="MEX">Mexico</option>
-                    </select>
-                    {badShippingInformation && !country && (
-                      <span className="text-danger"> Please select a valid country. </span>
-                    )}
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="state">State / Province</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="state"
-                      value={state}
-                      onChange={(event) => setState(event.target.value)}
-                    />
-                    {badShippingInformation && !state && (
-                      <span className="text-danger"> Please provide a valid state. </span>
-                    )}
-                  </div>
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="zip">Postal code</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="zip"
-                      value={postalCode}
-                      onChange={(event) => setPostalCode(event.target.value)}
-                    />
-                    {badShippingInformation && !postalCode && (
-                      <span className="text-danger">Zip code required.</span>
-                    )}
+                  <div className="d-flex justify-content-between">
+                    <p>USD {product.unitPrice}</p>
+                    <p>
+                      Quantity <span className="fw-bold">{product.qty} </span>
+                    </p>
                   </div>
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="phone-number">Phone number</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="phone-number"
-                    value={phoneNumber}
-                    onChange={(event) => setPhoneNumber(event.target.value)}
-                  />
-                  {badShippingInformation && !phoneNumber && (
-                    <span className="text-danger">Phone number required.</span>
-                  )}
+              </div>
+            ))}
+            <ul className="list-group mb-3 ">
+              <li className="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6>Subtotal</h6>
                 </div>
-                <button type="submit" className="btn btn-dark">
-                  Confirm
-                </button>
-              </form>
-            </div>
-          ) : (
-            <Tabs defaultActiveKey="Credit_card" id="uncontrolled-tab-example" className="mb-3">
-              <Tab eventKey="Credit_card" title="Credit card">
-                <Card FinishProcess={setFinishProcess} />
-              </Tab>
-              <Tab eventKey="mercado_pago" title="mercado_pago">
-                <span>texto</span>
-              </Tab>
-              <Tab eventKey="Paypal" title="Paypal">
-                Tab content for Contact
-              </Tab>
-            </Tabs>
-          )}
-        </div>
-        <div className="col-12 col-md-6 p-5">
-          <h4 className="d-flex justify-content-between align-items-center mb-3">
-            <span className="text-muted fs-5">Order summary</span>
-            <span className="badge text-black badge-pill">{products.length}</span>
-          </h4>
-          {products.map((product) => (
-            <div className="border d-flex p-3 rounded" style={{ height: "8rem" }} key={product.id}>
-              <img
-                src={`${import.meta.env.VITE_API_IMG}/${product.img[0].url}`}
-                alt="product-img"
-                className="img-fluid"
-              />
-              <div className="order-product d-flex flex-column justify-content-between w-100 ps-3 pt-2">
-                <div className="d-flex justify-content-between">
-                  <p>{product.name}</p>
-                  <span className="text-danger">
-                    <BsTrashFill
-                      className="cursor-pointer"
-                      onClick={() => dispatch(REMOVE_PRODUCT(product.id))}
-                    />
-                  </span>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <p>USD {product.unitPrice}</p>
-                  <p>
-                    Quantity <span className="fw-bold">{product.qty} </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-          <ul className="list-group mb-3 ">
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6>Subtotal</h6>
-              </div>
-              <span className="text-muted">
-                US${" "}
-                {products.reduce(
-                  (accumulator, currentValue) =>
-                    accumulator + currentValue.unitPrice * currentValue.qty,
-                  0,
-                )}
-              </span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6>Shipping</h6>
-              </div>
-              <span className="text-muted">US$ {shippingPrice}</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 className="my-0">Taxes</h6>
-              </div>
-              <span className="text-muted">US$ {taxPrice}</span>
-            </li>
-
-            <li className="list-group-item d-flex justify-content-between">
-              <span>Total</span>
-              <strong>
-                US${" "}
-                {shippingAndTaxPrice +
-                  products.reduce(
+                <span className="text-muted">
+                  US${" "}
+                  {products.reduce(
                     (accumulator, currentValue) =>
                       accumulator + currentValue.unitPrice * currentValue.qty,
                     0,
                   )}
-              </strong>
-            </li>
-          </ul>
+                </span>
+              </li>
+              <li className="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6>Shipping</h6>
+                </div>
+                <span className="text-muted">US$ {shippingPrice}</span>
+              </li>
+              <li className="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 className="my-0">Taxes</h6>
+                </div>
+                <span className="text-muted">US$ {taxPrice}</span>
+              </li>
 
-          <button
-            className="btn btn-dark btn-lg btn-block w-100"
-            onClick={handleCheckout}
-            disabled={!finishProcess}
-          >
-            {isLoading ? "Processing your order..." : "Confirm Order"}
-          </button>
-          {!finishProcess && <span>Please complete the fields</span>}
+              <li className="list-group-item d-flex justify-content-between">
+                <span>Total</span>
+                <strong>
+                  US${" "}
+                  {shippingAndTaxPrice +
+                    products.reduce(
+                      (accumulator, currentValue) =>
+                        accumulator + currentValue.unitPrice * currentValue.qty,
+                      0,
+                    )}
+                </strong>
+              </li>
+            </ul>
+
+            <button
+              className="btn btn-dark btn-lg btn-block w-100"
+              onClick={handleCheckout}
+              disabled={!finishProcess}
+            >
+              {isLoading ? "Processing your order..." : "Confirm Order"}
+            </button>
+            {!finishProcess && <span>Please complete the fields</span>}
+          </div>
         </div>
       </div>
       <Footer />
