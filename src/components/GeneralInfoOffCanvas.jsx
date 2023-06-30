@@ -46,91 +46,100 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
   };
 
   return (
-    <div className={`offCanvas  border p-4 ${showOffCanvas ? "show-offCanvas" : ""}`} ref={cartRef}>
-      <ToastContainer
-        theme="dark"
-        pauseOnFocusLoss={false}
-        progressStyle={{ backgroundColor: "#52C9B0" }}
-        pauseOnHover={false}
-      />
-      <div className=" d-flex justify-content-between ">
-        <h5>About this Project</h5>
-        <button
-          type="button"
-          className="btn-close "
-          aria-label="Close"
-          onClick={handleClick}
-        ></button>
-      </div>
+    <div
+      className={`offCanvas d-flex flex-column justify-content-between border p-4 ${
+        showOffCanvas ? "show-offCanvas" : ""
+      }`}
+      ref={cartRef}
+      style={{ width: "30%" }}
+    >
       <div>
-        <p>
-          This e-commerce website is a project developed by students of the{" "}
-          <span>
-            <Link
-              className="text-decoration-none"
-              to="https://ha.dev/cursos/bootcamp-desarrollo-web"
-              target="_blank"
-            >
-              Hack Academy Coding Bootcamp
-            </Link>
-          </span>
-          .
-        </p>
-        <Link
-          to="/about-this-project"
-          style={{ width: "200px", margin: "auto" }}
-          className="btn btn-success d-flex justify-content-center mt-5 "
-        >
-          More info
-        </Link>
-      </div>
-
-      <hr />
-      <div>
-        <div className="d-flex gap-2 ">
-          <FaUserAlt className="mt-1" />
-
-          <h5>Test user</h5>
+        <ToastContainer
+          theme="dark"
+          pauseOnFocusLoss={false}
+          progressStyle={{ backgroundColor: "#52C9B0" }}
+          pauseOnHover={false}
+        />
+        <div className=" d-flex justify-content-between ">
+          <h5>About this Project</h5>
+          <button
+            type="button"
+            className="btn-close "
+            aria-label="Close"
+            onClick={handleClick}
+          ></button>
         </div>
         <div>
-          <p>To simplify access to the application, the following test users are provided:</p>
           <p>
-            Login as <span className="fw-bold">buyer:</span>
+            This e-commerce website is a project developed by students of the{" "}
+            <span>
+              <Link
+                className="text-decoration-none"
+                to="https://ha.dev/cursos/bootcamp-desarrollo-web"
+                target="_blank"
+              >
+                Hack Academy Coding Bootcamp
+              </Link>
+            </span>
+            .
           </p>
-          <ul>
-            <li>E-mail: maria.perez@gmail.com</li>
-            <li>Password: 1234</li>
-          </ul>
-
-          <p>
-            Login as <span className="fw-bold"> admin:</span>
-          </p>
-          <ul>
-            <li>E-mail: admin@gmail.com</li>
-            <li>Password: 1234</li>
-          </ul>
           <Link
-            to="/login"
+            to="/about-this-project"
             style={{ width: "200px", margin: "auto" }}
-            className="btn btn-success d-flex justify-content-center mt-5"
+            className="btn btn-success d-flex justify-content-center mt-5 "
+            onClick={handleClick}
           >
-            Login
+            More info
           </Link>
-          <hr />
         </div>
-        <div className="position-fixed" style={{ bottom: "2%" }}>
-          {" "}
-          <button
-            className="btn btn-dark"
-            type="button"
-            onClick={() => {
-              handleResetSeeders();
-              notify();
-            }}
-          >
-            Reset Database
-          </button>
+
+        <hr />
+        <div>
+          <div className="d-flex gap-2 ">
+            <FaUserAlt className="mt-1" />
+
+            <h5>Test user</h5>
+          </div>
+          <div>
+            <p>To simplify access to the application, the following test users are provided:</p>
+            <p>
+              Login as <span className="fw-bold">buyer:</span>
+            </p>
+            <ul>
+              <li>E-mail: maria.perez@gmail.com</li>
+              <li>Password: 1234</li>
+            </ul>
+
+            <p>
+              Login as <span className="fw-bold"> admin:</span>
+            </p>
+            <ul>
+              <li>E-mail: admin@gmail.com</li>
+              <li>Password: 1234</li>
+            </ul>
+            <Link
+              to="/login"
+              style={{ width: "200px", margin: "auto" }}
+              className="btn btn-success d-flex justify-content-center mt-5"
+            >
+              Login
+            </Link>
+            <hr />
+          </div>
         </div>
+      </div>
+      <div className="d-flex justify-content-center">
+        <button
+          className="btn btn-dark"
+          type="button"
+          onClick={() => {
+            handleResetSeeders();
+            notify();
+          }}
+          style={{ width: "200px", margin: "auto" }}
+        >
+          Reset Database
+        </button>
       </div>
     </div>
   );
