@@ -1,23 +1,32 @@
-import "./FilterProductsSidebar.css";
+import { FaRegSquare, FaRegCheckSquare } from "react-icons/fa";
 import { BsChevronDown, BsX } from "react-icons/bs";
 import { useState } from "react";
+
+import "./FilterProductsSidebar.css";
 
 export default ({ filterItems, setFilterItems, showFilterSidebar, setShowFilterSidebar }) => {
   const [selected, setSelected] = useState([]);
 
   const handleSelectFilterOption = (FilterOptionTitle, FilterOptionSelected) => {
-    const changeFilterOption = filterItems.map((item) =>
-      item.title === FilterOptionTitle
-        ? {
-            ...item,
-            options: item.options.map((option) =>
-              option.name === FilterOptionSelected
-                ? { ...option, active: true }
-                : { ...option, active: false },
-            ),
-          }
-        : item,
-    );
+    const changeFilterOption = filterItems.map((item) => {
+      if (item.title === FilterOptionTitle && item.prop !== "boolean") {
+        return {
+          ...item,
+          options: item.options.map((option) =>
+            option.name === FilterOptionSelected
+              ? { ...option, active: true }
+              : { ...option, active: false },
+          ),
+        };
+      }
+      if (item.title === FilterOptionTitle && item.prop === "boolean") {
+        return {
+          ...item,
+          options: [{ active: !item.options[0].active }],
+        };
+      }
+      return item;
+    });
     setFilterItems(changeFilterOption);
     if (selected.length > 0) {
       const existOption = selected.find((selectedItem) => selectedItem.title === FilterOptionTitle);
@@ -69,9 +78,26 @@ export default ({ filterItems, setFilterItems, showFilterSidebar, setShowFilterS
         {filterItems.length > 0
           ? filterItems.map((filterItem, index) => (
               <div key={index}>
-                <h4 className="d-flex justify-content-between mt-2">
-                  {filterItem.title} <BsChevronDown />
-                </h4>
+                {filterItem.prop !== "boolean" ? (
+                  <h4 className="d-flex justify-content-between mt-2">
+                    {filterItem.title} <BsChevronDown />
+                  </h4>
+                ) : (
+                  <h4 className="d-flex justify-content-between my-4">
+                    {filterItem.title}
+                    {filterItem.options[0].active === false ? (
+                      <FaRegSquare
+                        className="cursor-pointer"
+                        onClick={() => handleSelectFilterOption(filterItem.title, false)}
+                      />
+                    ) : (
+                      <FaRegCheckSquare
+                        className="cursor-pointer"
+                        onClick={() => handleSelectFilterOption(filterItem.title, true)}
+                      />
+                    )}
+                  </h4>
+                )}
                 <ul className="list-unstyled">
                   {filterItem.options.map((option, index) => (
                     <li

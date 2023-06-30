@@ -223,7 +223,11 @@ function Checkout() {
                 </form>
               </div>
             ) : (
-              <Tabs defaultActiveKey="Credit_card" id="uncontrolled-tab-example" className="mb-3">
+              <Tabs
+                defaultActiveKey="Credit_card"
+                id="uncontrolled-tab-example"
+                className="mb-3 custom-tabs-container"
+              >
                 <Tab eventKey="Credit_card" title="Credit card">
                   <Card FinishProcess={setFinishProcess} />
                 </Tab>
