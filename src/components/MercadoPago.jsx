@@ -16,43 +16,45 @@ export default ({ FinishProcess }) => {
 
   return (
     <div className="d-flex justify-content-center mt-5">
-      <div className="w-50">
+      <div className="w-100 px-3 px-md-0" style={{ maxWidth: "500px" }}>
         <h6 className="text-center" style={{ fontFamily: "sans-serif" }}>
           Login with your Mercado Pago account
         </h6>
         <div className="d-flex justify-content-center">
           <img className="my-3 w-75" src={mercadoPagoLogo} alt="mercado pago logo" />
         </div>
-        <form className="form-control border-0" action="">
-          <label className="form-label" htmlFor="email" style={{ fontFamily: "sans-serif" }}>
-            Email
-          </label>
-          <input
-            className="form-control"
-            name="email"
-            type="email"
-            id="email"
-            value={inputEmail}
-            onChange={(event) => setInputEmail(event.target.value)}
-          />
-          <label className="form-label" htmlFor="Password" style={{ fontFamily: "sans-serif" }}>
-            Password
-          </label>
-          <input
-            className="form-control"
-            name="Password"
-            type="text"
-            id="Password"
-            value={inputPassword}
-            onChange={(event) => setInputPassword(event.target.value)}
-          />
-          <div className="d-flex flex-column justify-content-center">
+        <form>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="email" style={{ fontFamily: "sans-serif" }}>
+              Email
+            </label>
+            <input
+              className="form-control"
+              name="email"
+              type="email"
+              id="email"
+              value={inputEmail}
+              onChange={(event) => setInputEmail(event.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label" htmlFor="Password" style={{ fontFamily: "sans-serif" }}>
+              Password
+            </label>
+            <input
+              className="form-control"
+              name="Password"
+              type="password"
+              id="Password"
+              value={inputPassword}
+              onChange={(event) => setInputPassword(event.target.value)}
+            />
+          </div>
+          <div className="d-grid gap-2">
             <button
               type="button"
-              className="btn btn-primary mt-4"
+              className="btn btn-primary"
               style={{
-                width: "200px",
-                margin: "auto",
                 backgroundColor: "rgb(85, 195, 250)",
                 fontFamily: "sans-serif",
                 color: "white",

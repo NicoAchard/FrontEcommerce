@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
@@ -15,22 +15,17 @@ export default ({ FinishProcess }) => {
     const { name, value } = evt.target;
 
     setState((prev) => ({ ...prev, [name]: value }));
-  };
-
-  useEffect(() => {
     if (state.number && state.expiry && state.cvc && state.name) {
       FinishProcess(true);
-    } else {
-      FinishProcess(false);
     }
-  }, [state]);
+  };
 
   const handleInputFocus = (evt) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   };
 
   return (
-    <div className="d-flex flex-column gap-3">
+    <div className="d-flex flex-column gap-3 mt-5">
       <Cards
         number={state.number}
         expiry={state.expiry}
@@ -38,9 +33,9 @@ export default ({ FinishProcess }) => {
         name={state.name}
         focused={state.focus}
       />
-      <form className="container">
-        <div className="d-flex justify-content-around gap-2">
-          <div className="w-100">
+      <form className="container mt-4">
+        <div className="row justify-content-between">
+          <div className="col-lg-6">
             <label htmlFor="number" className="form-label">
               Card Number
             </label>
@@ -57,7 +52,7 @@ export default ({ FinishProcess }) => {
             {/* <div className="invalid-feedback"> Credit card number is required </div> */}
           </div>
 
-          <div className="w-100">
+          <div className="col-lg-6">
             <label htmlFor="number" className="form-label">
               Expiration date (MM/YY)
             </label>
@@ -74,8 +69,9 @@ export default ({ FinishProcess }) => {
             {/* <div className="invalid-feedback"> Expiration date required </div> */}
           </div>
         </div>
-        <div className="d-flex justify-content-around gap-3">
-          <div className="w-100">
+
+        <div className="row justify-content-between">
+          <div className="col-lg-6">
             <label htmlFor="number" className="form-label w-75">
               Name on card
             </label>
@@ -92,7 +88,8 @@ export default ({ FinishProcess }) => {
             <small className="text-muted">Full name as displayed on card</small>
             {/* <div className="invalid-feedback"> Name on card is required </div> */}
           </div>
-          <div>
+
+          <div className="col-lg-6">
             <label htmlFor="number" className="form-label">
               CVV
             </label>
