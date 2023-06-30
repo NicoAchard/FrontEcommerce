@@ -5,7 +5,7 @@
   z-index: 2;
   width: 100vw;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   background-blend-mode: multiply;
   background-size: cover;
 }
