@@ -58,7 +58,7 @@ function Project() {
             <div ref={durationRef} className="square col-lg-3  border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Duration</h4>
+                  <h4 className="fw-bold">Duration</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -75,7 +75,7 @@ function Project() {
             <div ref={stackRef} className="square col-lg-3 border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Stack</h4>
+                  <h4 className="fw-bold">Stack</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -92,7 +92,7 @@ function Project() {
             <div ref={tasksRef} className="square col-lg-3  border rounded">
               <div className="row align-items-center justify-content-between">
                 <div className="col-auto">
-                  <h4>Tasks</h4>
+                  <h4 className="fw-bold">Tasks</h4>
                 </div>
                 <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
@@ -115,16 +115,14 @@ function Project() {
             </div>
           </div>
           <h3
-            className="w-100 text-center mt-4 pb-lg-3 fs-4 outlined-text"
+            className="w-100 text-center mt-4 pb-lg-3 fs-3 outlined-text"
             data-text="Technologies"
           >
             Technologies
           </h3>
-          <div className="row square border rounded px-3 pt-3 mb-5">
+          <div className="d-flex flex-column row square border rounded px-3 pt-3 mb-5">
             <Technologies />
-          </div>
-          <div className="row square border rounded px-3 mb-2">
-            <div className="col fs-5">
+            <div className="col fs-5 mt-5">
               <p>
                 This intensive three-month course has equipped us with over 700 practical hours,
                 dedicated to learning and honing the skills required to build robust and dynamic web
