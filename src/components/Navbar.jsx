@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LOGOUT } from "../redux/userSlice";
+import { DELETE_CART } from "../redux/cartSlice";
 import heybroLogo from "../img/LogoHey.svg";
 import background from "../img/navbar-img.jpg";
 import { CgMenuLeftAlt } from "react-icons/cg";
@@ -19,6 +20,7 @@ function NavBar() {
 
   const handleLogout = () => {
     dispatch(LOGOUT());
+    dispatch(DELETE_CART());
     navigate("/login");
   };
 
@@ -66,12 +68,12 @@ function NavBar() {
                       </Link>
                     )}
 
-                    <Link
+                    <span
                       onClick={handleLogout}
                       className="text-white text-decoration-none pb-3 nav-text"
                     >
                       Logout
-                    </Link>
+                    </span>
                   </>
                 )}
                 {!user && (
