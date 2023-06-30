@@ -84,8 +84,8 @@ function SignUp() {
 
   return (
     <section className="vh-100">
-      <div className="container-fluid ">
-        <div className="row">
+      <div className="container-fluid h-100">
+        <div className="row h-100">
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column h-100 align-items-center justify-content-center h-custom-2 px-5 ms-xl-4  pt-5 pt-xl-0 mt-xl-n5">
               <div className="px-5 ms-xl-4">
