@@ -20,7 +20,7 @@ function Home() {
           <Banner />
           <Surfboards />
           <Categories />
-          <ProductListCarrousel intervaal={3000} count={4} />
+          <ProductListCarrousel interval={3000} count={4} />
           <CallToAction2 />
         </div>
 

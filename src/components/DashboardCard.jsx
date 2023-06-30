@@ -28,7 +28,7 @@ function DashboardCard({ url, title, icon }) {
     <div className="rounded p-4 my-2 mx-1 border">
       {info ? (
         <div>
-          <div className="dash-card d-flex justify-content-between mb-4">
+          <div className="dash-card fs-5 d-flex justify-content-between mb-4">
             <p>{title}</p>
             <img src={icon} alt="card-img" />
           </div>

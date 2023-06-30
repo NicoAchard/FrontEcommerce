@@ -41,7 +41,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <VscTools className="fs-3" />
-                <span className="d-none d-lg-block"> Dashboard </span>
+                <span className="d-none d-lg-block fs-6"> Dashboard </span>
               </div>
             </Link>
             <Link to="/admin/products" className="btn d-flex p-0 py-1">
@@ -49,7 +49,8 @@ export default () => {
                 className=" d-flex align-items-center gap-2 rounded p-1 text-hover-transition bg-hover-sidebar-admin "
                 style={{ fontSize: "0.9rem" }}
               >
-                <BsHandbag className="fs-3" /> <span className="d-none d-lg-block">Products</span>
+                <BsHandbag className="fs-3" />{" "}
+                <span className="d-none d-lg-block fs-6">Products</span>
               </div>
             </Link>
             <Link to="/admin/users" className="btn d-flex p-0 py-1">
@@ -58,7 +59,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <HiOutlineUsers className="fs-3" />
-                <span className="d-none d-lg-block"> Users </span>
+                <span className="d-none d-lg-block fs-6"> Users </span>
               </div>
             </Link>
             <Link to="/admin/orders" className="btn d-flex p-0 py-1">
@@ -67,7 +68,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <AiOutlineShoppingCart className="fs-3" />{" "}
-                <span className="d-none d-lg-block"> Orders </span>
+                <span className="d-none d-lg-block fs-6"> Orders </span>
               </div>
             </Link>
             <Link to="/admin/categories" className="btn d-flex p-0 py-1">
@@ -76,7 +77,7 @@ export default () => {
                 style={{ fontSize: "0.9rem" }}
               >
                 <BiCategory className="fs-3" />
-                <span className="d-none d-lg-block"> Categories </span>
+                <span className="d-none d-lg-block fs-6"> Categories </span>
               </div>
             </Link>
           </div>
@@ -86,7 +87,7 @@ export default () => {
               style={{ fontSize: "1.1rem" }}
             >
               <HiArrowUturnLeft className="fs-3" />{" "}
-              <span className="d-none d-lg-block"> Return to Website </span>
+              <span className="d-none d-lg-block fs-6"> Return to Website </span>
             </div>
           </Link>
         </div>
