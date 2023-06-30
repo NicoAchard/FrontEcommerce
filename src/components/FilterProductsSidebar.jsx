@@ -69,11 +69,11 @@ export default ({ filterItems, setFilterItems }) => {
             ? filterItems.map((filterItem, index) => (
                 <div key={index}>
                   {filterItem.prop !== "boolean" ? (
-                    <h4 className="d-flex justify-content-between mt-2">
+                    <h5 className="d-flex align-items-center justify-content-between mt-2">
                       {filterItem.title} <BsChevronDown />
-                    </h4>
+                    </h5>
                   ) : (
-                    <h4 className="d-flex justify-content-between my-4">
+                    <h5 className="align-items-center d-flex justify-content-between my-4">
                       {filterItem.title}
                       {filterItem.options[0].active === false ? (
                         <FaRegSquare
@@ -86,7 +86,7 @@ export default ({ filterItems, setFilterItems }) => {
                           onClick={() => handleSelectFilterOption(filterItem.title, true)}
                         />
                       )}
-                    </h4>
+                    </h5>
                   )}
                   <ul className="list-unstyled">
                     {filterItem.options.map((option, index) => (

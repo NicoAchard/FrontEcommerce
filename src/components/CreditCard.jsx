@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 
@@ -15,10 +15,15 @@ export default ({ FinishProcess }) => {
     const { name, value } = evt.target;
 
     setState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  useEffect(() => {
     if (state.number && state.expiry && state.cvc && state.name) {
       FinishProcess(true);
+    } else {
+      FinishProcess(false);
     }
-  };
+  }, [state]);
 
   const handleInputFocus = (evt) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));

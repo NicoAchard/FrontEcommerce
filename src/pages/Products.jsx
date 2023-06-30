@@ -79,7 +79,8 @@ function Products() {
       />
       <div>
         <NavBar />
-        <div className="container">
+
+        <div className="container-xl container-fluid">
           <div className="row">
             <div className="d-none d-md-block  col-3 " style={{ marginTop: "6.2rem" }}>
               <FilterSidebar filterItems={filterItems} setFilterItems={setFilterItems} />

@@ -4,10 +4,10 @@ import { SET_USER } from "../redux/userSlice";
 import { useState } from "react";
 import React from "react";
 import axios from "axios";
-
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ModalConfirmPassword from "../components/ModalConfirmPassword";
+import "./Profile.css";
 
 function Profile() {
   const navigate = useNavigate();
@@ -97,18 +97,14 @@ function Profile() {
           setConfirmPassword={setChangePassword}
         />
         <div
-          className="d-flex  flex-column justify-content-center align-items-center h-100 "
+          className="profile d-flex flex-column justify-content-center align-items-center h-100 "
           style={{ height: "100vh", marginTop: "4.5rem" }}
         >
           <div className="text-center my-5">
             <h1>Profile</h1>
             <p>This information will be displayed publicly so be careful with what you share.</p>
           </div>
-          <form
-            style={{ width: "23rem" }}
-            className="w-50"
-            onSubmit={(event) => handleSubmit(event)}
-          >
+          <form onSubmit={(event) => handleSubmit(event)}>
             <div className="form-outline mb-4 d-flex align-items-center">
               <div className="col-4 d-flex align-items-center">
                 <label className="form-label" htmlFor="photo" style={{ marginTop: "8px" }}>
