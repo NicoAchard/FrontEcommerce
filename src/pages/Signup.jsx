@@ -84,15 +84,15 @@ function SignUp() {
 
   return (
     <section className="vh-100">
-      <div className="container-fluid">
+      <div className="container-fluid ">
         <div className="row">
           <div className="col-sm-6 text-black">
             <div className="d-flex flex-column h-100 align-items-center justify-content-center h-custom-2 px-5 ms-xl-4  pt-5 pt-xl-0 mt-xl-n5">
-              <div className="d-flex align-items-center gap-2 mb-4 pe-4">
+              <div className="px-5 ms-xl-4">
                 <img
                   src={logo}
                   alt="Logo"
-                  className="hey-boards-logo mb-4 cursor-pointer"
+                  className="hey-boards-logo mb-4 pe-4 pb-4 cursor-pointer"
                   onClick={handleHomeClick}
                 />
               </div>
@@ -299,7 +299,7 @@ function SignUp() {
                   </button>
                 </div>
 
-                <p>
+                <p className="mb-5">
                   Already have an account?{" "}
                   <Link to="/login" className="link-info">
                     Log in
