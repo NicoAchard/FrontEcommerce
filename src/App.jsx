@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Project from "./pages/Project";
@@ -26,10 +26,16 @@ import GeneralInfoOffCanvas from "./components/GeneralInfoOffCanvas";
 
 const App = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false);
+  const location = useLocation();
+  const hideCartComponent =
+    location.pathname.startsWith("/login") ||
+    location.pathname.startsWith("/signup") ||
+    location.pathname.startsWith("/admin");
+
   return (
     <>
-      <CartIcon />
-      <Cart />
+      {!hideCartComponent && <CartIcon />}
+      {!hideCartComponent && <Cart />}
       <StickyButton showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       <GeneralInfoOffCanvas showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       <ScrollToTop />
