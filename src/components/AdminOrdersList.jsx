@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { BsTrash } from "react-icons/bs";
-
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminOrdersList() {
   const [orders, setOrders] = useState(null);
   const token = useSelector((state) => state.user.token);
+  const notify = () => toast("This functionality is under development");
 
   useEffect(() => {
     const getAll = async (event) => {
@@ -53,9 +54,8 @@ function AdminOrdersList() {
                 </td>
                 <td>{order.status}</td>
                 <td className="  d-flex justify-content-between border-bottom-0">
-                  <span className="text-primary cursor-pointer">Details</span>
-                  <span>
-                    <BsTrash className="fs-5 text-danger" />
+                  <span className="text-primary cursor-pointer" onClick={notify}>
+                    Details
                   </span>
                 </td>
               </tr>
