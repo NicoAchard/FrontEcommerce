@@ -33,7 +33,7 @@ function Project() {
             </div>
             <div>
               <p
-                class="fs-4 outlined-text"
+                className="fs-4 outlined-text"
                 data-text="Welcome to the Hey! Boards' e-commerce website. This project was developed as part
                 of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
                 the result of hard work, meticulous planning, effective teamwork, and many, many
