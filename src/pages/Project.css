@@ -143,13 +143,13 @@
   );
 }
 
-.team {
-  padding: 0 15vw 0 15vw;
-  margin-top: 5vh;
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.team h2 {
-  margin: 10px;
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .icon-square {

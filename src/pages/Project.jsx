@@ -6,6 +6,10 @@ import "./Project.css";
 import aboutImg from "../img/about-this-project.webp";
 import aboutTitle from "../img/about-header.svg";
 import Technologies from "../components/Technologies";
+import Ivan from "../img/Ivan.jpg";
+import Diego from "../img/Diego.jpg";
+import Ramiro from "../img/Ramiro.jpg";
+import Nico from "../img/Nico.jpg";
 
 function Project() {
   const durationRef = useRef(null);
@@ -127,16 +131,12 @@ function Project() {
               </p>
             </div>
           </div>
-          <div className="d-flex flex-column mb-5 py-4 align-items-center gap-4">
-            <h2>Team</h2>
-            <div className="row w-100 g-4">
+          <div className="team rounded d-flex flex-column mb-5 py-4 align-items-center gap-4">
+            <h2 className="mb-4">Team</h2>
+            <div className="row w-100 g-4 pb-4">
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card w-75 h-100">
-                  <img
-                    style={{ height: "12rem", objectFit: "cover" }}
-                    src={"src/img/User3.jpg"}
-                    alt="Author image"
-                  />
+                  <img style={{ height: "16rem", objectFit: "cover" }} src={Ivan} alt="Ivan" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Iván Pintos</h5>
                     <div className="d-flex flex-column justify-content-between h-75">
@@ -157,11 +157,7 @@ function Project() {
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card w-75 d-flex justify-content-center h-100">
-                  <img
-                    style={{ height: "12rem", objectFit: "cover" }}
-                    src={"src/img/UserA.jpg"}
-                    alt="Author image"
-                  />
+                  <img style={{ height: "16rem", objectFit: "cover" }} src={Diego} alt="Diego" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Diego Valiente</h5>
                     <div className="d-flex flex-column justify-content-between h-75">
@@ -181,11 +177,7 @@ function Project() {
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card w-75 d-flex justify-content-center h-100">
-                  <img
-                    style={{ height: "12rem", objectFit: "cover" }}
-                    src={"src/img/User6.jpg"}
-                    alt="Author image"
-                  />
+                  <img style={{ height: "16rem", objectFit: "cover" }} src={Ramiro} alt="Ramiro" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Ramiro Vidal</h5>
                     <div className="d-flex flex-column justify-content-between h-75">
@@ -207,11 +199,7 @@ function Project() {
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card w-75 d-flex justify-content-center h-100">
-                  <img
-                    src={"src/img/UserB.jpg"}
-                    alt="Author image"
-                    style={{ height: "12rem", objectFit: "cover" }}
-                  />
+                  <img src={Nico} alt="Nicolas" style={{ height: "16rem", objectFit: "cover" }} />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Nicolás Achard</h5>
                     <div className="d-flex flex-column justify-content-between h-75">
@@ -232,11 +220,11 @@ function Project() {
                 </div>
               </div>
             </div>
-            <p className="fs-5 mt-4">
-              We are excited to showcase this e-commerce project as a culmination of our journey to
-              become full stack web developers.
-            </p>
           </div>
+          <p className="fs-5 mt-4 text-center">
+            We are excited to showcase this e-commerce project as a culmination of our journey to
+            become full stack web developers.
+          </p>
         </div>
       </div>
 
