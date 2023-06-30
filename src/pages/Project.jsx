@@ -109,7 +109,7 @@ function Project() {
                   target="blank"
                   className="miro fw-bold text-decoration-none"
                 >
-                  here
+                  here.
                 </Link>
               </p>
             </div>
