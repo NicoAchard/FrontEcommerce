@@ -92,7 +92,7 @@ function Checkout() {
     <div className="d-flex flex-column min-vh-100 justify-content-between">
       <div>
         <NavBar />
-        <div className="row pt-5 mt-5">
+        <div className="row pt-5 mt-5" style={{ fontSize: "1.1rem" }}>
           <div className="col p-5">
             {showShippingInformation ? (
               <div>
@@ -108,6 +108,7 @@ function Checkout() {
                     id="firstName"
                     value={firstname}
                     onChange={(event) => setFirstname(event.target.value)}
+                    style={{ fontSize: "1.1rem" }}
                   />
                   {badShippingInformation && !firstname && (
                     <span className="text-danger"> Valid firstname is required. </span>
@@ -120,6 +121,7 @@ function Checkout() {
                     id="lastName"
                     value={lastname}
                     onChange={(event) => setLastname(event.target.value)}
+                    style={{ fontSize: "1.1rem" }}
                   />
                   {badShippingInformation && !lastname && (
                     <span className="text-danger"> Valid lastname is required. </span>
@@ -133,6 +135,7 @@ function Checkout() {
                       id="address"
                       value={address}
                       onChange={(event) => setAddress(event.target.value)}
+                      style={{ fontSize: "1.1rem" }}
                     />
                     {badShippingInformation && !address && (
                       <span className="text-danger"> Please enter your shipping address. </span>
@@ -147,6 +150,7 @@ function Checkout() {
                         id="city"
                         value={city}
                         onChange={(event) => setCity(event.target.value)}
+                        style={{ fontSize: "1.1rem" }}
                       />
                       {badShippingInformation && !city && (
                         <span className="text-danger"> Please provide a valid city. </span>
@@ -159,6 +163,7 @@ function Checkout() {
                         id="country"
                         value={country}
                         onChange={(event) => setCountry(event.target.value)}
+                        style={{ fontSize: "1.1rem" }}
                       >
                         <option value="UYU">Uruguay</option>
                         <option value="USA">United States</option>
@@ -177,6 +182,7 @@ function Checkout() {
                         id="state"
                         value={state}
                         onChange={(event) => setState(event.target.value)}
+                        style={{ fontSize: "1.1rem" }}
                       />
                       {badShippingInformation && !state && (
                         <span className="text-danger"> Please provide a valid state. </span>
@@ -190,6 +196,7 @@ function Checkout() {
                         id="zip"
                         value={postalCode}
                         onChange={(event) => setPostalCode(event.target.value)}
+                        style={{ fontSize: "1.1rem" }}
                       />
                       {badShippingInformation && !postalCode && (
                         <span className="text-danger">Zip code required.</span>
@@ -204,6 +211,7 @@ function Checkout() {
                       id="phone-number"
                       value={phoneNumber}
                       onChange={(event) => setPhoneNumber(event.target.value)}
+                      style={{ fontSize: "1.1rem" }}
                     />
                     {badShippingInformation && !phoneNumber && (
                       <span className="text-danger">Phone number required.</span>

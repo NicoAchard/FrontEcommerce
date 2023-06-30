@@ -10,58 +10,62 @@ export default ({ FinishProcess }) => {
   }
 
   return (
-    <>
-      <h6 className="text-center" style={{ fontFamily: "sans-serif" }}>
-        Login with your PayPal account
-      </h6>
-      <img className="my-3" src={paypalLogo} alt="paypal logo" />
-      <form className="form-control" action="">
-        <label className="form-label" htmlFor="email" style={{ fontFamily: "sans-serif" }}>
-          Email
-        </label>
-        <input
-          className="form-control"
-          name="email"
-          type="email"
-          id="email"
-          value={inputEmail}
-          onChange={(event) => setInputEmail(event.target.value)}
-        />
-        <label className="form-label" htmlFor="Password" style={{ fontFamily: "sans-serif" }}>
-          Password
-        </label>
-        <input
-          className="form-control"
-          name="Password"
-          type="text"
-          id="Password"
-          value={inputPassword}
-          onChange={(event) => setInputPassword(event.target.value)}
-        />
-        <div className="d-flex flex-column justify-content-center">
-          <button
-            type="button"
-            className="btn btn-primary mt-4"
-            style={{
-              width: "200px",
-              margin: "auto",
-              backgroundColor: "rgb(37, 59, 128)",
-              fontFamily: "sans-serif",
-              color: "white",
-              border: "none",
-            }}
-          >
-            Login
-          </button>
-          <div className="text-center mt-2">
-            <span style={{ fontFamily: "sans-serif" }}>Don't have an account?</span>
-            <Link style={{ fontFamily: "sans-serif" }} className="text-decoration-none">
-              {" "}
-              Register
-            </Link>
-          </div>
+    <div className="d-flex justify-content-center mt-5">
+      <div className="w-50">
+        <h6 className="text-center" style={{ fontFamily: "sans-serif" }}>
+          Login with your PayPal account
+        </h6>
+        <div className="d-flex justify-content-center">
+          <img className="my-3 w-75" src={paypalLogo} alt="paypal logo" />
         </div>
-      </form>
-    </>
+        <form className="form-control border-0" action="">
+          <label className="form-label" htmlFor="email" style={{ fontFamily: "sans-serif" }}>
+            Email
+          </label>
+          <input
+            className="form-control"
+            name="email"
+            type="email"
+            id="email"
+            value={inputEmail}
+            onChange={(event) => setInputEmail(event.target.value)}
+          />
+          <label className="form-label" htmlFor="Password" style={{ fontFamily: "sans-serif" }}>
+            Password
+          </label>
+          <input
+            className="form-control"
+            name="Password"
+            type="text"
+            id="Password"
+            value={inputPassword}
+            onChange={(event) => setInputPassword(event.target.value)}
+          />
+          <div className="d-flex flex-column justify-content-center">
+            <button
+              type="button"
+              className="btn btn-primary mt-4"
+              style={{
+                width: "200px",
+                margin: "auto",
+                backgroundColor: "rgb(37, 59, 128)",
+                fontFamily: "sans-serif",
+                color: "white",
+                border: "none",
+              }}
+            >
+              Login
+            </button>
+            <div className="text-center mt-2">
+              <span style={{ fontFamily: "sans-serif" }}>Don't have an account?</span>
+              <Link style={{ fontFamily: "sans-serif" }} className="text-decoration-none">
+                {" "}
+                Register
+              </Link>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };

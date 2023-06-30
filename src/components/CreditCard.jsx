@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cards from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+
 export default ({ FinishProcess }) => {
   const [state, setState] = useState({
     number: "",
@@ -46,6 +47,7 @@ export default ({ FinishProcess }) => {
               className="form-control"
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              style={{ fontSize: "1.1rem" }}
             />
             {/* <div className="invalid-feedback"> Credit card number is required </div> */}
           </div>
@@ -62,6 +64,7 @@ export default ({ FinishProcess }) => {
               className="form-control"
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              style={{ fontSize: "1.1rem" }}
             />
             {/* <div className="invalid-feedback"> Expiration date required </div> */}
           </div>
@@ -79,6 +82,7 @@ export default ({ FinishProcess }) => {
               className="form-control"
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              style={{ fontSize: "1.1rem" }}
             />
             <small className="text-muted">Full name as displayed on card</small>
             {/* <div className="invalid-feedback"> Name on card is required </div> */}
@@ -95,6 +99,7 @@ export default ({ FinishProcess }) => {
               className="form-control"
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              style={{ fontSize: "1.1rem" }}
             />
             {/* <div className="invalid-feedback"> Security code required </div> */}
           </div>
