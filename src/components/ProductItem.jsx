@@ -63,9 +63,7 @@ function Product({ product, carrousel }) {
               {product.name.length > 25 ? `${product.name.slice(0, 25)}...` : product.name}
             </Card.Title>
           </div>
-          <Card.Text className="product-price text-center" style={{ fontSize: "1.1rem" }}>
-            {product.price} USD
-          </Card.Text>
+          <Card.Text className="product-price text-center">{product.price} USD</Card.Text>
         </Card.Body>
       </Card>
     );
