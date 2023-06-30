@@ -107,7 +107,7 @@ function Project() {
                 <Link
                   to="https://miro.com/app/board/uXjVM_QQ1hE=/?share_link_id=515675317311"
                   target="blank"
-                  className="miro fw-bold"
+                  className="miro fw-bold text-decoration-none"
                 >
                   here
                 </Link>
@@ -136,7 +136,7 @@ function Project() {
             <h2 className="m-4 outlined-text" data-text="Team">
               Team
             </h2>
-            <div className="row w-100 g-4 pb-4">
+            <div className="row w-100 g-4">
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card team-card w-75 h-100">
                   <img style={{ height: "16rem", objectFit: "cover" }} src={Ivan} alt="Ivan" />
@@ -227,7 +227,7 @@ function Project() {
               </div>
             </div>
           </div>
-          <p className="fs-5 mb-5 text-center">
+          <p className="fs-5 mb-5 pb-2 text-center">
             We are excited to showcase this e-commerce project as a culmination of our journey to
             become full stack web developers.
           </p>
