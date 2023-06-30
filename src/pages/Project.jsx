@@ -66,7 +66,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p>
+              <p className="fs-5">
                 The development process followed the Scrum methodology and was divided into three
                 sprints, each lasting one week, resulting in a total of three weeks of focused work
                 during the month of June 2023.
@@ -83,7 +83,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p>
+              <p className="fs-5">
                 For the Front-End of the site, an application was developed in React (using
                 Vite.js), while for the Back-End, a REST API was built with Node.js, Express, SQL,
                 and Git/GitHub.
@@ -100,7 +100,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p>
+              <p className="fs-5">
                 <span className="fw-bold">
                   <Link
                     to="https://miro.com/app/board/uXjVM_QQ1hE=/"
@@ -110,17 +110,22 @@ function Project() {
                     Miro{" "}
                   </Link>
                 </span>
-                platform was used for the organization of tasks. This allowed each member of the
-                team to permanently be aware of the status of the project as well as the task
-                assignment and the MVP (Minimum Viable Product) for each sprint.
+                platform was used for organizing tasks, allowing each team member to stay informed
+                about the project's status, manage task assignments, and achieve the Minimum Viable
+                Product (MVP) for each sprint.
               </p>
             </div>
           </div>
-          <div className="row squere px-3   mb-5">
-            <h3 className="text-center pt-3 pb-lg-3">Technologies</h3>
+          <h3
+            className="w-100 text-center mt-4 pb-lg-3 fs-4 outlined-text"
+            data-text="Technologies"
+          >
+            Technologies
+          </h3>
+          <div className="row square border rounded px-3 pt-3 mb-5">
             <Technologies />
           </div>
-          <div className="row squere px-3   mb-2">
+          <div className="row square border rounded px-3 mb-2">
             <div className="col fs-5">
               <p>
                 This intensive three-month course has equipped us with over 700 practical hours,
@@ -132,7 +137,9 @@ function Project() {
             </div>
           </div>
           <div className="team rounded d-flex flex-column mb-5 py-4 align-items-center gap-4">
-            <h2 className="mb-4">Team</h2>
+            <h2 className="m-4 outlined-text" data-text="Team">
+              Team
+            </h2>
             <div className="row w-100 g-4 pb-4">
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
                 <div className="card w-75 h-100">
@@ -221,7 +228,7 @@ function Project() {
               </div>
             </div>
           </div>
-          <p className="fs-5 mt-4 text-center">
+          <p className="fs-5 mb-5 text-center">
             We are excited to showcase this e-commerce project as a culmination of our journey to
             become full stack web developers.
           </p>
