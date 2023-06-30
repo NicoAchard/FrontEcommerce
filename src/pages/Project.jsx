@@ -101,18 +101,16 @@ function Project() {
                 </div>
               </div>
               <p className="fs-5">
-                <span className="fw-bold">
-                  <Link
-                    to="https://miro.com/app/board/uXjVM_QQ1hE=/"
-                    target="blank"
-                    className="miro"
-                  >
-                    Miro{" "}
-                  </Link>
-                </span>
-                platform was used for organizing tasks, allowing each team member to stay informed
-                about the project's status, manage task assignments, and achieve the Minimum Viable
-                Product (MVP) for each sprint.
+                Miro platform was used for organizing tasks, allowing each team member to stay
+                informed about the project's status, manage task assignments, and achieve the
+                Minimum Viable Product (MVP) for each sprint. You can see it{" "}
+                <Link
+                  to="https://miro.com/app/board/uXjVM_QQ1hE=/?share_link_id=515675317311"
+                  target="blank"
+                  className="miro fw-bold"
+                >
+                  here
+                </Link>
               </p>
             </div>
           </div>
