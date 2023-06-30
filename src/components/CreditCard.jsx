@@ -16,9 +16,7 @@ export default ({ FinishProcess }) => {
     setState((prev) => ({ ...prev, [name]: value }));
     if (state.number && state.expiry && state.cvc && state.name) {
       FinishProcess(true);
-      console.log(true);
     }
-    console.log(false);
   };
 
   const handleInputFocus = (evt) => {
