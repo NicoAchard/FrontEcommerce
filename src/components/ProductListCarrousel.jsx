@@ -62,7 +62,7 @@ export default ({ categoryID, interval, infinite, count }) => {
         )
       ) : (
         <div>
-          <SkeletonProduct count={4} />
+          <SkeletonProduct count={2} />
         </div>
       )}
     </Carousel>
