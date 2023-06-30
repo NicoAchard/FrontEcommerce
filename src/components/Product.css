@@ -15,9 +15,9 @@
   text-overflow: ellipsis;
   word-wrap: break-word;
   max-width: 100%;
+  font-weight: bold;
 }
 .product-price {
-  font-weight: lighter;
   width: 100%;
 }
 @media screen and (min-width: 0px) and (max-width: 320px) {
