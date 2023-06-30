@@ -18,7 +18,7 @@ function Products() {
   const [filterByName, setFilterByName] = useState("");
   const [filterItems, setFilterItems] = useState([
     {
-      title: "Highlight",
+      title: "Highlights",
       value: "highlight",
       prop: "boolean",
       options: [{ active: false }],
