@@ -20,7 +20,6 @@ const StickyButton = ({ setShowOffCanvas, showOffCanvas }) => {
       >
         About this project
       </button>
-      {showOffCanvas && <div style={{ marginTop: "3rem" }}></div>}
     </div>
   );
 };

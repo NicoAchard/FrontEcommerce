@@ -27,7 +27,7 @@ function Project() {
         <div ref={headerRef} className="row header-container-project w-100">
           <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header d-flex flex-column justify-content-center col-md-8 col-lg-8  text-black ms-0 ms-lg-4">
+          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-0 ms-lg-4">
             <div className="header-title-container">
               <img src={aboutTitle} alt="About-this-project" className="header-title"></img>
             </div>
@@ -56,7 +56,7 @@ function Project() {
                 <div className="col-auto">
                   <h4>Duration</h4>
                 </div>
-                <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
                     <i className="fs-4 bi bi-clock-fill"></i>
                   </div>
@@ -73,7 +73,7 @@ function Project() {
                 <div className="col-auto">
                   <h4>Stack</h4>
                 </div>
-                <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
                     <i className="fs-4 bi bi-tools"></i>
                   </div>
@@ -90,7 +90,7 @@ function Project() {
                 <div className="col-auto">
                   <h4>Tasks</h4>
                 </div>
-                <div className="col d-flex justify-content-end" style={{ marginTop: "-180px" }}>
+                <div className="col d-flex justify-content-end" style={{ marginTop: "-140px" }}>
                   <div className="icon-square">
                     <i className="fs-4 bi bi-kanban"></i>
                   </div>
