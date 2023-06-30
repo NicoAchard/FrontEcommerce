@@ -175,7 +175,7 @@ export default () => {
                         <div className="col-12 col-md-6">
                           <div className="d-flex justify-content-between  ">
                             <div>
-                              <h2>${product.price}.00</h2>
+                              <h2>${product.price}</h2>
 
                               <div>
                                 <p className="text-success mb-0">
