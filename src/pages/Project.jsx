@@ -142,7 +142,7 @@ function Project() {
             </h2>
             <div className="row w-100 g-4 pb-4">
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
-                <div className="card w-75 h-100">
+                <div className="card team-card w-75 h-100">
                   <img style={{ height: "16rem", objectFit: "cover" }} src={Ivan} alt="Ivan" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Iván Pintos</h5>
@@ -163,7 +163,7 @@ function Project() {
                 </div>
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
-                <div className="card w-75 d-flex justify-content-center h-100">
+                <div className="card team-card w-75 d-flex justify-content-center h-100">
                   <img style={{ height: "16rem", objectFit: "cover" }} src={Diego} alt="Diego" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Diego Valiente</h5>
@@ -183,7 +183,7 @@ function Project() {
                 </div>
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
-                <div className="card w-75 d-flex justify-content-center h-100">
+                <div className="card team-card w-75 d-flex justify-content-center h-100">
                   <img style={{ height: "16rem", objectFit: "cover" }} src={Ramiro} alt="Ramiro" />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Ramiro Vidal</h5>
@@ -208,7 +208,7 @@ function Project() {
                 </div>
               </div>
               <div className="col-12 col-md-6 col-lg-3 p-0 d-flex justify-content-center">
-                <div className="card w-75 d-flex justify-content-center h-100">
+                <div className="card team-card w-75 d-flex justify-content-center h-100">
                   <img src={Nico} alt="Nicolas" style={{ height: "16rem", objectFit: "cover" }} />
                   <div className="card-body">
                     <h5 className="card-title text-responsive">Nicolás Achard</h5>
