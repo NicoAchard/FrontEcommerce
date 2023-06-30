@@ -1,13 +1,17 @@
 import paypalLogo from "../img/paypalLogo.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default ({ FinishProcess }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  if (inputEmail && inputPassword) {
-    FinishProcess(true);
-  }
+  useEffect(() => {
+    if (inputEmail && inputPassword) {
+      FinishProcess(true);
+    } else {
+      FinishProcess(false);
+    }
+  }, [inputEmail, inputPassword]);
 
   return (
     <>
