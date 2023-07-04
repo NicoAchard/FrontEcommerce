@@ -32,7 +32,7 @@ function Project() {
           <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
           <div className="container">
-            <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-5">
+            <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-0 ms-lg-5">
               <div className="header-title-container">
                 <img src={aboutTitle} alt="About-this-project" className="header-title"></img>
               </div>
