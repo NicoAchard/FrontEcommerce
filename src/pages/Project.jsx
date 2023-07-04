@@ -31,18 +31,20 @@ function Project() {
         <div ref={headerRef} className="row header-container-project w-100">
           <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-5">
-            <div className="header-title-container">
-              <img src={aboutTitle} alt="About-this-project" className="header-title"></img>
-            </div>
-            <div>
-              <p className="fs-4 outlined-text">
-                Welcome to the Hey! Boards' e-commerce website. This project was developed as part
-                of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
-                the result of hard work, meticulous planning, effective teamwork, and many, many
-                hours of coding. We hope that you enjoy the visuals and functionalities of our
-                website.
-              </p>
+          <div className="container">
+            <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-5">
+              <div className="header-title-container">
+                <img src={aboutTitle} alt="About-this-project" className="header-title"></img>
+              </div>
+              <div>
+                <p className="fs-5 outlined-text">
+                  Welcome to the Hey! Boards' e-commerce website. This project was developed as part
+                  of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
+                  the result of hard work, meticulous planning, effective teamwork, and many, many
+                  hours of coding. We hope that you enjoy the visuals and functionalities of our
+                  website.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -59,7 +61,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p className="fs-5">
+              <p className="fs-6">
                 The development process followed the Scrum methodology and was divided into three
                 sprints, each lasting one week, resulting in a total of three weeks of focused work
                 during the month of June 2023.
@@ -76,7 +78,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p className="fs-5">
+              <p className="fs-6">
                 For the Front-End of the site, an application was developed in React (using
                 Vite.js), while for the Back-End, a REST API was built with Node.js, Express, SQL,
                 and Git/GitHub.
@@ -93,7 +95,7 @@ function Project() {
                   </div>
                 </div>
               </div>
-              <p className="fs-5">
+              <p className="fs-6">
                 Miro platform was used for organizing tasks, allowing each team member to stay
                 informed about the project's status, manage task assignments, and achieve the
                 Minimum Viable Product (MVP) for each sprint. You can see it{" "}
@@ -115,7 +117,7 @@ function Project() {
           </h3>
           <div className="d-flex flex-column row square border rounded px-3 pt-3 mb-5">
             <Technologies />
-            <div className="col fs-5 mt-5">
+            <div className="col fs-6 mt-5">
               <p>
                 This intensive three-month course has equipped us with over 700 practical hours,
                 dedicated to learning and honing the skills required to build robust and dynamic web
@@ -220,7 +222,7 @@ function Project() {
               </div>
             </div>
           </div>
-          <p className="fs-5 mb-5 pb-2 text-center">
+          <p className="fs-6 mb-5 pb-2 text-center">
             We are excited to showcase this e-commerce project as a culmination of our journey to
             become full stack web developers.
           </p>
