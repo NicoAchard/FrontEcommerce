@@ -54,10 +54,12 @@
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   overflow: hidden;
+  color: rgb(0, 0, 0);
+  text-shadow: -1px -1px 0 #c3a3ff, 1px -1px 0 #ffffff, -1px 1px 0 #87d9ff, 1px 1px 0 #ffd06b;
+  z-index: -1;
 }
 
-.outlined-text::before {
-  content: attr(data-text);
+/* .outlined-text::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,7 +68,7 @@
   color: white;
   text-shadow: -1px -1px 0 #c3a3ff, 1px -1px 0 #ffffff, -1px 1px 0 #87d9ff, 1px 1px 0 #ffd06b;
   z-index: -1;
-}
+} */
 
 @keyframes glitch-animation {
   0% {

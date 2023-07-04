@@ -31,19 +31,12 @@ function Project() {
         <div ref={headerRef} className="row header-container-project w-100">
           <img src={aboutImg} alt="Header img" className=" header-image position-absolute" />
           <div className="fade-overlay-2 position-absolute" />
-          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-0 ms-lg-4">
+          <div className="header d-flex flex-column justify-content-center col-md-9 col-lg-9  text-black ms-5">
             <div className="header-title-container">
               <img src={aboutTitle} alt="About-this-project" className="header-title"></img>
             </div>
             <div>
-              <p
-                className="fs-4 outlined-text"
-                data-text="Welcome to the Hey! Boards' e-commerce website. This project was developed as part
-                of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
-                the result of hard work, meticulous planning, effective teamwork, and many, many
-                hours of coding. We hope that you enjoy the visuals and functionalities of our
-                website."
-              >
+              <p className="fs-4 outlined-text">
                 Welcome to the Hey! Boards' e-commerce website. This project was developed as part
                 of the final integrative exam of the Hack Academy Web Development Bootcamp. It is
                 the result of hard work, meticulous planning, effective teamwork, and many, many
