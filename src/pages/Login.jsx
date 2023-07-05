@@ -13,14 +13,18 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [failLogin, setFailLogin] = useState();
+  const [loading, setLoading] = useState(null);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const notify = () => toast("This functionality is under development");
+
   const handleHomeClick = () => {
     navigate("/");
   };
   async function handleSubmit(event) {
     event.preventDefault();
+    handleloadingForm();
     try {
       const response = await axios({
         method: "POST",
@@ -42,6 +46,12 @@ function Login() {
       console.log(error);
     }
   }
+  const handleloadingForm = () => {
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+    }, 4000);
+  };
   return (
     <section className="vh-100">
       <ToastContainer
@@ -65,7 +75,6 @@ function Login() {
                 <h3 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
                   Login
                 </h3>
-
                 <div className="form-outline mb-4">
                   <input
                     type="email"
@@ -81,7 +90,6 @@ function Login() {
                     Email
                   </label>
                 </div>
-
                 <div className="form-outline mb-4">
                   <input
                     type="password"
@@ -98,7 +106,6 @@ function Login() {
                   </label>
                 </div>
                 {failLogin && <p className="text-danger">Email o contraseña incorrectos</p>}
-
                 <div className="pt-1 mb-4">
                   <Link to="/" className="link-info">
                     <button
@@ -106,11 +113,18 @@ function Login() {
                       type="submit"
                       onClick={handleSubmit}
                     >
-                      Log in
+                      {loading ? (
+                        <div class="spinner-border text-light" role="status">
+                          <span style={{ fontSize: "0.9rem" }} class="visually-hidden">
+                            Loading...
+                          </span>
+                        </div>
+                      ) : (
+                        "Login"
+                      )}
                     </button>
                   </Link>
                 </div>
-
                 <p className="small mb-5 pb-lg-2">
                   <Link to="" className="text-muted" onClick={notify}>
                     Forgot password?

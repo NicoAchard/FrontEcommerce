@@ -28,6 +28,7 @@ function Profile() {
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
   const [responseUpdateUser, setResponseUpdateUser] = useState(0);
+  const [loading, setLoading] = useState(null);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
@@ -39,11 +40,19 @@ function Profile() {
     return emailRegex.test(email);
   };
 
+  const handleloadingForm = () => {
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+    }, 4000);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    handleloadingForm();
     if (password !== repeatPassword && changePassword === true) {
       return setPasswordsUnmatch(true);
+    } else {
+      setPasswordsUnmatch(false);
     }
     const formdata = new FormData();
 
@@ -65,8 +74,6 @@ function Profile() {
         Authorization: `Bearer ${token}`,
       },
     });
-    setPasswordsUnmatch(false);
-
     //Good
     if (response.data.status === 200) {
       dispatch(SET_USER({ token: user.token, data: response.data.user }));
@@ -139,10 +146,22 @@ function Profile() {
                   type="text"
                   name="firstname"
                   id="firstname"
-                  className={`form-control form-control-lg`}
+                  className={`form-control  ${
+                    responseUpdateUser
+                      ? !firstname.trim() && responseUpdateUser.status === 401 && "is-invalid"
+                      : ""
+                  }`}
                   value={firstname}
                   onChange={(event) => setFirstname(event.target.value)}
                 />
+                {responseUpdateUser
+                  ? !firstname.trim() &&
+                    responseUpdateUser.status === 401 && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        Firstname field is not valid
+                      </span>
+                    )
+                  : ""}
               </div>
             </div>
             <hr />
@@ -157,10 +176,22 @@ function Profile() {
                   type="text"
                   id="lastname"
                   name="lastname"
-                  className={`form-control form-control-lg`}
+                  className={`form-control  ${
+                    responseUpdateUser
+                      ? !lastname.trim() && responseUpdateUser.status === 401 && "is-invalid"
+                      : ""
+                  }`}
                   value={lastname}
                   onChange={(event) => setLastname(event.target.value)}
                 />
+                {responseUpdateUser
+                  ? !lastname.trim() &&
+                    responseUpdateUser.status === 401 && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        Lastname field is not valid
+                      </span>
+                    )
+                  : ""}
               </div>
             </div>
             <hr />
@@ -175,10 +206,24 @@ function Profile() {
                   type="email"
                   name="email"
                   id="email"
-                  className={`form-control form-control-lg `}
+                  className={`form-control  ${
+                    responseUpdateUser
+                      ? (!email.trim() || !handlevalidateEmail(email)) &&
+                        responseUpdateUser.status === 401 &&
+                        "is-invalid"
+                      : ""
+                  }`}
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
+                {responseUpdateUser
+                  ? (!email.trim() || !handlevalidateEmail(email)) &&
+                    responseUpdateUser.status === 401 && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        The entered email is not valid. Please provide a valid email address
+                      </span>
+                    )
+                  : ""}
               </div>
             </div>
             <hr />
@@ -193,10 +238,22 @@ function Profile() {
                   type="text"
                   name="address"
                   id="address"
-                  className={`form-control form-control-lg`}
+                  className={`form-control  ${
+                    responseUpdateUser
+                      ? !address.trim() && responseUpdateUser.status === 401 && "is-invalid"
+                      : ""
+                  }`}
                   value={address}
                   onChange={(event) => setAddress(event.target.value)}
                 />
+                {responseUpdateUser
+                  ? !address.trim() &&
+                    responseUpdateUser.status === 401 && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        Address field is not valid
+                      </span>
+                    )
+                  : ""}
               </div>
             </div>
             <hr />
@@ -211,10 +268,22 @@ function Profile() {
                   type="text"
                   name="phone"
                   id="phone"
-                  className={`form-control form-control-lg`}
+                  className={`form-control  ${
+                    responseUpdateUser
+                      ? !address.trim() && responseUpdateUser.status === 401 && "is-invalid"
+                      : ""
+                  }`}
                   value={phone_number}
                   onChange={(event) => setPhone_number(event.target.value)}
                 />
+                {responseUpdateUser
+                  ? !phone_number.trim() &&
+                    responseUpdateUser.status === 401 && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        Phone number field is not valid
+                      </span>
+                    )
+                  : ""}
               </div>
             </div>
             <hr />
@@ -273,8 +342,27 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <button className="btn btn-dark btn-lg btn-block w-100 mb-5" type="submit">
-              Save Changes
+            {responseUpdateUser
+              ? responseUpdateUser.status === 401 && (
+                  <span style={{ fontSize: "0.9rem", color: "red" }}>
+                    Something went wrong. Please check the fields content
+                  </span>
+                )
+              : ""}
+            <button
+              className="btn btn-dark btn-lg btn-block w-100 mb-5"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? (
+                <div class="spinner-border text-light" role="status">
+                  <span style={{ fontSize: "0.9rem" }} class="visually-hidden">
+                    Loading...
+                  </span>
+                </div>
+              ) : (
+                " Save Changes"
+              )}
             </button>
           </form>
         </div>
