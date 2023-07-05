@@ -21,6 +21,7 @@ function SignUp() {
 
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [responseCreateUser, setResponseCreateUser] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
@@ -29,6 +30,12 @@ function SignUp() {
 
   const handleHomeClick = () => {
     navigate("/");
+  };
+  const handleloadingForm = () => {
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+    }, 4000);
   };
 
   const handlevalidateEmail = (email) => {
@@ -141,7 +148,9 @@ function SignUp() {
                         id="firstname"
                         className={`form-control ${
                           responseCreateUser
-                            ? !inputFirstname && responseCreateUser.status === 401 && "is-invalid"
+                            ? !inputFirstname.trim() &&
+                              responseCreateUser.status === 401 &&
+                              "is-invalid"
                             : ""
                         } `}
                         value={inputFirstname}
@@ -162,7 +171,9 @@ function SignUp() {
                         name="lastname"
                         className={`form-control  ${
                           responseCreateUser
-                            ? !inputLastname && responseCreateUser.status === 401 && "is-invalid"
+                            ? !inputLastname.trim() &&
+                              responseCreateUser.status === 401 &&
+                              "is-invalid"
                             : ""
                         }`}
                         value={inputLastname}
@@ -185,7 +196,7 @@ function SignUp() {
                         id="phone_number"
                         className={`form-control ${
                           responseCreateUser
-                            ? !inputPhone_Number &&
+                            ? !inputPhone_Number.trim() &&
                               responseCreateUser.status === 401 &&
                               "is-invalid"
                             : ""
@@ -206,7 +217,9 @@ function SignUp() {
                         id="address"
                         className={`form-control ${
                           responseCreateUser
-                            ? !inputAddress && responseCreateUser.status === 401 && "is-invalid"
+                            ? !inputAddress.trim() &&
+                              responseCreateUser.status === 401 &&
+                              "is-invalid"
                             : ""
                         }`}
                         value={inputAddress}
@@ -294,8 +307,20 @@ function SignUp() {
                   ""
                 )}
                 <div className="pt-1 mb-2">
-                  <button className="btn btn-dark btn-lg btn-block" type="submit">
-                    Sign Up
+                  <button
+                    className="btn btn-dark btn-lg btn-block"
+                    type="submit"
+                    onClick={handleloadingForm}
+                  >
+                    {loading ? (
+                      <div class="spinner-border text-light" role="status">
+                        <span style={{ fontSize: "0.9rem" }} class="visually-hidden">
+                          Loading...
+                        </span>
+                      </div>
+                    ) : (
+                      "Sign Up"
+                    )}
                   </button>
                 </div>
 
