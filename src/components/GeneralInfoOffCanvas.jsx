@@ -4,22 +4,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./OffCanvas.css";
 import { FaUserAlt } from "react-icons/fa";
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 
 export default ({ showOffCanvas, setShowOffCanvas }) => {
-  const cartRef = useRef(null);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showOffCanvas && cartRef.current && !cartRef.current.contains(event.target)) {
-        setShowOffCanvas(false);
-      }
-    };
+  // const cartRef = useRef(null);
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (showOffCanvas && cartRef.current && !cartRef.current.contains(event.target)) {
+  //       setShowOffCanvas(false);
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showOffCanvas]);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, [showOffCanvas]);
 
   const handleClick = () => {
     setShowOffCanvas(!showOffCanvas);
@@ -50,7 +50,7 @@ export default ({ showOffCanvas, setShowOffCanvas }) => {
       className={`offCanvas d-flex flex-column justify-content-between border p-4 ${
         showOffCanvas ? "show-offCanvas" : ""
       }`}
-      ref={cartRef}
+      // ref={cartRef}
     >
       <div>
         <ToastContainer
