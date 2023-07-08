@@ -1,12 +1,11 @@
 import { BsTrash, BsPencil } from "react-icons/bs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 import ModalUpdateProduct from "../components/ModalUpdateProduct";
 
-function AdminProductsList() {
-  const [products, setProducts] = useState(null);
+function AdminProductsList({ products, setProducts }) {
   const [showUpdateProduct, setShowUpdateProduct] = useState(false);
 
   const [productId, setProductId] = useState();
@@ -20,21 +19,6 @@ function AdminProductsList() {
   const [photoGallery, setPhotoGallery] = useState([]);
 
   const token = useSelector((state) => state.user.token);
-
-  useEffect(() => {
-    const addProducts = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_URL}/products`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setProducts(response.data);
-    };
-    addProducts();
-  }, []);
 
   const handleDeleteProduct = async (id) => {
     await axios({

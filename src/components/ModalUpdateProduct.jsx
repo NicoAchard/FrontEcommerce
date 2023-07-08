@@ -222,7 +222,7 @@ export default ({
               <Form.Check
                 type="checkbox"
                 required={true}
-                checked={highlight}
+                checked={highlight === "1"}
                 className={`${!highlight && responseUpdateProduct === 401 && "is-invalid"}`}
                 onChange={(event) => setHighlight(event.target.checked ? "1" : "0")}
               />

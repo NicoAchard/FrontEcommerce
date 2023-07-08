@@ -1,17 +1,16 @@
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-
-import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
-export default ({ show, setShow }) => {
-  const [inputProductName, setInputProductName] = useState(null);
-  const [inputProductDescription, setInputProductDescription] = useState(null);
-  const [inputProductHighlight, setInputProductHighlight] = useState(null);
-  const [inputProductStock, setInputProductStock] = useState(null);
-  const [inputProductPrice, setInputProductPrice] = useState(null);
-  const [inputProductPhotos, setInputProductPhotos] = useState(null);
-  const [inputProductCategoryId, setInputProductCategoryId] = useState(null);
+export default ({ show, setShow, setProducts }) => {
+  const [inputProductName, setInputProductName] = useState("");
+  const [inputProductDescription, setInputProductDescription] = useState("");
+  const [inputProductHighlight, setInputProductHighlight] = useState("");
+  const [inputProductStock, setInputProductStock] = useState("");
+  const [inputProductPrice, setInputProductPrice] = useState("");
+  const [inputProductPhotos, setInputProductPhotos] = useState(undefined);
+  const [inputProductCategoryId, setInputProductCategoryId] = useState("");
 
   const [responseCreateProduct, setResponseCreateProduct] = useState(null);
   const [responseCategories, setResponseCategories] = useState(null);
@@ -28,13 +27,15 @@ export default ({ show, setShow }) => {
 
     formdata.append("name", inputProductName);
     formdata.append("description", inputProductDescription);
-    formdata.append("highlight", inputProductHighlight);
+    formdata.append("highlight", inputProductHighlight ? inputProductHighlight : 0);
     formdata.append("stock", inputProductStock);
     formdata.append("price", inputProductPrice);
     formdata.append("categoryId", inputProductCategoryId);
 
-    for (let i = 0; i < inputProductPhotos.length; i++) {
-      formdata.append("photos", inputProductPhotos[i]);
+    if (inputProductPhotos) {
+      for (let i = 0; i < inputProductPhotos.length; i++) {
+        formdata.append("photos", inputProductPhotos[i]);
+      }
     }
 
     const response = await axios({
@@ -48,6 +49,7 @@ export default ({ show, setShow }) => {
     });
 
     if (response.data.status === 200) {
+      setProducts((prev) => [...prev, response.data.product]);
       return setResponseCreateProduct(200);
     }
     if (response.data.status === 400) {
@@ -136,7 +138,12 @@ export default ({ show, setShow }) => {
 
             <Form.Group className="mb-3" controlId="ControlInput8">
               <Form.Label>Photos</Form.Label>
-              <Form.Control type="file" multiple onChange={(event) => handleImage(event)} />
+              <Form.Control
+                type="file"
+                multiple
+                onChange={(event) => handleImage(event)}
+                value={inputProductPhotos}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="controlInput7">
               <Form.Label>Highlight</Form.Label>
