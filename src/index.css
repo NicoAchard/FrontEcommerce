@@ -48,7 +48,15 @@
   animation: gradientAnimation 1s ease-in-out infinite;
   margin-bottom: 10px;
 }
-
+.btn-fixed {
+  position: fixed;
+  bottom: 45%;
+  left: -75px;
+  z-index: 2;
+  height: 2.5rem;
+  transform: rotate(90deg);
+  border-radius: 20px 20px 0px 0px;
+}
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 0%;

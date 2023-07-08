@@ -36,7 +36,10 @@ const App = () => {
     <>
       {!hideCartComponent && <CartIcon />}
       {!hideCartComponent && <Cart />}
-      <StickyButton showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
+      {!hideCartComponent && (
+        <StickyButton showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
+      )}
+
       <GeneralInfoOffCanvas showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       <ScrollToTop />
 
