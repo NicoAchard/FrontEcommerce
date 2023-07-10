@@ -31,6 +31,12 @@ export default ({
   const [responseCategories, setResponseCategories] = useState(null);
 
   const handleSubmit = async () => {
+    if (stock < 0 || stock > 32767) {
+      return setResponseUpdateProduct({
+        status: 401,
+        message: "Invalid value please insert a number between 0 and 32767",
+      });
+    }
     const formdata = new FormData();
 
     formdata.append("name", name);
@@ -53,6 +59,7 @@ export default ({
         "content-type": "multipart/form-data",
       },
     });
+    // response is OK
     if (response.data.status === 200) {
       setProducts((prev) =>
         prev.map((product) =>
@@ -72,14 +79,14 @@ export default ({
       );
       setTimeout(() => {
         setResponseUpdateProduct(null);
-        setResponseCategories(null);
         setShow((prev) => !prev);
-      }, 1000);
-      return setResponseUpdateProduct(200);
+      }, 1500);
     }
-    if (response.data.status === 400) {
-      return setResponseUpdateProduct(400);
-    }
+
+    return setResponseUpdateProduct({
+      status: response.data.status,
+      message: response.data.response,
+    });
   };
 
   const handleImage = (event) => {
@@ -132,7 +139,11 @@ export default ({
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                className={`${!name && responseUpdateProduct === 401 && "is-invalid"}`}
+                className={`${
+                  !name && responseUpdateProduct
+                    ? responseUpdateProduct.status === 401 && "is-invalid"
+                    : ""
+                }`}
                 autoFocus
               />
             </Form.Group>
@@ -143,31 +154,54 @@ export default ({
                 rows={5}
                 required={true}
                 value={description}
-                className={`${!description && responseUpdateProduct === 401 && "is-invalid"}`}
+                className={`${
+                  !description && responseUpdateProduct
+                    ? responseUpdateProduct.status === 401 && "is-invalid"
+                    : ""
+                }`}
                 onChange={(event) => setDescription(event.target.value)}
               />
             </Form.Group>
+
             <Row>
               <Col>
                 <Form.Group className="mb-3" controlId="controlInput3">
                   <Form.Label>Stock</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     required={true}
                     value={stock}
-                    className={`${!stock && responseUpdateProduct === 401 && "is-invalid"}`}
+                    min={0}
+                    max={32767}
+                    className={`${
+                      responseUpdateProduct
+                        ? ((!stock && responseUpdateProduct.status === 401) ||
+                            stock < 0 ||
+                            stock > 32767) &&
+                          "is-invalid"
+                        : ""
+                    }`}
                     onChange={(event) => setStock(event.target.value)}
                   />
+                  {responseUpdateProduct && (stock < 0 || stock > 32767) && (
+                    <span style={{ fontSize: "0.9rem", color: "red" }}>
+                      {responseUpdateProduct.message}
+                    </span>
+                  )}
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3" controlId="controlInput4">
                   <Form.Label>Price</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     required={true}
                     value={price}
-                    className={`${!price && responseUpdateProduct === 401 && "is-invalid"}`}
+                    className={`${
+                      !price && responseUpdateProduct
+                        ? responseUpdateProduct.status === 401 && "is-invalid"
+                        : ""
+                    }`}
                     onChange={(event) => setPrice(event.target.value)}
                   />
                 </Form.Group>
@@ -245,22 +279,16 @@ export default ({
               </Form.Select>
             </Form.Group>
           </Form>
-          {responseUpdateProduct ? (
-            responseUpdateProduct === 200 ? (
-              <span style={{ fontSize: "0.9rem", color: "green" }}>
-                Product Updated successfully!!
-              </span>
-            ) : responseUpdateProduct === 401 ? (
-              <span style={{ fontSize: "0.9rem", color: "red" }}>
-                Please enter the requested information.
-              </span>
-            ) : (
-              <span style={{ fontSize: "0.9rem", color: "red" }}>
-                Something went wrong. Please try again later!!
-              </span>
-            )
-          ) : (
-            ""
+          {responseUpdateProduct && (
+            <span
+              style={
+                responseUpdateProduct.status === 200
+                  ? { fontSize: "0.9rem", color: "green" }
+                  : { fontSize: "0.9rem", color: "red" }
+              }
+            >
+              {responseUpdateProduct.message}
+            </span>
           )}
         </Modal.Body>
         <Modal.Footer>

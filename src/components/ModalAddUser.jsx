@@ -54,18 +54,11 @@ export default ({ show, setShow }) => {
       //Good
       if (response.data.status === 200) {
         return setResponseCreateUser({ status: 200, message: response.data.response });
-      }
-      //Unexpected error
-      if (response.data.status === 400) {
-        return setResponseCreateUser({ status: 400, message: response.data.response });
-      }
-      //Missed field
-      if (response.data.status === 401) {
-        return setResponseCreateUser({ status: 401, message: response.data.response });
-      }
-      //Already exist that email in the System
-      if (response.data.status === 402) {
-        return setResponseCreateUser({ status: 402, message: response.data.response });
+      } else {
+        return setResponseCreateUser({
+          status: response.data.status,
+          message: response.data.response,
+        });
       }
     } else {
       setPasswordsUnmatch(true);
@@ -212,7 +205,7 @@ export default ({ show, setShow }) => {
               </Button>
             </Modal.Footer>
           </Form>
-          {responseCreateUser ? (
+          {responseCreateUser && (
             <span
               style={
                 responseCreateUser.status === 200
@@ -222,8 +215,6 @@ export default ({ show, setShow }) => {
             >
               {responseCreateUser.message}
             </span>
-          ) : (
-            ""
           )}
         </Modal.Body>
       </Modal>

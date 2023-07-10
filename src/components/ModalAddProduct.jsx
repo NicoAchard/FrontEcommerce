@@ -23,6 +23,12 @@ export default ({ show, setShow, setProducts }) => {
   };
 
   const handleSubmit = async () => {
+    if (inputProductStock < 0 || inputProductStock > 32767) {
+      return setResponseCreateProduct({
+        status: 401,
+        message: "Invalid value please insert a number between 0 and 32767",
+      });
+    }
     const formdata = new FormData();
 
     formdata.append("name", inputProductName);
@@ -50,14 +56,22 @@ export default ({ show, setShow, setProducts }) => {
 
     if (response.data.status === 200) {
       setProducts((prev) => [...prev, response.data.product]);
-      return setResponseCreateProduct(200);
+      setTimeout(() => {
+        setInputProductName("");
+        setInputProductDescription("");
+        setInputProductHighlight("");
+        setInputProductStock("");
+        setInputProductPrice("");
+        setInputProductPhotos("");
+        setInputProductCategoryId("");
+        setResponseCreateProduct(null);
+        setShow((prev) => !prev);
+      }, 1500);
     }
-    if (response.data.status === 400) {
-      return setResponseCreateProduct(400);
-    }
-    if (response.data.status === 401) {
-      setResponseCreateProduct(401);
-    }
+    return setResponseCreateProduct({
+      status: response.data.status,
+      message: response.data.response,
+    });
   };
   useEffect(() => {
     const handleCategories = async () => {
@@ -87,7 +101,13 @@ export default ({ show, setShow, setProducts }) => {
                 type="text"
                 value={inputProductName}
                 onChange={(event) => setInputProductName(event.target.value)}
-                className={`${!inputProductName && responseCreateProduct === 401 && "is-invalid"}`}
+                className={`${
+                  responseCreateProduct
+                    ? ((!inputProductName && responseCreateProduct.status === 401) ||
+                        responseCreateProduct.status === 402) &&
+                      "is-invalid"
+                    : ""
+                }`}
                 autoFocus
               />
             </Form.Group>
@@ -99,36 +119,52 @@ export default ({ show, setShow, setProducts }) => {
                 required={true}
                 value={inputProductDescription}
                 className={`${
-                  !inputProductDescription && responseCreateProduct === 401 && "is-invalid"
+                  !inputProductDescription && responseCreateProduct
+                    ? responseCreateProduct.status === 401 && "is-invalid"
+                    : ""
                 }`}
                 onChange={(event) => setInputProductDescription(event.target.value)}
               />
             </Form.Group>
-
             <Row>
               <Col>
                 <Form.Group className="mb-3" controlId="controlInput3">
                   <Form.Label>Stock</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     required={true}
                     value={inputProductStock}
+                    min={0}
+                    max={32767}
                     className={`${
-                      !inputProductStock && responseCreateProduct === 401 && "is-invalid"
+                      responseCreateProduct
+                        ? ((!inputProductStock && responseCreateProduct.status === 401) ||
+                            inputProductStock < 0 ||
+                            inputProductStock > 32767) &&
+                          "is-invalid"
+                        : ""
                     }`}
                     onChange={(event) => setInputProductStock(event.target.value)}
                   />
+                  {responseCreateProduct &&
+                    (inputProductStock < 0 || inputProductStock > 32767) && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        {responseCreateProduct.message}
+                      </span>
+                    )}
                 </Form.Group>
               </Col>
               <Col>
                 <Form.Group className="mb-3" controlId="controlInput4">
                   <Form.Label>Price</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="number"
                     required={true}
                     value={inputProductPrice}
                     className={`${
-                      !inputProductPrice && responseCreateProduct === 401 && "is-invalid"
+                      !inputProductPrice && responseCreateProduct
+                        ? responseCreateProduct.status === 401 && "is-invalid"
+                        : ""
                     }`}
                     onChange={(event) => setInputProductPrice(event.target.value)}
                   />
@@ -152,7 +188,9 @@ export default ({ show, setShow, setProducts }) => {
                 required={true}
                 checked={inputProductHighlight === "1"}
                 className={`${
-                  !inputProductHighlight && responseCreateProduct === 401 && "is-invalid"
+                  !inputProductHighlight && responseCreateProduct
+                    ? responseCreateProduct.status === 401 && "is-invalid"
+                    : ""
                 }`}
                 onChange={(event) => setInputProductHighlight(event.target.checked ? "1" : "0")}
               />
@@ -164,7 +202,9 @@ export default ({ show, setShow, setProducts }) => {
                 required={true}
                 value={inputProductCategoryId}
                 className={`${
-                  !inputProductCategoryId && responseCreateProduct === 401 && "is-invalid"
+                  !inputProductCategoryId && responseCreateProduct
+                    ? responseCreateProduct.status === 401 && "is-invalid"
+                    : ""
                 }`}
                 onChange={(event) => setInputProductCategoryId(event.target.value)}
               >
@@ -178,22 +218,16 @@ export default ({ show, setShow, setProducts }) => {
               </Form.Select>
             </Form.Group>
           </Form>
-          {responseCreateProduct ? (
-            responseCreateProduct === 200 ? (
-              <span style={{ fontSize: "0.9rem", color: "green" }}>
-                Product Created successfully!!
-              </span>
-            ) : responseCreateProduct === 401 ? (
-              <span style={{ fontSize: "0.9rem", color: "red" }}>
-                Please enter the requested information.
-              </span>
-            ) : (
-              <span style={{ fontSize: "0.9rem", color: "red" }}>
-                Something went wrong. Please try again later!!
-              </span>
-            )
-          ) : (
-            ""
+          {responseCreateProduct && (
+            <span
+              style={
+                responseCreateProduct.status === 200
+                  ? { fontSize: "0.9rem", color: "green" }
+                  : { fontSize: "0.9rem", color: "red" }
+              }
+            >
+              {responseCreateProduct.message}
+            </span>
           )}
         </Modal.Body>
         <Modal.Footer>
