@@ -1,5 +1,5 @@
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
-
+import SpinnerLoadingForm from "./SpinnerLoadingForm";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -29,6 +29,21 @@ export default ({
   const token = useSelector((state) => state.user.token);
   const [responseUpdateProduct, setResponseUpdateProduct] = useState(null);
   const [responseCategories, setResponseCategories] = useState(null);
+  const [loading, setLoading] = useState(null);
+
+  useEffect(() => {
+    const handleCategories = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/categories`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setResponseCategories(response.data.categories);
+    };
+    handleCategories();
+  }, []);
 
   const handleSubmit = async () => {
     if (stock < 0 || stock > 32767) {
@@ -37,6 +52,7 @@ export default ({
         message: "Invalid value please insert a number between 0 and 32767",
       });
     }
+    handleloadingForm();
     const formdata = new FormData();
 
     formdata.append("name", name);
@@ -110,176 +126,177 @@ export default ({
     setPhotos(updatedPhotos);
     setPhotoGallery(updatedPhotos);
   };
-
-  useEffect(() => {
-    const handleCategories = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `${import.meta.env.VITE_API_URL}/categories`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setResponseCategories(response.data.categories);
-    };
-    handleCategories();
-  }, []);
+  const handleCloseModal = () => {
+    setResponseUpdateProduct(null);
+    setShow((prev) => !prev);
+  };
+  const handleloadingForm = () => {
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+    }, 2000);
+  };
 
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Update Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="controlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                className={`${
-                  !name && responseUpdateProduct
-                    ? responseUpdateProduct.status === 401 && "is-invalid"
-                    : ""
-                }`}
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="controlInput2">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={5}
-                required={true}
-                value={description}
-                className={`${
-                  !description && responseUpdateProduct
-                    ? responseUpdateProduct.status === 401 && "is-invalid"
-                    : ""
-                }`}
-                onChange={(event) => setDescription(event.target.value)}
-              />
-            </Form.Group>
+          {!loading ? (
+            <Form>
+              <Form.Group className="mb-3" controlId="controlInput1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  className={`${
+                    !name && responseUpdateProduct
+                      ? responseUpdateProduct.status === 401 && "is-invalid"
+                      : ""
+                  }`}
+                  autoFocus
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="controlInput2">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  required={true}
+                  value={description}
+                  className={`${
+                    !description && responseUpdateProduct
+                      ? responseUpdateProduct.status === 401 && "is-invalid"
+                      : ""
+                  }`}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
+              </Form.Group>
 
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="controlInput3">
-                  <Form.Label>Stock</Form.Label>
-                  <Form.Control
-                    type="number"
-                    required={true}
-                    value={stock}
-                    min={0}
-                    max={32767}
-                    className={`${
-                      responseUpdateProduct
-                        ? ((!stock && responseUpdateProduct.status === 401) ||
-                            stock < 0 ||
-                            stock > 32767) &&
-                          "is-invalid"
-                        : ""
-                    }`}
-                    onChange={(event) => setStock(event.target.value)}
-                  />
-                  {responseUpdateProduct && (stock < 0 || stock > 32767) && (
-                    <span style={{ fontSize: "0.9rem", color: "red" }}>
-                      {responseUpdateProduct.message}
-                    </span>
-                  )}
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3" controlId="controlInput4">
-                  <Form.Label>Price</Form.Label>
-                  <Form.Control
-                    type="number"
-                    required={true}
-                    value={price}
-                    className={`${
-                      !price && responseUpdateProduct
-                        ? responseUpdateProduct.status === 401 && "is-invalid"
-                        : ""
-                    }`}
-                    onChange={(event) => setPrice(event.target.value)}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Form.Group className="mb-3" controlId="ControlInput8">
-              <Form.Label>Photos</Form.Label>
-              <div>
-                {photoGallery &&
-                  photoGallery.map((photo, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        position: "relative",
-                        display: "inline-block",
-                        marginRight: "10px",
-                        marginBottom: "10px",
-                      }}
-                    >
-                      <img
-                        src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
-                        alt={`Photo ${index + 1}`}
+              <Row>
+                <Col>
+                  <Form.Group className="mb-3" controlId="controlInput3">
+                    <Form.Label>Stock</Form.Label>
+                    <Form.Control
+                      type="number"
+                      required={true}
+                      value={stock}
+                      min={0}
+                      max={32767}
+                      className={`${
+                        responseUpdateProduct
+                          ? ((!stock && responseUpdateProduct.status === 401) ||
+                              stock < 0 ||
+                              stock > 32767) &&
+                            "is-invalid"
+                          : ""
+                      }`}
+                      onChange={(event) => setStock(event.target.value)}
+                    />
+                    {responseUpdateProduct && (stock < 0 || stock > 32767) && (
+                      <span style={{ fontSize: "0.9rem", color: "red" }}>
+                        {responseUpdateProduct.message}
+                      </span>
+                    )}
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group className="mb-3" controlId="controlInput4">
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                      type="number"
+                      required={true}
+                      value={price}
+                      className={`${
+                        !price && responseUpdateProduct
+                          ? responseUpdateProduct.status === 401 && "is-invalid"
+                          : ""
+                      }`}
+                      onChange={(event) => setPrice(event.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Form.Group className="mb-3" controlId="ControlInput8">
+                <Form.Label>Photos</Form.Label>
+                <div>
+                  {photoGallery &&
+                    photoGallery.map((photo, index) => (
+                      <div
+                        key={index}
                         style={{
-                          width: "50px",
-                          height: "50px",
+                          position: "relative",
+                          display: "inline-block",
+                          marginRight: "10px",
+                          marginBottom: "10px",
                         }}
-                      />
-                      <button
-                        className="btn btn-primary"
-                        style={{
-                          position: "absolute",
-                          top: "-5px",
-                          right: "-5px",
-                          width: "20px",
-                          height: "20px",
-                          padding: "0",
-                          fontSize: "12px",
-                        }}
-                        onClick={() => removePhoto(index)}
-                        type="button"
                       >
-                        x
-                      </button>
-                    </div>
-                  ))}
-              </div>
-              <Form.Control type="file" onChange={(event) => handleImage(event)} />
-            </Form.Group>
+                        <img
+                          src={`${import.meta.env.VITE_API_IMG}/${photo.url}`}
+                          alt={`Photo ${index + 1}`}
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                          }}
+                        />
+                        <button
+                          className="btn btn-primary"
+                          style={{
+                            position: "absolute",
+                            top: "-5px",
+                            right: "-5px",
+                            width: "20px",
+                            height: "20px",
+                            padding: "0",
+                            fontSize: "12px",
+                          }}
+                          onClick={() => removePhoto(index)}
+                          type="button"
+                        >
+                          x
+                        </button>
+                      </div>
+                    ))}
+                </div>
+                <Form.Control type="file" onChange={(event) => handleImage(event)} />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="controlInput7">
-              <Form.Label>Highlight</Form.Label>
-              <Form.Check
-                type="checkbox"
-                required={true}
-                checked={highlight === "1"}
-                className={`${!highlight && responseUpdateProduct === 401 && "is-invalid"}`}
-                onChange={(event) => setHighlight(event.target.checked ? "1" : "0")}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="controlInput5">
-              <Form.Label>Category Id</Form.Label>
-              <Form.Select
-                required={true}
-                value={categoryId}
-                className={`${!categoryId && responseUpdateProduct === 401 && "is-invalid"}`}
-                onChange={(event) => setCategoryId(event.target.value)}
-              >
-                <option value="">Select a category</option>
-                {responseCategories &&
-                  responseCategories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-              </Form.Select>
-            </Form.Group>
-          </Form>
-          {responseUpdateProduct && (
+              <Form.Group className="mb-3" controlId="controlInput7">
+                <Form.Label>Highlight</Form.Label>
+                <Form.Check
+                  type="checkbox"
+                  required={true}
+                  checked={highlight === "1"}
+                  className={`${!highlight && responseUpdateProduct === 401 && "is-invalid"}`}
+                  onChange={(event) => setHighlight(event.target.checked ? "1" : "0")}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="controlInput5">
+                <Form.Label>Category Id</Form.Label>
+                <Form.Select
+                  required={true}
+                  value={categoryId}
+                  className={`${!categoryId && responseUpdateProduct === 401 && "is-invalid"}`}
+                  onChange={(event) => setCategoryId(event.target.value)}
+                >
+                  <option value="">Select a category</option>
+                  {responseCategories &&
+                    responseCategories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                </Form.Select>
+              </Form.Group>
+            </Form>
+          ) : (
+            <SpinnerLoadingForm />
+          )}
+
+          {responseUpdateProduct && !loading && (
             <span
               style={
                 responseUpdateProduct.status === 200
@@ -292,10 +309,10 @@ export default ({
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShow(false)}>
+          <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
             Update Changes
           </Button>
         </Modal.Footer>

@@ -1,4 +1,5 @@
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
+import SpinnerLoadingForm from "./SpinnerLoadingForm";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -14,6 +15,7 @@ export default ({ show, setShow, setProducts }) => {
 
   const [responseCreateProduct, setResponseCreateProduct] = useState(null);
   const [responseCategories, setResponseCategories] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   const token = useSelector((state) => state.user.token);
 
@@ -21,7 +23,23 @@ export default ({ show, setShow, setProducts }) => {
     const images = event.target.files;
     setInputProductPhotos(images);
   };
-
+  const handleloadingForm = () => {
+    setLoading(true);
+    setInterval(() => {
+      setLoading(false);
+    }, 2000);
+  };
+  const handleCloseModal = () => {
+    setInputProductName("");
+    setInputProductDescription("");
+    setInputProductHighlight("");
+    setInputProductStock("");
+    setInputProductPrice("");
+    setInputProductPhotos("");
+    setInputProductCategoryId("");
+    setResponseCreateProduct(null);
+    setShow((prev) => !prev);
+  };
   const handleSubmit = async () => {
     if (inputProductStock < 0 || inputProductStock > 32767) {
       return setResponseCreateProduct({
@@ -29,6 +47,7 @@ export default ({ show, setShow, setProducts }) => {
         message: "Invalid value please insert a number between 0 and 32767",
       });
     }
+    handleloadingForm();
     const formdata = new FormData();
 
     formdata.append("name", inputProductName);
@@ -73,6 +92,7 @@ export default ({ show, setShow, setProducts }) => {
       message: response.data.response,
     });
   };
+
   useEffect(() => {
     const handleCategories = async () => {
       const response = await axios({
@@ -89,136 +109,141 @@ export default ({ show, setShow, setProducts }) => {
 
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal show={show} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Create Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="controlInput1">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                value={inputProductName}
-                onChange={(event) => setInputProductName(event.target.value)}
-                className={`${
-                  responseCreateProduct
-                    ? ((!inputProductName && responseCreateProduct.status === 401) ||
-                        responseCreateProduct.status === 402) &&
-                      "is-invalid"
-                    : ""
-                }`}
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="controlInput2">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={5}
-                required={true}
-                value={inputProductDescription}
-                className={`${
-                  !inputProductDescription && responseCreateProduct
-                    ? responseCreateProduct.status === 401 && "is-invalid"
-                    : ""
-                }`}
-                onChange={(event) => setInputProductDescription(event.target.value)}
-              />
-            </Form.Group>
-            <Row>
-              <Col>
-                <Form.Group className="mb-3" controlId="controlInput3">
-                  <Form.Label>Stock</Form.Label>
-                  <Form.Control
-                    type="number"
-                    required={true}
-                    value={inputProductStock}
-                    min={0}
-                    max={32767}
-                    className={`${
-                      responseCreateProduct
-                        ? ((!inputProductStock && responseCreateProduct.status === 401) ||
-                            inputProductStock < 0 ||
-                            inputProductStock > 32767) &&
-                          "is-invalid"
-                        : ""
-                    }`}
-                    onChange={(event) => setInputProductStock(event.target.value)}
-                  />
-                  {responseCreateProduct &&
-                    (inputProductStock < 0 || inputProductStock > 32767) && (
-                      <span style={{ fontSize: "0.9rem", color: "red" }}>
-                        {responseCreateProduct.message}
-                      </span>
-                    )}
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3" controlId="controlInput4">
-                  <Form.Label>Price</Form.Label>
-                  <Form.Control
-                    type="number"
-                    required={true}
-                    value={inputProductPrice}
-                    className={`${
-                      !inputProductPrice && responseCreateProduct
-                        ? responseCreateProduct.status === 401 && "is-invalid"
-                        : ""
-                    }`}
-                    onChange={(event) => setInputProductPrice(event.target.value)}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
+          {!loading ? (
+            <Form>
+              <Form.Group className="mb-3" controlId="controlInput1">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={inputProductName}
+                  onChange={(event) => setInputProductName(event.target.value)}
+                  className={`${
+                    responseCreateProduct
+                      ? ((!inputProductName && responseCreateProduct.status === 401) ||
+                          responseCreateProduct.status === 402) &&
+                        "is-invalid"
+                      : ""
+                  }`}
+                  autoFocus
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="controlInput2">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  required={true}
+                  value={inputProductDescription}
+                  className={`${
+                    !inputProductDescription && responseCreateProduct
+                      ? responseCreateProduct.status === 401 && "is-invalid"
+                      : ""
+                  }`}
+                  onChange={(event) => setInputProductDescription(event.target.value)}
+                />
+              </Form.Group>
+              <Row>
+                <Col>
+                  <Form.Group className="mb-3" controlId="controlInput3">
+                    <Form.Label>Stock</Form.Label>
+                    <Form.Control
+                      type="number"
+                      required={true}
+                      value={inputProductStock}
+                      min={0}
+                      max={32767}
+                      className={`${
+                        responseCreateProduct
+                          ? ((!inputProductStock && responseCreateProduct.status === 401) ||
+                              inputProductStock < 0 ||
+                              inputProductStock > 32767) &&
+                            "is-invalid"
+                          : ""
+                      }`}
+                      onChange={(event) => setInputProductStock(event.target.value)}
+                    />
+                    {responseCreateProduct &&
+                      (inputProductStock < 0 || inputProductStock > 32767) && (
+                        <span style={{ fontSize: "0.9rem", color: "red" }}>
+                          {responseCreateProduct.message}
+                        </span>
+                      )}
+                  </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Group className="mb-3" controlId="controlInput4">
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                      type="number"
+                      required={true}
+                      value={inputProductPrice}
+                      className={`${
+                        !inputProductPrice && responseCreateProduct
+                          ? responseCreateProduct.status === 401 && "is-invalid"
+                          : ""
+                      }`}
+                      onChange={(event) => setInputProductPrice(event.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
 
-            <Form.Group className="mb-3" controlId="ControlInput8">
-              <Form.Label>Photos</Form.Label>
-              <Form.Control
-                type="file"
-                multiple
-                onChange={(event) => handleImage(event)}
-                value={inputProductPhotos}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="controlInput7">
-              <Form.Label>Highlight</Form.Label>
-              <Form.Check
-                type="checkbox"
-                required={true}
-                checked={inputProductHighlight === "1"}
-                className={`${
-                  !inputProductHighlight && responseCreateProduct
-                    ? responseCreateProduct.status === 401 && "is-invalid"
-                    : ""
-                }`}
-                onChange={(event) => setInputProductHighlight(event.target.checked ? "1" : "0")}
-              />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="ControlInput8">
+                <Form.Label>Photos</Form.Label>
+                <Form.Control
+                  type="file"
+                  multiple
+                  onChange={(event) => handleImage(event)}
+                  value={inputProductPhotos}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="controlInput7">
+                <Form.Label>Highlight</Form.Label>
+                <Form.Check
+                  type="checkbox"
+                  required={true}
+                  checked={inputProductHighlight === "1"}
+                  className={`${
+                    !inputProductHighlight && responseCreateProduct
+                      ? responseCreateProduct.status === 401 && "is-invalid"
+                      : ""
+                  }`}
+                  onChange={(event) => setInputProductHighlight(event.target.checked ? "1" : "0")}
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="controlInput5">
-              <Form.Label>Category Id</Form.Label>
-              <Form.Select
-                required={true}
-                value={inputProductCategoryId}
-                className={`${
-                  !inputProductCategoryId && responseCreateProduct
-                    ? responseCreateProduct.status === 401 && "is-invalid"
-                    : ""
-                }`}
-                onChange={(event) => setInputProductCategoryId(event.target.value)}
-              >
-                <option value="">Select a category</option>
-                {responseCategories &&
-                  responseCategories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-              </Form.Select>
-            </Form.Group>
-          </Form>
-          {responseCreateProduct && (
+              <Form.Group className="mb-3" controlId="controlInput5">
+                <Form.Label>Category Id</Form.Label>
+                <Form.Select
+                  required={true}
+                  value={inputProductCategoryId}
+                  className={`${
+                    !inputProductCategoryId && responseCreateProduct
+                      ? responseCreateProduct.status === 401 && "is-invalid"
+                      : ""
+                  }`}
+                  onChange={(event) => setInputProductCategoryId(event.target.value)}
+                >
+                  <option value="">Select a category</option>
+                  {responseCategories &&
+                    responseCategories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                </Form.Select>
+              </Form.Group>
+            </Form>
+          ) : (
+            <SpinnerLoadingForm />
+          )}
+
+          {responseCreateProduct && !loading && (
             <span
               style={
                 responseCreateProduct.status === 200
@@ -231,10 +256,10 @@ export default ({ show, setShow, setProducts }) => {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShow(false)}>
+          <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
             Save Changes
           </Button>
         </Modal.Footer>
