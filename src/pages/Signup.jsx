@@ -55,6 +55,7 @@ function SignUp() {
       formdata.append("address", inputAddress);
       formdata.append("phone_number", inputPhone_Number);
       formdata.append("avatar", avatar);
+      formdata.append("roleId", 100);
 
       const response = await axios({
         method: "POST",
@@ -314,7 +315,7 @@ function SignUp() {
                   >
                     {loading ? (
                       <div class="spinner-border text-light" role="status">
-                        <span style={{ fontSize: "0.9rem" }} class="visually-hidden">
+                        <span style={{ fontSize: "0.9rem" }} className="visually-hidden">
                           Loading...
                         </span>
                       </div>

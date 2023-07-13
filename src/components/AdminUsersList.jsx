@@ -5,10 +5,10 @@ import axios from "axios";
 
 import ModalUpdateUser from "./ModalUpdateUser";
 
-export default () => {
+export default ({ users, setUsers }) => {
   const [show, setShow] = useState(false);
   const [userSelected, setUserSelected] = useState(false);
-  const [users, setUsers] = useState(null);
+
   const token = useSelector((state) => state.user.token);
 
   useEffect(() => {

@@ -7,6 +7,8 @@ import { useState } from "react";
 
 export default () => {
   const [showAdduser, setShowAdduser] = useState(false);
+  const [users, setUsers] = useState(null);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -19,8 +21,8 @@ export default () => {
               Add users
             </button>
           </div>
-          <AdminUsersList />
-          <ModalAddUser show={showAdduser} setShow={setShowAdduser} />
+          <AdminUsersList setUsers={setUsers} users={users} />
+          <ModalAddUser show={showAdduser} setShow={setShowAdduser} setUsers={setUsers} />
         </div>
       </div>
     </div>

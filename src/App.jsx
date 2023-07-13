@@ -31,16 +31,19 @@ const App = () => {
     location.pathname.startsWith("/login") ||
     location.pathname.startsWith("/signup") ||
     location.pathname.startsWith("/admin");
+  const hideAboutThisProjectInfo = location.pathname.startsWith("/admin");
 
   return (
     <>
       {!hideCartComponent && <CartIcon />}
       {!hideCartComponent && <Cart />}
-      {!hideCartComponent && (
+      {!hideAboutThisProjectInfo && (
         <StickyButton showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       )}
+      {!hideAboutThisProjectInfo && (
+        <GeneralInfoOffCanvas showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
+      )}
 
-      <GeneralInfoOffCanvas showOffCanvas={showOffCanvas} setShowOffCanvas={setShowOffCanvas} />
       <ScrollToTop />
 
       <Routes>

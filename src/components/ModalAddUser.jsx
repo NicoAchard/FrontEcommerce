@@ -2,10 +2,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-export default ({ show, setShow }) => {
+export default ({ show, setShow, setUsers }) => {
   const [inputFirstname, setInputFirstname] = useState("");
   const [inputLastname, setInputLastname] = useState("");
   const [inputAddress, setInputAddress] = useState("");
@@ -14,9 +15,13 @@ export default ({ show, setShow }) => {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPhoneNumber, setInputPhoneNumber] = useState("");
   const [inputImgFile, setInputImgFile] = useState("");
+  const [inputRole, setInputRole] = useState("");
 
+  const [rols, setRols] = useState([]);
   const [passwordsUnmatch, setPasswordsUnmatch] = useState(false);
   const [responseCreateUser, setResponseCreateUser] = useState(null);
+
+  const token = useSelector((state) => state.user.token);
 
   const handleAvatar = (event) => {
     const image = event.target.files[0];
@@ -27,6 +32,33 @@ export default ({ show, setShow }) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
+  const handleCloseModal = () => {
+    setInputFirstname("");
+    setInputLastname("");
+    setInputAddress("");
+    setInputPassword("");
+    setInputPasswordRepeat("");
+    setInputEmail("");
+    setInputPhoneNumber("");
+    setInputImgFile(undefined);
+    setResponseCreateUser(null);
+    setShow((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const getAllRols = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_API_URL}/rols`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setInputRole(response.data[0].id);
+      return setRols(response.data);
+    };
+    getAllRols();
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -40,6 +72,7 @@ export default ({ show, setShow }) => {
       formdata.append("address", inputAddress);
       formdata.append("phone_number", inputPhoneNumber);
       formdata.append("avatar", inputImgFile);
+      formdata.append("roleId", inputRole);
 
       const response = await axios({
         method: "POST",
@@ -51,22 +84,26 @@ export default ({ show, setShow }) => {
       });
 
       setPasswordsUnmatch(false);
+
       //Good
       if (response.data.status === 200) {
+        setTimeout(() => {
+          setShow((prev) => !prev);
+        }, 3000);
+        setUsers((prev) => [...prev, response.data.data]);
         return setResponseCreateUser({ status: 200, message: response.data.response });
-      } else {
-        return setResponseCreateUser({
-          status: response.data.status,
-          message: response.data.response,
-        });
       }
+      return setResponseCreateUser({
+        status: response.data.status,
+        message: response.data.response,
+      });
     } else {
       setPasswordsUnmatch(true);
     }
   }
   return (
     <>
-      <Modal show={show} size="lg" onHide={() => setShow(false)}>
+      <Modal show={show} size="lg" onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Register User</Modal.Title>
         </Modal.Header>
@@ -196,8 +233,24 @@ export default ({ show, setShow }) => {
               <Form.Label>Avatar image</Form.Label>
               <Form.Control type="file" onChange={(event) => handleAvatar(event)} />
             </Form.Group>
+            <Form.Group className="mb-3 w-100" controlId="ControlInput9">
+              <Form.Label>Role</Form.Label>
+              {rols.length > 0 && (
+                <Form.Select
+                  value={inputRole}
+                  onChange={(event) => setInputRole(event.target.value)}
+                  required
+                >
+                  {rols.map((rol) => (
+                    <option key={rol.id} value={rol.id}>
+                      {rol.name}
+                    </option>
+                  ))}
+                </Form.Select>
+              )}
+            </Form.Group>
             <Modal.Footer>
-              <Button variant="secondary" onClick={() => setShow(false)}>
+              <Button variant="secondary" onClick={handleCloseModal}>
                 Close
               </Button>
               <Button variant="primary" onClick={handleSubmit}>
