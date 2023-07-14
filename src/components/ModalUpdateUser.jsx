@@ -103,20 +103,15 @@ export default ({ show, setShow, user, setUsers }) => {
               : listUseritem,
           ),
         );
+        setTimeout(() => {
+          setShow((prev) => !prev);
+        }, 1500);
         return setResponseUpdateUser({ status: 200, message: response.data.response });
       }
-      //Unexpected error
-      if (response.data.status === 400) {
-        return setResponseUpdateUser({ status: 400, message: response.data.response });
-      }
-      //Missed field
-      if (response.data.status === 401) {
-        return setResponseUpdateUser({ status: 401, message: response.data.response });
-      }
-      //Already exist that email in the System
-      if (response.data.status === 402) {
-        return setResponseUpdateUser({ status: 402, message: response.data.response });
-      }
+      return setResponseUpdateUser({
+        status: response.data.status,
+        message: response.data.response,
+      });
     } else {
       setPasswordsUnmatch(true);
     }
