@@ -23,7 +23,7 @@ import ProtectedProfile from "./components/ProtectedProfile";
 import Profile from "./pages/Profile";
 import ScrollToTop from "./components/ScrollToTop";
 import GeneralInfoOffCanvas from "./components/GeneralInfoOffCanvas";
-
+import favicon from "../src/img/favicon.svg";
 const App = () => {
   const [showOffCanvas, setShowOffCanvas] = useState(false);
   const location = useLocation();
