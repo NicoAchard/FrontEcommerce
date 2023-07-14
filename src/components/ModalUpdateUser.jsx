@@ -137,7 +137,7 @@ export default ({ show, setShow, user, setUsers }) => {
                 onChange={(event) => setInputEmail(event.target.value)}
                 className={`${
                   responseUpdateUser
-                    ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
+                    ? (!inputEmail.trim() || !handlevalidateEmail(inputEmail)) &&
                       responseUpdateUser.status === 401 &&
                       "is-invalid"
                     : ""
@@ -146,7 +146,7 @@ export default ({ show, setShow, user, setUsers }) => {
                 required
               />
               {responseUpdateUser
-                ? (!inputEmail || !handlevalidateEmail(inputEmail)) &&
+                ? (!inputEmail.trim() || !handlevalidateEmail(inputEmail)) &&
                   responseUpdateUser.status === 401 && (
                     <span style={{ fontSize: "0.9rem", color: "red" }}>
                       The entered email is not valid. Please provide a valid email address
@@ -163,7 +163,7 @@ export default ({ show, setShow, user, setUsers }) => {
                   onChange={(event) => setInputFirstname(event.target.value)}
                   className={`${
                     responseUpdateUser
-                      ? !inputFirstname && responseUpdateUser.status === 401 && "is-invalid"
+                      ? !inputFirstname.trim() && responseUpdateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
                   required
@@ -178,7 +178,7 @@ export default ({ show, setShow, user, setUsers }) => {
                   onChange={(event) => setInputLastname(event.target.value)}
                   className={`${
                     responseUpdateUser
-                      ? !inputLastname && responseUpdateUser.status === 401 && "is-invalid"
+                      ? !inputLastname.trim() && responseUpdateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
                   required
@@ -195,7 +195,9 @@ export default ({ show, setShow, user, setUsers }) => {
                   onChange={(event) => setInputPhoneNumber(event.target.value)}
                   className={`${
                     responseUpdateUser
-                      ? !inputPhoneNumber && responseUpdateUser.status === 401 && "is-invalid"
+                      ? !inputPhoneNumber.trim() &&
+                        responseUpdateUser.status === 401 &&
+                        "is-invalid"
                       : ""
                   }`}
                 />
@@ -208,7 +210,7 @@ export default ({ show, setShow, user, setUsers }) => {
                   onChange={(event) => setInputAddress(event.target.value)}
                   className={`${
                     responseUpdateUser
-                      ? !inputAddress && responseUpdateUser.status === 401 && "is-invalid"
+                      ? !inputAddress.trim() && responseUpdateUser.status === 401 && "is-invalid"
                       : ""
                   }`}
                   required
