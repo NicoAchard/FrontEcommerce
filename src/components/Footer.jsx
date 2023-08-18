@@ -56,22 +56,22 @@ function Footer() {
 
               <ul className="list-unstyled mb-0">
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/products?category=1" className="text-white text-decoration-none">
                     Skates
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/products?category=2" className="text-white text-decoration-none">
                     Longboards
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/products?category=3" className="text-white text-decoration-none">
                     Cruisers
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" className="text-white text-decoration-none">
+                  <Link to="/products?category=4" className="text-white text-decoration-none">
                     Surfboards
                   </Link>
                 </li>
